@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<module rename-to='bourseje'>
+    <inherits name='com.google.gwt.user.User'/>
+
+    <inherits name='com.google.gwt.user.theme.standard.Standard'/>
+
+    <inherits name="com.gwtplatform.dispatch.rest.DispatchRest"/>
+    <inherits name='com.gwtplatform.mvp.MvpWithEntryPoint'/>
+
+    <source path='client'/>
+    <source path='shared'/>
+
+    <set-configuration-property name="gin.ginjector.modules" value="com.arcbees.bourseje.client.ClientModule"/>
+
+    <set-configuration-property name="gwtp.bootstrapper" value="com.arcbees.bourseje.client.BootstrapperImpl"/>
+</module>
