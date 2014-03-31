@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.arcbees.bourseje</groupId>
@@ -16,6 +17,7 @@
         <gwt.version>2.6.0</gwt.version>
         <gwtp.version>1.2.1</gwtp.version>
         <gin.version>2.1.2</gin.version>
+        <mgwt.version>1.2.0-SNAPSHOT</mgwt.version>
 
         <!-- server -->
         <gae.version>1.9.0</gae.version>
@@ -29,13 +31,22 @@
         <maven-compiler-plugin.version>2.3.2</maven-compiler-plugin.version>
         <maven-gae-plugin.version>0.9.6</maven-gae-plugin.version>
 
-        <target.jdk>1.6</target.jdk>
+        <target.jdk>1.7</target.jdk>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
-        <gae.home>${settings.localRepository}/com/google/appengine/appengine-java-sdk/${gae.version}/appengine-java-sdk-${gae.version}</gae.home>
+        <gae.home>
+            ${settings.localRepository}/com/google/appengine/appengine-java-sdk/${gae.version}/appengine-java-sdk-${gae.version}
+        </gae.home>
     </properties>
+
+    <repositories>
+        <repository>
+            <id>sonatype-snapshots</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+        </repository>
+    </repositories>
 
     <dependencies>
         <!-- Google Web Toolkit dependencies -->
@@ -102,10 +113,16 @@
 
         <!-- Other -->
         <dependency>
+            <groupId>com.googlecode.mgwt</groupId>
+            <artifactId>mgwt</artifactId>
+            <version>${mgwt.version}</version>
+        </dependency>
+        <dependency>
             <groupId>com.googlecode.objectify</groupId>
             <artifactId>objectify</artifactId>
             <version>${objectify.version}</version>
         </dependency>
+
         <!-- AppEngine -->
         <dependency>
             <groupId>com.google.appengine</groupId>

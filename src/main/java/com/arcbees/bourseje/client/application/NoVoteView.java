@@ -14,28 +14,22 @@
  * the License.
  */
 
-package com.arcbees.bourseje.client;
+package com.arcbees.bourseje.client.application;
 
 import javax.inject.Inject;
 
-import com.arcbees.bourseje.client.resources.Resources;
-import com.gwtplatform.mvp.client.Bootstrapper;
-import com.gwtplatform.mvp.client.proxy.PlaceManager;
+import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.user.client.ui.IsWidget;
+import com.google.gwt.user.client.ui.Widget;
+import com.gwtplatform.mvp.client.ViewImpl;
 
-public class BootstrapperImpl implements Bootstrapper {
-    private final PlaceManager placeManager;
-
-    @Inject
-    BootstrapperImpl(
-            Resources resources,
-            PlaceManager placeManager) {
-        this.placeManager = placeManager;
-
-        resources.styles().ensureInjected();
+public class NoVoteView extends ViewImpl implements NoVotePresenter.MyView {
+    interface Binder extends UiBinder<Widget, NoVoteView> {
     }
 
-    @Override
-    public void onBootstrap() {
-        placeManager.revealCurrentPlace();
+    @Inject
+    NoVoteView(
+            Binder uiBinder) {
+        initWidget(uiBinder.createAndBindUi(this));
     }
 }

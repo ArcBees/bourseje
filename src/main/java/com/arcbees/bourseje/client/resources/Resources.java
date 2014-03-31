@@ -14,17 +14,22 @@
  * the License.
  */
 
-package com.arcbees.bourseje.client.application;
+package com.arcbees.bourseje.client.resources;
 
-import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
+import com.google.gwt.resources.client.ClientBundle;
+import com.google.gwt.resources.client.CssResource;
+import com.google.gwt.resources.client.ImageResource;
 
-public class ApplicationModule extends AbstractPresenterModule {
-    @Override
-    protected void configure() {
-        bindPresenter(ApplicationPresenter.class, ApplicationPresenter.MyView.class, ApplicationView.class,
-                ApplicationPresenter.MyProxy.class);
-
-        bindPresenter(NoVotePresenter.class, NoVotePresenter.MyView.class, NoVoteView.class,
-                NoVotePresenter.MyProxy.class);
+public interface Resources extends ClientBundle {
+    public interface Styles extends CssResource {
     }
+
+    @Source("styles.css")
+    Styles styles();
+
+    ImageResource logoArcbees();
+
+    ImageResource logoJcc();
+
+    ImageResource voteBatman();
 }

@@ -16,32 +16,29 @@
 
 package com.arcbees.bourseje.client.application;
 
-import com.google.gwt.event.shared.GwtEvent.Type;
+import com.arcbees.bourseje.client.NameTokens;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.View;
-import com.gwtplatform.mvp.client.annotations.ContentSlot;
+import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
-import com.gwtplatform.mvp.client.proxy.Proxy;
-import com.gwtplatform.mvp.client.proxy.RevealContentHandler;
+import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 
-public class ApplicationPresenter extends Presenter<ApplicationPresenter.MyView, ApplicationPresenter.MyProxy> {
+public class NoVotePresenter extends Presenter<NoVotePresenter.MyView, NoVotePresenter.MyProxy> {
     interface MyView extends View {
     }
 
-    @ContentSlot
-    public static final Type<RevealContentHandler<?>> SLOT_MAIN = new Type<>();
-
     @ProxyStandard
-    interface MyProxy extends Proxy<ApplicationPresenter> {
+    @NameToken(NameTokens.NO_VOTE)
+    interface MyProxy extends ProxyPlace<NoVotePresenter> {
     }
 
     @Inject
-    public ApplicationPresenter(
+    public NoVotePresenter(
             EventBus eventBus,
             MyView view,
             MyProxy proxy) {
-        super(eventBus, view, proxy, RevealType.Root);
+        super(eventBus, view, proxy, ApplicationPresenter.SLOT_MAIN);
     }
 }
