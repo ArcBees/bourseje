@@ -35,7 +35,7 @@ public class NoVotePresenter extends Presenter<NoVotePresenter.MyView, NoVotePre
     }
 
     @Inject
-    public NoVotePresenter(
+    NoVotePresenter(
             EventBus eventBus,
             MyView view,
             MyProxy proxy) {
