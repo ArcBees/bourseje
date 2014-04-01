@@ -18,17 +18,27 @@ package com.arcbees.bourseje.client.application;
 
 import javax.inject.Inject;
 
-import com.google.gwt.uibinder.client.UiBinder;
-import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.user.client.ui.IsWidget;
+import com.googlecode.mgwt.mvp.client.Animation;
+import com.googlecode.mgwt.ui.client.animation.AnimationHelper;
 import com.gwtplatform.mvp.client.ViewImpl;
 
 public class ApplicationView extends ViewImpl implements ApplicationPresenter.MyView {
-    interface Binder extends UiBinder<Widget, ApplicationView> {
-    }
+    private final AnimationHelper animationHelper;
 
     @Inject
     ApplicationView(
-            Binder uiBinder) {
-        initWidget(uiBinder.createAndBindUi(this));
+            AnimationHelper animationHelper) {
+        this.animationHelper = animationHelper;
+
+        initWidget(animationHelper);
+    }
+
+
+    @Override
+    public void setInSlot(Object slot, IsWidget content) {
+        if (slot == ApplicationPresenter.SLOT_MAIN) {
+            animationHelper.goTo(content, Animation.SLIDE);
+        }
     }
 }
