@@ -16,7 +16,7 @@
                     <div class="vote">
                         <g:Image resource="{res.voteBatman}"/>
                     </div>
-                    <p>Nous sommes désolés,<br/>aucun vote est en cours.<br/>Mais rassurez-vous, Batman veille.
+                    <p>Nous sommes désolés,<br/>aucun vote n'est en cours.<br/>Mais rassurez-vous, Batman veille.
                     </p>
                     <p>
                         <a href="#" class="jccq">jccq.qc.ca</a>
