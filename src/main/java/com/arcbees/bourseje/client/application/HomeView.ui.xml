@@ -11,13 +11,11 @@
             <div>
                 <article class="wrapper txtcenter">
                     <div class="vote">
-                        <g:Image resource="{res.voteBatman}"/>
+                        <g:Image resource="{res.vote}"/>
                     </div>
-                    <p>Nous sommes désolés,<br/>aucun vote n"est en cours.<br/>Mais rassurez-vous, Batman veille.
+                    <p>La plateforme de vote de la Jeune Chambre<br/>de Commerce de Québec
                     </p>
-                    <p>
-                        <a href="#" class="jccq">jccq.qc.ca</a>
-                    </p>
+                    <button class="btn btnSlider">Cliquez pour passer au vote</button>
                 </article>
             </div>
         </section>

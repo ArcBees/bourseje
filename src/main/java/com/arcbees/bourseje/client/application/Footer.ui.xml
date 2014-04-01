@@ -1,0 +1,16 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+
+    <ui:with field="res" type="com.arcbees.bourseje.client.resources.Resources"/>
+
+    <g:HTMLPanel tag="footer">
+        <div class="wrapper clearfix">
+            <div class="logoJcc inbl ">
+                <g:Image resource="{res.logoJcc}"/>
+            </div>
+            <div class="logoArcbees inbl right">
+                <g:Image resource="{res.logoArcbees}"/>
+            </div>
+        </div>
+    </g:HTMLPanel>
+</ui:UiBinder>
