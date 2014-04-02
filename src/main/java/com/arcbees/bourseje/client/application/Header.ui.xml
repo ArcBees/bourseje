@@ -1,0 +1,11 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+
+    <ui:with field="res" type="com.arcbees.bourseje.client.resources.Resources"/>
+
+    <g:HTMLPanel tag="header" styleName="{res.styles.clearfix}">
+        <div class="wrapper">
+            <a href="#" class="iconHeader right"/>
+        </div>
+    </g:HTMLPanel>
+</ui:UiBinder>

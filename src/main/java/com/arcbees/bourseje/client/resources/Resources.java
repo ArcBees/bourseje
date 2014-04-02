@@ -22,6 +22,7 @@ import com.google.gwt.resources.client.ImageResource;
 
 public interface Resources extends ClientBundle {
     public interface Styles extends CssResource {
+        String clearfix();
     }
 
     @Source("styles.css")
@@ -32,4 +33,6 @@ public interface Resources extends ClientBundle {
     ImageResource logoJcc();
 
     ImageResource voteBatman();
+
+    ImageResource vote();
 }

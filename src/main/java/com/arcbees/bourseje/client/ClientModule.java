@@ -35,8 +35,8 @@ public class ClientModule extends AbstractPresenterModule {
         install(new DefaultModule(DefaultPlaceManager.class, RouteTokenFormatter.class));
         install(new ApplicationModule());
 
-        bindConstant().annotatedWith(DefaultPlace.class).to(NameTokens.NO_VOTE);
-        bindConstant().annotatedWith(ErrorPlace.class).to(NameTokens.NO_VOTE);
-        bindConstant().annotatedWith(UnauthorizedPlace.class).to(NameTokens.NO_VOTE);
+        bindConstant().annotatedWith(DefaultPlace.class).to(NameTokens.HOME);
+        bindConstant().annotatedWith(ErrorPlace.class).to(NameTokens.HOME);
+        bindConstant().annotatedWith(UnauthorizedPlace.class).to(NameTokens.HOME);
     }
 }
