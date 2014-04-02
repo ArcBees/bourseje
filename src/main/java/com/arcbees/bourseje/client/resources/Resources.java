@@ -23,6 +23,10 @@ import com.google.gwt.resources.client.ImageResource;
 public interface Resources extends ClientBundle {
     public interface Styles extends CssResource {
         String clearfix();
+
+        String btnSlider();
+
+        String btn();
     }
 
     @Source("styles.css")
@@ -35,4 +39,6 @@ public interface Resources extends ClientBundle {
     ImageResource voteBatman();
 
     ImageResource vote();
+
+    ImageResource slider();
 }

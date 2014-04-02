@@ -15,7 +15,7 @@
                     </div>
                     <p>La plateforme de vote de la Jeune Chambre<br/>de Commerce de Québec
                     </p>
-                    <button class="btn btnSlider">Cliquez pour passer au vote</button>
+                    <g:Button ui:field="cliquez" styleName="{res.styles.btn} {res.styles.btnSlider}">Cliquez pour passer au vote</g:Button>
                 </article>
             </div>
         </section>
