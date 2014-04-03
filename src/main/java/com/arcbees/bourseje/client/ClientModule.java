@@ -17,6 +17,8 @@
 package com.arcbees.bourseje.client;
 
 import com.arcbees.bourseje.client.application.ApplicationModule;
+import com.gwtplatform.dispatch.rest.client.RestApplicationPath;
+import com.gwtplatform.dispatch.rest.client.gin.RestDispatchAsyncModule;
 import com.gwtplatform.mvp.client.annotations.DefaultPlace;
 import com.gwtplatform.mvp.client.annotations.ErrorPlace;
 import com.gwtplatform.mvp.client.annotations.UnauthorizedPlace;
@@ -25,18 +27,17 @@ import com.gwtplatform.mvp.client.gin.DefaultModule;
 import com.gwtplatform.mvp.client.proxy.DefaultPlaceManager;
 import com.gwtplatform.mvp.shared.proxy.RouteTokenFormatter;
 
-/**
- * See more on setting up the PlaceManager on <a
- * href="// See more on: https://github.com/ArcBees/GWTP/wiki/PlaceManager">DefaultModule's > DefaultPlaceManager</a>
- */
 public class ClientModule extends AbstractPresenterModule {
     @Override
     protected void configure() {
+        install(new RestDispatchAsyncModule());
+
         install(new DefaultModule(DefaultPlaceManager.class, RouteTokenFormatter.class));
         install(new ApplicationModule());
 
         bindConstant().annotatedWith(DefaultPlace.class).to(NameTokens.HOME);
         bindConstant().annotatedWith(ErrorPlace.class).to(NameTokens.HOME);
         bindConstant().annotatedWith(UnauthorizedPlace.class).to(NameTokens.HOME);
+        bindConstant().annotatedWith(RestApplicationPath.class).to("/api");
     }
 }

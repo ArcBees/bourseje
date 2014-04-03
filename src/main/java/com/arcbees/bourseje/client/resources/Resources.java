@@ -38,6 +38,8 @@ public interface Resources extends ClientBundle {
 
     ImageResource voteBatman();
 
+    ImageResource voteClock();
+
     ImageResource vote();
 
     ImageResource slider();

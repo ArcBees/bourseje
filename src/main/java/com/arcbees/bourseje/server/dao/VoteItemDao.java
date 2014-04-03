@@ -14,11 +14,12 @@
  * the License.
  */
 
-package com.arcbees.bourseje.client;
+package com.arcbees.bourseje.server.dao;
 
-public class NameTokens {
-    public static final String NO_VOTE = "/no_vote";
-    public static final String HOME = "/home";
-    public static final String INACTIVE_VOTE = "/inactive_vote";
-    public static final String VOTE = "/vote";
+import com.arcbees.bourseje.shared.VoteItem;
+
+public class VoteItemDao extends BaseDao<VoteItem> {
+    VoteItemDao() {
+        super(VoteItem.class);
+    }
 }

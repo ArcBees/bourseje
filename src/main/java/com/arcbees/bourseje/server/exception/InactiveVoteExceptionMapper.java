@@ -14,11 +14,17 @@
  * the License.
  */
 
-package com.arcbees.bourseje.client;
+package com.arcbees.bourseje.server.exception;
 
-public class NameTokens {
-    public static final String NO_VOTE = "/no_vote";
-    public static final String HOME = "/home";
-    public static final String INACTIVE_VOTE = "/inactive_vote";
-    public static final String VOTE = "/vote";
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
+import javax.ws.rs.ext.ExceptionMapper;
+import javax.ws.rs.ext.Provider;
+
+@Provider
+public class InactiveVoteExceptionMapper implements ExceptionMapper<InactiveVoteException> {
+    @Override
+    public Response toResponse(InactiveVoteException e) {
+        return Response.status(Status.FORBIDDEN).build();
+    }
 }

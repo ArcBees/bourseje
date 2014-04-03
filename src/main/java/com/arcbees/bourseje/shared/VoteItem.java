@@ -14,11 +14,9 @@
  * the License.
  */
 
-package com.arcbees.bourseje.client;
+package com.arcbees.bourseje.shared;
 
-public class NameTokens {
-    public static final String NO_VOTE = "/no_vote";
-    public static final String HOME = "/home";
-    public static final String INACTIVE_VOTE = "/inactive_vote";
-    public static final String VOTE = "/vote";
+public class VoteItem {
+    public VoteItem() {
+    }
 }

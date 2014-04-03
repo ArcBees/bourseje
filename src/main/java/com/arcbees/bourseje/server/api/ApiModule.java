@@ -14,11 +14,13 @@
  * the License.
  */
 
-package com.arcbees.bourseje.client;
+package com.arcbees.bourseje.server.api;
 
-public class NameTokens {
-    public static final String NO_VOTE = "/no_vote";
-    public static final String HOME = "/home";
-    public static final String INACTIVE_VOTE = "/inactive_vote";
-    public static final String VOTE = "/vote";
+import com.google.inject.AbstractModule;
+
+public class ApiModule extends AbstractModule {
+    @Override
+    protected void configure() {
+        bind(VoteResource.class);
+    }
 }

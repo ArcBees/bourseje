@@ -25,8 +25,9 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewImpl;
+import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
-public class HomeView extends ViewImpl implements HomePresenter.MyView {
+public class HomeView extends ViewWithUiHandlers<HomeUiHandlers> implements HomePresenter.MyView {
     interface Binder extends UiBinder<Widget, HomeView> {
     }
 
@@ -38,6 +39,6 @@ public class HomeView extends ViewImpl implements HomePresenter.MyView {
 
     @UiHandler("cliquez")
     void onCliquez(ClickEvent event) {
-
+        getUiHandlers().onCliquezClicked();
     }
 }

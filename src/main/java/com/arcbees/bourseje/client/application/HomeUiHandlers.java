@@ -14,11 +14,10 @@
  * the License.
  */
 
-package com.arcbees.bourseje.client;
+package com.arcbees.bourseje.client.application;
 
-public class NameTokens {
-    public static final String NO_VOTE = "/no_vote";
-    public static final String HOME = "/home";
-    public static final String INACTIVE_VOTE = "/inactive_vote";
-    public static final String VOTE = "/vote";
+import com.gwtplatform.mvp.client.UiHandlers;
+
+public interface HomeUiHandlers extends UiHandlers {
+    void onCliquezClicked();
 }
