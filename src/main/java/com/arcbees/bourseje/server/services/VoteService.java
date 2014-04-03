@@ -35,7 +35,7 @@ public class VoteService {
 
     @Inject
     VoteService(
-            @Named(ServerModule.POLL_DATE) Calendar pollDate,
+            @Named(ServerModule.VOTE_DATE) Calendar pollDate,
             VoteItemDao voteItemDao) {
         this.pollDate = pollDate;
         this.voteItemDao = voteItemDao;

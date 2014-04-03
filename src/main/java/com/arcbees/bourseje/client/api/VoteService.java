@@ -21,8 +21,8 @@ import java.util.List;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 
-import com.arcbees.bourseje.shared.VoteItem;
 import com.arcbees.bourseje.shared.ResourcesPath;
+import com.arcbees.bourseje.shared.VoteItem;
 import com.gwtplatform.dispatch.rest.shared.RestAction;
 import com.gwtplatform.dispatch.rest.shared.RestService;
 

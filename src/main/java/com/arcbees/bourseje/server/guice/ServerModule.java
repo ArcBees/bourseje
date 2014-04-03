@@ -28,7 +28,7 @@ import com.google.inject.Provides;
 import com.googlecode.objectify.ObjectifyFilter;
 
 public class ServerModule extends AbstractModule {
-    public static final String POLL_DATE = "pollDate";
+    public static final String VOTE_DATE = "voteDate";
 
     @Override
     protected void configure() {
@@ -38,12 +38,12 @@ public class ServerModule extends AbstractModule {
         install(new ExceptionModule());
     }
 
-    @Named(POLL_DATE)
+    @Named(VOTE_DATE)
     @Provides
-    public Calendar pollDate() {
-        Calendar pollDateTime = Calendar.getInstance();
-        pollDateTime.set(2014, Calendar.APRIL, 4, 17, 0);
+    public Calendar voteDate() {
+        Calendar voteDate = Calendar.getInstance();
+        voteDate.set(2014, Calendar.APRIL, 4, 17, 0);
 
-        return pollDateTime;
+        return voteDate;
     }
 }

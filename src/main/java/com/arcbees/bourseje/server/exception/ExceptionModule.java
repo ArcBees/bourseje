@@ -14,7 +14,6 @@
  * the License.
  */
 
-
 package com.arcbees.bourseje.server.exception;
 
 import javax.inject.Singleton;
