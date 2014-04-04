@@ -4,15 +4,15 @@
 
     <ui:with field="res" type="com.arcbees.bourseje.client.resources.Resources"/>
 
-    <g:HTMLPanel>
+    <g:HTMLPanel styleName="{res.styles.height}">
         <w:Header/>
 
-        <section class="main bgBleu">
-            <article class="wrapper">
+        <section class="{res.styles.main} {res.styles.bgBleu}">
+            <article class="{res.styles.wrapper}">
                 <p>Vous avez choisi.</p>
-                <p class="selection">M. Goudreau Christian</p>
+                <p class="{res.styles.selection}">M. Goudreau Christian</p>
                 <p>Êtes-vous sûr de votre vote ?</p>
-                <button class="btn btnConfirm">Confirmer</button>
+                <button class="{res.styles.btn} {res.styles.btnConfirm}">Confirmer</button>
             </article>
         </section>
 
