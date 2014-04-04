@@ -12,7 +12,7 @@
 
     <set-property name="user.agent" value="safari"/>
 
-    <set-configuration-property name="gin.ginjector.modules" value="com.arcbees.bourseje.client.ClientModule"/>
+    <extend-configuration-property name="gin.ginjector.modules" value="com.arcbees.bourseje.client.ClientModule"/>
 
     <set-configuration-property name="gwtp.bootstrapper" value="com.arcbees.bourseje.client.BootstrapperImpl"/>
 </module>

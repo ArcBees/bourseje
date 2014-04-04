@@ -16,9 +16,22 @@
 
 package com.arcbees.bourseje.client;
 
-public class NameTokens {
-    public static final String NO_VOTE = "/no_vote";
-    public static final String HOME = "/home";
-    public static final String INACTIVE_VOTE = "/inactive_vote";
-    public static final String VOTE = "/vote";
+import com.google.gwt.http.client.Response;
+import com.gwtplatform.dispatch.rest.shared.RestCallback;
+
+public abstract class RestCallbackImpl<T> implements RestCallback<T> {
+    private Response response;
+
+    @Override
+    public void setResponse(Response response) {
+        this.response = response;
+    }
+
+    @Override
+    public void onFailure(Throwable throwable) {
+        onError(response);
+    }
+
+    public void onError(Response response) {
+    }
 }

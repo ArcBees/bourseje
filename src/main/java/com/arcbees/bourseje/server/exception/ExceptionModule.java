@@ -14,11 +14,16 @@
  * the License.
  */
 
-package com.arcbees.bourseje.client;
+package com.arcbees.bourseje.server.exception;
 
-public class NameTokens {
-    public static final String NO_VOTE = "/no_vote";
-    public static final String HOME = "/home";
-    public static final String INACTIVE_VOTE = "/inactive_vote";
-    public static final String VOTE = "/vote";
+import javax.inject.Singleton;
+
+import com.google.inject.AbstractModule;
+
+public class ExceptionModule extends AbstractModule {
+    @Override
+    protected void configure() {
+        bind(InactiveVoteExceptionMapper.class).in(Singleton.class);
+        bind(NoVoteExceptionMapper.class).in(Singleton.class);
+    }
 }

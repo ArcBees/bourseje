@@ -11,11 +11,11 @@
             <div>
                 <article class="wrapper txtcenter">
                     <div class="vote">
-                        <g:Image resource="{res.vote}"/>
+                        <g:Image resource="{res.voteClock}"/>
                     </div>
-                    <p>La plateforme de vote de la Jeune Chambre<br/>de Commerce de Québec
+                    <p>Nous sommes désolés<br/>le vote n'est pas encore disponible.
                     </p>
-                    <g:Button ui:field="cliquez" styleName="{res.styles.btn} {res.styles.btnSlider}">Cliquez pour passer au vote</g:Button>
+                    <button class="btn btnRafraichir">Rafraichir</button>
                 </article>
             </div>
         </section>

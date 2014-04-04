@@ -16,14 +16,34 @@
 
 package com.arcbees.bourseje.server.guice;
 
+import java.util.Calendar;
+
+import javax.inject.Named;
 import javax.inject.Singleton;
 
+import com.arcbees.bourseje.server.api.ApiModule;
+import com.arcbees.bourseje.server.exception.ExceptionModule;
 import com.google.inject.AbstractModule;
+import com.google.inject.Provides;
 import com.googlecode.objectify.ObjectifyFilter;
 
 public class ServerModule extends AbstractModule {
+    public static final String VOTE_DATE = "voteDate";
+
     @Override
     protected void configure() {
         bind(ObjectifyFilter.class).in(Singleton.class);
+
+        install(new ApiModule());
+        install(new ExceptionModule());
+    }
+
+    @Named(VOTE_DATE)
+    @Provides
+    public Calendar voteDate() {
+        Calendar voteDate = Calendar.getInstance();
+        voteDate.set(2014, Calendar.APRIL, 4, 17, 0);
+
+        return voteDate;
     }
 }

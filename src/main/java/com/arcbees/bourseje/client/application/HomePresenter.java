@@ -16,17 +16,28 @@
 
 package com.arcbees.bourseje.client.application;
 
+import java.util.List;
+
 import com.arcbees.bourseje.client.NameTokens;
+import com.arcbees.bourseje.client.RestCallbackImpl;
+import com.arcbees.bourseje.client.api.VoteService;
+import com.arcbees.bourseje.shared.VoteItem;
+import com.google.gwt.http.client.Response;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
+import com.gwtplatform.dispatch.rest.shared.RestDispatch;
+import com.gwtplatform.mvp.client.HasUiHandlers;
 import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
+import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
+import com.gwtplatform.mvp.shared.proxy.PlaceRequest;
+import com.gwtplatform.mvp.shared.proxy.PlaceRequest.Builder;
 
-public class HomePresenter extends Presenter<HomePresenter.MyView, HomePresenter.MyProxy> {
-    interface MyView extends View {
+public class HomePresenter extends Presenter<HomePresenter.MyView, HomePresenter.MyProxy> implements HomeUiHandlers {
+    interface MyView extends View, HasUiHandlers<HomeUiHandlers> {
     }
 
     @ProxyStandard
@@ -34,11 +45,61 @@ public class HomePresenter extends Presenter<HomePresenter.MyView, HomePresenter
     interface MyProxy extends ProxyPlace<HomePresenter> {
     }
 
+    private final PlaceManager placeManager;
+    private final RestDispatch dispatcher;
+    private final VoteService voteService;
+
     @Inject
     HomePresenter(
             EventBus eventBus,
             MyView view,
-            MyProxy proxy) {
+            MyProxy proxy,
+            PlaceManager placeManager,
+            RestDispatch dispatcher,
+            VoteService voteService) {
         super(eventBus, view, proxy, ApplicationPresenter.SLOT_MAIN);
+        this.placeManager = placeManager;
+
+        this.dispatcher = dispatcher;
+        this.voteService = voteService;
+
+        getView().setUiHandlers(this);
+    }
+
+    @Override
+    public void onCliquezClicked() {
+        dispatcher.execute(voteService.getVoteItems(), new RestCallbackImpl<List<VoteItem>>() {
+            @Override
+            public void onSuccess(List<VoteItem> voteItems) {
+                PlaceRequest request = new Builder()
+                        .nameToken(NameTokens.VOTE)
+                        .build();
+
+                placeManager.revealPlace(request);
+            }
+
+            @Override
+            public void onError(Response response) {
+                int statusCode = response.getStatusCode();
+                if (statusCode == Response.SC_FORBIDDEN || statusCode == Response.SC_SERVICE_UNAVAILABLE) {
+                    handleRedirection(statusCode);
+                } else {
+                    super.onError(response);
+                }
+            }
+        });
+    }
+
+    private void handleRedirection(int statusCode) {
+        Builder requestBuilder = new Builder();
+        if (statusCode == Response.SC_FORBIDDEN) {
+            requestBuilder.nameToken(NameTokens.INACTIVE_VOTE);
+
+            placeManager.revealPlace(requestBuilder.build());
+        } else if (statusCode == Response.SC_SERVICE_UNAVAILABLE) {
+            requestBuilder.nameToken(NameTokens.NO_VOTE);
+
+            placeManager.revealPlace(requestBuilder.build());
+        }
     }
 }

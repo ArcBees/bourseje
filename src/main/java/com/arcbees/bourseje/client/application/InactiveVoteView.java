@@ -14,11 +14,21 @@
  * the License.
  */
 
-package com.arcbees.bourseje.client;
+package com.arcbees.bourseje.client.application;
 
-public class NameTokens {
-    public static final String NO_VOTE = "/no_vote";
-    public static final String HOME = "/home";
-    public static final String INACTIVE_VOTE = "/inactive_vote";
-    public static final String VOTE = "/vote";
+import javax.inject.Inject;
+
+import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.user.client.ui.Widget;
+import com.gwtplatform.mvp.client.ViewImpl;
+
+public class InactiveVoteView extends ViewImpl implements InactiveVotePresenter.MyView {
+    interface Binder extends UiBinder<Widget, InactiveVoteView> {
+    }
+
+    @Inject
+    InactiveVoteView(
+            Binder uiBinder) {
+        initWidget(uiBinder.createAndBindUi(this));
+    }
 }

@@ -22,7 +22,6 @@
         <!-- server -->
         <gae.version>1.9.0</gae.version>
         <guice.version>3.0</guice.version>
-        <arcbees.version>1.1.1</arcbees.version>
         <resteasy.version>3.0.6.Final</resteasy.version>
         <objectify.version>4.0</objectify.version>
 

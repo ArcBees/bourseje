@@ -8,3 +8,21 @@
 .clearfix:after {
     clear: both;
 }
+
+.btn {
+    border: none;
+    font-family: 'brandon_grotesque_regularRg';
+    width: 100%;
+    height: 80px;
+    margin-top: 40px;
+}
+
+
+@sprite .btnSlider {
+    gwt-image: "slider";
+
+    font-family: 'brandon_grotesquebold';
+    margin-top: 107px;
+    padding-left: 30px;
+    width: auto;
+}
