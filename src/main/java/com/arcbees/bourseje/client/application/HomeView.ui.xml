@@ -4,13 +4,13 @@
 
     <ui:with field="res" type="com.arcbees.bourseje.client.resources.Resources"/>
 
-    <g:HTMLPanel>
+    <g:HTMLPanel styleName="{res.styles.height}">
         <w:Header/>
 
         <section>
             <div>
-                <article class="wrapper txtcenter">
-                    <div class="vote">
+                <article class="{res.styles.wrapper} {res.styles.txtcenter}">
+                    <div class="{res.styles.vote}">
                         <g:Image resource="{res.vote}"/>
                     </div>
                     <p>La plateforme de vote de la Jeune Chambre<br/>de Commerce de Québec

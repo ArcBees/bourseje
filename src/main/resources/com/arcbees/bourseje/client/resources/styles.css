@@ -1,3 +1,89 @@
+@url brandonGrotesqueBoldEot brandonGrotesqueBoldEot;
+@url brandonGrotesqueBoldSvg brandonGrotesqueBoldSvg;
+@url brandonGrotesqueBoldTtf brandonGrotesqueBoldTtf;
+@url brandonGrotesqueBoldWoff brandonGrotesqueBoldWoff;
+
+@url brandonGrotesqueLightEot brandonGrotesqueLightEot;
+@url brandonGrotesqueLightSvg brandonGrotesqueLightSvg;
+@url brandonGrotesqueLightTtf brandonGrotesqueLightTtf;
+@url brandonGrotesqueLightWoff brandonGrotesqueLightWoff;
+
+@url brandonGrotesqueRegEot brandonGrotesqueRegEot;
+@url brandonGrotesqueRegSvg brandonGrotesqueRegSvg;
+@url brandonGrotesqueRegTtf brandonGrotesqueRegTtf;
+@url brandonGrotesqueRegWoff brandonGrotesqueRegWoff;
+
+@font-face {
+    font-family: 'brandon_grotesquebold';
+    src: brandonGrotesqueBoldEot;
+    src: brandonGrotesqueBoldWoff format('woff'), brandonGrotesqueBoldTtf format('truetype');
+}
+
+@font-face {
+    font-family: 'brandon_grotesquelight';
+    src: brandonGrotesqueLightEot;
+    src: brandonGrotesqueLightWoff format('woff'), brandonGrotesqueLightTtf format('truetype');
+}
+
+@font-face {
+    font-family: 'brandon_grotesque_regularRg';
+    src: brandonGrotesqueRegEot;
+    src: brandonGrotesqueRegWoff format('woff'), brandonGrotesqueRegTtf format('truetype');
+}
+
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre,abbr, address, cite, code,del, dfn, em, embed, img, ins, kbd,q, s,samp,small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li,fieldset, form, label,legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video{
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+html,body {
+    height: 100%;
+}
+
+body {
+    font-size: 30px;
+    font-family: 'brandon_grotesque_regularRg';
+    line-height: 1.25;
+}
+
+a {
+    text-decoration: none;
+}
+
+img, table, td, blockquote, code, pre, textarea, input, video {
+    max-width: 100%;
+}
+
+img {
+    border: 0;
+    -ms-interpolation-mode: bicubic;
+    height: auto;
+    vertical-align: middle;
+}
+
+.height{
+    height: 100%;
+}
+
 /* clear */
 .clearfix:before,
 .clearfix:after {
@@ -9,6 +95,53 @@
     clear: both;
 }
 
+.txtcenter {
+    text-align: center;
+}
+
+.wrapper {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.inbl {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: -.25em;
+}
+
+.right {
+    float: right;
+}
+
+header {
+    border-top: 6px solid #00aeef;
+}
+
+section {
+     display: table;
+     height:literal("calc(100% - 205px)");
+     width: 100%;
+ }
+section.main {
+    height:literal("calc(100% - 319px)");
+    padding: 30px 0;
+}
+
+section > div {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.vote {
+    margin-bottom: 24px;
+}
+
+footer{
+    border-bottom: 6px solid #00aeef;
+    padding: 40px 0 25px;
+}
+
 .btn {
     border: none;
     font-family: 'brandon_grotesque_regularRg';
@@ -17,12 +150,69 @@
     margin-top: 40px;
 }
 
+@sprite .iconHeader {
+    gwt-image: "iconHeader";
+
+    display: block;
+    height: 39px;
+    margin-top: 5px;
+    width: 39px;
+}
+
+@sprite .iconHeader:hover {
+    gwt-image: "iconHeaderHover";
+}
 
 @sprite .btnSlider {
     gwt-image: "slider";
 
+    background-position: left center;
     font-family: 'brandon_grotesquebold';
+    font-size: 26px;
+    height: 30px;
+    line-height: 30px;
     margin-top: 107px;
     padding-left: 30px;
+    width: auto;
+}
+
+@sprite .btnRafraichir{
+    gwt-image: "reload";
+
+    background-position: left center;
+    font-family: 'brandon_grotesquebold';
+    font-size: 30px;
+    padding-left: 50px;
+    width: auto;
+}
+
+@sprite .btnRafraichir:hover{
+    gwt-image: "reloadHover";
+
+    color: #00aeef;
+    width: auto;
+}
+
+@sprite .jccq {
+    gwt-image: "oeil";
+
+    background-position: left center;
+    color: #231f20;
+    display: inline-block;
+    font-family: 'brandon_grotesquebold';
+    height: 36px;
+    line-height: 36px;
+    margin-top: 100px;
+    padding-left: 45px;
+    width: auto;
+}
+
+@sprite .jccq:hover {
+    gwt-image: "oeilHover";
+
+    background-position: left center;
+    color: #00aeef;
+    height: 36px;
+    line-height: 36px;
     width: auto;
 }
