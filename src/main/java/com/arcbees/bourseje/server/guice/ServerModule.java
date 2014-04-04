@@ -42,7 +42,7 @@ public class ServerModule extends AbstractModule {
     @Provides
     public Calendar voteDate() {
         Calendar voteDate = Calendar.getInstance();
-        voteDate.set(2014, Calendar.APRIL, 4, 17, 0);
+        voteDate.set(2014, Calendar.APRIL, 4, 17, 0);  // Real time will be May 8 20:00
 
         return voteDate;
     }

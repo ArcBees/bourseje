@@ -31,5 +31,13 @@ public class ApplicationModule extends AbstractPresenterModule {
 
         bindPresenter(InactiveVotePresenter.class, InactiveVotePresenter.MyView.class, InactiveVoteView.class,
                 InactiveVotePresenter.MyProxy.class);
+
+        bindPresenter(VotePresenter.class, VotePresenter.MyView.class, VoteView.class, VotePresenter.MyProxy.class);
+
+        bindPresenter(ConfirmVotePresenter.class, ConfirmVotePresenter.MyView.class, ConfirmVoteView.class,
+                ConfirmVotePresenter.MyProxy.class);
+
+        bindPresenter(ThanksPresenter.class, ThanksPresenter.MyView.class, ThanksView.class,
+                ThanksPresenter.MyProxy.class);
     }
 }

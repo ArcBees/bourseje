@@ -43,4 +43,6 @@ public interface Resources extends ClientBundle {
     ImageResource vote();
 
     ImageResource slider();
+
+    ImageResource voteAccent();
 }

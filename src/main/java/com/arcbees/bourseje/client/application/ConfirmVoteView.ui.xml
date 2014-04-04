@@ -1,0 +1,21 @@
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:g="urn:import:com.google.gwt.user.client.ui"
+             xmlns:w="urn:import:com.arcbees.bourseje.client.application">
+
+    <ui:with field="res" type="com.arcbees.bourseje.client.resources.Resources"/>
+
+    <g:HTMLPanel>
+        <w:Header/>
+
+        <section class="main bgBleu">
+            <article class="wrapper">
+                <p>Vous avez choisi.</p>
+                <p class="selection">M. Goudreau Christian</p>
+                <p>Êtes-vous sûr de votre vote ?</p>
+                <button class="btn btnConfirm">Confirmer</button>
+            </article>
+        </section>
+
+        <w:Footer/>
+    </g:HTMLPanel>
+</ui:UiBinder>
