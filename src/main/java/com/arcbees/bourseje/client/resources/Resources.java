@@ -112,4 +112,6 @@ public interface Resources extends ClientBundle {
 
     @Source("brandongrotesque/brandon_reg-webfont.woff")
     DataResource brandonGrotesqueRegWoff();
+
+    ImageResource voteAccent();
 }
