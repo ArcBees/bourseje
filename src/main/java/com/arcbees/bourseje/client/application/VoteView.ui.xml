@@ -4,12 +4,12 @@
 
     <ui:with field="res" type="com.arcbees.bourseje.client.resources.Resources"/>
 
-    <g:HTMLPanel>
+    <g:HTMLPanel styleName="{res.styles.height}">
         <w:Header/>
 
-        <section class="main">
+        <section class="{res.styles.main}">
             <div>
-                <article class="wrapper">
+                <article class="{res.styles.wrapper}">
                     <p>Choisissez la personnalité d'affaires<br/>de l'année 2015
                     </p>
                     <form action="">
@@ -26,7 +26,7 @@
                             <label for="Matthias">Matthias Baudot – Studio BODS</label>
                         </div>
                         <div>
-                            <input name="vote" id="MStephen" type="radio"/>
+                            <input name="vote" id="Benoit" type="radio"/>
                             <label for="Benoit">Benoit M. Bédard – Les solutions Amotus</label>
                         </div>
                         <div>
@@ -34,10 +34,10 @@
                             <label for="Jean-François">Jean-François Mondou – Jeff Poissonnerie-prêt à mange</label>
                         </div>
                         <div>
-                            <input name="vote" id="Jean-François" type="radio"/>
+                            <input name="vote" id="Simon" type="radio"/>
                             <label for="Simon">Simon Veilleux – 32 MARS</label>
                         </div>
-                        <button type="submit" class="btn btnVote">VOTE</button>
+                        <button type="submit" class="{res.styles.btn} {res.styles.btnVote}">VOTE</button>
                     </form>
                 </article>
             </div>
