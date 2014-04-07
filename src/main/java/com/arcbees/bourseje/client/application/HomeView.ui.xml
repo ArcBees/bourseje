@@ -13,7 +13,7 @@
                     <div class="{res.styles.vote}">
                         <g:Image resource="{res.vote}"/>
                     </div>
-                    <p>La plateforme de vote de la Jeune Chambre<br/>de Commerce de Québec
+                    <p>La plateforme de vote de la Jeune Chambre de Commerce de Québec
                     </p>
                     <g:Button ui:field="cliquez" styleName="{res.styles.btn} {res.styles.btnSlider}">Cliquez pour passer au vote</g:Button>
                 </article>

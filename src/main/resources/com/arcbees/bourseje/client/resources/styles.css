@@ -60,7 +60,7 @@ html,body {
 }
 
 body {
-    font-size: 30px;
+    font-size: 20px;
     font-family: 'brandon_grotesque_regularRg';
     line-height: 1.25;
 }
@@ -144,7 +144,7 @@ section > div {
 
 .selection {
     color: #fff;
-    margin: 65px 0 190px;
+    margin: 65px 0;
     text-align: center;
 }
 
@@ -157,7 +157,7 @@ footer{
     border: none;
     font-family: 'brandon_grotesque_regularRg';
     width: 100%;
-    height: 80px;
+    height: 40px;
     margin-top: 40px;
 }
 
@@ -233,10 +233,10 @@ label:before {
 
     background-position: left center;
     font-family: 'brandon_grotesquebold';
-    font-size: 26px;
+    font-size: 20px;
     height: 30px;
     line-height: 30px;
-    margin-top: 107px;
+    margin-top: 60px;
     padding-left: 30px;
     width: auto;
 }
@@ -246,7 +246,7 @@ label:before {
 
     background-position: left center;
     font-family: 'brandon_grotesquebold';
-    font-size: 30px;
+    font-size: 20px;
     padding-left: 50px;
     width: auto;
 }
@@ -267,7 +267,7 @@ label:before {
     font-family: 'brandon_grotesquebold';
     height: 36px;
     line-height: 36px;
-    margin-top: 100px;
+    margin-top: 60px;
     padding-left: 45px;
     width: auto;
 }
