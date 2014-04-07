@@ -31,31 +31,27 @@
     src: brandonGrotesqueRegWoff format('woff'), brandonGrotesqueRegTtf format('truetype');
 }
 
-html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre,abbr, address, cite, code,del, dfn, em, embed, img, ins, kbd,q, s,samp,small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li,fieldset, form, label,legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video{
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre,abbr, address, cite, code,del, dfn, em, embed, img, ins, kbd,q, s,samp,small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li,fieldset, form, label,legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
+    font-size:100%;
+    background:transparent;
+
+    border:0;
     margin:0;
     padding:0;
-    border:0;
-    outline:0;
-    font-size:100%;
     vertical-align:baseline;
-    background:transparent;
+
+    outline:0;
 }
 
 article,
-aside,
-details,
-figcaption,
-figure,
 footer,
 header,
-hgroup,
-menu,
 nav,
 section {
     display: block;
 }
 
-html,body {
+html, body {
     height: 100%;
 }
 
@@ -74,21 +70,24 @@ img, table, td, blockquote, code, pre, textarea, input, video {
 }
 
 img {
-    border: 0;
-    -ms-interpolation-mode: bicubic;
     height: auto;
+    border: 0;
+
     vertical-align: middle;
+
+    -ms-interpolation-mode: bicubic;
 }
 
-.height{
-    height: 100%;
+.height {
     overflow: scroll;
+    height: 100%;
 }
 
 /* clear */
 .clearfix:before,
 .clearfix:after {
     content: " ";
+
     display: table;
 }
 
@@ -107,8 +106,9 @@ img {
 
 .inbl {
     display: inline-block;
-    vertical-align: top;
     margin-right: -.25em;
+
+    vertical-align: top;
 }
 
 .right {
@@ -125,7 +125,7 @@ header {
 
 section {
      display: table;
-     height:literal("calc(100% - 205px)");
+     height:literal("calc(100% - 185px)");
      width: 100%;
  }
 section.main {
@@ -135,6 +135,7 @@ section.main {
 
 section > div {
     display: table-cell;
+
     vertical-align: middle;
 }
 
@@ -144,21 +145,23 @@ section > div {
 
 .selection {
     color: #fff;
-    margin: 65px 0;
     text-align: center;
+
+    margin: 65px 0;
 }
 
-footer{
+footer {
+    padding: 30px 0 15px;
     border-bottom: 6px solid #00aeef;
-    padding: 40px 0 25px;
 }
 
 .btn {
-    border: none;
     font-family: 'brandon_grotesque_regularRg';
+
     width: 100%;
     height: 40px;
     margin-top: 40px;
+    border: none;
 }
 
 .btnConfirm {
@@ -181,7 +184,9 @@ form > div {
 
 button, input, select, textarea {
     font-size: 100%;
+
     margin: 0;
+
     vertical-align: middle;
 }
 
@@ -197,22 +202,39 @@ input[type="radio"] {
 
 label {
     display: inline-block;
-    cursor: pointer;
+    padding-left: 50px;
+
     position: relative;
-    padding-left: 75px;
+
+    cursor: pointer;
 }
 
 label:before {
-    border-radius: 25px;
     content: "";
+    background-color: #000;
+
     display: inline-block;
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
     margin-right: 10px;
+    border-radius: 25px;
+
     position: absolute;
     left: 0;
-    bottom: -7px;
-    background-color: #000;
+}
+
+input[type=radio]:checked + label {
+    color: #00aeef;
+}
+
+input[type=radio]:checked + label:before {
+    content: "\2713";
+    background-color: #00aeef;
+    color: #fff;
+    text-align: center;
+    line-height: 34px;
+
+    box-shadow: 0px 5px 3px #ccc;
 }
 
 @sprite .iconHeader {
@@ -220,8 +242,8 @@ label:before {
 
     display: block;
     height: 39px;
-    margin-top: 5px;
     width: 39px;
+    margin-top: 5px;
 }
 
 @sprite .iconHeader:hover {
@@ -234,50 +256,54 @@ label:before {
     background-position: left center;
     font-family: 'brandon_grotesquebold';
     font-size: 20px;
-    height: 30px;
     line-height: 30px;
+
+    height: 30px;
+    width: auto;
     margin-top: 60px;
     padding-left: 30px;
-    width: auto;
 }
 
-@sprite .btnRafraichir{
+@sprite .btnRafraichir {
     gwt-image: "reload";
 
     background-position: left center;
     font-family: 'brandon_grotesquebold';
     font-size: 20px;
-    padding-left: 50px;
+    padding-left: 35px;
     width: auto;
 }
 
-@sprite .btnRafraichir:hover{
+@sprite .btnRafraichir:hover {
     gwt-image: "reloadHover";
 
     color: #00aeef;
+
     width: auto;
 }
 
-@sprite .jccq {
+@sprite a.jccq {
     gwt-image: "oeil";
 
     background-position: left center;
     color: #231f20;
-    display: inline-block;
     font-family: 'brandon_grotesquebold';
-    height: 36px;
     line-height: 36px;
+
+    display: inline-block;
+    height: 36px;
+    width: auto;
     margin-top: 60px;
     padding-left: 45px;
-    width: auto;
 }
 
-@sprite .jccq:hover {
+@sprite a.jccq:hover {
     gwt-image: "oeilHover";
 
     background-position: left center;
     color: #00aeef;
-    height: 36px;
     line-height: 36px;
+
+    height: 36px;
     width: auto;
 }
