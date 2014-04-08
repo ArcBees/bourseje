@@ -4,8 +4,8 @@
     <ui:with field="res" type="com.arcbees.bourseje.client.resources.Resources"/>
 
     <g:HTMLPanel tag="header" styleName="{res.styles.clearfix}">
-        <div class="wrapper">
-            <a href="#" class="iconHeader right"/>
+        <div class="{res.styles.wrapper}">
+            <a href="#" class="{res.styles.iconHeader} {res.styles.right}"/>
         </div>
     </g:HTMLPanel>
 </ui:UiBinder>

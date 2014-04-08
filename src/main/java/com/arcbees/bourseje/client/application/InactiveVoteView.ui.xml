@@ -4,18 +4,18 @@
 
     <ui:with field="res" type="com.arcbees.bourseje.client.resources.Resources"/>
 
-    <g:HTMLPanel>
+    <g:HTMLPanel styleName="{res.styles.height}">
         <w:Header/>
 
         <section>
             <div>
-                <article class="wrapper txtcenter">
-                    <div class="vote">
+                <article class="{res.styles.wrapper} {res.styles.txtcenter}">
+                    <div class="{res.styles.vote}">
                         <g:Image resource="{res.voteClock}"/>
                     </div>
                     <p>Nous sommes désolés<br/>le vote n'est pas encore disponible.
                     </p>
-                    <button class="btn btnRafraichir">Rafraichir</button>
+                    <button class="{res.styles.btn} {res.styles.btnRafraichir}">Rafraichir</button>
                 </article>
             </div>
         </section>

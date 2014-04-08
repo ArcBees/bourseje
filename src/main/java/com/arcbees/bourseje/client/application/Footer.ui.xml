@@ -4,11 +4,11 @@
     <ui:with field="res" type="com.arcbees.bourseje.client.resources.Resources"/>
 
     <g:HTMLPanel tag="footer">
-        <div class="wrapper clearfix">
-            <div class="logoJcc inbl ">
+        <div class="{res.styles.wrapper} {res.styles.clearfix}">
+            <div class="{res.styles.inbl}">
                 <g:Image resource="{res.logoJcc}"/>
             </div>
-            <div class="logoArcbees inbl right">
+            <div class="{res.styles.inbl} {res.styles.right}">
                 <g:Image resource="{res.logoArcbees}"/>
             </div>
         </div>
