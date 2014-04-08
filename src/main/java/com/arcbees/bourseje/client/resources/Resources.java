@@ -48,6 +48,14 @@ public interface Resources extends ClientBundle {
         String vote();
 
         String jccq();
+
+        String bgBleu();
+
+        String btnVote();
+
+        String selection();
+
+        String btnConfirm();
     }
 
     @Source("styles.css")
@@ -76,6 +84,8 @@ public interface Resources extends ClientBundle {
     ImageResource oeil();
 
     ImageResource oeilHover();
+
+    ImageResource voteAccent();
 
     @Source("brandongrotesque/brandon_bld-webfont.eot")
     DataResource brandonGrotesqueBoldEot();
@@ -113,5 +123,4 @@ public interface Resources extends ClientBundle {
     @Source("brandongrotesque/brandon_reg-webfont.woff")
     DataResource brandonGrotesqueRegWoff();
 
-    ImageResource voteAccent();
 }

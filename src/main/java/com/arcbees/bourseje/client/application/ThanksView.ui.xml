@@ -4,14 +4,14 @@
 
     <ui:with field="res" type="com.arcbees.bourseje.client.resources.Resources"/>
 
-    <g:HTMLPanel>
+    <g:HTMLPanel styleName="{res.styles.height}">
         <w:Header/>
 
         <section>
             <div>
-                <article class="wrapper txtcenter">
+                <article class="{res.styles.wrapper} {res.styles.txtcenter}">
                     <p>Merci d'avoir</p>
-                    <div class="vote">
+                    <div class="{res.styles.vote}">
                         <g:Image resource="{res.voteAccent}"/>
                     </div>
                 </article>
