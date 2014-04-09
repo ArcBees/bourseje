@@ -43,7 +43,7 @@ public class VoteView extends ViewWithUiHandlers<VoteUiHandlers> implements Vote
 
     @UiHandler("submit")
     void onSubmit(ClickEvent event) {
-        String valueClicked = $("input[name=vote]:checked", voteGroup).id();
+        String valueClicked = $("input[name=vote]:checked + label", voteGroup).text();
 
         getUiHandlers().onVoteClicked(valueClicked);
     }
