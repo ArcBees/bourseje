@@ -31,16 +31,16 @@
     src: brandonGrotesqueRegWoff format('woff'), brandonGrotesqueRegTtf format('truetype');
 }
 
-html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre,abbr, address, cite, code,del, dfn, em, embed, img, ins, kbd,q, s,samp,small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li,fieldset, form, label,legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
-    font-size:100%;
-    background:transparent;
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, embed, img, ins, kbd, q, s, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
+    font-size: 100%;
+    background: transparent;
 
-    border:0;
-    margin:0;
-    padding:0;
-    vertical-align:baseline;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
 
-    outline:0;
+    outline: 0;
 }
 
 article,
@@ -124,12 +124,13 @@ header {
 }
 
 section {
-     display: table;
-     height:literal("calc(100% - 185px)");
-     width: 100%;
- }
+    display: table;
+    height: literal("calc(100% - 185px)");
+    width: 100%;
+}
+
 section.main {
-    height:literal("calc(100% - 319px)");
+    height: literal("calc(100% - 319px)");
     padding: 30px 0;
 }
 
@@ -162,6 +163,8 @@ footer {
     height: 40px;
     margin-top: 40px;
     border: none;
+
+    cursor: pointer;
 }
 
 .btnConfirm {
@@ -198,7 +201,6 @@ input[type="checkbox"],
 input[type="radio"] {
     padding: 0;
 }
-
 
 label {
     display: inline-block;

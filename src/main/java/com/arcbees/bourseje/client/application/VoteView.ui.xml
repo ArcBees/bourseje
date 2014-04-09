@@ -5,36 +5,42 @@
 
     <g:HTMLPanel styleName="{res.styles.height}">
         <section class="{res.styles.main}">
-            <div>
+            <div ui:field="voteGroup">
                 <article class="{res.styles.wrapper}">
                     <p>Votez pour la jeune entreprise<br/>de l'année 2014
                     </p>
                     <form action="">
                         <div>
-                            <input name="vote" id="Antoine" type="radio"/>
-                            <label for="Antoine">Antoine Bisson – POKA Inc.</label>
+                            <input name="vote" id="Antoine Bisson – POKA Inc." type="radio" checked="true"/>
+                            <label for="Antoine Bisson – POKA Inc.">Antoine Bisson – POKA Inc.</label>
                         </div>
                         <div>
-                            <input name="vote" id="Sarah" type="radio"/>
-                            <label for="Sarah">Sarah Baribeau – Bougeotte et placotine</label>
+                            <input name="vote" id="Sarah Baribeau – Bougeotte et placotine" type="radio"/>
+                            <label for="Sarah Baribeau – Bougeotte et placotine">Sarah Baribeau – Bougeotte et
+                                placotine
+                            </label>
                         </div>
                         <div>
-                            <input name="vote" id="Matthias" type="radio"/>
-                            <label for="Matthias">Matthias Baudot – Studio BODS</label>
+                            <input name="vote" id="Matthias Baudot – Studio BODS" type="radio"/>
+                            <label for="Matthias Baudot – Studio BODS">Matthias Baudot – Studio BODS</label>
                         </div>
                         <div>
-                            <input name="vote" id="Benoit" type="radio"/>
-                            <label for="Benoit">Benoit M. Bédard – Les solutions Amotus</label>
+                            <input name="vote" id="Benoit M. Bédard – Les solutions Amotus" type="radio"/>
+                            <label for="Benoit M. Bédard – Les solutions Amotus">Benoit M. Bédard – Les solutions
+                                Amotus
+                            </label>
                         </div>
                         <div>
-                            <input name="vote" id="Jean-François" type="radio"/>
-                            <label for="Jean-François">Jean-François Mondou – Jeff Poissonnerie-prêt à mange</label>
+                            <input name="vote" id="Jean-François Mondou – Jeff Poissonnerie-prêt à mange" type="radio"/>
+                            <label for="Jean-François Mondou – Jeff Poissonnerie-prêt à mange">Jean-François Mondou –
+                                Jeff Poissonnerie-prêt à mange
+                            </label>
                         </div>
                         <div>
-                            <input name="vote" id="Simon" type="radio"/>
-                            <label for="Simon">Simon Veilleux – 32 MARS</label>
+                            <input name="vote" id="Simon Veilleux – 32 MARS" type="radio"/>
+                            <label for="Simon Veilleux – 32 MARS">Simon Veilleux – 32 MARS</label>
                         </div>
-                        <button type="submit" class="{res.styles.btn} {res.styles.btnVote}">VOTE</button>
+                        <g:Button ui:field="submit" styleName="{res.styles.btn} {res.styles.btnVote}">VOTE</g:Button>
                     </form>
                 </article>
             </div>

@@ -6,6 +6,7 @@
     <inherits name="com.gwtplatform.dispatch.rest.DispatchRest"/>
     <inherits name='com.gwtplatform.mvp.MvpWithEntryPoint'/>
     <inherits name='com.googlecode.mgwt.MGWT'/>
+    <inherits name="com.google.gwt.query.Query"/>
 
     <source path='client'/>
     <source path='shared'/>

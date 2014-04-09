@@ -30,22 +30,22 @@ import com.arcbees.bourseje.server.guice.ServerModule;
 import com.arcbees.bourseje.shared.VoteItem;
 
 public class VoteService {
-    private final Calendar pollDate;
+    private final Calendar voteDate;
     private final VoteItemDao voteItemDao;
 
     @Inject
     VoteService(
-            @Named(ServerModule.VOTE_DATE) Calendar pollDate,
+            @Named(ServerModule.VOTE_DATE) Calendar voteDate,
             VoteItemDao voteItemDao) {
-        this.pollDate = pollDate;
+        this.voteDate = voteDate;
         this.voteItemDao = voteItemDao;
     }
 
-    public List<VoteItem> getPollItems() {
+    public List<VoteItem> getVoteItems() {
         Calendar today = Calendar.getInstance();
         today.setTime(new Date());
 
-        if (today.after(pollDate)) {
+        if (today.after(voteDate)) {
             return voteItemDao.getAll();
         } else if (sameDay(today)) {
             throw new InactiveVoteException();
@@ -55,7 +55,11 @@ public class VoteService {
     }
 
     private boolean sameDay(Calendar today) {
-        return today.get(Calendar.YEAR) == pollDate.get(Calendar.YEAR) &&
-                today.get(Calendar.DAY_OF_YEAR) == pollDate.get(Calendar.DAY_OF_YEAR);
+        return today.get(Calendar.YEAR) == voteDate.get(Calendar.YEAR) &&
+                today.get(Calendar.DAY_OF_YEAR) == voteDate.get(Calendar.DAY_OF_YEAR);
+    }
+
+    public void vote(VoteItem voteItem) {
+        voteItemDao.put(voteItem);
     }
 }
