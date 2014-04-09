@@ -5,7 +5,8 @@
 
     <g:HTMLPanel tag="header" styleName="{res.styles.clearfix}">
         <div class="{res.styles.wrapper}">
-            <a href="#" class="{res.styles.iconHeader} {res.styles.right}"/>
+            <a href="https://github.com/ArcBees/bourseje" target="_blank"
+               class="{res.styles.iconHeader} {res.styles.right}"/>
         </div>
     </g:HTMLPanel>
 </ui:UiBinder>
