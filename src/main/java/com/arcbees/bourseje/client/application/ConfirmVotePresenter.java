@@ -58,8 +58,8 @@ public class ConfirmVotePresenter extends Presenter<ConfirmVotePresenter.MyView,
             RestDispatch dispatcher,
             VoteService voteService) {
         super(eventBus, view, proxy, ApplicationPresenter.SLOT_MAIN);
-        this.placeManager = placeManager;
 
+        this.placeManager = placeManager;
         this.dispatcher = dispatcher;
         this.voteService = voteService;
 
@@ -71,7 +71,7 @@ public class ConfirmVotePresenter extends Presenter<ConfirmVotePresenter.MyView,
     public void prepareFromRequest(PlaceRequest request) {
         super.prepareFromRequest(request);
 
-        name = request.getParameter("value", "noSelection");
+        name = request.getParameter(NameTokens.VALUE_PARAM, "noSelection");
 
         getView().setName(name);
     }
