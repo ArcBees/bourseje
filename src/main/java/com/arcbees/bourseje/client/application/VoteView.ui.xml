@@ -1,16 +1,13 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
-             xmlns:g="urn:import:com.google.gwt.user.client.ui"
-             xmlns:w="urn:import:com.arcbees.bourseje.client.application">
+             xmlns:g="urn:import:com.google.gwt.user.client.ui">
 
     <ui:with field="res" type="com.arcbees.bourseje.client.resources.Resources"/>
 
     <g:HTMLPanel styleName="{res.styles.height}">
-        <w:Header/>
-
         <section class="{res.styles.main}">
             <div>
                 <article class="{res.styles.wrapper}">
-                    <p>Choisissez la personnalité d'affaires<br/>de l'année 2015
+                    <p>Votez pour la jeune entreprise<br/>de l'année 2014
                     </p>
                     <form action="">
                         <div>
@@ -42,7 +39,5 @@
                 </article>
             </div>
         </section>
-
-        <w:Footer/>
     </g:HTMLPanel>
 </ui:UiBinder>
