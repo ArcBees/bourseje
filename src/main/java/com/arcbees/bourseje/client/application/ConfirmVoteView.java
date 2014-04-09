@@ -18,17 +18,34 @@ package com.arcbees.bourseje.client.application;
 
 import javax.inject.Inject;
 
+import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.user.client.ui.InlineLabel;
 import com.google.gwt.user.client.ui.Widget;
-import com.gwtplatform.mvp.client.ViewImpl;
+import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
-public class ConfirmVoteView extends ViewImpl implements ConfirmVotePresenter.MyView {
+public class ConfirmVoteView extends ViewWithUiHandlers<ConfirmVoteUiHandlers> implements ConfirmVotePresenter.MyView {
     interface Binder extends UiBinder<Widget, ConfirmVoteView> {
     }
+
+    @UiField
+    InlineLabel name;
 
     @Inject
     ConfirmVoteView(
             Binder uiBinder) {
         initWidget(uiBinder.createAndBindUi(this));
+    }
+
+    @Override
+    public void setName(String name) {
+        this.name.setText(name);
+    }
+
+    @UiHandler("confirm")
+    void onConfirm(ClickEvent event) {
+        getUiHandlers().onConfirmClicked();
     }
 }

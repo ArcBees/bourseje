@@ -19,6 +19,7 @@ package com.arcbees.bourseje.client.api;
 import java.util.List;
 
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 
 import com.arcbees.bourseje.shared.ResourcesPath;
@@ -30,4 +31,7 @@ import com.gwtplatform.dispatch.rest.shared.RestService;
 public interface VoteService extends RestService {
     @GET
     RestAction<List<VoteItem>> getVoteItems();
+
+    @POST
+    RestAction<Void> vote(VoteItem voteItem);
 }

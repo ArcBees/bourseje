@@ -19,14 +19,17 @@ package com.arcbees.bourseje.client.application;
 import com.arcbees.bourseje.client.NameTokens;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
+import com.gwtplatform.mvp.client.HasUiHandlers;
 import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
+import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
+import com.gwtplatform.mvp.shared.proxy.PlaceRequest;
 
-public class VotePresenter extends Presenter<VotePresenter.MyView, VotePresenter.MyProxy> {
-    interface MyView extends View {
+public class VotePresenter extends Presenter<VotePresenter.MyView, VotePresenter.MyProxy> implements VoteUiHandlers {
+    interface MyView extends View, HasUiHandlers<VoteUiHandlers> {
     }
 
     @ProxyStandard
@@ -34,11 +37,28 @@ public class VotePresenter extends Presenter<VotePresenter.MyView, VotePresenter
     interface MyProxy extends ProxyPlace<VotePresenter> {
     }
 
+    private final PlaceManager placeManager;
+
     @Inject
     VotePresenter(
             EventBus eventBus,
             MyView view,
-            MyProxy proxy) {
+            MyProxy proxy,
+            PlaceManager placeManager) {
         super(eventBus, view, proxy, ApplicationPresenter.SLOT_MAIN);
+
+        this.placeManager = placeManager;
+
+        getView().setUiHandlers(this);
+    }
+
+    @Override
+    public void onVoteClicked(String value) {
+        PlaceRequest place = new PlaceRequest.Builder()
+                .nameToken(NameTokens.CONFIRM_VOTE)
+                .with(NameTokens.VALUE_PARAM, value)
+                .build();
+
+        placeManager.revealPlace(place);
     }
 }

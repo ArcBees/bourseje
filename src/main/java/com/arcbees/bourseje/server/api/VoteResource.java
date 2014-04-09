@@ -18,6 +18,7 @@ package com.arcbees.bourseje.server.api;
 
 import javax.inject.Inject;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
@@ -25,6 +26,7 @@ import javax.ws.rs.core.Response;
 
 import com.arcbees.bourseje.server.services.VoteService;
 import com.arcbees.bourseje.shared.ResourcesPath;
+import com.arcbees.bourseje.shared.VoteItem;
 
 @Path(ResourcesPath.VOTE_ITEMS)
 @Produces(MediaType.APPLICATION_JSON)
@@ -38,7 +40,14 @@ public class VoteResource {
     }
 
     @GET
-    public Response getPollItems() {
-        return Response.ok(voteService.getPollItems()).build();
+    public Response getVoteItems() {
+        return Response.ok(voteService.getVoteItems()).build();
+    }
+
+    @POST
+    public Response vote(VoteItem voteItem) {
+        voteService.vote(voteItem);
+
+        return Response.ok().build();
     }
 }

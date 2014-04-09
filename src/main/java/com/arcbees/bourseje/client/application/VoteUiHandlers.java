@@ -14,38 +14,10 @@
  * the License.
  */
 
-package com.arcbees.bourseje.shared;
+package com.arcbees.bourseje.client.application;
 
-import com.googlecode.objectify.annotation.Entity;
-import com.googlecode.objectify.annotation.Id;
+import com.gwtplatform.mvp.client.UiHandlers;
 
-@Entity
-public class VoteItem {
-    @Id
-    private Long id;
-    private String value;
-
-    public VoteItem() {
-    }
-
-    public VoteItem(
-            String value) {
-        this.value = value;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
-    }
+public interface VoteUiHandlers extends UiHandlers {
+    void onVoteClicked(String value);
 }

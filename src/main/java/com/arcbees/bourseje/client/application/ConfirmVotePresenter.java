@@ -17,16 +17,25 @@
 package com.arcbees.bourseje.client.application;
 
 import com.arcbees.bourseje.client.NameTokens;
+import com.arcbees.bourseje.client.RestCallbackImpl;
+import com.arcbees.bourseje.client.api.VoteService;
+import com.arcbees.bourseje.shared.VoteItem;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
+import com.gwtplatform.dispatch.rest.shared.RestDispatch;
+import com.gwtplatform.mvp.client.HasUiHandlers;
 import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
+import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
+import com.gwtplatform.mvp.shared.proxy.PlaceRequest;
 
-public class ConfirmVotePresenter extends Presenter<ConfirmVotePresenter.MyView, ConfirmVotePresenter.MyProxy> {
-    interface MyView extends View {
+public class ConfirmVotePresenter extends Presenter<ConfirmVotePresenter.MyView, ConfirmVotePresenter.MyProxy>
+        implements ConfirmVoteUiHandlers {
+    interface MyView extends View, HasUiHandlers<ConfirmVoteUiHandlers> {
+        void setName(String name);
     }
 
     @ProxyStandard
@@ -34,11 +43,51 @@ public class ConfirmVotePresenter extends Presenter<ConfirmVotePresenter.MyView,
     interface MyProxy extends ProxyPlace<ConfirmVotePresenter> {
     }
 
+    private final PlaceManager placeManager;
+    private final RestDispatch dispatcher;
+    private final VoteService voteService;
+
+    private String name;
+
     @Inject
     ConfirmVotePresenter(
             EventBus eventBus,
             MyView view,
-            MyProxy proxy) {
+            MyProxy proxy,
+            PlaceManager placeManager,
+            RestDispatch dispatcher,
+            VoteService voteService) {
         super(eventBus, view, proxy, ApplicationPresenter.SLOT_MAIN);
+
+        this.placeManager = placeManager;
+        this.dispatcher = dispatcher;
+        this.voteService = voteService;
+
+        getView().setUiHandlers(this);
+    }
+
+
+    @Override
+    public void prepareFromRequest(PlaceRequest request) {
+        super.prepareFromRequest(request);
+
+        name = request.getParameter(NameTokens.VALUE_PARAM, "noSelection");
+
+        getView().setName(name);
+    }
+
+    @Override
+    public void onConfirmClicked() {
+        VoteItem voteItem = new VoteItem(name);
+        dispatcher.execute(voteService.vote(voteItem), new RestCallbackImpl<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                PlaceRequest placeRequest = new PlaceRequest.Builder()
+                        .nameToken(NameTokens.THANKS)
+                        .build();
+
+                placeManager.revealPlace(placeRequest);
+            }
+        });
     }
 }

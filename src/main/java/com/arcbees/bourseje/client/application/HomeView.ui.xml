@@ -1,12 +1,9 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
-             xmlns:g="urn:import:com.google.gwt.user.client.ui"
-             xmlns:w="urn:import:com.arcbees.bourseje.client.application">
+             xmlns:g="urn:import:com.google.gwt.user.client.ui">
 
     <ui:with field="res" type="com.arcbees.bourseje.client.resources.Resources"/>
 
     <g:HTMLPanel styleName="{res.styles.height}">
-        <w:Header/>
-
         <section>
             <div>
                 <article class="{res.styles.wrapper} {res.styles.txtcenter}">
@@ -15,11 +12,11 @@
                     </div>
                     <p>La plateforme de vote de la Jeune Chambre de Commerce de Québec
                     </p>
-                    <g:Button ui:field="cliquez" styleName="{res.styles.btn} {res.styles.btnSlider}">Cliquez pour passer au vote</g:Button>
+                    <g:Button ui:field="cliquez" styleName="{res.styles.btn} {res.styles.btnSlider}">Cliquez pour passer
+                        au vote
+                    </g:Button>
                 </article>
             </div>
         </section>
-
-        <w:Footer/>
     </g:HTMLPanel>
 </ui:UiBinder>
