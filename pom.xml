@@ -18,7 +18,7 @@
         <gwtp.version>1.2.1</gwtp.version>
         <gin.version>2.1.2</gin.version>
         <mgwt.version>1.2.0-SNAPSHOT</mgwt.version>
-        <gwtquery.version>1.4.1-SNAPSHOT</gwtquery.version>
+        <gwtquery.version>1.4.1</gwtquery.version>
 
         <!-- server -->
         <gae.version>1.9.0</gae.version>
