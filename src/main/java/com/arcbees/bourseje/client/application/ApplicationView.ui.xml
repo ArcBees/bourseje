@@ -6,15 +6,14 @@
 
     <ui:style>
         .main {
-            height: literal("calc(100% - 185px)");
+            height: 100%;
         }
     </ui:style>
 
-    <g:HTMLPanel styleName="{res.styles.height}">
+    <g:HTMLPanel>
         <w:Header/>
 
         <g:SimplePanel styleName="{style.main}" ui:field="main"/>
 
-        <w:Footer/>
     </g:HTMLPanel>
 </ui:UiBinder>

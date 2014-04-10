@@ -1,9 +1,11 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
-             xmlns:g="urn:import:com.google.gwt.user.client.ui">
+             xmlns:g="urn:import:com.google.gwt.user.client.ui"
+             xmlns:w="urn:import:com.arcbees.bourseje.client.application">
 
     <ui:with field="res" type="com.arcbees.bourseje.client.resources.Resources"/>
 
     <g:HTMLPanel styleName="{res.styles.height}">
+        <div class="{res.styles.voteHeader}"/>
         <section class="{res.styles.main} {res.styles.bgBleu}">
             <article class="{res.styles.wrapper}">
                 <p>Vous avez choisi.</p>
@@ -14,5 +16,6 @@
                 <g:Button ui:field="confirm" styleName="{res.styles.btn} {res.styles.btnConfirm}">Confirmer</g:Button>
             </article>
         </section>
+        <w:Footer/>
     </g:HTMLPanel>
 </ui:UiBinder>

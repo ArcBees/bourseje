@@ -1,10 +1,12 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
-             xmlns:g="urn:import:com.google.gwt.user.client.ui">
+             xmlns:g="urn:import:com.google.gwt.user.client.ui"
+             xmlns:w="urn:import:com.arcbees.bourseje.client.application">
 
     <ui:with field="res" type="com.arcbees.bourseje.client.resources.Resources"/>
 
     <g:HTMLPanel styleName="{res.styles.height}">
-        <section class="{res.styles.main}">
+        <div class="{res.styles.voteHeader}"/>
+        <section>
             <div ui:field="voteGroup">
                 <article class="{res.styles.wrapper}">
                     <p>Votez pour la jeune entreprise<br/>de l'année 2014
@@ -45,5 +47,6 @@
                 </article>
             </div>
         </section>
+        <w:Footer/>
     </g:HTMLPanel>
 </ui:UiBinder>
