@@ -58,7 +58,6 @@ public interface Resources extends ClientBundle {
         String btnConfirm();
 
         String voteHeader();
-
     }
 
     @Source("styles.css")

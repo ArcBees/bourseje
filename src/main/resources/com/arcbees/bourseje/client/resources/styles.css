@@ -121,10 +121,10 @@ img {
 header {
     border-top: 6px solid #00aeef;
 
-    width:100%;
+    width: 100%;
 
     position: fixed;
-    top:0;
+    top: 0;
     z-index: 999;
 }
 
@@ -249,10 +249,10 @@ input[type=radio]:checked + label:before {
 
     display: block;
     height: 49px;
-    width:107px;
+    width: 107px;
 
-    left:10px;
-    top:13px;
+    left: 10px;
+    top: 13px;
     position: absolute;
 }
 
