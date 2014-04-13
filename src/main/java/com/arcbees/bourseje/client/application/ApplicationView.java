@@ -27,6 +27,8 @@ import com.googlecode.mgwt.mvp.client.Animation;
 import com.googlecode.mgwt.ui.client.animation.AnimationHelper;
 import com.gwtplatform.mvp.client.ViewImpl;
 
+import static com.google.gwt.query.client.GQuery.$;
+
 public class ApplicationView extends ViewImpl implements ApplicationPresenter.MyView {
     interface Binder extends UiBinder<Widget, ApplicationView> {
     }
@@ -47,6 +49,10 @@ public class ApplicationView extends ViewImpl implements ApplicationPresenter.My
         initWidget(binder.createAndBindUi(this));
 
         main.setWidget(animationHelper);
+
+        // Little hack to override default MGWT styles
+        $(animationHelper).css("overflow", "auto");
+        $("div:first", animationHelper).css("overflow", "auto");
     }
 
 
