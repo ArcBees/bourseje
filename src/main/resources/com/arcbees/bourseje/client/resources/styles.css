@@ -31,7 +31,7 @@
     src: brandonGrotesqueRegWoff format('woff'), brandonGrotesqueRegTtf format('truetype');
 }
 
-html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, embed, img, ins, kbd, q, s, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, embed, img, ins, kbd, q, s, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, menu, nav, section, summary, time, mark, audio, video {
     font-size: 100%;
     background: transparent;
 
@@ -79,8 +79,7 @@ img {
 }
 
 .height {
-    overflow: scroll;
-    height: 100%;
+    height: literal('calc(100% - 90px)');
 }
 
 /* clear */
@@ -121,16 +120,22 @@ img {
 
 header {
     border-top: 6px solid #00aeef;
+
+    width: 100%;
+
+    position: fixed;
+    top: 0;
+    z-index: 999;
 }
 
 section {
     display: table;
-    height: literal("calc(100% - 185px)");
+    height: literal("calc(100% - 135px)");
     width: 100%;
+    margin-top: 90px;
 }
 
 section.main {
-    height: literal("calc(100% - 319px)");
     padding: 30px 0;
 }
 
@@ -178,7 +183,7 @@ footer {
 }
 
 form {
-    margin-top: 70px;
+    margin-top: 50px;
 }
 
 form > div {
@@ -236,7 +241,19 @@ input[type=radio]:checked + label:before {
     text-align: center;
     line-height: 34px;
 
-    box-shadow: 0px 5px 3px #ccc;
+    box-shadow: 0 5px 3px #ccc;
+}
+
+@sprite .voteHeader {
+    gwt-image: "voteHeader";
+
+    display: block;
+    height: 49px;
+    width: 107px;
+
+    left: 10px;
+    top: 13px;
+    position: absolute;
 }
 
 @sprite .iconHeader {
@@ -245,7 +262,7 @@ input[type=radio]:checked + label:before {
     display: block;
     height: 39px;
     width: 39px;
-    margin-top: 5px;
+    margin-top: 10px;
 }
 
 @sprite .iconHeader:hover {

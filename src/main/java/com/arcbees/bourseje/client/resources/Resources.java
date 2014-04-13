@@ -56,10 +56,14 @@ public interface Resources extends ClientBundle {
         String selection();
 
         String btnConfirm();
+
+        String voteHeader();
     }
 
     @Source("styles.css")
     Styles styles();
+
+    ImageResource voteHeader();
 
     ImageResource iconHeader();
 
