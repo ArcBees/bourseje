@@ -19,10 +19,10 @@
         <gin.version>2.1.2</gin.version>
         <mgwt.version>1.2.0-SNAPSHOT</mgwt.version>
         <gwtquery.version>1.4.1</gwtquery.version>
-        <gae-studio.version>0.8.1</gae-studio.version>
+        <gae-studio.version>0.8.2-SNAPSHOT</gae-studio.version>
 
         <!-- server -->
-        <gae.version>1.9.0</gae.version>
+        <gae.version>1.9.2</gae.version>
         <guice.version>3.0</guice.version>
         <arcbees.version>1.1.1</arcbees.version>
         <resteasy.version>3.0.6.Final</resteasy.version>
@@ -127,6 +127,11 @@
             <groupId>com.googlecode.objectify</groupId>
             <artifactId>objectify</artifactId>
             <version>${objectify.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.arcbees.gaestudio</groupId>
+            <artifactId>gae-studio-webapp</artifactId>
+            <version>${gae-studio.version}</version>
         </dependency>
 
         <!-- AppEngine -->
