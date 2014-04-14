@@ -128,11 +128,6 @@
             <artifactId>objectify</artifactId>
             <version>${objectify.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.arcbees.gaestudio</groupId>
-            <artifactId>gae-studio-webapp</artifactId>
-            <version>${gae-studio.version}</version>
-        </dependency>
 
         <!-- AppEngine -->
         <dependency>
