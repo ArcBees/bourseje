@@ -14,17 +14,14 @@
  * the License.
  */
 
-package com.arcbees.bourseje.server.api;
+package com.arcbees.bourseje.client;
 
-import javax.inject.Singleton;
+import com.gwtplatform.dispatch.rest.client.RestApplicationPath;
+import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 
-import com.google.inject.AbstractModule;
-
-public class ApiModule extends AbstractModule {
+public class PhonegapRemoteModule extends AbstractPresenterModule {
     @Override
     protected void configure() {
-        bind(CorsInterceptor.class).in(Singleton.class);
-
-        bind(VoteResource.class);
+        bindConstant().annotatedWith(RestApplicationPath.class).to("http://bourseje.appspot.com/api");
     }
 }

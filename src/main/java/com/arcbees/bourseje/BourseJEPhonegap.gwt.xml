@@ -2,8 +2,6 @@
 <module rename-to='bourseje'>
     <inherits name='com.arcbees.bourseje.BourseJE'/>
 
-    <set-configuration-property name="CssResource.style" value="pretty"/>
-
     <extend-configuration-property name="gin.ginjector.modules"
-                                   value="com.arcbees.bourseje.client.PhonegapLocalModule"/>
+                                   value="com.arcbees.bourseje.client.PhonegapRemoteModule"/>
 </module>
