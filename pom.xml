@@ -17,7 +17,7 @@
         <gwt.version>2.6.0</gwt.version>
         <gwtp.version>1.2.1</gwtp.version>
         <gin.version>2.1.2</gin.version>
-        <mgwt.version>1.2.0-SNAPSHOT</mgwt.version>
+        <mgwt.version>2.0.0-SNAPSHOT</mgwt.version>
         <gwtquery.version>1.4.1</gwtquery.version>
         <gae-studio.version>0.8.1</gae-studio.version>
 

@@ -23,8 +23,10 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
-import com.googlecode.mgwt.mvp.client.Animation;
 import com.googlecode.mgwt.ui.client.animation.AnimationHelper;
+import com.googlecode.mgwt.ui.client.widget.animation.AnimationWidget;
+import com.googlecode.mgwt.ui.client.widget.animation.bundle.FadeAnimation;
+import com.googlecode.mgwt.ui.client.widget.animation.bundle.SlideAnimation;
 import com.gwtplatform.mvp.client.ViewImpl;
 
 import static com.google.gwt.query.client.GQuery.$;
@@ -42,9 +44,8 @@ public class ApplicationView extends ViewImpl implements ApplicationPresenter.My
 
     @Inject
     ApplicationView(
-            Binder binder,
-            AnimationHelper animationHelper) {
-        this.animationHelper = animationHelper;
+            Binder binder) {
+        this.animationHelper = new AnimationHelper(new AnimationWidget());
 
         initWidget(binder.createAndBindUi(this));
 
@@ -60,11 +61,11 @@ public class ApplicationView extends ViewImpl implements ApplicationPresenter.My
     public void setInSlot(Object slot, IsWidget content) {
         if (slot == ApplicationPresenter.SLOT_MAIN) {
             if (firstLoad) {
-                animationHelper.goTo(content, Animation.FADE);
+                animationHelper.goTo(content, new FadeAnimation(false));
 
                 firstLoad = false;
             } else {
-                animationHelper.goTo(content, Animation.SLIDE);
+                animationHelper.goTo(content, new SlideAnimation(false));
             }
         }
     }
