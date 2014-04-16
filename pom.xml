@@ -17,12 +17,12 @@
         <gwt.version>2.6.0</gwt.version>
         <gwtp.version>1.2.1</gwtp.version>
         <gin.version>2.1.2</gin.version>
-        <mgwt.version>1.2.0-SNAPSHOT</mgwt.version>
+        <mgwt.version>2.0.0-SNAPSHOT</mgwt.version>
         <gwtquery.version>1.4.1</gwtquery.version>
         <gae-studio.version>0.8.1</gae-studio.version>
 
         <!-- server -->
-        <gae.version>1.9.0</gae.version>
+        <gae.version>1.9.2</gae.version>
         <guice.version>3.0</guice.version>
         <arcbees.version>1.1.1</arcbees.version>
         <resteasy.version>3.0.6.Final</resteasy.version>
@@ -219,15 +219,29 @@
                 <groupId>net.kindleit</groupId>
                 <artifactId>maven-gae-plugin</artifactId>
                 <version>${maven-gae-plugin.version}</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>net.kindleit</groupId>
+                        <artifactId>gae-runtime</artifactId>
+                        <version>1.8.8</version>
+                        <type>pom</type>
+                    </dependency>
+                </dependencies>
                 <configuration>
                     <sdkDir>${gae.home}</sdkDir>
-                    <!-- Add credentials to ~/.m2/settings.xml <id>appengine-credentials</id> -->
                     <serverId>appengine-credentials</serverId>
                     <splitJars>true</splitJars>
                 </configuration>
                 <executions>
                     <execution>
-                        <id>deploy</id>
+                        <id>install-server-jar</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                    <id>deploy</id>
                         <goals>
                             <goal>deploy</goal>
                         </goals>
@@ -249,6 +263,23 @@
 
                         <configuration>
                             <module>com.arcbees.bourseje.BourseJESdm</module>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>production</id>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>gwt-maven-plugin</artifactId>
+
+                        <configuration>
+                            <module>com.arcbees.bourseje.BourseJEPhonegap</module>
                         </configuration>
                     </plugin>
                 </plugins>
