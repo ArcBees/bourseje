@@ -39,5 +39,8 @@ public class ApplicationModule extends AbstractPresenterModule {
 
         bindPresenter(ThanksPresenter.class, ThanksPresenter.MyView.class, ThanksView.class,
                 ThanksPresenter.MyProxy.class);
+
+        bindPresenter(AlreadyVotedPresenter.class, AlreadyVotedPresenter.MyView.class, AlreadyVotedView.class,
+                AlreadyVotedPresenter.MyProxy.class);
     }
 }

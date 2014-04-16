@@ -1,0 +1,15 @@
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:g="urn:import:com.google.gwt.user.client.ui">
+
+    <ui:with field="res" type="com.arcbees.bourseje.client.resources.Resources"/>
+
+    <g:HTMLPanel styleName="{res.styles.height}">
+        <section>
+            <div>
+                <article class="{res.styles.wrapper} {res.styles.txtcenter}">
+                    Vote déjà enregistré
+                </article>
+            </div>
+        </section>
+    </g:HTMLPanel>
+</ui:UiBinder>
