@@ -33,8 +33,6 @@ public class ApplicationView extends ViewImpl implements ApplicationPresenter.My
     interface Binder extends UiBinder<Widget, ApplicationView> {
     }
 
-    static private boolean firstLoad = true;
-
     @UiField
     SimplePanel main;
 
@@ -51,21 +49,15 @@ public class ApplicationView extends ViewImpl implements ApplicationPresenter.My
         main.setWidget(animationHelper);
 
         // Little hack to override default MGWT styles
-        $(animationHelper).css("overflow", "auto");
-        $("div:first", animationHelper).css("overflow", "auto");
+        $(animationHelper).css("overflow", "visible");
+        $("div", animationHelper).css("overflow", "visible");
     }
 
 
     @Override
     public void setInSlot(Object slot, IsWidget content) {
         if (slot == ApplicationPresenter.SLOT_MAIN) {
-            if (firstLoad) {
-                animationHelper.goTo(content, Animation.FADE);
-
-                firstLoad = false;
-            } else {
-                animationHelper.goTo(content, Animation.SLIDE);
-            }
+            animationHelper.goTo(content, Animation.FADE);
         }
     }
 }

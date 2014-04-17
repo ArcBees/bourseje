@@ -3,10 +3,5 @@
 
     <ui:with field="res" type="com.arcbees.bourseje.client.resources.Resources"/>
 
-    <g:HTMLPanel tag="header" styleName="{res.styles.clearfix}">
-        <div class="{res.styles.wrapper}">
-            <a href="https://github.com/ArcBees/bourseje" target="_blank"
-               class="{res.styles.iconHeader} {res.styles.right}"/>
-        </div>
-    </g:HTMLPanel>
+    <g:HTMLPanel tag="header" styleName="{res.styles.clearfix}"/>
 </ui:UiBinder>

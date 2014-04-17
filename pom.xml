@@ -151,8 +151,14 @@
 
         <resources>
             <resource>
-                <directory>${basedir}/src/main/resources</directory>
+                <directory>src/main/resources</directory>
                 <filtering>true</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
             </resource>
         </resources>
 
@@ -198,7 +204,7 @@
                     <!-- TODO : Remove this once gwt-dev is removed from gae-studio -->
                     <gwtSdkFirstInClasspath>true</gwtSdkFirstInClasspath>
 
-                    <runTarget>BourseJE.html</runTarget>
+                    <runTarget>index.html</runTarget>
                     <modules>
                         <module>com.arcbees.bourseje.BourseJE</module>
                     </modules>

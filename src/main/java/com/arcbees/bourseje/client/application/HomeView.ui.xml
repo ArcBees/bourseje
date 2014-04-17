@@ -5,6 +5,8 @@
     <ui:with field="res" type="com.arcbees.bourseje.client.resources.Resources"/>
 
     <g:HTMLPanel styleName="{res.styles.height}">
+        <w:Header/>
+
         <section>
             <div>
                 <article class="{res.styles.wrapper} {res.styles.txtcenter}">
@@ -19,6 +21,7 @@
                 </article>
             </div>
         </section>
+
         <w:Footer/>
     </g:HTMLPanel>
 </ui:UiBinder>
