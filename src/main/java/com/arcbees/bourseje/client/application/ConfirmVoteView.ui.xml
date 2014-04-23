@@ -5,6 +5,8 @@
     <ui:with field="res" type="com.arcbees.bourseje.client.resources.Resources"/>
 
     <g:HTMLPanel styleName="{res.styles.height}">
+        <w:Header/>
+
         <div class="{res.styles.voteHeader}"/>
         <section class="{res.styles.main} {res.styles.bgBleu}">
             <article class="{res.styles.wrapper}">
@@ -16,6 +18,7 @@
                 <g:Button ui:field="confirm" styleName="{res.styles.btn} {res.styles.btnConfirm}">Confirmer</g:Button>
             </article>
         </section>
+
         <w:Footer/>
     </g:HTMLPanel>
 </ui:UiBinder>

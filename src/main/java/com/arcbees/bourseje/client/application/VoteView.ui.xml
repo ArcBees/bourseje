@@ -5,6 +5,8 @@
     <ui:with field="res" type="com.arcbees.bourseje.client.resources.Resources"/>
 
     <g:HTMLPanel styleName="{res.styles.height}">
+        <w:Header/>
+
         <div class="{res.styles.voteHeader}"/>
         <section>
             <div ui:field="voteGroup">
@@ -47,6 +49,7 @@
                 </article>
             </div>
         </section>
+
         <w:Footer/>
     </g:HTMLPanel>
 </ui:UiBinder>
