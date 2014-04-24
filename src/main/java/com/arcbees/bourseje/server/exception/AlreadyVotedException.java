@@ -14,16 +14,7 @@
  * the License.
  */
 
-package com.arcbees.bourseje.server.dao;
+package com.arcbees.bourseje.server.exception;
 
-import com.arcbees.bourseje.shared.VoteItem;
-
-public class VoteItemDao extends BaseDao<VoteItem> {
-    VoteItemDao() {
-        super(VoteItem.class);
-    }
-
-    public VoteItem findByIp(String ip) {
-        return query().filter("ip", ip).first().now();
-    }
+public class AlreadyVotedException extends RuntimeException {
 }

@@ -17,10 +17,12 @@
 package com.arcbees.bourseje.server.api;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -45,7 +47,9 @@ public class VoteResource {
     }
 
     @POST
-    public Response vote(VoteItem voteItem) {
+    public Response vote(VoteItem voteItem, @Context HttpServletRequest request) {
+        voteItem.setIp(request.getRemoteAddr());
+
         voteService.vote(voteItem);
 
         return Response.ok().build();

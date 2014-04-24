@@ -20,6 +20,7 @@ import com.arcbees.bourseje.client.NameTokens;
 import com.arcbees.bourseje.client.RestCallbackImpl;
 import com.arcbees.bourseje.client.api.VoteService;
 import com.arcbees.bourseje.shared.VoteItem;
+import com.google.gwt.http.client.Response;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.dispatch.rest.shared.RestDispatch;
@@ -80,6 +81,17 @@ public class ConfirmVotePresenter extends Presenter<ConfirmVotePresenter.MyView,
     public void onConfirmClicked() {
         VoteItem voteItem = new VoteItem(name);
         dispatcher.execute(voteService.vote(voteItem), new RestCallbackImpl<Void>() {
+            @Override
+            public void onError(Response response) {
+                super.onError(response);
+
+                PlaceRequest placeRequest = new PlaceRequest.Builder()
+                        .nameToken(NameTokens.ALREADY_VOTED)
+                        .build();
+
+                placeManager.revealPlace(placeRequest);
+            }
+
             @Override
             public void onSuccess(Void aVoid) {
                 PlaceRequest placeRequest = new PlaceRequest.Builder()

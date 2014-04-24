@@ -14,16 +14,17 @@
  * the License.
  */
 
-package com.arcbees.bourseje.server.dao;
+package com.arcbees.bourseje.server.exception;
 
-import com.arcbees.bourseje.shared.VoteItem;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
+import javax.ws.rs.ext.ExceptionMapper;
+import javax.ws.rs.ext.Provider;
 
-public class VoteItemDao extends BaseDao<VoteItem> {
-    VoteItemDao() {
-        super(VoteItem.class);
-    }
-
-    public VoteItem findByIp(String ip) {
-        return query().filter("ip", ip).first().now();
+@Provider
+public class AlreadyVotedExceptionMapper implements ExceptionMapper<AlreadyVotedException> {
+    @Override
+    public Response toResponse(AlreadyVotedException e) {
+        return Response.status(Status.FORBIDDEN).build();
     }
 }
