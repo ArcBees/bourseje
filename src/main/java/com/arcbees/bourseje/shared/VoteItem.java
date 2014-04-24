@@ -16,14 +16,19 @@
 
 package com.arcbees.bourseje.shared;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
+import com.googlecode.objectify.annotation.Index;
 
 @Entity
 public class VoteItem {
     @Id
     private Long id;
     private String value;
+
+    @Index
+    private String ip;
 
     public VoteItem() {
     }
@@ -47,5 +52,14 @@ public class VoteItem {
 
     public void setValue(String value) {
         this.value = value;
+    }
+
+    @JsonIgnore
+    public String getIp() {
+        return ip;
+    }
+
+    public void setIp(String ip) {
+        this.ip = ip;
     }
 }
