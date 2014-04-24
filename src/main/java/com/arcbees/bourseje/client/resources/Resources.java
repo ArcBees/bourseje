@@ -75,6 +75,8 @@ public interface Resources extends ClientBundle {
 
     ImageResource voteBatman();
 
+    ImageResource voteNinja();
+
     ImageResource voteClock();
 
     ImageResource vote();
