@@ -118,6 +118,14 @@ img {
     background-color: #00aeef;
 }
 
+.mainContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
 header {
     border-top: 6px solid #00aeef;
 
@@ -254,19 +262,6 @@ input[type=radio]:checked + label:before {
     left: 10px;
     top: 13px;
     position: absolute;
-}
-
-@sprite .iconHeader {
-    gwt-image: "iconHeader";
-
-    display: block;
-    height: 39px;
-    width: 39px;
-    margin-top: 10px;
-}
-
-@sprite .iconHeader:hover {
-    gwt-image: "iconHeaderHover";
 }
 
 @sprite .btnSlider {
