@@ -13,6 +13,8 @@
 @url brandonGrotesqueRegTtf brandonGrotesqueRegTtf;
 @url brandonGrotesqueRegWoff brandonGrotesqueRegWoff;
 
+@url radio radio;
+
 @font-face {
     font-family: 'brandon_grotesquebold';
     src: brandonGrotesqueBoldEot;
@@ -243,11 +245,10 @@ input[type=radio]:checked + label {
 }
 
 input[type=radio]:checked + label:before {
-    content: "\2713";
+    content: radio;
     background-color: #00aeef;
-    color: #fff;
     text-align: center;
-    line-height: 34px;
+    line-height: 40px;
 
     box-shadow: 0 5px 3px #ccc;
 }
@@ -320,4 +321,18 @@ input[type=radio]:checked + label:before {
 
     height: 36px;
     width: auto;
+}
+
+footer small {
+    font-size: 12px;
+}
+
+.logoArcbees {
+    width: 132px;
+    height: 52px;
+}
+
+.logoJccq {
+    width: 140px;
+    height: 84px;
 }

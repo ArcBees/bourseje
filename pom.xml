@@ -133,6 +133,11 @@
             <artifactId>gae-studio-webapp</artifactId>
             <version>${gae-studio.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.vectomatic</groupId>
+            <artifactId>lib-gwt-svg</artifactId>
+            <version>0.5.9</version>
+        </dependency>
 
         <!-- AppEngine -->
         <dependency>
@@ -211,7 +216,7 @@
 
                     <runTarget>index.html</runTarget>
                     <modules>
-                        <module>com.arcbees.bourseje.BourseJE</module>
+                        <module>com.arcbees.bourseje.BourseJEDebug</module>
                     </modules>
                 </configuration>
                 <executions>
