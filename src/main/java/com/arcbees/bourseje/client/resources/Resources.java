@@ -33,8 +33,6 @@ public interface Resources extends ClientBundle {
 
         String right();
 
-        String iconHeader();
-
         String btnSlider();
 
         String btnRafraichir();
@@ -58,16 +56,14 @@ public interface Resources extends ClientBundle {
         String btnConfirm();
 
         String voteHeader();
+
+        String mainContainer();
     }
 
     @Source("styles.css")
     Styles styles();
 
     ImageResource voteHeader();
-
-    ImageResource iconHeader();
-
-    ImageResource iconHeaderHover();
 
     ImageResource logoArcbees();
 

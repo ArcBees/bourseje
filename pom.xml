@@ -54,7 +54,6 @@
             <groupId>com.google.gwt</groupId>
             <artifactId>gwt-user</artifactId>
             <version>${gwt.version}</version>
-            <scope>provided</scope>
         </dependency>
 
         <!-- GWT-Platform dependencies -->
@@ -116,11 +115,13 @@
             <groupId>com.googlecode.mgwt</groupId>
             <artifactId>mgwt</artifactId>
             <version>${mgwt.version}</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.googlecode.gwtquery</groupId>
             <artifactId>gwtquery</artifactId>
             <version>${gwtquery.version}</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.googlecode.objectify</groupId>
@@ -204,7 +205,6 @@
                     <server>com.google.appengine.tools.development.gwt.AppEngineLauncher</server>
                     <appEngineVersion>${gae.version}</appEngineVersion>
                     <appEngineHome>${gae.home}</appEngineHome>
-                    <extraJvmArgs>-Dappengine.sdk.root=${gae.home}</extraJvmArgs>
 
                     <!-- TODO : Remove this once gwt-dev is removed from gae-studio -->
                     <gwtSdkFirstInClasspath>true</gwtSdkFirstInClasspath>
@@ -226,37 +226,9 @@
 
             <!-- Google App Engine Deployment -->
             <plugin>
-                <groupId>net.kindleit</groupId>
-                <artifactId>maven-gae-plugin</artifactId>
-                <version>${maven-gae-plugin.version}</version>
-                <dependencies>
-                    <dependency>
-                        <groupId>net.kindleit</groupId>
-                        <artifactId>gae-runtime</artifactId>
-                        <version>1.8.8</version>
-                        <type>pom</type>
-                    </dependency>
-                </dependencies>
-                <configuration>
-                    <sdkDir>${gae.home}</sdkDir>
-                    <serverId>appengine-credentials</serverId>
-                    <splitJars>true</splitJars>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>install-server-jar</id>
-                        <phase>validate</phase>
-                        <goals>
-                            <goal>unpack</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                    <id>deploy</id>
-                        <goals>
-                            <goal>deploy</goal>
-                        </goals>
-                    </execution>
-                </executions>
+                <groupId>com.google.appengine</groupId>
+                <artifactId>appengine-maven-plugin</artifactId>
+                <version>${gae.version}</version>
             </plugin>
         </plugins>
     </build>

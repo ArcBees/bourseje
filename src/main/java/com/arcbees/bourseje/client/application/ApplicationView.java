@@ -18,46 +18,52 @@ package com.arcbees.bourseje.client.application;
 
 import javax.inject.Inject;
 
-import com.google.gwt.uibinder.client.UiBinder;
-import com.google.gwt.uibinder.client.UiField;
+import com.arcbees.bourseje.client.resources.Resources;
+import com.google.gwt.query.client.Function;
+import com.google.gwt.query.client.plugins.effects.PropertiesAnimation.EasingCurve;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.SimplePanel;
-import com.google.gwt.user.client.ui.Widget;
-import com.googlecode.mgwt.mvp.client.Animation;
-import com.googlecode.mgwt.ui.client.animation.AnimationHelper;
 import com.gwtplatform.mvp.client.ViewImpl;
 
 import static com.google.gwt.query.client.GQuery.$;
 
 public class ApplicationView extends ViewImpl implements ApplicationPresenter.MyView {
-    interface Binder extends UiBinder<Widget, ApplicationView> {
-    }
-
-    @UiField
-    SimplePanel main;
-
-    private final AnimationHelper animationHelper;
+    private final SimplePanel main;
 
     @Inject
-    ApplicationView(
-            Binder binder,
-            AnimationHelper animationHelper) {
-        this.animationHelper = animationHelper;
+    ApplicationView(Resources resources) {
+        main = new SimplePanel();
+        main.setStyleName(resources.styles().mainContainer());
 
-        initWidget(binder.createAndBindUi(this));
-
-        main.setWidget(animationHelper);
-
-        // Little hack to override default MGWT styles
-        $(animationHelper).css("overflow", "visible");
-        $("div", animationHelper).css("overflow", "visible");
+        initWidget(main);
     }
 
 
     @Override
     public void setInSlot(Object slot, IsWidget content) {
         if (slot == ApplicationPresenter.SLOT_MAIN) {
-            animationHelper.goTo(content, Animation.FADE);
+            show(content);
         }
+    }
+
+    private void show(final IsWidget content) {
+        $(content).hide();
+
+        if (main.getWidget() == null) {
+            setAndShow(content);
+        } else {
+            $(main.getWidget()).animate("opacity: 'hide'", 150, EasingCurve.easeInOut, new Function() {
+                @Override
+                public void f() {
+                    $(main).scrollTop(0);
+                    setAndShow(content);
+                }
+            });
+        }
+    }
+
+    private void setAndShow(IsWidget w) {
+        main.setWidget(w);
+        $(w).animate("opacity: 'show'", 150, EasingCurve.easeInOut);
     }
 }
