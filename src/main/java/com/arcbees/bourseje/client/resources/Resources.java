@@ -16,6 +16,8 @@
 
 package com.arcbees.bourseje.client.resources;
 
+import org.vectomatic.dom.svg.ui.SVGResource;
+
 import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.CssResource;
 import com.google.gwt.resources.client.DataResource;
@@ -58,6 +60,10 @@ public interface Resources extends ClientBundle {
         String voteHeader();
 
         String mainContainer();
+
+        String logoArcbees();
+
+        String logoJccq();
     }
 
     @Source("styles.css")
@@ -65,9 +71,9 @@ public interface Resources extends ClientBundle {
 
     ImageResource voteHeader();
 
-    ImageResource logoArcbees();
+    SVGResource logoArcbees();
 
-    ImageResource logoJcc();
+    SVGResource logoJccq();
 
     ImageResource voteBatman();
 
@@ -84,6 +90,8 @@ public interface Resources extends ClientBundle {
     ImageResource reloadHover();
 
     ImageResource oeil();
+
+    ImageResource radio();
 
     ImageResource oeilHover();
 
