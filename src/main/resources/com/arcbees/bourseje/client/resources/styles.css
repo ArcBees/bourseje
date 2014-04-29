@@ -253,18 +253,6 @@ input[type=radio]:checked + label:before {
     box-shadow: 0 5px 3px #ccc;
 }
 
-@sprite .voteHeader {
-    gwt-image: "voteHeader";
-
-    display: block;
-    height: 49px;
-    width: 107px;
-
-    left: 10px;
-    top: 13px;
-    position: absolute;
-}
-
 @sprite .btnSlider {
     gwt-image: "slider";
 
@@ -335,4 +323,13 @@ footer small {
 .logoJccq {
     width: 140px;
     height: 84px;
+}
+
+.voteHeader {
+    height: 49px;
+    width: 107px;
+
+    left: 10px;
+    top: 13px;
+    position: absolute;
 }
