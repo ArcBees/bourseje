@@ -163,7 +163,6 @@
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
-                <filtering>true</filtering>
             </resource>
             <resource>
                 <directory>src/main/java</directory>
@@ -222,6 +221,7 @@
                 <executions>
                     <execution>
                         <goals>
+                            <goal>resources</goal>
                             <goal>compile</goal>
                             <goal>test</goal>
                         </goals>

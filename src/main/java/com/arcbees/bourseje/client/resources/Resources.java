@@ -69,19 +69,19 @@ public interface Resources extends ClientBundle {
     @Source("styles.css")
     Styles styles();
 
-    ImageResource voteHeader();
-
     SVGResource logoArcbees();
 
     SVGResource logoJccq();
+
+    SVGResource voteHeader();
+
+    ImageResource vote();
 
     ImageResource voteBatman();
 
     ImageResource voteNinja();
 
     ImageResource voteClock();
-
-    ImageResource vote();
 
     ImageResource slider();
 
