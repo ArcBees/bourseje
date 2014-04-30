@@ -275,6 +275,7 @@ input[type=radio]:checked + label:before {
     height: 40px;
     width: 100%;
     margin-top: 60px;
+    padding-left: 30px;
 }
 
 @sprite .btnRafraichir {
@@ -333,6 +334,15 @@ footer small {
 .logoJccq {
     width: 93px;
     height: 60px;
+}
+
+.voteHeader {
+    height: 49px;
+    width: 107px;
+
+    left: 10px;
+    top: 13px;
+    position: absolute;
 }
 
 .mt1 {
