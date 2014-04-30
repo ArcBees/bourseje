@@ -15,7 +15,7 @@
                     </div>
                     <p>Vous avez déjà voté!<br/>Pas besoin de vous déguiser,<br/>on vous a reconnu!</p>
                     <p>
-                        <a href="#" class="{res.styles.jccq}">jccq.qc.ca</a>
+                        <a href="http://www.jccq.qc.ca" class="{res.styles.jccq}" target="_blank">jccq.qc.ca</a>
                     </p>
                 </article>
             </div>

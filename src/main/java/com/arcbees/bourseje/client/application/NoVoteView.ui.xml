@@ -16,7 +16,7 @@
                     <p>Nous sommes désolés,<br/>aucun vote n'est en cours.<br/>Mais rassurez-vous, Batman veille.
                     </p>
                     <p>
-                        <a href="#" class="{res.styles.jccq}">jccq.qc.ca</a>
+                        <a href="http://www.jccq.qc.ca" class="{res.styles.jccq}" target="_blank">jccq.qc.ca</a>
                     </p>
                 </article>
             </div>

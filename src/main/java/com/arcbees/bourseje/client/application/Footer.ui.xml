@@ -8,7 +8,7 @@
             <div class="{res.styles.logoJccq} {res.styles.inbl}">
                 <svg:SVGImage resource="{res.logoJccq}"/>
             </div>
-            <div class="{res.styles.inbl} {res.styles.right}">
+            <div class="{res.styles.inbl} {res.styles.right} {res.styles.mt1}">
                 <small>Propulsé par</small>
                 <div class="{res.styles.logoArcbees}">
                     <svg:SVGImage resource="{res.logoArcbees}"/>
