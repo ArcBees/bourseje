@@ -17,7 +17,7 @@
                 <p class="{res.styles.selection}">
                     <g:InlineLabel ui:field="name"/>
                 </p>
-                <p>Êtes-vous sûr de votre vote ?</p>
+                <p class="{res.styles.txtcenter}">Êtes-vous sûr de votre vote ?</p>
                 <g:Button ui:field="confirm" styleName="{res.styles.btn} {res.styles.btnConfirm}">Confirmer</g:Button>
             </article>
         </section>
