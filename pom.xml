@@ -18,7 +18,7 @@
         <gin.version>2.1.2</gin.version>
         <mgwt.version>1.2.0-SNAPSHOT</mgwt.version>
         <gwtquery.version>1.4.1</gwtquery.version>
-        <gae-studio.version>0.8.2</gae-studio.version>
+        <gae-studio.version>0.8.3</gae-studio.version>
 
         <!-- server -->
         <gae.version>1.9.2</gae.version>
@@ -54,6 +54,7 @@
             <groupId>com.google.gwt</groupId>
             <artifactId>gwt-user</artifactId>
             <version>${gwt.version}</version>
+            <scope>provided</scope>
         </dependency>
 
         <!-- GWT-Platform dependencies -->
@@ -210,9 +211,6 @@
                     <appEngineVersion>${gae.version}</appEngineVersion>
                     <appEngineHome>${gae.home}</appEngineHome>
 
-                    <!-- TODO : Remove this once gwt-dev is removed from gae-studio -->
-                    <gwtSdkFirstInClasspath>true</gwtSdkFirstInClasspath>
-
                     <runTarget>index.html</runTarget>
                     <modules>
                         <module>com.arcbees.bourseje.BourseJEDebug</module>
@@ -234,6 +232,9 @@
                 <groupId>com.google.appengine</groupId>
                 <artifactId>appengine-maven-plugin</artifactId>
                 <version>${gae.version}</version>
+                <configuration>
+                    <port>8888</port>
+                </configuration>
             </plugin>
         </plugins>
     </build>
