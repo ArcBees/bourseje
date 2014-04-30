@@ -58,7 +58,7 @@ html, body {
 }
 
 body {
-    font-size: 20px;
+    font-size: 15px;
     font-family: 'brandon_grotesque_regularRg';
     line-height: 1.25;
 }
@@ -101,7 +101,7 @@ img {
 }
 
 .wrapper {
-    width: 90%;
+    width: 80%;
     margin: 0 auto;
 }
 
@@ -140,7 +140,7 @@ header {
 
 section {
     display: table;
-    height: literal("calc(100% - 135px)");
+    height: literal("calc(100% - 101px)");
     width: 100%;
     margin-top: 90px;
 }
@@ -167,7 +167,7 @@ section > div {
 }
 
 footer {
-    padding: 30px 0 15px;
+    padding: 30px 0 5px;
     border-bottom: 6px solid #00aeef;
 }
 
@@ -176,7 +176,7 @@ footer {
 
     width: 100%;
     height: 40px;
-    margin-top: 40px;
+    margin-top: 20px;
     border: none;
 
     cursor: pointer;
@@ -193,11 +193,11 @@ footer {
 }
 
 form {
-    margin-top: 50px;
+    margin-top: 35px;
 }
 
 form > div {
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 
 button, input, select, textarea {
@@ -231,10 +231,10 @@ label:before {
     background-color: #000;
 
     display: inline-block;
-    width: 30px;
-    height: 30px;
+    width: 24px;
+    height: 24px;
     margin-right: 10px;
-    border-radius: 25px;
+    border-radius: 12px;
 
     position: absolute;
     left: 0;
@@ -248,23 +248,21 @@ input[type=radio]:checked + label:before {
     content: radio;
     background-color: #00aeef;
     text-align: center;
-    line-height: 40px;
+    line-height: 31px;
 
     box-shadow: 0 5px 3px #ccc;
 }
 
-@sprite .btnSlider {
-    gwt-image: "slider";
-
-    background-position: left center;
-    font-family: 'brandon_grotesquebold';
+.btnVotez {
+    color: #fff;
+    background-color: #00aeef;
     font-size: 20px;
-    line-height: 30px;
+    line-height: 40px;
+    text-align: center;
 
-    height: 30px;
-    width: auto;
+    height: 40px;
+    width: 100%;
     margin-top: 60px;
-    padding-left: 30px;
 }
 
 @sprite .btnRafraichir {
@@ -272,8 +270,8 @@ input[type=radio]:checked + label:before {
 
     background-position: left center;
     font-family: 'brandon_grotesquebold';
-    font-size: 20px;
-    padding-left: 35px;
+    font-size: 15px;
+    padding-left: 30px;
     width: auto;
 }
 
@@ -297,7 +295,7 @@ input[type=radio]:checked + label:before {
     height: 36px;
     width: auto;
     margin-top: 60px;
-    padding-left: 45px;
+    padding-left: 30px;
 }
 
 @sprite a.jccq:hover {
@@ -312,17 +310,17 @@ input[type=radio]:checked + label:before {
 }
 
 footer small {
-    font-size: 12px;
+    font-size: 10px;
 }
 
 .logoArcbees {
-    width: 132px;
-    height: 52px;
+    width: 70px;
+    height: 28px;
 }
 
 .logoJccq {
-    width: 140px;
-    height: 84px;
+    width: 93px;
+    height: 60px;
 }
 
 .voteHeader {
@@ -332,4 +330,8 @@ footer small {
     left: 10px;
     top: 13px;
     position: absolute;
+}
+
+.mt1 {
+    margin-top: 10px;
 }

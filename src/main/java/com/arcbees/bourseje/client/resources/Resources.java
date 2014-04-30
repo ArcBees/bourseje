@@ -35,7 +35,7 @@ public interface Resources extends ClientBundle {
 
         String right();
 
-        String btnSlider();
+        String btnVotez();
 
         String btnRafraichir();
 
@@ -64,6 +64,8 @@ public interface Resources extends ClientBundle {
         String logoArcbees();
 
         String logoJccq();
+
+        String mt1();
     }
 
     @Source("styles.css")
@@ -82,8 +84,6 @@ public interface Resources extends ClientBundle {
     ImageResource voteNinja();
 
     ImageResource voteClock();
-
-    ImageResource slider();
 
     ImageResource reload();
 
