@@ -22,6 +22,6 @@ import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 public class PhonegapRemoteModule extends AbstractPresenterModule {
     @Override
     protected void configure() {
-        bindConstant().annotatedWith(RestApplicationPath.class).to("http://bourseje.appspot.com/api");
+        bindConstant().annotatedWith(RestApplicationPath.class).to("http://bourseje.arcbees.com/api");
     }
 }
