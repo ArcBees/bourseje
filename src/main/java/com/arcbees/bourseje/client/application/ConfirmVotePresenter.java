@@ -21,6 +21,7 @@ import com.arcbees.bourseje.client.RestCallbackImpl;
 import com.arcbees.bourseje.client.api.VoteService;
 import com.arcbees.bourseje.shared.VoteItem;
 import com.google.gwt.http.client.Response;
+import com.google.gwt.user.client.Cookies;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.dispatch.rest.shared.RestDispatch;
@@ -99,6 +100,8 @@ public class ConfirmVotePresenter extends Presenter<ConfirmVotePresenter.MyView,
                         .build();
 
                 placeManager.revealPlace(placeRequest);
+
+                Cookies.setCookie("voted", "");
             }
         });
     }

@@ -16,12 +16,11 @@
         <gwt.version>2.6.0</gwt.version>
         <gwtp.version>1.2.1</gwtp.version>
         <gin.version>2.1.2</gin.version>
-        <mgwt.version>1.2.0-SNAPSHOT</mgwt.version>
         <gwtquery.version>1.4.1</gwtquery.version>
         <gae-studio.version>0.8.3</gae-studio.version>
 
         <!-- server -->
-        <gae.version>1.9.2</gae.version>
+        <gae.version>1.9.4</gae.version>
         <guice.version>3.0</guice.version>
         <arcbees.version>1.1.1</arcbees.version>
         <resteasy.version>3.0.6.Final</resteasy.version>
@@ -40,13 +39,6 @@
             ${settings.localRepository}/com/google/appengine/appengine-java-sdk/${gae.version}/appengine-java-sdk-${gae.version}
         </gae.home>
     </properties>
-
-    <repositories>
-        <repository>
-            <id>sonatype-snapshots</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-        </repository>
-    </repositories>
 
     <dependencies>
         <!-- Google Web Toolkit dependencies -->
@@ -112,12 +104,6 @@
         </dependency>
 
         <!-- Other -->
-        <dependency>
-            <groupId>com.googlecode.mgwt</groupId>
-            <artifactId>mgwt</artifactId>
-            <version>${mgwt.version}</version>
-            <scope>provided</scope>
-        </dependency>
         <dependency>
             <groupId>com.googlecode.gwtquery</groupId>
             <artifactId>gwtquery</artifactId>

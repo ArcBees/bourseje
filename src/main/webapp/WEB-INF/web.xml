@@ -6,7 +6,7 @@
     <display-name>Bourse JE</display-name>
 
     <welcome-file-list>
-        <welcome-file>index.html</welcome-file>
+        <welcome-file>boursje.html</welcome-file>
     </welcome-file-list>
 
     <listener>

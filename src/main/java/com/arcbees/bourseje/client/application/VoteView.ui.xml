@@ -44,8 +44,8 @@
                             </label>
                         </div>
                         <div>
-                            <input name="vote" id="simon" type="radio"/>
-                            <label for="simon">Simon Veilleux – 32 MARS</label>
+                            <input name="vote" id="steeve" type="radio"/>
+                            <label for="steeve">Steeve Marin – 32 MARS</label>
                         </div>
                         <g:Button ui:field="submit" styleName="{res.styles.btn} {res.styles.btnVote}">VOTE</g:Button>
                     </form>

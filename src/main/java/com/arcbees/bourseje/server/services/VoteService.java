@@ -24,7 +24,6 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.arcbees.bourseje.server.dao.VoteItemDao;
-import com.arcbees.bourseje.server.exception.AlreadyVotedException;
 import com.arcbees.bourseje.server.exception.InactiveVoteException;
 import com.arcbees.bourseje.server.exception.NoVoteException;
 import com.arcbees.bourseje.server.guice.ServerModule;
@@ -61,12 +60,6 @@ public class VoteService {
     }
 
     public void vote(VoteItem voteItem) {
-        VoteItem alreadyExistingVoteItem = voteItemDao.findByIp(voteItem.getIp());
-
-        if (alreadyExistingVoteItem != null) {
-            throw new AlreadyVotedException();
-        }
-
         voteItemDao.put(voteItem);
     }
 }
