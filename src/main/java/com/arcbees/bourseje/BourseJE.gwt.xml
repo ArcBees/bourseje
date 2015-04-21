@@ -4,6 +4,8 @@
     <inherits name='com.google.gwt.user.theme.standard.Standard'/>
 
     <inherits name="com.gwtplatform.dispatch.rest.DispatchRest"/>
+    <inherits name="com.arcbees.gsss.grid.Grid"/>
+    <inherits name="com.arcbees.gsss.animation.Animation"/>
     <inherits name='com.gwtplatform.mvp.MvpWithEntryPoint'/>
     <inherits name="com.google.gwt.query.Query"/>
     <inherits name="org.vectomatic.libgwtsvg"/>
@@ -15,5 +17,9 @@
 
     <extend-configuration-property name="gin.ginjector.modules" value="com.arcbees.bourseje.client.ClientModule"/>
 
+    <set-configuration-property name="CssResource.obfuscationPrefix" value="empty"/>
     <set-configuration-property name="gwtp.bootstrapper" value="com.arcbees.bourseje.client.BootstrapperImpl"/>
+
+    <set-configuration-property name="CssResource.legacy" value="true"/>
+    <set-configuration-property name="CssResource.enableGss" value="true"/>
 </module>

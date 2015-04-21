@@ -14,24 +14,21 @@
  * the License.
  */
 
-package com.arcbees.bourseje.client;
+package com.arcbees.bourseje.client.application.alreadyvoted;
 
-import com.google.gwt.http.client.Response;
-import com.gwtplatform.dispatch.rest.client.RestCallback;
+import javax.inject.Inject;
 
-public abstract class RestCallbackImpl<T> implements RestCallback<T> {
-    private Response response;
+import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.user.client.ui.Widget;
+import com.gwtplatform.mvp.client.ViewImpl;
 
-    @Override
-    public void setResponse(Response response) {
-        this.response = response;
+public class AlreadyVotedView extends ViewImpl implements AlreadyVotedPresenter.MyView {
+    interface Binder extends UiBinder<Widget, AlreadyVotedView> {
     }
 
-    @Override
-    public void onFailure(Throwable throwable) {
-        onError(response);
-    }
-
-    public void onError(Response response) {
+    @Inject
+    AlreadyVotedView(
+            Binder uiBinder) {
+        initWidget(uiBinder.createAndBindUi(this));
     }
 }
