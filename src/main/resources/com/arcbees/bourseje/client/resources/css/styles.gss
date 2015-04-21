@@ -28,7 +28,7 @@ html, body {
 
 body {
     font-size: 15px;
-    font-family: 'brandonGrotesqueReg';
+    font-family: 'brandonGrotesqueReg', Arial, sans-serif;
     line-height: 1.25;
 }
 

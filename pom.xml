@@ -205,7 +205,7 @@
                     <includes>**/*GwtTest.java</includes>
                     <mode>htmlunit</mode>
 
-                    <extraJvmArgs>-Xss1024K -Xmx1024M -XX:MaxPermSize=256M</extraJvmArgs>
+                    <extraJvmArgs>-Xss1024K -Xmx1024M -XX:MaxPermSize=256M -Duser.language=en -Duser.country=US</extraJvmArgs>
                     <logLevel>INFO</logLevel>
 
                     <copyWebapp>true</copyWebapp>
