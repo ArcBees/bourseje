@@ -17,6 +17,7 @@
 package com.arcbees.bourseje.client;
 
 import com.arcbees.bourseje.client.application.ApplicationModule;
+import com.arcbees.bourseje.client.resources.ResourceLoader;
 import com.gwtplatform.dispatch.rest.client.gin.RestDispatchAsyncModule;
 import com.gwtplatform.mvp.client.annotations.DefaultPlace;
 import com.gwtplatform.mvp.client.annotations.ErrorPlace;
@@ -33,6 +34,8 @@ public class ClientModule extends AbstractPresenterModule {
 
         install(new DefaultModule(DefaultPlaceManager.class, RouteTokenFormatter.class));
         install(new ApplicationModule());
+
+        bind(ResourceLoader.class).asEagerSingleton();
 
         bindConstant().annotatedWith(DefaultPlace.class).to(NameTokens.HOME);
         bindConstant().annotatedWith(ErrorPlace.class).to(NameTokens.HOME);

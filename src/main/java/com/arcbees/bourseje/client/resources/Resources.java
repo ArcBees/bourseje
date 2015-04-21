@@ -15,25 +15,21 @@
  */
 
 package com.arcbees.bourseje.client.resources;
+import com.arcbees.gsss.grid.client.GridResources;
 
 import org.vectomatic.dom.svg.ui.SVGResource;
 
-import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.CssResource;
-import com.google.gwt.resources.client.DataResource;
 import com.google.gwt.resources.client.ImageResource;
 
-public interface Resources extends ClientBundle {
-    public interface Styles extends CssResource {
-        String height();
+public interface Resources extends FontResources {
+    interface Normalize extends CssResource {
+    }
 
+    public interface Styles extends CssResource {
         String clearfix();
 
         String wrapper();
-
-        String inbl();
-
-        String right();
 
         String btnVotez();
 
@@ -49,8 +45,6 @@ public interface Resources extends ClientBundle {
 
         String jccq();
 
-        String bgBleu();
-
         String btnVote();
 
         String selection();
@@ -65,72 +59,58 @@ public interface Resources extends ClientBundle {
 
         String logoJccq();
 
-        String mt1();
+        String mainSection();
     }
 
-    @Source("styles.css")
-    Styles styles();
-
+    @Source("img/logoArcbees.svg")
     SVGResource logoArcbees();
 
+    @Source("img/logoJccq.svg")
     SVGResource logoJccq();
 
+    @Source("img/voteHeader.svg")
     SVGResource voteHeader();
 
+    @Source("img/vote.png")
     ImageResource vote();
 
+    @Source("img/voteBatman.png")
     ImageResource voteBatman();
 
+    @Source("img/voteNinja.png")
     ImageResource voteNinja();
 
+    @Source("img/voteClock.png")
     ImageResource voteClock();
 
+    @Source("img/reload.png")
     ImageResource reload();
 
+    @Source("img/reloadHover.png")
     ImageResource reloadHover();
 
+    @Source("img/oeil.png")
     ImageResource oeil();
 
+    @Source("img/radio.png")
     ImageResource radio();
 
+    @Source("img/oeilHover.png")
     ImageResource oeilHover();
 
+    @Source("img/voteAccent.png")
     ImageResource voteAccent();
 
-    @Source("brandongrotesque/brandon_bld-webfont.eot")
-    DataResource brandonGrotesqueBoldEot();
+    @Source("css/normalize.gss")
+    Normalize normalize();
 
-    @Source("brandongrotesque/brandon_bld-webfont.svg")
-    DataResource brandonGrotesqueBoldSvg();
+    @Source({"com/arcbees/gsss/mixin/client/mixins.gss",
+            "fonts/brandon.gss",
+            "css/colors.gss",
+            "css/styles.gss"})
+    Styles styles();
 
-    @Source("brandongrotesque/brandon_bld-webfont.ttf")
-    DataResource brandonGrotesqueBoldTtf();
-
-    @Source("brandongrotesque/brandon_bld-webfont.woff")
-    DataResource brandonGrotesqueBoldWoff();
-
-    @Source("brandongrotesque/brandon_light-webfont.eot")
-    DataResource brandonGrotesqueLightEot();
-
-    @Source("brandongrotesque/brandon_light-webfont.svg")
-    DataResource brandonGrotesqueLightSvg();
-
-    @Source("brandongrotesque/brandon_light-webfont.ttf")
-    DataResource brandonGrotesqueLightTtf();
-
-    @Source("brandongrotesque/brandon_light-webfont.woff")
-    DataResource brandonGrotesqueLightWoff();
-
-    @Source("brandongrotesque/brandon_reg-webfont.eot")
-    DataResource brandonGrotesqueRegEot();
-
-    @Source("brandongrotesque/brandon_reg-webfont.svg")
-    DataResource brandonGrotesqueRegSvg();
-
-    @Source("brandongrotesque/brandon_reg-webfont.ttf")
-    DataResource brandonGrotesqueRegTtf();
-
-    @Source("brandongrotesque/brandon_reg-webfont.woff")
-    DataResource brandonGrotesqueRegWoff();
-
+    @Source({"com/arcbees/bourseje/client/resources/css/gridSettings.gss",
+            "com/arcbees/gsss/grid/client/grid.gss"})
+    GridResources.Grid grid();
 }

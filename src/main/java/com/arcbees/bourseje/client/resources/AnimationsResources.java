@@ -1,5 +1,5 @@
 /**
- * Copyright 2014 ArcBees Inc.
+ * Copyright 2015 ArcBees Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -14,24 +14,17 @@
  * the License.
  */
 
-package com.arcbees.bourseje.client;
+package com.arcbees.bourseje.client.resources;
 
-import com.google.gwt.http.client.Response;
-import com.gwtplatform.dispatch.rest.client.RestCallback;
+import com.arcbees.gsss.animation.client.AnimationResources;
+import com.google.gwt.resources.client.ClientBundle;
 
-public abstract class RestCallbackImpl<T> implements RestCallback<T> {
-    private Response response;
+public interface AnimationsResources extends ClientBundle {
 
-    @Override
-    public void setResponse(Response response) {
-        this.response = response;
+    interface Style extends AnimationResources.Animation {
     }
 
-    @Override
-    public void onFailure(Throwable throwable) {
-        onError(response);
-    }
-
-    public void onError(Response response) {
-    }
+    @Source({"com/arcbees/gsss/animation/client/animationsettings.gss",
+            "com/arcbees/gsss/animation/client/animations.gss", "css/animations.gss"})
+    Style style();
 }

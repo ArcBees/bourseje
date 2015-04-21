@@ -1,5 +1,5 @@
 /**
- * Copyright 2014 ArcBees Inc.
+ * Copyright 2015 ArcBees Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -14,24 +14,15 @@
  * the License.
  */
 
-package com.arcbees.bourseje.client;
+package com.arcbees.bourseje.client.resources;
 
-import com.google.gwt.http.client.Response;
-import com.gwtplatform.dispatch.rest.client.RestCallback;
+public class Colors {
+    public static final String C_PRIMARY = "#00aeef";
+    public static final String C_SECONDARY = "#fff";
 
-public abstract class RestCallbackImpl<T> implements RestCallback<T> {
-    private Response response;
+    public static final String C_TEXT = "#000";
+    public static final String C_TEXT_LIGHT = C_SECONDARY;
 
-    @Override
-    public void setResponse(Response response) {
-        this.response = response;
-    }
-
-    @Override
-    public void onFailure(Throwable throwable) {
-        onError(response);
-    }
-
-    public void onError(Response response) {
-    }
+    public static final String C_STRIPE_LIGHT = C_SECONDARY;
+    public static final String C_STRIPE_COLORED = C_PRIMARY;
 }

@@ -10,20 +10,21 @@
     <name>Bourse JE</name>
 
     <properties>
-        <guava.version>16.0.1</guava.version>
+        <guava.version>18.0</guava.version>
 
         <!-- client -->
-        <gwt.version>2.6.0</gwt.version>
-        <gwtp.version>1.2.1</gwtp.version>
+        <gwt.version>2.7.0</gwt.version>
+        <gwtp.version>1.4</gwtp.version>
         <gin.version>2.1.2</gin.version>
         <gwtquery.version>1.4.1</gwtquery.version>
         <gae-studio.version>0.8.3</gae-studio.version>
+        <gsss.version>1.1-SNAPSHOT</gsss.version>
 
         <!-- server -->
-        <gae.version>1.9.4</gae.version>
+        <gae.version>1.9.19</gae.version>
         <guice.version>3.0</guice.version>
         <arcbees.version>1.1.1</arcbees.version>
-        <resteasy.version>3.0.6.Final</resteasy.version>
+        <resteasy.version>3.0.11.Final</resteasy.version>
         <objectify.version>4.0</objectify.version>
 
         <!-- maven -->
@@ -39,6 +40,17 @@
             ${settings.localRepository}/com/google/appengine/appengine-java-sdk/${gae.version}/appengine-java-sdk-${gae.version}
         </gae.home>
     </properties>
+
+    <repositories>
+        <repository>
+            <id>sonatype.snapshots</id>
+            <name>Sonatype snapshot repository</name>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 
     <dependencies>
         <!-- Google Web Toolkit dependencies -->
@@ -108,6 +120,12 @@
             <groupId>com.googlecode.gwtquery</groupId>
             <artifactId>gwtquery</artifactId>
             <version>${gwtquery.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.arcbees.gss</groupId>
+            <artifactId>gsss</artifactId>
+            <version>${gsss.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>

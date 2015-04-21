@@ -1,0 +1,32 @@
+@provide "brandon";
+
+@def BRANDON_BOLD_TTF resourceUrl("brandonGrotesqueBoldTtf");
+@def BRANDON_BOLD_EOT resourceUrl("brandonGrotesqueBoldEot");
+@def BRANDON_BOLD_WOFF resourceUrl("brandonGrotesqueBoldWoff");
+@def BRANDON_BOLD_SVG resourceUrl("brandonGrotesqueBoldSvg");
+@def BRANDON_LIGHT_TTF resourceUrl("brandonGrotesqueLightTtf");
+@def BRANDON_LIGHT_EOT resourceUrl("brandonGrotesqueLightEot");
+@def BRANDON_LIGHT_WOFF resourceUrl("brandonGrotesqueLightWoff");
+@def BRANDON_LIGHT_SVG resourceUrl("brandonGrotesqueLightSvg");
+@def BRANDON_REGULAR_TTF resourceUrl("brandonGrotesqueRegTtf");
+@def BRANDON_REGULAR_EOT resourceUrl("brandonGrotesqueRegEot");
+@def BRANDON_REGULAR_WOFF resourceUrl("brandonGrotesqueRegWoff");
+@def BRANDON_REGULAR_SVG resourceUrl("brandonGrotesqueRegSvg");
+
+@font-face {
+    font-family: 'brandonGrotesqueBold';
+    src: BRANDON_BOLD_EOT;
+    src: BRANDON_BOLD_WOFF format('woff'), BRANDON_BOLD_TTF format('truetype');
+}
+
+@font-face {
+    font-family: 'brandonGrotesqueLight';
+    src: BRANDON_LIGHT_EOT;
+    src: BRANDON_LIGHT_WOFF format('woff'), BRANDON_LIGHT_TTF format('truetype');
+}
+
+@font-face {
+    font-family: 'brandonGrotesqueReg';
+    src: BRANDON_REGULAR_EOT;
+    src: BRANDON_REGULAR_WOFF format('woff'), BRANDON_REGULAR_TTF format('truetype');
+}

@@ -1,0 +1,58 @@
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:g="urn:import:com.google.gwt.user.client.ui"
+             xmlns:w="urn:import:com.arcbees.bourseje.client.application.ui"
+             xmlns:svg="urn:import:org.vectomatic.dom.svg.ui">
+
+    <ui:with field="res" type="com.arcbees.bourseje.client.resources.Resources"/>
+
+    <g:HTMLPanel styleName="{res.styles.mainSection}">
+        <w:Header/>
+
+        <div class="{res.styles.voteHeader}">
+            <svg:SVGImage resource="{res.voteHeader}"/>
+        </div>
+        <section>
+            <div ui:field="voteGroup">
+                <article class="{res.styles.wrapper}">
+                    <p>Votez pour la jeune entreprise<br/>de l'année 2014
+                    </p>
+                    <form action="">
+                        <div>
+                            <input name="vote" id="antoine" type="radio" checked="true"/>
+                            <label for="antoine">Antoine Bisson – POKA Inc.</label>
+                        </div>
+                        <div>
+                            <input name="vote" id="sarah" type="radio"/>
+                            <label for="sarah">Sarah Baribeau – Bougeotte et
+                                placotine
+                            </label>
+                        </div>
+                        <div>
+                            <input name="vote" id="matthias" type="radio"/>
+                            <label for="matthias">Matthias Baudot – Studio BODS</label>
+                        </div>
+                        <div>
+                            <input name="vote" id="benoit" type="radio"/>
+                            <label for="benoit">Benoit M. Bédard – Les solutions
+                                Amotus
+                            </label>
+                        </div>
+                        <div>
+                            <input name="vote" id="jeanfrançois" type="radio"/>
+                            <label for="jeanfrançois">Jean-François Mondou –
+                                Jeff Poissonnerie-prêt à manger
+                            </label>
+                        </div>
+                        <div>
+                            <input name="vote" id="steeve" type="radio"/>
+                            <label for="steeve">Steeve Marin – 32 MARS</label>
+                        </div>
+                        <g:Button ui:field="submit" styleName="{res.styles.btn} {res.styles.btnVote}">VOTE</g:Button>
+                    </form>
+                </article>
+            </div>
+        </section>
+
+        <w:Footer/>
+    </g:HTMLPanel>
+</ui:UiBinder>

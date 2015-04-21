@@ -16,31 +16,28 @@
 
 package com.arcbees.bourseje.client.application;
 
+import com.arcbees.bourseje.client.application.alreadyvoted.AlreadyVotedModule;
+import com.arcbees.bourseje.client.application.confirmvote.ConfirmVoteModule;
+import com.arcbees.bourseje.client.application.home.HomeModule;
+import com.arcbees.bourseje.client.application.inactivevote.InactiveVoteModule;
+import com.arcbees.bourseje.client.application.novote.NoVoteModule;
+import com.arcbees.bourseje.client.application.thanks.ThanksModule;
+import com.arcbees.bourseje.client.application.vote.VoteModule;
 import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 
 public class ApplicationModule extends AbstractPresenterModule {
     @Override
     protected void configure() {
+        install(new AlreadyVotedModule());
+        install(new ConfirmVoteModule());
+        install(new InactiveVoteModule());
+        install(new NoVoteModule());
+        install(new VoteModule());
+        install(new HomeModule());
+        install(new ThanksModule());
+
         bindPresenter(ApplicationPresenter.class, ApplicationPresenter.MyView.class, ApplicationView.class,
                 ApplicationPresenter.MyProxy.class);
 
-        bindPresenter(HomePresenter.class, HomePresenter.MyView.class, HomeView.class, HomePresenter.MyProxy.class);
-
-        bindPresenter(NoVotePresenter.class, NoVotePresenter.MyView.class, NoVoteView.class,
-                NoVotePresenter.MyProxy.class);
-
-        bindPresenter(InactiveVotePresenter.class, InactiveVotePresenter.MyView.class, InactiveVoteView.class,
-                InactiveVotePresenter.MyProxy.class);
-
-        bindPresenter(VotePresenter.class, VotePresenter.MyView.class, VoteView.class, VotePresenter.MyProxy.class);
-
-        bindPresenter(ConfirmVotePresenter.class, ConfirmVotePresenter.MyView.class, ConfirmVoteView.class,
-                ConfirmVotePresenter.MyProxy.class);
-
-        bindPresenter(ThanksPresenter.class, ThanksPresenter.MyView.class, ThanksView.class,
-                ThanksPresenter.MyProxy.class);
-
-        bindPresenter(AlreadyVotedPresenter.class, AlreadyVotedPresenter.MyView.class, AlreadyVotedView.class,
-                AlreadyVotedPresenter.MyProxy.class);
     }
 }

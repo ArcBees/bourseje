@@ -14,24 +14,10 @@
  * the License.
  */
 
-package com.arcbees.bourseje.client;
+package com.arcbees.bourseje.client.application.confirmvote;
 
-import com.google.gwt.http.client.Response;
-import com.gwtplatform.dispatch.rest.client.RestCallback;
+import com.gwtplatform.mvp.client.UiHandlers;
 
-public abstract class RestCallbackImpl<T> implements RestCallback<T> {
-    private Response response;
-
-    @Override
-    public void setResponse(Response response) {
-        this.response = response;
-    }
-
-    @Override
-    public void onFailure(Throwable throwable) {
-        onError(response);
-    }
-
-    public void onError(Response response) {
-    }
+public interface ConfirmVoteUiHandlers extends UiHandlers {
+    void onConfirmClicked();
 }
