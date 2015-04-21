@@ -25,7 +25,6 @@ public interface FontResources extends ClientBundle {
     String MIME_TYPE_WOFF = "application/font-woff";
     String MIME_TYPE_SVG = "image/svg+xml";
 
-
     @DataResource.MimeType(MIME_TYPE_TTF)
     @Source("fonts/brandon_bld-webfont.ttf")
     DataResource brandonGrotesqueBoldTtf();

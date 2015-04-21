@@ -20,7 +20,6 @@ import com.arcbees.gsss.animation.client.AnimationResources;
 import com.google.gwt.resources.client.ClientBundle;
 
 public interface AnimationsResources extends ClientBundle {
-
     interface Style extends AnimationResources.Animation {
     }
 
