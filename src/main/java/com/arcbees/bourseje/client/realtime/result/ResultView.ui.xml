@@ -16,7 +16,6 @@
                             <span>d’affaires 2015</span>
                             est</h2>
                     </div>
-
                     <div class="{res.grid.col} {res.grid.col_6} {res.grid.col_push_3} {page.style.box_candidates}">
                         <g:Image resource="{res.voteAccent}" styleName="{page.style.avatar}"/>
                         <h3>Jason Lemay</h3>
