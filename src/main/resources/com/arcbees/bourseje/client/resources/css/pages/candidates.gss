@@ -2,7 +2,7 @@
     margin-bottom: 100px;
 }
 
-.text_intro h2,
+.text_intro > h2,
 .text_intro p {
     font-size: 3rem;
     line-height: 1.2;
@@ -21,7 +21,7 @@
 
 .box_candidates h3 {
     font-size: 3rem;
-    font-family: "brandonGrotesqueBold";
+    font-family: F_SECONDARY;
     line-height: 1;
 
     margin: 1em 0 .25em;

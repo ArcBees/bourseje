@@ -24,6 +24,7 @@ form.vote_form {
     border: 3px solid C_SECONDARY;
 
     position: relative;
+
     cursor: pointer;
 }
 
@@ -54,7 +55,7 @@ form.vote_form {
 }
 
 .finalist_name {
-    font-family: 'brandonGrotesqueBold';
+    font-family: F_SECONDARY;
     font-size: 16px;
     margin-bottom: 0;
 }

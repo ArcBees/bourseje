@@ -16,22 +16,8 @@
 
 package com.arcbees.bourseje.client.resources;
 
-import com.arcbees.gsss.animation.client.AnimationResources;
-import com.google.gwt.resources.client.ClientBundle;
-
-public interface PageEndOfVoteResources extends ClientBundle {
-    interface Style extends AnimationResources.Animation {
-        String vibration();
-
-        String shake();
-
-        String text();
-    }
-
-    @Source({"com/arcbees/gsss/animation/client/animationsettings.gss",
-            "com/arcbees/gsss/animation/client/animations.gss",
-            "com/arcbees/gsss/mixin/client/mixins.gss",
-            "fonts/fonts.gss",
-            "css/pages/endofvote.gss"})
-    Style style();
+public class Fonts {
+    public static final String F_PRIMARY = "brandonGrotesqueReg";
+    public static final String F_SECONDARY = "brandonGrotesqueBold";
+    public static final String F_TERTIARY = "brandonGrotesqueLight";
 }

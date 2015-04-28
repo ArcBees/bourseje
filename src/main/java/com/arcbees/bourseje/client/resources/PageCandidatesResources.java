@@ -32,6 +32,7 @@ public interface PageCandidatesResources extends ClientBundle {
             "com/arcbees/gsss/animation/client/animations.gss",
             "com/arcbees/gsss/mixin/client/mixins.gss",
             "css/colors.gss",
+            "fonts/fonts.gss",
             "css/pages/candidates.gss"})
     Style style();
 }

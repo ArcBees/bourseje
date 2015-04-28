@@ -1,0 +1,5 @@
+@provide 'fonts';
+
+@def F_PRIMARY                      eval("com.arcbees.bourseje.client.resources.Fonts.F_PRIMARY");
+@def F_SECONDARY                    eval("com.arcbees.bourseje.client.resources.Fonts.F_SECONDARY");
+@def F_TERTIARY                     eval("com.arcbees.bourseje.client.resources.Fonts.F_TERTIARY");

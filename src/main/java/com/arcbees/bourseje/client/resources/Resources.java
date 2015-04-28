@@ -82,6 +82,7 @@ public interface Resources extends FontResources {
     @Source({"com/arcbees/gsss/mixin/client/mixins.gss",
             "fonts/brandon.gss",
             "css/colors.gss",
+            "fonts/fonts.gss",
             "css/styles.gss"})
     Styles styles();
 

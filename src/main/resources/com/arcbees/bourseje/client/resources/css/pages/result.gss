@@ -16,7 +16,7 @@
 
 .box_candidates h3 {
     font-size: 4rem;
-    font-family: "brandonGrotesqueBold";
+    font-family: F_SECONDARY;
     line-height: 1;
 
     margin: 1em 0 .25em;
@@ -46,7 +46,7 @@
 
 .number p {
     color: C_SECONDARY;
-    font-family: "brandonGrotesqueBold";
+    font-family: F_SECONDARY;
     line-height: 1;
     font-size: 5.5rem;
 

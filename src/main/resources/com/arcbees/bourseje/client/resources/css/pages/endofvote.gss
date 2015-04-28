@@ -59,7 +59,7 @@
 
 .text {
     font-size: 5rem;
-    font-family: "brandonGrotesquebold";
+    font-family: F_SECONDARY;
 
     margin-top: 40px;
 }

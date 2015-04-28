@@ -30,12 +30,12 @@ public class RealtimePresenter extends Presenter<RealtimePresenter.MyView, Realt
     interface MyView extends View {
     }
 
-    @ContentSlot
-    public static final Type<RevealContentHandler<?>> SLOT_MAIN = new Type<>();
-
     @ProxyStandard
     interface MyProxy extends Proxy<RealtimePresenter> {
     }
+
+    @ContentSlot
+    public static final Type<RevealContentHandler<?>> SLOT_MAIN = new Type<>();
 
     @Inject
     RealtimePresenter(

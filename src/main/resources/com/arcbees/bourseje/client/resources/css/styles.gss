@@ -28,7 +28,7 @@ body {
 
 body {
     background-color: C_PRIMARY;
-    font-family: 'brandonGrotesqueReg', Arial, sans-serif;
+    font-family: F_PRIMARY, Arial, sans-serif;
     line-height: 1.25;
 }
 
@@ -107,7 +107,7 @@ h1 {}
 h2,
 h3 {
     font-size: 1.6rem;
-    font-family: "brandonGrotesqueBold";
+    font-family: F_SECONDARY;
     line-height: 1em;
 
     margin: 0.2em 0;
@@ -158,10 +158,14 @@ textarea {
 
 input {
     color: #3f3f3f;
+
     padding: 5px;
     border: 1px solid #cccccc;
+
     vertical-align: middle;
+
     border-radius: 0;
+
     outline: none;
 }
 
@@ -193,7 +197,7 @@ input {
     background-color: C_SECONDARY;
     line-height: 1;
     font-size: 1.5rem;
-    font-family: 'brandonGrotesqueReg';
+    font-family: F_SECONDARY;
     text-align: center;
     text-decoration: none;
     font-weight: normal;
@@ -241,7 +245,7 @@ input {
 
 a.jccq {
     color: C_TEXT_LIGHT;
-    font-family: 'brandonGrotesqueBold';
+    font-family: F_SECONDARY;
     line-height: 36px;
 
     display: inline-block;
