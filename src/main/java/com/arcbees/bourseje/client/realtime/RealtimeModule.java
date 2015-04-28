@@ -32,6 +32,5 @@ public class RealtimeModule extends AbstractPresenterModule {
 
         bindPresenter(RealtimePresenter.class, RealtimePresenter.MyView.class, RealtimeView.class,
                 RealtimePresenter.MyProxy.class);
-
     }
 }
