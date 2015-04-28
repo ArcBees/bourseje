@@ -1,0 +1,24 @@
+.text_intro {
+    margin-bottom: 100px;
+}
+
+.text_intro h2,
+.text_intro p,
+.step h3,
+.step p {
+    font-size: 3rem;
+    line-height: 1.2;
+}
+
+.step img {
+    margin-bottom: 17px;
+}
+
+.step p span {
+    display: block;
+}
+
+.step1,
+.step2 {
+    margin-top: 17px;
+}

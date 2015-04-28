@@ -1,0 +1,36 @@
+form.login {
+    position: relative;
+}
+
+form.login input {
+    width: 100%;
+}
+
+.input_error {
+    border-color: C_ERROR;
+}
+
+.input_error::-webkit-input-placeholder {
+    color: C_ERROR;
+}
+
+.input_error::-moz-placeholder {
+    color: C_ERROR;
+}
+
+.input_error:-ms-input-placeholder {
+    color: C_ERROR;
+}
+
+.error_message {
+    background-color: C_ERROR;
+    color: C_TEXT_LIGHT;
+    font-size: 1rem;
+    text-align: center;
+
+    padding: .125em 0;
+    width: 100%;
+
+    position: absolute;
+    top: -18px;
+}

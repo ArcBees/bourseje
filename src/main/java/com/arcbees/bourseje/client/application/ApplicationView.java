@@ -33,7 +33,7 @@ public class ApplicationView extends ViewImpl implements ApplicationPresenter.My
     @Inject
     ApplicationView(Resources resources) {
         main = new SimplePanel();
-        main.setStyleName(resources.styles().mainContainer());
+        main.setStyleName(resources.styles().container());
 
         initWidget(main);
     }

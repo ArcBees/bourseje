@@ -1,2 +1,25 @@
+.choice_box {
+    color: C_TEXT;
+    background-color: C_SECONDARY;
 
+    display: inline-block;
+    padding: 30px;
+    width: 100%;
 
+    @mixin shadow(0, 3px, 5px, 0.1);
+}
+
+.choice_avatar {
+    width: 100px;
+    height: 100px;
+
+    vertical-align: middle;
+
+    @mixin rounded(50px);
+}
+
+.choice_name {
+    text-align: center;
+
+    margin: 35px 0 88px;
+}

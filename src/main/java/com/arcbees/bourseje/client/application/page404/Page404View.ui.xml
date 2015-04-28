@@ -1,0 +1,45 @@
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:g="urn:import:com.google.gwt.user.client.ui"
+             xmlns:w="urn:import:com.arcbees.bourseje.client.application.ui">
+
+    <ui:with field="res" type="com.arcbees.bourseje.client.resources.Resources"/>
+    <ui:with field="anim" type="com.arcbees.bourseje.client.resources.AnimationsResources"/>
+    <ui:with field="page" type="com.arcbees.bourseje.client.resources.Page404Resources"/>
+
+    <g:HTMLPanel styleName="{res.styles.main_section}">
+        <w:Header/>
+
+        <section class="{res.styles.main_content}">
+            <article class="{res.styles.txtcenter}">
+                <div class="{res.styles.wrapper} {res.styles.clearfix}">
+                    <div class="{page.style.error} {page.style.animation} {anim.style.bounceIn}">
+                        <svg version="1.1" x="0px" y="0px" viewBox="0 0 49.053 55.334" enable-background="new 0 0 49.053 55.334" xml:space="preserve">
+                            <g>
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M24.337,0.62c-13.312,0-24.141,10.829-24.141,24.14
+                                    c0,6.144,2.303,11.963,6.501,16.458L6.632,53.708c-0.004,0.599,0.322,1.147,0.848,1.433c0.241,0.129,0.505,0.193,0.769,0.193
+                                    c0.312,0,0.623-0.09,0.893-0.269l10.201-6.747c1.764,0.391,3.403,0.581,4.994,0.581c13.312,0,24.141-10.829,24.141-24.14
+                                    S37.648,0.62,24.337,0.62"/>
+                                <path fill="#FFFFFF" d="M24.337,10.697c-7.622,0-13.823,6.201-13.823,13.822c0,3.643,1.42,7.089,3.996,9.704l1.307,1.325
+                                    l-0.014,2.757c-0.001,0.269,0.144,0.517,0.381,0.645c0.108,0.06,0.228,0.089,0.347,0.089c0.14,0,0.279-0.04,0.4-0.12l2.248-1.486
+                                    l1.922,0.475c1.202,0.293,2.26,0.436,3.235,0.436c7.621,0,13.822-6.201,13.822-13.823C38.159,16.898,31.958,10.697,24.337,10.697"
+                                    />
+                            </g>
+                            <path class="{page.style.circle}" fill="none" stroke="#ED1C24" stroke-width="4.25" stroke-linejoin="bevel" stroke-miterlimit="10" d="M8.54,8.708
+                                c-4.02,4.063-6.503,9.65-6.503,15.818c0,12.421,10.069,22.489,22.49,22.489c12.42,0,22.488-10.068,22.488-22.489
+                                S36.947,2.038,24.527,2.038C18.273,2.038,12.616,4.589,8.54,8.708l31.805,31.804"/>
+                        </svg>
+                    </div>
+                    <div class="{res.styles.text_main}">
+                        <h2>PAGE 404</h2>
+                        <p>La page que vous avez demandé
+                            <span>n’est pas accessible ou n’existe pas.</span>
+                        </p>
+                        <a href="http://www.jccq.qc.ca" class="{res.styles.jccq}" target="_blank">jccq.qc.ca</a>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <w:Footer/>
+    </g:HTMLPanel>
+</ui:UiBinder>

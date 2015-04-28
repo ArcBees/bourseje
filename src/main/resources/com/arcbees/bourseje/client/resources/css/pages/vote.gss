@@ -1,2 +1,60 @@
+form.vote_form {
+    margin-top: 20px;
+}
 
+.finalist_box {
+    margin-bottom: 6px;
+}
 
+.finalist_box input[type="radio"] {
+    display: none;
+}
+
+.finalist_box input[type="checkbox"],
+.finalist_box input[type="radio"] {
+    padding: 0;
+}
+
+.finalist_box label {
+    background: C_SECONDARY;
+
+    display: block;
+    padding: 5px 10px;
+    width: 100%;
+    border: 3px solid C_SECONDARY;
+
+    position: relative;
+    cursor: pointer;
+}
+
+.finalist_box input[type=radio]:checked + label {
+    border: 3px solid #000;
+
+    @mixin shadow(0, 7px, 7px, .2);
+}
+
+.finalist_avatar {
+    display: inline-block;
+    margin-right: 10px;
+    width: 50px;
+    height: 50px;
+
+    vertical-align: middle;
+
+    @mixin rounded(25px);
+}
+
+.finalist {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.finalist p {
+    margin: 0;
+}
+
+.finalist_name {
+    font-family: 'brandonGrotesqueBold';
+    font-size: 16px;
+    margin-bottom: 0;
+}

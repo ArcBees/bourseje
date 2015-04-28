@@ -2,8 +2,10 @@
 
 @def C_PRIMARY                      eval("com.arcbees.bourseje.client.resources.Colors.C_PRIMARY");
 @def C_SECONDARY                    eval("com.arcbees.bourseje.client.resources.Colors.C_SECONDARY");
+@def C_ERROR                        eval("com.arcbees.bourseje.client.resources.Colors.C_ERROR");
 
 @def C_TEXT                         eval("com.arcbees.bourseje.client.resources.Colors.C_TEXT");
+@def C_TEXT_MEDIUM                  eval("com.arcbees.bourseje.client.resources.Colors.C_TEXT_MEDIUM");
 @def C_TEXT_LIGHT                   eval("com.arcbees.bourseje.client.resources.Colors.C_TEXT_LIGHT");
 
 @def C_STRIPE_LIGHT                 eval("com.arcbees.bourseje.client.resources.Colors.C_STRIPE_LIGHT");

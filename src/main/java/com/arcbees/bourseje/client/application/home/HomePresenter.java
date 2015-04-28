@@ -94,7 +94,7 @@ public class HomePresenter extends Presenter<HomePresenter.MyView, HomePresenter
     private void handleRedirection(int statusCode) {
         Builder requestBuilder = new Builder();
         if (statusCode == Response.SC_FORBIDDEN) {
-            requestBuilder.nameToken(NameTokens.INACTIVE_VOTE);
+            requestBuilder.nameToken(NameTokens.NO_VOTE);
 
             placeManager.revealPlace(requestBuilder.build());
         } else if (statusCode == Response.SC_SERVICE_UNAVAILABLE) {

@@ -1,0 +1,60 @@
+.text_intro h2,
+.text_intro p {
+    font-size: 3rem;
+    line-height: 1.2;
+}
+
+.text_intro span {
+    display: block;
+}
+
+.box_candidates {
+    background-color: C_SECONDARY;
+
+    padding: 20px 10px 0;
+}
+
+.box_candidates h3 {
+    font-size: 4rem;
+    font-family: "brandonGrotesqueBold";
+    line-height: 1;
+
+    margin: 1em 0 .25em;
+}
+
+.box_candidates p {
+    color: C_TEXT_MEDIUM;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+}
+
+.avatar {
+    width: 250px;
+    height: 250px;
+
+    vertical-align: middle;
+
+    @mixin rounded(125px);
+}
+
+.number {
+    background-color: #000;
+
+    margin: 0 -10px -50px -10px;
+    padding: 30px 0 10px;
+}
+
+.number p {
+    color: C_SECONDARY;
+    font-family: "brandonGrotesqueBold";
+    line-height: 1;
+    font-size: 5.5rem;
+
+    margin-bottom: 0;
+}
+
+.number p span {
+    font-size: 2.25rem;
+
+    display: block;
+}

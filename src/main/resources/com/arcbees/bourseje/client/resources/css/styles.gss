@@ -1,46 +1,142 @@
-@require "colors";
-@require "brandon";
-@require "gsss-mixins";
+/**
+ * STYLE.CSS
+ * Default application style
+ *
+ * - INIT                       Document initialization
+ * - LAYOUT                     Container, Main section, Wrapper
+ * - HEADINGS                   Default style for <h1>, <h2>...
+ * - ELEMENTS                   Default style for elements like <p> and <a>
+ * - CLASSES                    Reusable classes clearfix, textcenter
+ * - COMPONENTS                 Default style for buttons
+ * - STYLES                     Classes for specific elements
+ */
 
-html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, embed, img, ins, kbd, q, s, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, menu, nav, section, summary, time, mark, audio, video {
-    font-size: 100%;
-    background: transparent;
+/* -- Init ----------------------------------------------- */
 
-    border: 0;
-    margin: 0;
-    padding: 0;
-    vertical-align: baseline;
-
-    outline: 0;
+* {
+    box-sizing: border-box;
 }
 
-article,
-footer,
-header,
-nav,
-section {
-    display: block;
+html {
+    font-size: 62.5%;
 }
 
-html, body {
+html,
+body {
     height: 100%;
 }
 
 body {
-    font-size: 15px;
+    background-color: C_PRIMARY;
     font-family: 'brandonGrotesqueReg', Arial, sans-serif;
     line-height: 1.25;
 }
 
-a {
-    text-decoration: none;
+p:first-child,
+ul:first-child,
+ol:first-child,
+dl:first-child,
+blockquote:first-child,
+pre:first-child,
+h1:first-child,
+h2:first-child,
+h3:first-child,
+h4:first-child,
+h5:first-child,
+h6:first-child {
+    margin-top: 0;
 }
 
-img, table, td, blockquote, code, pre, textarea, input, video {
+img,
+textarea,
+input {
     max-width: 100%;
 }
 
+/* -- Layout -------------------------------------------- */
+
+.container {
+    height: 100%;
+    width: 100%;
+}
+
+.main_section {
+    height: 100%;
+}
+
+.main_content {
+    display: table;
+    height: calc(100% - 200px);
+    width: 100%;
+}
+
+.main_content .wrapper {
+    width: 260px;
+}
+
+.main_content > article {
+    display: table-cell;
+
+    vertical-align: middle;
+}
+
+.wrapper {
+    margin: 0 auto;
+    width: 640px;
+
+    position: relative;
+}
+
+.wrapper_desktop {
+    margin: 0 auto;
+    width: 980px;
+
+    position: relative;
+}
+
+@media (max-width: 649px) {
+    .wrapper {
+        width: 90%;
+    }
+}
+
+/* -- Headings ------------------------------------------- */
+
+h1 {}
+
+h2,
+h3 {
+    font-size: 1.6rem;
+    font-family: "brandonGrotesqueBold";
+    line-height: 1em;
+
+    margin: 0.2em 0;
+}
+
+/* -- Elements ------------------------------------------- */
+
+a,
+a:visited {
+    text-decoration: none;
+}
+
+p,
+li {
+    line-height: 1.2em;
+    font-size: 1.5rem;
+
+    margin: 0 0 0.8em;
+}
+
+li p,
+li ul,
+li ol {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
 img {
+    max-width: 100%;
     height: auto;
     border: 0;
 
@@ -49,113 +145,10 @@ img {
     -ms-interpolation-mode: bicubic;
 }
 
-.mainSection {
-    background-color: C_PRIMARY;
-
-    height: 100%;
-}
-
-/* clear */
-.clearfix:before,
-.clearfix:after {
-    content: " ";
-
-    display: table;
-}
-
-.clearfix:after {
-    clear: both;
-}
-
-.txtcenter {
-    text-align: center;
-}
-
-.wrapper {
-    width: 980px;
-    margin: 0 auto;
-}
-
-.mainContainer {
-    display: table;
-    height: 100%;
-    width: 100%;
-}
-
-header {
-    border-top: 6px solid C_PRIMARY;
-
-    width: 100%;
-
-    position: fixed;
-    top: 0;
-    z-index: 999;
-}
-
-section {
-    display: table;
-    height: calc(100% - 101px);
-    width: 100%;
-    margin-top: 90px;
-}
-
-section.main {
-    padding: 30px 0;
-}
-
-section > div {
-    display: table-cell;
-
-    vertical-align: middle;
-}
-
-.vote {
-    margin-bottom: 24px;
-}
-
-.selection {
-    color: C_TEXT_LIGHT;
-    text-align: center;
-
-    margin: 35px 0 88px;
-}
-
-footer {
-    background-color: C_SECONDARY;
-    padding: 30px 0 5px;
-    border-bottom: 6px solid C_PRIMARY;
-}
-
-.btn {
-    font-family: 'brandonGrotesqueReg';
-
-    width: 100%;
-    height: 40px;
-    margin-top: 20px;
-    border: none;
-
-    cursor: pointer;
-}
-
-.btnConfirm {
-    color: C_PRIMARY;
-    background-color: C_SECONDARY;
-}
-
-.btnVote {
-    color: C_TEXT_LIGHT;
-    background-color: C_SECONDARY;
-}
-
-form {
-    margin-top: 35px;
-}
-
-form > div {
-    margin-bottom: 20px;
-}
-
-button, input, select, textarea {
+button,
+input,
+select,
+textarea {
     font-size: 100%;
 
     margin: 0;
@@ -163,86 +156,91 @@ button, input, select, textarea {
     vertical-align: middle;
 }
 
-input[type=radio] {
-    display: none;
+input {
+    color: #3f3f3f;
+    padding: 5px;
+    border: 1px solid #cccccc;
+    vertical-align: middle;
+    border-radius: 0;
+    outline: none;
 }
 
-input[type="checkbox"],
-input[type="radio"] {
-    padding: 0;
-}
+/* -- Classes ------------------------------------------- */
 
-label {
-    display: inline-block;
-    padding-left: 50px;
-
-    position: relative;
-
-    cursor: pointer;
-}
-
-label:before {
-    content: "";
-    background-color: #000;
-
-    display: inline-block;
-    width: 24px;
-    height: 24px;
-    margin-right: 10px;
-    border-radius: 12px;
-
-    position: absolute;
-    left: 0;
-}
-
-input[type=radio]:checked + label {
-    color: C_PRIMARY;
-}
-
-input[type=radio]:checked + label:before {
-    content: radio;
-    background-color: C_PRIMARY;
+.txtcenter {
     text-align: center;
-    line-height: 31px;
-
-    box-shadow: 0 5px 3px #ccc;
 }
 
-.btnVotez {
+.clearfix:before, .clearfix:after {
+    content: "\0020";
+    display: block;
+    height: 0;
+    overflow: hidden;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    zoom: 1;
+}
+
+/* -- Components ---------------------------------------- */
+
+.btn {
     color: C_TEXT;
     background-color: C_SECONDARY;
-    font-size: 20px;
-    line-height: 40px;
+    line-height: 1;
+    font-size: 1.5rem;
+    font-family: 'brandonGrotesqueReg';
     text-align: center;
+    text-decoration: none;
+    font-weight: normal;
 
-    height: 40px;
+    cursor: pointer;
+    display: inline-block;
+    margin: 55px 0;
+    height: 35px;
+    padding: .5em 1.5rem;
+    outline: 0;
+    border: 3px solid transparent;
+
+    position: relative;
+    vertical-align: middle;
+
+    @mixin rounded(3px);
+    @mixin shadow(0, 3px, 5px, .2);
+}
+
+.btn:hover {
+    border: 3px solid #000;
+}
+
+.btn_wide {
     width: 100%;
-    margin-top: 60px;
 }
 
-.btnRafraichir {
-    gwt-image: "reload";
+/* -- Styles ------------------------------------------- */
 
-    background-position: left center;
-    font-family: 'brandonGrotesqueBold';
-    font-size: 15px;
-    padding-left: 30px;
-    width: auto;
+.logo_vote {
+    width: 105px;
+    height: 45px;
+    margin: 30px auto;
 }
 
-.btnRafraichir:hover {
-    gwt-image: "reloadHover";
+.text_step {
+    text-align: center;
+    margin-bottom: 20px;
+}
 
-    color: C_PRIMARY;
-
-    width: auto;
+.text_step p span,
+.text_main p span {
+    display: block;
 }
 
 a.jccq {
-    gwt-image: "oeil";
-
-    background-position: left center;
-    color: #231f20;
+    color: C_TEXT_LIGHT;
     font-family: 'brandonGrotesqueBold';
     line-height: 36px;
 
@@ -250,18 +248,20 @@ a.jccq {
     height: 36px;
     width: auto;
     margin-top: 60px;
-    padding-left: 30px;
 }
 
 a.jccq:hover {
-    gwt-image: "oeilHover";
-
-    background-position: left center;
-    color: C_PRIMARY;
     line-height: 36px;
+    text-decoration: underline;
 
     height: 36px;
     width: auto;
+}
+
+footer {
+    background-color: C_SECONDARY;
+    padding: 15px 0;
+    border-bottom: 6px solid C_PRIMARY;
 }
 
 footer p {
@@ -282,13 +282,4 @@ footer p {
     height: 60px;
 
     float: left;
-}
-
-.voteHeader {
-    height: 49px;
-    width: 107px;
-
-    left: 10px;
-    top: 13px;
-    position: absolute;
 }

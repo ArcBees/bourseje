@@ -1,24 +1,30 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
              xmlns:g="urn:import:com.google.gwt.user.client.ui"
-             xmlns:w="urn:import:com.arcbees.bourseje.client.application.ui"
-             xmlns:svg="urn:import:org.vectomatic.dom.svg.ui">
+             xmlns:w="urn:import:com.arcbees.bourseje.client.application.ui">
 
     <ui:with field="res" type="com.arcbees.bourseje.client.resources.Resources"/>
+    <ui:with field="page" type="com.arcbees.bourseje.client.resources.PageConfirmVoteResources"/>
 
-    <g:HTMLPanel styleName="{res.styles.mainSection}">
+    <g:HTMLPanel styleName="{res.styles.main_section}">
         <w:Header/>
 
-        <div class="{res.styles.voteHeader}">
-            <svg:SVGImage resource="{res.voteHeader}"/>
-        </div>
-        <section class="{res.styles.main}">
-            <article class="{res.styles.wrapper}">
-                <p>Vous avez choisi.</p>
-                <p class="{res.styles.selection}">
-                    <g:InlineLabel ui:field="name"/>
-                </p>
-                <p class="{res.styles.txtcenter}">Êtes-vous sûr de votre vote ?</p>
-                <g:Button ui:field="confirm" styleName="{res.styles.btn} {res.styles.btnConfirm}">Confirmer</g:Button>
+        <section class="{res.styles.main_content}">
+            <article>
+                <div class="{res.styles.wrapper} {res.styles.txtcenter}">
+                    <div class="{res.styles.text_step}">
+                        <h2>Étape 3</h2>
+                        <p>Confirmez votre choix</p>
+                    </div>
+                    <div class="{page.style.choice_box}">
+                        <g:Image resource="{res.voteAccent}" styleName="{page.style.choice_avatar}"/>
+                        <p class="{page.style.choice_name}">
+                            <g:InlineLabel ui:field="name"/>
+                        </p>
+                    </div>
+                    <g:Button ui:field="confirm" styleName="{res.styles.btn} {res.styles.btn_wide}">C'est mon
+                        candidat
+                    </g:Button>
+                </div>
             </article>
         </section>
 

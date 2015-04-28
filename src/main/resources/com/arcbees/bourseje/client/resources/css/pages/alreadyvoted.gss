@@ -1,2 +1,5 @@
-
-
+.ninja {
+    margin: 0 auto 25px;
+    width: 105px;
+    height: 120px;
+}

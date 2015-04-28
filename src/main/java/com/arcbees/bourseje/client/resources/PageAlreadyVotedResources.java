@@ -21,6 +21,7 @@ import com.google.gwt.resources.client.CssResource;
 
 public interface PageAlreadyVotedResources extends ClientBundle {
     interface Style extends CssResource {
+        String ninja();
     }
 
     @Source({"css/pages/alreadyvoted.gss"})
