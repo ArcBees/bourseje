@@ -47,7 +47,7 @@
                             	c-0.121,0.08-0.26,0.12-0.399,0.12c-0.119,0-0.239-0.029-0.348-0.089c-0.236-0.129-0.382-0.376-0.381-0.646l0.014-2.757
                             	l-1.307-1.325c-2.576-2.614-3.996-6.061-3.996-9.703c0-7.621,6.201-13.821,13.823-13.821c7.621,0,13.822,6.2,13.822,13.821
                             	S74.526,60.575,66.905,60.575z"/>
-						</svg>
+                        </svg>
                     </div>
                     <p>La plateforme de vote de la Jeune Chambre de Commerce de Québec</p>
                     <g:Button ui:field="cliquez" styleName="{res.styles.btn} {res.styles.btn_wide}">Que le vote
