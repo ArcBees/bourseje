@@ -25,19 +25,33 @@ public class ResourceLoader {
             AnimationsResources animationsResources,
             PageAlreadyVotedResources pageAlreadyVotedResources,
             PageConfirmVoteResources pageConfirmVoteResources,
-            PageInactiveVoteResources pageInactiveVoteResources,
             PageNoVoteResources pageNoVoteResources,
             PageHomeResources pageHomeResources,
-            PageThanksResources pageThanksResources){
+            PageThanksResources pageThanksResources,
+            PageVoteResources pageVoteResources,
+            PageIdentificationResources pageIdentificationResources,
+            PageVoteFinishedResources pageVoteFinishedResources,
+            PageHowToVoteResources pageHowToVoteResources,
+            PageCandidatesResources pageCandidatesResources,
+            PageResultResources pageResultResources,
+            PageEndOfVoteResources pageEndOfVoteResources,
+            Page404Resources page404Resources){
         appResources.normalize().ensureInjected();
         appResources.styles().ensureInjected();
         appResources.grid().ensureInjected();
         animationsResources.style().ensureInjected();
         pageAlreadyVotedResources.style().ensureInjected();
         pageConfirmVoteResources.style().ensureInjected();
-        pageInactiveVoteResources.style().ensureInjected();
         pageNoVoteResources.style().ensureInjected();
         pageHomeResources.style().ensureInjected();
         pageThanksResources.style().ensureInjected();
+        page404Resources.style().ensureInjected();
+        pageIdentificationResources.style().ensureInjected();
+        pageVoteFinishedResources.style().ensureInjected();
+        pageVoteResources.style().ensureInjected();
+        pageHowToVoteResources.style().ensureInjected();
+        pageCandidatesResources.style().ensureInjected();
+        pageResultResources.style().ensureInjected();
+        pageEndOfVoteResources.style().ensureInjected();
     }
 }

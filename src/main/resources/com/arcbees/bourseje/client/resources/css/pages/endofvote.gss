@@ -1,0 +1,65 @@
+.shake {
+    transform-origin: 50% 50%;
+
+    @mixin animation_name(shake);
+    @mixin animation_duration(.75s);
+    @mixin animation_delay(2s);
+}
+
+@-webkit-keyframes shake {
+    0%, 100% {
+        -webkit-transform: skew(0deg, 0deg) translate(0, 0) rotate3d(0, 0, 0, 0deg);
+        transform: skew(0deg, 0deg) translatex(0) rotate3d(0, 0, 0, 0deg);
+    }
+
+    10%, 30%, 50%, 70%, 90% {
+        -webkit-transform: skew(5deg, 2deg) translate(2px, 3px) rotate3d(10, 30, 10, 5deg);
+        transform: skew(5deg, 2deg) translatex(2px) rotate3d(10, 30, 10, 5deg);
+    }
+
+    20%, 40%, 60%, 80% {
+        -webkit-transform: skew(2deg) translate(3px, 2px) rotate3d(1, 2, 3, 2deg);
+        transform: skew(2deg) translatex(3px) rotate3d(1, 2, 3, 2deg);
+    }
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translate3d(0, 0, 0);
+    }
+
+    10%, 30%, 50%, 70%, 90% {
+        transform: translate3d(-1px, -1px, -1px);
+    }
+
+    20%, 40%, 60%, 80% {
+        transform: translate3d(1px, 0, 0);
+    }
+}
+
+.vibration {
+    opacity: 0;
+
+    @mixin animation_name(vibration);
+    @mixin animation_delay(2s);
+    @mixin animation_duration(.75s);
+}
+
+@keyframes vibration {
+    to {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes vibration {
+    to {
+        opacity: 1;
+    }
+}
+
+.text {
+    font-size: 5rem;
+    font-family: F_SECONDARY;
+
+    margin-top: 40px;
+}

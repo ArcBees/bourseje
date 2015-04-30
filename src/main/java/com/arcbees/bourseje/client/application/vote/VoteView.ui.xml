@@ -1,56 +1,90 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
              xmlns:g="urn:import:com.google.gwt.user.client.ui"
-             xmlns:w="urn:import:com.arcbees.bourseje.client.application.ui"
-             xmlns:svg="urn:import:org.vectomatic.dom.svg.ui">
+             xmlns:w="urn:import:com.arcbees.bourseje.client.application.ui">
 
     <ui:with field="res" type="com.arcbees.bourseje.client.resources.Resources"/>
+    <ui:with field="page" type="com.arcbees.bourseje.client.resources.PageVoteResources"/>
 
-    <g:HTMLPanel styleName="{res.styles.mainSection}">
+    <g:HTMLPanel styleName="{res.styles.main_section}">
         <w:Header/>
 
-        <div class="{res.styles.voteHeader}">
-            <svg:SVGImage resource="{res.voteHeader}"/>
-        </div>
-        <section>
-            <div ui:field="voteGroup">
-                <article class="{res.styles.wrapper}">
-                    <p>Votez pour la jeune entreprise<br/>de l'année 2014
-                    </p>
-                    <form action="">
-                        <div>
-                            <input name="vote" id="antoine" type="radio" checked="true"/>
-                            <label for="antoine">Antoine Bisson – POKA Inc.</label>
-                        </div>
-                        <div>
-                            <input name="vote" id="sarah" type="radio"/>
-                            <label for="sarah">Sarah Baribeau – Bougeotte et
-                                placotine
-                            </label>
-                        </div>
-                        <div>
-                            <input name="vote" id="matthias" type="radio"/>
-                            <label for="matthias">Matthias Baudot – Studio BODS</label>
-                        </div>
-                        <div>
-                            <input name="vote" id="benoit" type="radio"/>
-                            <label for="benoit">Benoit M. Bédard – Les solutions
-                                Amotus
-                            </label>
-                        </div>
-                        <div>
-                            <input name="vote" id="jeanfrançois" type="radio"/>
-                            <label for="jeanfrançois">Jean-François Mondou –
-                                Jeff Poissonnerie-prêt à manger
-                            </label>
-                        </div>
-                        <div>
-                            <input name="vote" id="steeve" type="radio"/>
-                            <label for="steeve">Steeve Marin – 32 MARS</label>
-                        </div>
-                        <g:Button ui:field="submit" styleName="{res.styles.btn} {res.styles.btnVote}">VOTE</g:Button>
-                    </form>
-                </article>
-            </div>
+        <section class="{res.styles.main_content}">
+            <article>
+                <div class="{res.styles.wrapper} {res.styles.clearfix}">
+                    <div class="{res.styles.text_step}">
+                        <h2>Étape 2</h2>
+                        <p>Choisissez la personnalité d’affaires
+                            <span>de l’année 2015</span>
+                        </p>
+                    </div>
+                    <div ui:field="voteGroup">
+                        <form action="" class="{page.style.vote_form}">
+                            <div class="{page.style.finalist_box}">
+                                <input name="vote" id="Johanie" type="radio"/>
+                                <label for="Johanie">
+                                    <g:Image resource="{res.voteAccent}" styleName="{page.style.finalist_avatar}"/>
+                                    <div class="{page.style.finalist}">
+                                        <p class="{page.style.finalist_name}">Johanie Gagnon</p>
+                                        <p>Construction le 5e élément</p>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="{page.style.finalist_box}">
+                                <input name="vote" id="Dominic" type="radio"/>
+                                <label for="Dominic">
+                                    <g:Image resource="{res.voteAccent}" styleName="{page.style.finalist_avatar}"/>
+                                    <div class="{page.style.finalist}">
+                                        <p class="{page.style.finalist_name}">Dominic Fillion</p>
+                                        <p>DFMotion</p>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="{page.style.finalist_box}">
+                                <input name="vote" id="Raphael" type="radio"/>
+                                <label for="Raphael">
+                                    <g:Image resource="{res.voteAccent}" styleName="{page.style.finalist_avatar}"/>
+                                    <div class="{page.style.finalist}">
+                                        <p class="{page.style.finalist_name}">Raphaël Provost</p>
+                                        <p>iWrap</p>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="{page.style.finalist_box}">
+                                <input name="vote" id="Maxime" type="radio"/>
+                                <label for="Maxime">
+                                    <g:Image resource="{res.voteAccent}" styleName="{page.style.finalist_avatar}"/>
+                                    <div class="{page.style.finalist}">
+                                        <p class="{page.style.finalist_name}">Maxime Gagnon</p>
+                                        <p>La Raffinerie</p>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="{page.style.finalist_box}">
+                                <input name="vote" id="Simon" type="radio"/>
+                                <label for="Simon">
+                                    <g:Image resource="{res.voteAccent}" styleName="{page.style.finalist_avatar}"/>
+                                    <div class="{page.style.finalist}">
+                                        <p class="{page.style.finalist_name}">Simon Valin</p>
+                                        <p>Valin Confection</p>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="{page.style.finalist_box}">
+                                <input name="vote" id="Vincent" type="radio"/>
+                                <label for="Vincent">
+                                    <g:Image resource="{res.voteAccent}" styleName="{page.style.finalist_avatar}"/>
+                                    <div class="{page.style.finalist}">
+                                        <p class="{page.style.finalist_name}">Vincent Bouchard</p>
+                                        <p>Venice Gym</p>
+                                    </div>
+                                </label>
+                            </div>
+                            <g:Button ui:field="submit" styleName="{res.styles.btn} {res.styles.btn_wide}">VOTE
+                            </g:Button>
+                        </form>
+                    </div>
+                </div>
+            </article>
         </section>
 
         <w:Footer/>

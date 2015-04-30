@@ -31,35 +31,31 @@ public interface Resources extends FontResources {
 
         String wrapper();
 
-        String btnVotez();
-
-        String btnRafraichir();
-
         String btn();
-
-        String main();
 
         String txtcenter();
 
-        String vote();
-
         String jccq();
 
-        String btnVote();
+        String btn_wide();
 
-        String selection();
-
-        String btnConfirm();
-
-        String voteHeader();
-
-        String mainContainer();
+        String container();
 
         String logoArcbees();
 
         String logoJccq();
 
-        String mainSection();
+        String logo_vote();
+
+        String wrapper_desktop();
+
+        String text_step();
+
+        String text_main();
+
+        String main_content();
+
+        String main_section();
     }
 
     @Source("img/logoArcbees.svg")
@@ -68,35 +64,14 @@ public interface Resources extends FontResources {
     @Source("img/logoJccq.svg")
     SVGResource logoJccq();
 
-    @Source("img/voteHeader.svg")
-    SVGResource voteHeader();
+    @Source("img/icon_app.png")
+    ImageResource iconApp();
 
-    @Source("img/vote.png")
-    ImageResource vote();
+    @Source("img/icon_winner.png")
+    ImageResource iconWinner();
 
-    @Source("img/voteBatman.png")
-    ImageResource voteBatman();
-
-    @Source("img/voteNinja.png")
-    ImageResource voteNinja();
-
-    @Source("img/voteClock.png")
-    ImageResource voteClock();
-
-    @Source("img/reload.png")
-    ImageResource reload();
-
-    @Source("img/reloadHover.png")
-    ImageResource reloadHover();
-
-    @Source("img/oeil.png")
-    ImageResource oeil();
-
-    @Source("img/radio.png")
-    ImageResource radio();
-
-    @Source("img/oeilHover.png")
-    ImageResource oeilHover();
+    @Source("img/icon_vote.png")
+    ImageResource iconVote();
 
     @Source("img/voteAccent.png")
     ImageResource voteAccent();
@@ -107,6 +82,7 @@ public interface Resources extends FontResources {
     @Source({"com/arcbees/gsss/mixin/client/mixins.gss",
             "fonts/brandon.gss",
             "css/colors.gss",
+            "fonts/fonts.gss",
             "css/styles.gss"})
     Styles styles();
 

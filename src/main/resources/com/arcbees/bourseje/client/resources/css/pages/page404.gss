@@ -1,0 +1,31 @@
+.error {
+    margin: 0 auto 20px;
+    width: 105px;
+    height: 125px;
+
+    transform-origin: 50% 50%;
+}
+
+.circle {
+    stroke-dasharray: 200;
+    stroke-dashoffset: 200;
+
+    -webkit-animation: error .5s linear forwards;
+    -moz-animation: error .5s linear forwards;
+    -o-animation: error .5s linear forwards;
+    animation: error .5s linear forwards;
+
+    @mixin animation_delay(.5s);
+}
+
+@keyframes error {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@-webkit-keyframes error {
+    to {
+        stroke-dashoffset: 0;
+    }
+}

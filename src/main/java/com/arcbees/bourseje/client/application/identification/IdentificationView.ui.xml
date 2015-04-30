@@ -1,0 +1,32 @@
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:g="urn:import:com.google.gwt.user.client.ui"
+             xmlns:w="urn:import:com.arcbees.bourseje.client.application.ui">
+
+    <ui:with field="res" type="com.arcbees.bourseje.client.resources.Resources"/>
+    <ui:with field="page" type="com.arcbees.bourseje.client.resources.PageIdentificationResources"/>
+
+    <g:HTMLPanel styleName="{res.styles.main_section}">
+        <w:Header/>
+
+        <section class="{res.styles.main_content}">
+            <article>
+                <div class="{res.styles.wrapper} {res.styles.txtcenter}">
+                    <div class="{res.styles.text_step}">
+                        <h2>Étape 1</h2>
+                        <p>Entrez votre code unique à 5 chiffres</p>
+                    </div>
+
+                    <form class="{page.style.login}">
+                        <!--<div class="{page.style.error_message}">Code non valide, réessayez</div>-->
+                        <!-- Todo Jc when the code is not valid, you must add the class on the input below and display the previous commented line  -->
+                        <input type="password" max="5" class="{page.style.input_error}"/>
+                        <button class="{res.styles.btn} {res.styles.btn_wide}" type="submit">Unique, moi toujours!
+                        </button>
+                    </form>
+                </div>
+            </article>
+        </section>
+
+        <w:Footer/>
+    </g:HTMLPanel>
+</ui:UiBinder>

@@ -16,13 +16,18 @@
 
 package com.arcbees.bourseje.client.resources;
 
+import com.arcbees.gsss.animation.client.AnimationResources;
 import com.google.gwt.resources.client.ClientBundle;
-import com.google.gwt.resources.client.CssResource;
 
 public interface PageNoVoteResources extends ClientBundle {
-    interface Style extends CssResource {
+    interface Style extends AnimationResources.Animation {
+        String batman();
+
+        String eye();
     }
 
-    @Source({"css/pages/novote.gss"})
+    @Source({"com/arcbees/gsss/animation/client/animationsettings.gss",
+            "com/arcbees/gsss/animation/client/animations.gss",
+            "css/pages/novote.gss"})
     Style style();
 }

@@ -16,13 +16,27 @@
 
 package com.arcbees.bourseje.client.resources;
 
+import com.arcbees.gsss.animation.client.AnimationResources;
 import com.google.gwt.resources.client.ClientBundle;
-import com.google.gwt.resources.client.CssResource;
 
 public interface PageVoteResources extends ClientBundle {
-    interface Style extends CssResource {
+    interface Style extends AnimationResources.Animation {
+        String vote_form();
+
+        String finalist_box();
+
+        String finalist();
+
+        String finalist_name();
+
+        String finalist_avatar();
     }
 
-    @Source({"css/pages/vote.gss"})
+    @Source({"com/arcbees/gsss/animation/client/animationsettings.gss",
+            "com/arcbees/gsss/animation/client/animations.gss",
+            "com/arcbees/gsss/mixin/client/mixins.gss",
+            "css/colors.gss",
+            "fonts/fonts.gss",
+            "css/pages/vote.gss"})
     Style style();
 }

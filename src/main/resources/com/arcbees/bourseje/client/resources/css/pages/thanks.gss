@@ -1,2 +1,5 @@
-
-
+.vote_icon {
+    margin: 0 auto 25px;
+    width: 105px;
+    height: 165px;
+}

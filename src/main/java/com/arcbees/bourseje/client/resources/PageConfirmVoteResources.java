@@ -21,8 +21,15 @@ import com.google.gwt.resources.client.CssResource;
 
 public interface PageConfirmVoteResources extends ClientBundle {
     interface Style extends CssResource {
+        String choice_box();
+
+        String choice_avatar();
+
+        String choice_name();
     }
 
-    @Source({"css/pages/confirmvote.gss"})
+    @Source({"com/arcbees/gsss/mixin/client/mixins.gss",
+            "css/colors.gss",
+            "css/pages/confirmvote.gss"})
     Style style();
 }

@@ -3,19 +3,40 @@
              xmlns:w="urn:import:com.arcbees.bourseje.client.application.ui">
 
     <ui:with field="res" type="com.arcbees.bourseje.client.resources.Resources"/>
+    <ui:with field="page" type="com.arcbees.bourseje.client.resources.PageThanksResources"/>
 
-    <g:HTMLPanel styleName="{res.styles.mainSection}">
+    <g:HTMLPanel styleName="{res.styles.main_section}">
         <w:Header/>
 
-        <section>
-            <div>
-                <article class="{res.styles.wrapper} {res.styles.txtcenter}">
-                    <p>Merci d'avoir</p>
-                    <div class="{res.styles.vote}">
-                        <g:Image resource="{res.voteAccent}"/>
+        <section class="{res.styles.main_content}">
+            <article>
+                <div class="{res.styles.wrapper} {res.styles.txtcenter}">
+                    <div class="{page.style.vote_icon}">
+                        <svg version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 50 77.568" enable-background="new 0 0 50 77.568" xml:space="preserve">
+                            <g>
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M25,14c1.657,0,3-1.343,3-3V3c0-1.657-1.343-3-3-3s-3,1.343-3,3v8
+                                    C22,12.657,23.343,14,25,14"/>
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M6.323,17.566l1.556,1.555l0.009-0.008C8.427,19.659,9.17,20,10,20
+                                    c1.657,0,3-1.343,3-3c0-0.83-0.341-1.574-0.887-2.113l0.008-0.009l-1.555-1.555L5.121,7.878C4.578,7.335,3.828,7,3,7
+                                    c-1.657,0-3,1.342-3,3c0,0.828,0.336,1.578,0.879,2.122L6.323,17.566z"/>
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M40,20c0.83,0,1.573-0.341,2.113-0.887l0.008,0.008l1.556-1.555l5.438-5.437
+                                    l0.007-0.007C49.664,11.578,50,10.828,50,10c0-1.657-1.343-3-3-3c-0.414,0-0.809,0.084-1.167,0.236
+                                    c-0.359,0.152-0.683,0.371-0.955,0.643l-5.444,5.444l-1.555,1.556l0.008,0.009c-0.409,0.404-0.703,0.923-0.825,1.508
+                                    C37.021,16.59,37,16.792,37,17C37,18.657,38.343,20,40,20"/>
+                            </g>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M25.001,22.853c-13.312,0-24.142,10.829-24.142,24.14
+                                c0,6.145,2.303,11.964,6.501,16.458L7.295,75.942c-0.004,0.599,0.322,1.147,0.848,1.433c0.241,0.129,0.505,0.193,0.769,0.193
+                                c0.312,0,0.623-0.09,0.893-0.269l10.201-6.747c1.764,0.391,3.403,0.581,4.995,0.581c13.311,0,24.14-10.829,24.14-24.141
+                                C49.141,33.682,38.312,22.853,25.001,22.853"/>
+                            <path fill="#FFFFFF" d="M25.001,32.93c-7.623,0-13.823,6.201-13.823,13.822c0,3.643,1.42,7.089,3.996,9.703l1.307,1.325
+                                l-0.014,2.757c-0.001,0.269,0.144,0.517,0.381,0.645c0.108,0.06,0.228,0.089,0.347,0.089c0.14,0,0.279-0.04,0.4-0.12l2.248-1.486
+                                l1.922,0.475c1.202,0.293,2.26,0.436,3.236,0.436c7.62,0,13.821-6.201,13.821-13.822S32.621,32.93,25.001,32.93"/>
+                        </svg>
                     </div>
-                </article>
-            </div>
+                    <h2>A VOTÉ!</h2>
+                    <p>Merci beaucoup pour votre vote</p>
+                </div>
+            </article>
         </section>
 
         <w:Footer/>

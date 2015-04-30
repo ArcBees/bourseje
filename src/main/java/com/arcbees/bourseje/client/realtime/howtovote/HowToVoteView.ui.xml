@@ -1,0 +1,47 @@
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:g="urn:import:com.google.gwt.user.client.ui"
+             xmlns:w="urn:import:com.arcbees.bourseje.client.application.ui">
+
+    <ui:with field="res" type="com.arcbees.bourseje.client.resources.Resources"/>
+    <ui:with field="page" type="com.arcbees.bourseje.client.resources.PageHowToVoteResources"/>
+
+    <g:HTMLPanel styleName="{res.styles.main_section}">
+        <w:Header/>
+
+        <section class="{res.styles.main_content}">
+            <article>
+                <div class="{res.styles.wrapper_desktop} {res.styles.clearfix} {res.styles.txtcenter}">
+                    <div class="{page.style.text_intro}">
+                        <h2>Les candidats</h2>
+                        <p>pour la personnalité d’affaires
+                            <span>de l’année 2015</span>
+                        </p>
+                    </div>
+                    <div class="{res.grid.col} {res.grid.col_4} {page.style.step} {page.style.step1}">
+                        <g:Image resource="{res.iconApp}"/>
+                        <h3>Étape 1</h3>
+                        <p>Je vais sur l’application
+                            <span>Vote</span>
+                        </p>
+                    </div>
+                    <div class="{res.grid.col} {res.grid.col_4} {page.style.step} {page.style.step2}">
+                        <g:Image resource="{res.iconVote}"/>
+                        <h3>Étape 2</h3>
+                        <p>Je vote pour
+                            <span>mon candidat</span>
+                        </p>
+                    </div>
+                    <div class="{res.grid.col} {res.grid.col_4} {page.style.step}">
+                        <g:Image resource="{res.iconWinner}"/>
+                        <h3>Étape 3</h3>
+                        <p>On celèbre
+                            <span>le gagnant</span>
+                        </p>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <w:Footer/>
+    </g:HTMLPanel>
+</ui:UiBinder>

@@ -19,10 +19,12 @@ package com.arcbees.bourseje.client.application;
 import com.arcbees.bourseje.client.application.alreadyvoted.AlreadyVotedModule;
 import com.arcbees.bourseje.client.application.confirmvote.ConfirmVoteModule;
 import com.arcbees.bourseje.client.application.home.HomeModule;
-import com.arcbees.bourseje.client.application.inactivevote.InactiveVoteModule;
+import com.arcbees.bourseje.client.application.identification.IdentificationModule;
 import com.arcbees.bourseje.client.application.novote.NoVoteModule;
+import com.arcbees.bourseje.client.application.page404.Page404Module;
 import com.arcbees.bourseje.client.application.thanks.ThanksModule;
 import com.arcbees.bourseje.client.application.vote.VoteModule;
+import com.arcbees.bourseje.client.application.votefinished.VoteFinishedModule;
 import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 
 public class ApplicationModule extends AbstractPresenterModule {
@@ -30,11 +32,13 @@ public class ApplicationModule extends AbstractPresenterModule {
     protected void configure() {
         install(new AlreadyVotedModule());
         install(new ConfirmVoteModule());
-        install(new InactiveVoteModule());
         install(new NoVoteModule());
         install(new VoteModule());
         install(new HomeModule());
         install(new ThanksModule());
+        install(new IdentificationModule());
+        install(new VoteFinishedModule());
+        install(new Page404Module());
 
         bindPresenter(ApplicationPresenter.class, ApplicationPresenter.MyView.class, ApplicationView.class,
                 ApplicationPresenter.MyProxy.class);

@@ -21,6 +21,7 @@ import com.google.gwt.resources.client.CssResource;
 
 public interface PageInactiveVoteResources extends ClientBundle {
     interface Style extends CssResource {
+        String vote();
     }
 
     @Source({"css/pages/inactivevote.gss"})

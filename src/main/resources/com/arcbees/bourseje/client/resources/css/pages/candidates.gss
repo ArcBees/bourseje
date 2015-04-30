@@ -1,0 +1,42 @@
+.text_intro {
+    margin-bottom: 100px;
+}
+
+.text_intro > h2,
+.text_intro p {
+    font-size: 3rem;
+    line-height: 1.2;
+}
+
+.text_intro p span {
+    display: block;
+}
+
+.box_candidates {
+    background-color: C_SECONDARY;
+
+    padding: 20px 10px 0;
+    margin-bottom: 10px;
+}
+
+.box_candidates h3 {
+    font-size: 3rem;
+    font-family: F_SECONDARY;
+    line-height: 1;
+
+    margin: 1em 0 .25em;
+}
+
+.box_candidates p {
+    color: C_TEXT_MEDIUM;
+    text-transform: uppercase;
+}
+
+.avatar {
+    width: 150px;
+    height: 150px;
+
+    vertical-align: middle;
+
+    @mixin rounded(75px);
+}
