@@ -1,9 +1,12 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <module rename-to='bourseje'>
     <inherits name='com.arcbees.bourseje.BourseJE'/>
+    <inherits name="com.google.gwt.logging.Logging"/>
+
+    <add-linker name="xsiframe"/>
 
     <set-configuration-property name="CssResource.style" value="pretty"/>
 
     <extend-configuration-property name="gin.ginjector.modules"
-                                   value="com.arcbees.bourseje.client.PhonegapLocalModule"/>
+                                   value="com.arcbees.bourseje.client.LocalModule"/>
 </module>

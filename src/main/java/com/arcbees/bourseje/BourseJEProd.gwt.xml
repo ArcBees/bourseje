@@ -3,5 +3,5 @@
     <inherits name='com.arcbees.bourseje.BourseJE'/>
 
     <extend-configuration-property name="gin.ginjector.modules"
-                                   value="com.arcbees.bourseje.client.PhonegapRemoteModule"/>
+                                   value="com.arcbees.bourseje.client.RemoteModule"/>
 </module>

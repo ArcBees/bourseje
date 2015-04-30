@@ -19,7 +19,7 @@ package com.arcbees.bourseje.client;
 import com.gwtplatform.dispatch.rest.client.RestApplicationPath;
 import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 
-public class PhonegapRemoteModule extends AbstractPresenterModule {
+public class RemoteModule extends AbstractPresenterModule {
     @Override
     protected void configure() {
         bindConstant().annotatedWith(RestApplicationPath.class).to("http://bourseje.arcbees.com/api");

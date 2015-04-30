@@ -19,7 +19,7 @@ package com.arcbees.bourseje.client;
 import com.gwtplatform.dispatch.rest.client.RestApplicationPath;
 import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 
-public class PhonegapLocalModule extends AbstractPresenterModule {
+public class LocalModule extends AbstractPresenterModule {
     @Override
     protected void configure() {
         bindConstant().annotatedWith(RestApplicationPath.class).to("http://127.0.0.1:8888/api");
