@@ -1,9 +1,9 @@
 import random
 
-number_of_keys = 250
-key_length = 10
+number_of_codes = 250
+code_length = 5
 symbols = "ABCDEFGHJKLMNPQRSTUVWXYZ"
 
-for i in range(number_of_keys):
-    key = ''.join(random.choice(symbols) for _ in range(0, key_length))
-    print(key)
+for i in range(number_of_codes):
+    code = ''.join(random.choice(symbols) for _ in range(0, code_length))
+    print(code)
