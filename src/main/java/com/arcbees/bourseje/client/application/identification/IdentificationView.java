@@ -16,19 +16,42 @@
 
 package com.arcbees.bourseje.client.application.identification;
 
-import com.google.gwt.uibinder.client.UiBinder;
-import com.google.gwt.user.client.ui.Widget;
-import com.gwtplatform.mvp.client.ViewImpl;
-
 import javax.inject.Inject;
 
-public class IdentificationView extends ViewImpl implements IdentificationPresenter.MyView {
+import com.google.gwt.dom.client.ButtonElement;
+import com.google.gwt.dom.client.InputElement;
+import com.google.gwt.query.client.Function;
+import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.user.client.ui.Widget;
+import com.gwtplatform.mvp.client.ViewWithUiHandlers;
+
+import static com.google.gwt.dom.client.BrowserEvents.CLICK;
+import static com.google.gwt.query.client.GQuery.$;
+
+public class IdentificationView extends ViewWithUiHandlers<IdentificationUiHandlers> implements IdentificationPresenter.MyView {
     interface Binder extends UiBinder<Widget, IdentificationView> {
     }
+
+    @UiField
+    ButtonElement submit;
+    @UiField
+    InputElement code;
 
     @Inject
     IdentificationView(
             Binder uiBinder) {
         initWidget(uiBinder.createAndBindUi(this));
+
+        initSubmit();
+    }
+
+    private void initSubmit() {
+        $(submit).on(CLICK, new Function() {
+            @Override
+            public void f() {
+                getUiHandlers().onSubmit(code.getValue());
+            }
+        });
     }
 }

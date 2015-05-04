@@ -51,6 +51,12 @@ public class VoteResource {
         return Response.ok(voteService.getVoteItems()).build();
     }
 
+    @Path(ResourcesPath.CODE)
+    @POST
+    public Response useCode(String code, @Context HttpServletRequest request, @Context HttpServletResponse response) {
+        return Response.ok().build();
+    }
+
     @POST
     public Response vote(VoteItem voteItem, @Context HttpServletRequest request,
                          @Context HttpServletResponse response) {

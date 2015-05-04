@@ -19,8 +19,8 @@
                     <form class="{page.style.login}">
                         <!--<div class="{page.style.error_message}">Code non valide, réessayez</div>-->
                         <!-- Todo Jc when the code is not valid, you must add the class on the input below and display the previous commented line  -->
-                        <input type="password" max="5" class="{page.style.input_error}"/>
-                        <button class="{res.styles.btn} {res.styles.btn_wide}" type="submit">Unique, moi toujours!
+                        <input ui:field="code" type="password" max="5" class="{page.style.input_error}"/>
+                        <button ui:field="submit" class="{res.styles.btn} {res.styles.btn_wide}" type="submit">Unique, moi toujours!
                         </button>
                     </form>
                 </div>
