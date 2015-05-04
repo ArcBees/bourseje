@@ -233,6 +233,12 @@ input {
     margin: 30px auto;
 }
 
+.logo_vote_desktop {
+    width: 200px;
+    height: 92px;
+    margin: 15px auto;
+}
+
 .text_step {
     text-align: center;
     margin-bottom: 20px;

@@ -56,6 +56,8 @@ public interface Resources extends FontResources {
         String main_content();
 
         String main_section();
+
+        String logo_vote_desktop();
     }
 
     @Source("img/logoArcbees.svg")

@@ -3,3 +3,70 @@
     width: 105px;
     height: 165px;
 }
+
+.vote_icon svg {
+    padding: 40px;
+    margin-top: -306px;
+    margin-left: -40px;
+    width: 184px;
+}
+
+.pulse {
+    @mixin animation_name(pulseIcon);
+    @mixin animation_iteration_count(1);
+    @mixin animation_delay(3s);
+    -webkit-transform-origin: 50% 50%;
+}
+
+@-webkit-keyframes pulseIcon {
+    0%, 100% {
+        opacity: 1;
+        -webkit-transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        -webkit-transform: scale(1.1);
+    }
+}
+
+@keyframes pulseIcon {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+}
+
+.text_appear {
+    opacity: 0;
+
+    @mixin animation_name(textAppear);
+    @mixin animation_delay(3s);
+    @mixin animation_duration(1s);
+    @mixin animation_fill_mode(forwards);
+}
+
+@-webkit-keyframes textAppear {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes textAppear {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

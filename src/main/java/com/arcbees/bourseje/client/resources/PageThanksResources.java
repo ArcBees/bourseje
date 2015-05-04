@@ -22,6 +22,8 @@ import com.google.gwt.resources.client.ClientBundle;
 public interface PageThanksResources extends ClientBundle {
     interface Style extends AnimationResources.Animation {
         String vote_icon();
+
+        String text_appear();
     }
 
     @Source({"com/arcbees/gsss/animation/client/animationsettings.gss",

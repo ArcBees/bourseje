@@ -4,14 +4,14 @@
     <ui:with field="res" type="com.arcbees.bourseje.client.resources.Resources"/>
 
     <g:HTMLPanel tag="footer">
-        <div class="{res.styles.wrapper} {res.styles.clearfix}">
+        <div class="{res.styles.wrapper_desktop} {res.styles.clearfix}">
             <div class="{res.styles.logoJccq}">
                 <svg:SVGImage resource="{res.logoJccq}"/>
             </div>
-            <div class="{res.styles.logoArcbees}">
+                <div class="{res.styles.logoArcbees}">
                 <p>Propulsé par</p>
-                <svg:SVGImage resource="{res.logoArcbees}"/>
-            </div>
+                    <svg:SVGImage resource="{res.logoArcbees}"/>
+                </div>
         </div>
     </g:HTMLPanel>
 </ui:UiBinder>
