@@ -3,6 +3,7 @@
              xmlns:w="urn:import:com.arcbees.bourseje.client.realtime.ui">
 
     <ui:with field="res" type="com.arcbees.bourseje.client.resources.Resources"/>
+    <ui:with field="anim" type="com.arcbees.bourseje.client.resources.AnimationsResources"/>
     <ui:with field="page" type="com.arcbees.bourseje.client.resources.PageResultResources"/>
 
     <g:HTMLPanel styleName="{res.styles.main_section}">
@@ -17,7 +18,7 @@
                             <span>est</span>
                         </h2>
                     </div>
-                    <div class="{res.grid.col} {res.grid.col_6} {res.grid.col_push_3} {page.style.box_candidates}">
+                    <div class="{anim.style.animation} {anim.style.bounceIn} {res.grid.col} {res.grid.col_6} {res.grid.col_push_3} {page.style.box_candidates}">
                         <g:Image resource="{res.voteAccent}" styleName="{page.style.avatar}"/>
                         <h3>Jason Lemay</h3>
                         <p>Arcbees</p>
@@ -26,6 +27,13 @@
                         </div>
                     </div>
                 </div>
+                <div class="{anim.style.animation} {anim.style.infinite} {anim.style.bounceIn} {page.style.artifice} {page.style.artifice_1}"></div>
+                <div class="{anim.style.animation} {anim.style.infinite} {anim.style.bounceIn} {page.style.artifice} {page.style.artifice_2}"></div>
+                <div class="{anim.style.animation} {anim.style.infinite} {anim.style.bounceIn} {page.style.artifice} {page.style.artifice_3}"></div>
+                <div class="{anim.style.animation} {anim.style.infinite} {anim.style.bounceIn} {page.style.artifice} {page.style.artifice_4}"></div>
+                <div class="{anim.style.animation} {anim.style.infinite} {anim.style.bounceIn} {page.style.artifice} {page.style.artifice_5}"></div>
+                <div class="{anim.style.animation} {anim.style.infinite} {anim.style.bounceIn} {page.style.artifice} {page.style.artifice_6}"></div>
+                <div class="{anim.style.animation} {anim.style.infinite} {anim.style.bounceIn} {page.style.artifice} {page.style.artifice_7}"></div>
             </article>
         </section>
 
