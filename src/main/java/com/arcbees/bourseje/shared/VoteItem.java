@@ -28,7 +28,7 @@ public class VoteItem {
     private String value;
 
     @Index
-    private String ip;
+    private String code;
 
     public VoteItem() {
     }
@@ -55,11 +55,11 @@ public class VoteItem {
     }
 
     @JsonIgnore
-    public String getIp() {
-        return ip;
+    public String getCode() {
+        return code;
     }
 
-    public void setIp(String ip) {
-        this.ip = ip;
+    public void setCode(String code) {
+        this.code = code;
     }
 }

@@ -54,6 +54,10 @@ public class VoteService {
         }
     }
 
+    public boolean isCodeAlreadyUsed(String code) {
+        return voteItemDao.findByVoteCode(code) != null;
+    }
+
     private boolean sameDay(Calendar today) {
         return today.get(Calendar.YEAR) == voteDate.get(Calendar.YEAR) &&
                 today.get(Calendar.DAY_OF_YEAR) == voteDate.get(Calendar.DAY_OF_YEAR);
