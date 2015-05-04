@@ -8,6 +8,10 @@
     display: block;
 }
 
+.text_intro span:last-of-type {
+    font-family: F_PRIMARY;
+}
+
 .box_candidates {
     background-color: C_SECONDARY;
 
