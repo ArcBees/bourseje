@@ -6,11 +6,15 @@
     <g:HTMLPanel tag="footer">
         <div class="{res.styles.wrapper} {res.styles.clearfix}">
             <div class="{res.styles.logoJccq}">
-                <svg:SVGImage resource="{res.logoJccq}"/>
+                <a href="http://www.jccq.qc.ca/" target="_blank">
+                    <svg:SVGImage resource="{res.logoJccq}"/>
+                </a>
             </div>
             <div class="{res.styles.logoArcbees}">
                 <p>Propulsé par</p>
-                <svg:SVGImage resource="{res.logoArcbees}"/>
+                <a href="http://www.arcbees.com" target="_blank">
+                    <svg:SVGImage resource="{res.logoArcbees}"/>
+                </a>
             </div>
         </div>
     </g:HTMLPanel>
