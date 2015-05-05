@@ -16,15 +16,5 @@
 
 package com.arcbees.bourseje.server.exception;
 
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
-import javax.ws.rs.ext.ExceptionMapper;
-import javax.ws.rs.ext.Provider;
-
-@Provider
-public class VoteCodeNotSetExceptionMapper implements ExceptionMapper<VoteCodeNotSetException> {
-    @Override
-    public Response toResponse(VoteCodeNotSetException e) {
-        return Response.status(Status.FORBIDDEN).build();
-    }
+public class VoteCodeNotFoundException extends RuntimeException {
 }

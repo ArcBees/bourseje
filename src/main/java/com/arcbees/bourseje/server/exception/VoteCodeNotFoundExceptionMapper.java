@@ -22,9 +22,9 @@ import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 
 @Provider
-public class VoteCodeNotSetExceptionMapper implements ExceptionMapper<VoteCodeNotSetException> {
+public class VoteCodeNotFoundExceptionMapper implements ExceptionMapper<VoteCodeNotFoundException> {
     @Override
-    public Response toResponse(VoteCodeNotSetException e) {
-        return Response.status(Status.FORBIDDEN).build();
+    public Response toResponse(VoteCodeNotFoundException e) {
+        return Response.status(Status.NOT_FOUND).build();
     }
 }

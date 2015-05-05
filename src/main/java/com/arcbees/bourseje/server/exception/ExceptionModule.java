@@ -26,6 +26,7 @@ public class ExceptionModule extends AbstractModule {
         bind(InactiveVoteExceptionMapper.class).in(Singleton.class);
         bind(NoVoteExceptionMapper.class).in(Singleton.class);
         bind(AlreadyVotedExceptionMapper.class).in(Singleton.class);
+        bind(VoteCodeNotFoundExceptionMapper.class).in(Singleton.class);
         bind(VoteCodeNotSetExceptionMapper.class).in(Singleton.class);
     }
 }

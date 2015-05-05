@@ -32,13 +32,16 @@ import com.arcbees.bourseje.shared.VoteItem;
 public class VoteService {
     private final Calendar voteDate;
     private final VoteItemDao voteItemDao;
+    private final FilesService filesService;
 
     @Inject
     VoteService(
             @Named(ServerModule.VOTE_DATE) Calendar voteDate,
-            VoteItemDao voteItemDao) {
+            VoteItemDao voteItemDao,
+            FilesService filesService) {
         this.voteDate = voteDate;
         this.voteItemDao = voteItemDao;
+        this.filesService = filesService;
     }
 
     public List<VoteItem> getVoteItems() {
@@ -54,13 +57,17 @@ public class VoteService {
         }
     }
 
-    public boolean isCodeAlreadyUsed(String code) {
-        return voteItemDao.findByVoteCode(code) != null;
-    }
-
     private boolean sameDay(Calendar today) {
         return today.get(Calendar.YEAR) == voteDate.get(Calendar.YEAR) &&
                 today.get(Calendar.DAY_OF_YEAR) == voteDate.get(Calendar.DAY_OF_YEAR);
+    }
+
+    public boolean isCodeValid(String code) {
+        return filesService.getVoteCodes().contains(code);
+    }
+
+    public boolean isCodeAlreadyUsed(String code) {
+        return voteItemDao.findByVoteCode(code) != null;
     }
 
     public void vote(VoteItem voteItem) {
