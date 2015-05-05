@@ -13,7 +13,7 @@
                 <div class="{res.styles.wrapper} {res.styles.txtcenter}">
                     <div class="{res.styles.text_step}">
                         <h2>Étape 1</h2>
-                        <p>Entrez votre code unique à 5 chiffres</p>
+                        <p>Entrez votre code unique <span>à 5 chiffres</span></p>
                     </div>
 
                     <form class="{page.style.login}">

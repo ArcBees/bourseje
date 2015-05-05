@@ -24,6 +24,8 @@ public interface PageThanksResources extends ClientBundle {
         String vote_icon();
 
         String text_appear();
+
+        String pulse_icon();
     }
 
     @Source({"com/arcbees/gsss/animation/client/animationsettings.gss",

@@ -4,42 +4,44 @@
     height: 115px;
 }
 
-.shake {
+.shake_clock {
+    -webkit-transform-origin: 50% 50%;
+    -ms-transform-origin: 50% 50%;
     transform-origin: 50% 50%;
 
-    @mixin animation_name(shake);
+    @mixin animation_name(shakeClock);
     @mixin animation_duration(.75s);
     @mixin animation_delay(2s);
 }
 
-@-webkit-keyframes shake {
+@-webkit-keyframes shakeClock {
     0%, 100% {
-        -webkit-transform: skew(0deg, 0deg) translate(0, 0) rotate3d(0, 0, 0, 0deg);
-        transform: skew(0deg, 0deg) translatex(0) rotate3d(0, 0, 0, 0deg);
+        -webkit-transform: skew(0deg, 0deg) translate(0, 0);
     }
 
     10%, 30%, 50%, 70%, 90% {
-        -webkit-transform: skew(5deg, 2deg) translate(2px, 3px) rotate3d(10, 30, 10, 5deg);
-        transform: skew(5deg, 2deg) translatex(2px) rotate3d(10, 30, 10, 5deg);
+        -webkit-transform: skew(5deg, 2deg) translate(2px, 3px);
     }
 
     20%, 40%, 60%, 80% {
-        -webkit-transform: skew(2deg) translate(3px, 2px) rotate3d(1, 2, 3, 2deg);
-        transform: skew(2deg) translatex(3px) rotate3d(1, 2, 3, 2deg);
+        -webkit-transform: skew(2deg, 0deg) translate(3px, 2px);
     }
 }
 
 @keyframes shake {
     0%, 100% {
-        transform: translate3d(0, 0, 0);
+        -ms-transform: skew(0deg, 0deg) translate(0, 0);
+        transform: skew(0deg, 0deg) translate(0, 0);
     }
 
     10%, 30%, 50%, 70%, 90% {
-        transform: translate3d(-1px, -1px, -1px);
+        -ms-transform: skew(5deg, 2deg) translate(2px, 3px);
+        transform: skew(5deg, 2deg) translate(2px, 3px);
     }
 
     20%, 40%, 60%, 80% {
-        transform: translate3d(1px, 0, 0);
+        -ms-transform: skew(2deg) translate(3px, 2px);
+        transform: skew(2deg) translate(3px, 2px);
     }
 }
 

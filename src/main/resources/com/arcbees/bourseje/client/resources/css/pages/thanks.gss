@@ -6,38 +6,38 @@
 
 .vote_icon svg {
     padding: 40px;
-    margin-top: -306px;
-    margin-left: -40px;
+    margin: -306px 0 0 -40px;
     width: 184px;
 }
 
-.pulse {
-    @mixin animation_name(pulseIcon);
-    @mixin animation_iteration_count(1);
-    @mixin animation_delay(3s);
+.pulse_icon {
     -webkit-transform-origin: 50% 50%;
+    -ms-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+
+    @mixin animation_name(pulseIcon);
+    @mixin animation_delay(3s);
+    @mixin animation_timing_function(ease);
 }
 
 @-webkit-keyframes pulseIcon {
     0%, 100% {
-        opacity: 1;
         -webkit-transform: scale(1);
     }
 
     50% {
-        opacity: 1;
         -webkit-transform: scale(1.1);
     }
 }
 
 @keyframes pulseIcon {
     0%, 100% {
-        opacity: 1;
+        -ms-transform: scale(1);
         transform: scale(1);
     }
 
     50% {
-        opacity: 1;
+        -ms-transform: scale(1.1);
         transform: scale(1.1);
     }
 }

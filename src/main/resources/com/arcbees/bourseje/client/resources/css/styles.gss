@@ -204,7 +204,7 @@ input {
 
     cursor: pointer;
     display: inline-block;
-    margin: 55px 0;
+    margin: 25px 0 50px;
     height: 35px;
     padding: .5em 1.5rem;
     outline: 0;
