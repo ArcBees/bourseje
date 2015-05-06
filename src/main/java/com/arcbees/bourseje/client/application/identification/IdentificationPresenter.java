@@ -23,7 +23,6 @@ import com.arcbees.bourseje.client.application.ApplicationPresenter;
 import com.arcbees.bourseje.shared.CookieNames;
 import com.google.gwt.http.client.Response;
 import com.google.gwt.user.client.Cookies;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.dispatch.rest.client.RestDispatch;
@@ -40,6 +39,9 @@ public class IdentificationPresenter
         extends Presenter<IdentificationPresenter.MyView, IdentificationPresenter.MyProxy>
         implements IdentificationUiHandlers {
     interface MyView extends View, HasUiHandlers<IdentificationUiHandlers> {
+        void hideInvalidCodeError();
+
+        void showInvalidCodeError();
     }
 
     @ProxyStandard
@@ -69,17 +71,23 @@ public class IdentificationPresenter
     }
 
     @Override
+    protected void onReveal() {
+        getView().hideInvalidCodeError();
+    }
+
+    @Override
     public void onSubmit(final String code) {
         dispatcher.execute(voteService.useCode(code), new RestCallbackImpl<Void>() {
             @Override
             public void onError(Response response) {
                 super.onError(response);
 
-                PlaceRequest placeRequest = new PlaceRequest.Builder()
-                        .nameToken(NameTokens.ALREADY_VOTED)
-                        .build();
-
-                placeManager.revealPlace(placeRequest);
+//                PlaceRequest placeRequest = new PlaceRequest.Builder()
+//                        .nameToken(NameTokens.ALREADY_VOTED)
+//                        .build();
+//
+//                placeManager.revealPlace(placeRequest);
+                getView().showInvalidCodeError();
             }
 
             @Override

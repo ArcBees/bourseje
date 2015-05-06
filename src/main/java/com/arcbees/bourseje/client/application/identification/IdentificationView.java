@@ -18,7 +18,9 @@ package com.arcbees.bourseje.client.application.identification;
 
 import javax.inject.Inject;
 
+import com.arcbees.bourseje.client.resources.PageIdentificationResources;
 import com.google.gwt.dom.client.ButtonElement;
+import com.google.gwt.dom.client.DivElement;
 import com.google.gwt.dom.client.InputElement;
 import com.google.gwt.query.client.Function;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -37,6 +39,10 @@ public class IdentificationView extends ViewWithUiHandlers<IdentificationUiHandl
     ButtonElement submit;
     @UiField
     InputElement code;
+    @UiField
+    DivElement invalidCodeMessage;
+    @UiField
+    PageIdentificationResources pageResources;
 
     @Inject
     IdentificationView(
@@ -44,6 +50,22 @@ public class IdentificationView extends ViewWithUiHandlers<IdentificationUiHandl
         initWidget(uiBinder.createAndBindUi(this));
 
         initSubmit();
+    }
+
+    @Override
+    public void hideInvalidCodeError() {
+        $(invalidCodeMessage).hide();
+        $(code).removeClass(pageResources.style().input_error());
+
+        code.setValue("");
+    }
+
+    @Override
+    public void showInvalidCodeError() {
+        $(invalidCodeMessage).show();
+        $(code).addClass(pageResources.style().input_error());
+
+        code.setValue("");
     }
 
     private void initSubmit() {
