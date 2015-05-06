@@ -1,3 +1,6 @@
+# sensible files
+codes.txt
+
 # Package Files #
 target/**/*.jar
 *.war
