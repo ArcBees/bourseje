@@ -204,7 +204,7 @@ input {
 
     cursor: pointer;
     display: inline-block;
-    margin: 55px 0;
+    margin: 25px 0 50px;
     height: 35px;
     padding: .5em 1.5rem;
     outline: 0;
@@ -231,6 +231,12 @@ input {
     width: 105px;
     height: 45px;
     margin: 30px auto;
+}
+
+.logo_vote_desktop {
+    width: 200px;
+    height: 92px;
+    margin: 15px auto;
 }
 
 .text_step {

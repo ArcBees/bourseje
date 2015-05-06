@@ -26,6 +26,8 @@ public interface PageCandidatesResources extends ClientBundle {
         String box_candidates();
 
         String text_intro();
+
+        String candidates();
     }
 
     @Source({"com/arcbees/gsss/animation/client/animationsettings.gss",

@@ -25,7 +25,7 @@ public interface PageVoteFinishedResources extends ClientBundle {
 
         String vibration();
 
-        String shake();
+        String shake_clock();
     }
 
     @Source({"com/arcbees/gsss/animation/client/animationsettings.gss",

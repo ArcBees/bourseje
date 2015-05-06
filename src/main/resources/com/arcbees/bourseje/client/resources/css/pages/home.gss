@@ -1,3 +1,7 @@
+.home_main_content {
+    height: calc(100% - 95px);
+}
+
 .vote {
     margin: 0 auto 24px;
 }

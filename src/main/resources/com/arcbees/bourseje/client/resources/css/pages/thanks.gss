@@ -3,3 +3,70 @@
     width: 105px;
     height: 165px;
 }
+
+.vote_icon svg {
+    padding: 40px;
+    margin: -306px 0 0 -40px;
+    width: 184px;
+}
+
+.pulse_icon {
+    -webkit-transform-origin: 50% 50%;
+    -ms-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+
+    @mixin animation_name(pulseIcon);
+    @mixin animation_delay(3s);
+    @mixin animation_timing_function(ease);
+}
+
+@-webkit-keyframes pulseIcon {
+    0%, 100% {
+        -webkit-transform: scale(1);
+    }
+
+    50% {
+        -webkit-transform: scale(1.1);
+    }
+}
+
+@keyframes pulseIcon {
+    0%, 100% {
+        -ms-transform: scale(1);
+        transform: scale(1);
+    }
+
+    50% {
+        -ms-transform: scale(1.1);
+        transform: scale(1.1);
+    }
+}
+
+.text_appear {
+    opacity: 0;
+
+    @mixin animation_name(textAppear);
+    @mixin animation_delay(3s);
+    @mixin animation_duration(1s);
+    @mixin animation_fill_mode(forwards);
+}
+
+@-webkit-keyframes textAppear {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes textAppear {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

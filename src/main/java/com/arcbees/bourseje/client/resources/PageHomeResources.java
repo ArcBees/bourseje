@@ -22,6 +22,8 @@ import com.google.gwt.resources.client.CssResource;
 public interface PageHomeResources extends ClientBundle {
     interface Style extends CssResource {
         String vote();
+
+        String home_main_content();
     }
 
     @Source({"css/pages/home.gss"})

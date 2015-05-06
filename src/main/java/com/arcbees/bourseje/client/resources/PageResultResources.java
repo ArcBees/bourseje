@@ -28,6 +28,22 @@ public interface PageResultResources extends ClientBundle {
         String box_candidates();
 
         String number();
+
+        String artifice();
+
+        String artifice_1();
+
+        String artifice_5();
+
+        String artifice_4();
+
+        String artifice_3();
+
+        String artifice_2();
+
+        String artifice_6();
+
+        String artifice_7();
     }
 
     @Source({"com/arcbees/gsss/animation/client/animationsettings.gss",

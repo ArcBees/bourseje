@@ -9,7 +9,7 @@
 
     @mixin animation_name(eye);
     @mixin animation_duration(.75s);
-    @mixin animation_delay(2s);
+    @mixin animation_delay(.5s);
 }
 
 @-webkit-keyframes eye {

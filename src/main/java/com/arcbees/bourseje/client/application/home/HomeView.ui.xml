@@ -6,9 +6,7 @@
     <ui:with field="page" type="com.arcbees.bourseje.client.resources.PageHomeResources"/>
 
     <g:HTMLPanel styleName="{res.styles.main_section}">
-        <w:Header/>
-
-        <section class="{res.styles.main_content}">
+        <section class="{res.styles.main_content} {page.style.home_main_content}">
             <article>
                 <div class="{res.styles.wrapper} {res.styles.txtcenter}">
                     <div class="{page.style.vote}">

@@ -14,13 +14,14 @@
  * the License.
  */
 
-package com.arcbees.bourseje.client.application.ui;
+package com.arcbees.bourseje.client.realtime.ui;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
+
 
 public class Header implements IsWidget {
     interface Binder extends UiBinder<HTMLPanel, Header> {

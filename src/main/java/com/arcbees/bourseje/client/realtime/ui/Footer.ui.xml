@@ -4,18 +4,18 @@
     <ui:with field="res" type="com.arcbees.bourseje.client.resources.Resources"/>
 
     <g:HTMLPanel tag="footer">
-        <div class="{res.styles.wrapper} {res.styles.clearfix}">
+        <div class="{res.styles.wrapper_desktop} {res.styles.clearfix}">
             <div class="{res.styles.logoJccq}">
                 <a href="http://www.jccq.qc.ca/" target="_blank">
                     <svg:SVGImage resource="{res.logoJccq}"/>
                 </a>
             </div>
-            <div class="{res.styles.logoArcbees}">
+                <div class="{res.styles.logoArcbees}">
                 <p>Propulsé par</p>
-                <a href="http://www.arcbees.com" target="_blank">
-                    <svg:SVGImage resource="{res.logoArcbees}"/>
-                </a>
-            </div>
+                    <a href="http://www.arcbees.com" target="_blank">
+                        <svg:SVGImage resource="{res.logoArcbees}"/>
+                    </a>
+                </div>
         </div>
     </g:HTMLPanel>
 </ui:UiBinder>
