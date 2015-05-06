@@ -20,6 +20,7 @@ import javax.inject.Inject;
 
 import com.google.gwt.dom.client.DivElement;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.query.client.GQuery;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
@@ -43,8 +44,10 @@ public class VoteView extends ViewWithUiHandlers<VoteUiHandlers> implements Vote
 
     @UiHandler("submit")
     void onSubmit(ClickEvent event) {
-        String valueClicked = $("input[name=vote]:checked + label", voteGroup).text();
+        GQuery $vote = $("input[name=vote]:checked + label", voteGroup);
+        String name = $vote.find("p").first().text();
+        String company = $vote.find("p").last().text();
 
-        getUiHandlers().onVoteClicked(valueClicked);
+        getUiHandlers().onVoteClicked(name, company);
     }
 }

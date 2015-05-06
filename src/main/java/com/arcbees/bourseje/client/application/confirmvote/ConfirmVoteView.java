@@ -18,11 +18,11 @@ package com.arcbees.bourseje.client.application.confirmvote;
 
 import javax.inject.Inject;
 
+import com.google.gwt.dom.client.DivElement;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
-import com.google.gwt.user.client.ui.InlineLabel;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
@@ -31,7 +31,9 @@ public class ConfirmVoteView extends ViewWithUiHandlers<ConfirmVoteUiHandlers> i
     }
 
     @UiField
-    InlineLabel name;
+    DivElement name;
+    @UiField
+    DivElement company;
 
     @Inject
     ConfirmVoteView(
@@ -41,7 +43,12 @@ public class ConfirmVoteView extends ViewWithUiHandlers<ConfirmVoteUiHandlers> i
 
     @Override
     public void setName(String name) {
-        this.name.setText(name);
+        this.name.setInnerText(name);
+    }
+
+    @Override
+    public void setCompany(String company) {
+        this.company.setInnerText(company);
     }
 
     @UiHandler("confirm")

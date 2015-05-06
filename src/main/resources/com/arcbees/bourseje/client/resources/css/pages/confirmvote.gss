@@ -18,8 +18,18 @@
     @mixin rounded(50px);
 }
 
-.choice_name {
+.choice_finalist {
     text-align: center;
 
-    margin: 35px 0 88px;
+    margin: 35px 0 0;
+}
+
+.choice_finalist_name {
+    font-family: F_SECONDARY;
+    font-size: 22px;
+}
+
+.choice_finalist_company {
+    color: C_TEXT_MEDIUM;
+    text-transform: uppercase;
 }

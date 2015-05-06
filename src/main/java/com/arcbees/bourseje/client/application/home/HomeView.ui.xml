@@ -48,9 +48,7 @@
                         </svg>
                     </div>
                     <p>La plateforme de vote de la Jeune Chambre de Commerce de Québec</p>
-                    <g:Button ui:field="cliquez" styleName="{res.styles.btn} {res.styles.btn_wide}">Que le vote
-                        commence...
-                    </g:Button>
+					<a href="#/identification" class="{res.styles.btn} {res.styles.btn_wide}">Que le vote commence...</a>
                 </div>
             </article>
         </section>

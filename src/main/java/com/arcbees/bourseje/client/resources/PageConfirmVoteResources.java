@@ -25,11 +25,16 @@ public interface PageConfirmVoteResources extends ClientBundle {
 
         String choice_avatar();
 
-        String choice_name();
+        String choice_finalist();
+
+        String choice_finalist_name();
+
+        String choice_finalist_company();
     }
 
     @Source({"com/arcbees/gsss/mixin/client/mixins.gss",
             "css/colors.gss",
+            "fonts/fonts.gss",
             "css/pages/confirmvote.gss"})
     Style style();
 }
