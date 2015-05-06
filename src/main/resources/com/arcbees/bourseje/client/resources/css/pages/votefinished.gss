@@ -9,12 +9,12 @@
     -ms-transform-origin: 50% 50%;
     transform-origin: 50% 50%;
 
-    @mixin animation_name(shakeClock);
+    @mixin animation_name(shake_clock);
     @mixin animation_duration(.75s);
     @mixin animation_delay(2s);
 }
 
-@-webkit-keyframes shakeClock {
+@-webkit-keyframes shake_clock {
     0%, 100% {
         -webkit-transform: skew(0deg, 0deg) translate(0, 0);
     }
@@ -28,7 +28,7 @@
     }
 }
 
-@keyframes shakeClock {
+@keyframes shake_clock {
     0%, 100% {
         -ms-transform: skew(0deg, 0deg) translate(0, 0);
         transform: skew(0deg, 0deg) translate(0, 0);
