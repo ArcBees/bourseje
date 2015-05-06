@@ -40,7 +40,7 @@ public class ClientModule extends AbstractPresenterModule {
         bind(ResourceLoader.class).asEagerSingleton();
 
         bindConstant().annotatedWith(DefaultPlace.class).to(NameTokens.HOME);
-        bindConstant().annotatedWith(ErrorPlace.class).to(NameTokens.HOME);
+        bindConstant().annotatedWith(ErrorPlace.class).to(NameTokens.PAGE_404);
         bindConstant().annotatedWith(UnauthorizedPlace.class).to(NameTokens.HOME);
     }
 }
