@@ -35,6 +35,8 @@ import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 import com.gwtplatform.mvp.shared.proxy.PlaceRequest;
 
+import static com.google.gwt.http.client.Response.SC_FORBIDDEN;
+
 public class IdentificationPresenter
         extends Presenter<IdentificationPresenter.MyView, IdentificationPresenter.MyProxy>
         implements IdentificationUiHandlers {
@@ -82,24 +84,27 @@ public class IdentificationPresenter
             public void onError(Response response) {
                 super.onError(response);
 
-//                PlaceRequest placeRequest = new PlaceRequest.Builder()
-//                        .nameToken(NameTokens.ALREADY_VOTED)
-//                        .build();
-//
-//                placeManager.revealPlace(placeRequest);
-                getView().showInvalidCodeError();
+                if (response.getStatusCode() == SC_FORBIDDEN) {
+                    revealPlace(NameTokens.ALREADY_VOTED);
+                } else {
+                    getView().showInvalidCodeError();
+                }
             }
 
             @Override
             public void onSuccess(Void result) {
                 Cookies.setCookie(CookieNames.VOTE_CODE, code);
 
-                PlaceRequest placeRequest = new PlaceRequest.Builder()
-                        .nameToken(NameTokens.VOTE)
-                        .build();
-
-                placeManager.revealPlace(placeRequest);
+                revealPlace(NameTokens.VOTE);
             }
         });
+    }
+
+    private void revealPlace(String nameToken) {
+        PlaceRequest placeRequest = new PlaceRequest.Builder()
+                .nameToken(nameToken)
+                .build();
+
+        placeManager.revealPlace(placeRequest);
     }
 }
