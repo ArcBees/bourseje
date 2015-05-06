@@ -16,7 +16,7 @@
     transform-origin: 50% 50%;
 
     @mixin animation_name(pulseIcon);
-    @mixin animation_delay(3s);
+    @mixin animation_delay(2.5s);
     @mixin animation_timing_function(ease);
 }
 
@@ -46,7 +46,7 @@
     opacity: 0;
 
     @mixin animation_name(textAppear);
-    @mixin animation_delay(3s);
+    @mixin animation_delay(2.5s);
     @mixin animation_duration(1s);
     @mixin animation_fill_mode(forwards);
 }

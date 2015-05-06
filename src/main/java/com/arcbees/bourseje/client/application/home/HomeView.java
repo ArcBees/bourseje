@@ -33,9 +33,4 @@ public class HomeView extends ViewWithUiHandlers<HomeUiHandlers> implements Home
             Binder uiBinder) {
         initWidget(uiBinder.createAndBindUi(this));
     }
-
-    @UiHandler("cliquez")
-    void onCliquez(ClickEvent event) {
-        getUiHandlers().onCliquezClicked();
-    }
 }

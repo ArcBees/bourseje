@@ -20,28 +20,28 @@
     }
 
     10%, 30%, 50%, 70%, 90% {
-        -webkit-transform: skew(5deg, 2deg) translate(2px, 3px);
+        -webkit-transform: skew(-1deg, 0deg) translate(-.25px, -.25px);
     }
 
     20%, 40%, 60%, 80% {
-        -webkit-transform: skew(2deg, 0deg) translate(3px, 2px);
+        -webkit-transform: skew(1.5deg, 0deg) translate(1px, .25px);
     }
 }
 
-@keyframes shake {
+@keyframes shakeClock {
     0%, 100% {
         -ms-transform: skew(0deg, 0deg) translate(0, 0);
         transform: skew(0deg, 0deg) translate(0, 0);
     }
 
     10%, 30%, 50%, 70%, 90% {
-        -ms-transform: skew(5deg, 2deg) translate(2px, 3px);
-        transform: skew(5deg, 2deg) translate(2px, 3px);
+        -ms-transform: skew(-1deg, 0deg) translate(-.25px, -.25px);
+        transform: skew(-1deg, 0deg) translate(-.25px, -.25px);
     }
 
     20%, 40%, 60%, 80% {
-        -ms-transform: skew(2deg) translate(3px, 2px);
-        transform: skew(2deg) translate(3px, 2px);
+        -ms-transform: skew(1.5deg, 0deg) translate(1px, .25px);
+        transform: skew(1.5deg, 0deg) translate(1px, .25px);
     }
 }
 
@@ -53,13 +53,13 @@
     @mixin animation_duration(.75s);
 }
 
-@keyframes vibration {
+@-webkit-keyframes vibration {
     to {
         opacity: 1;
     }
 }
 
-@-webkit-keyframes vibration {
+@keyframes vibration {
     to {
         opacity: 1;
     }

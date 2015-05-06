@@ -54,10 +54,11 @@ public class VotePresenter extends Presenter<VotePresenter.MyView, VotePresenter
     }
 
     @Override
-    public void onVoteClicked(String value) {
+    public void onVoteClicked(String name, String company) {
         PlaceRequest place = new PlaceRequest.Builder()
                 .nameToken(NameTokens.CONFIRM_VOTE)
-                .with(NameTokens.VALUE_PARAM, value)
+                .with(NameTokens.NAME, name)
+                .with(NameTokens.COMPANY, company)
                 .build();
 
         placeManager.revealPlace(place);

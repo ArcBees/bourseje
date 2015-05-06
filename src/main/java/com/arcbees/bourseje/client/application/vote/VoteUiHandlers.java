@@ -19,5 +19,5 @@ package com.arcbees.bourseje.client.application.vote;
 import com.gwtplatform.mvp.client.UiHandlers;
 
 public interface VoteUiHandlers extends UiHandlers {
-    void onVoteClicked(String value);
+    void onVoteClicked(String value, String company);
 }
