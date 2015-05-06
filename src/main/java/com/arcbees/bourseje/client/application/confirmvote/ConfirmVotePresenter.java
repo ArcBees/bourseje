@@ -87,6 +87,7 @@ public class ConfirmVotePresenter extends Presenter<ConfirmVotePresenter.MyView,
     @Override
     public void onConfirmClicked() {
         VoteItem voteItem = new VoteItem(name + " " + company);
+//        TODO Jc split "value" into "name" and "company"
         dispatcher.execute(voteService.vote(voteItem), new RestCallbackImpl<Void>() {
             @Override
             public void onError(Response response) {
