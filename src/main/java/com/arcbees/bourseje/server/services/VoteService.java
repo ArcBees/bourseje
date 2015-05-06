@@ -24,8 +24,10 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.arcbees.bourseje.server.dao.VoteItemDao;
+import com.arcbees.bourseje.server.exception.AlreadyVotedException;
 import com.arcbees.bourseje.server.exception.InactiveVoteException;
 import com.arcbees.bourseje.server.exception.NoVoteException;
+import com.arcbees.bourseje.server.exception.VoteCodeNotFoundException;
 import com.arcbees.bourseje.server.guice.ServerModule;
 import com.arcbees.bourseje.shared.VoteItem;
 
@@ -62,15 +64,31 @@ public class VoteService {
                 today.get(Calendar.DAY_OF_YEAR) == voteDate.get(Calendar.DAY_OF_YEAR);
     }
 
-    public boolean isCodeValid(String code) {
+    public void useCode(String code) {
+        verifyCode(code);
+    }
+
+    public void vote(VoteItem voteItem, String code) {
+        verifyCode(code);
+
+        voteItem.setCode(code);
+
+        voteItemDao.put(voteItem);
+    }
+
+    private void verifyCode(String code) {
+        if (isCodeAlreadyUsed(code)) {
+            throw new AlreadyVotedException();
+        } else if (!isCodeValid(code)) {
+            throw new VoteCodeNotFoundException();
+        }
+    }
+
+    private boolean isCodeValid(String code) {
         return filesService.getVoteCodes().contains(code);
     }
 
-    public boolean isCodeAlreadyUsed(String code) {
+    private boolean isCodeAlreadyUsed(String code) {
         return voteItemDao.findByVoteCode(code) != null;
-    }
-
-    public void vote(VoteItem voteItem) {
-        voteItemDao.put(voteItem);
     }
 }

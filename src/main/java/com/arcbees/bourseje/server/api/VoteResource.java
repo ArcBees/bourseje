@@ -28,8 +28,6 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import com.arcbees.bourseje.server.exception.AlreadyVotedException;
-import com.arcbees.bourseje.server.exception.VoteCodeNotFoundException;
 import com.arcbees.bourseje.server.exception.VoteCodeNotSetException;
 import com.arcbees.bourseje.server.services.VoteService;
 import com.arcbees.bourseje.shared.CookieNames;
@@ -57,11 +55,7 @@ public class VoteResource {
     public Response useCode(String code, @Context HttpServletRequest request, @Context HttpServletResponse response) {
         code = code.replaceAll("\"", ""); // Workaround for serialization leftover quotes
 
-        if (voteService.isCodeAlreadyUsed(code)) {
-            throw new AlreadyVotedException();
-        } else if (!voteService.isCodeValid(code)) {
-            throw new VoteCodeNotFoundException();
-        }
+        voteService.useCode(code);
 
         return Response.ok().build();
     }
@@ -71,13 +65,7 @@ public class VoteResource {
                          @Context HttpServletResponse response) {
         String code = getCodeFromCookies(request.getCookies());
 
-        if (voteService.isCodeAlreadyUsed(code)) {
-            throw new AlreadyVotedException();
-        }
-
-        voteItem.setCode(code);
-
-        voteService.vote(voteItem);
+        voteService.vote(voteItem, code);
 
         return Response.ok().build();
     }
