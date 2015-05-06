@@ -23,7 +23,6 @@ import com.arcbees.bourseje.client.application.ApplicationPresenter;
 import com.arcbees.bourseje.shared.CookieNames;
 import com.google.gwt.http.client.Response;
 import com.google.gwt.user.client.Cookies;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.dispatch.rest.client.RestDispatch;
@@ -36,10 +35,15 @@ import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 import com.gwtplatform.mvp.shared.proxy.PlaceRequest;
 
+import static com.google.gwt.http.client.Response.SC_FORBIDDEN;
+
 public class IdentificationPresenter
         extends Presenter<IdentificationPresenter.MyView, IdentificationPresenter.MyProxy>
         implements IdentificationUiHandlers {
     interface MyView extends View, HasUiHandlers<IdentificationUiHandlers> {
+        void hideInvalidCodeError();
+
+        void showInvalidCodeError();
     }
 
     @ProxyStandard
@@ -69,29 +73,38 @@ public class IdentificationPresenter
     }
 
     @Override
+    protected void onReveal() {
+        getView().hideInvalidCodeError();
+    }
+
+    @Override
     public void onSubmit(final String code) {
         dispatcher.execute(voteService.useCode(code), new RestCallbackImpl<Void>() {
             @Override
             public void onError(Response response) {
                 super.onError(response);
 
-                PlaceRequest placeRequest = new PlaceRequest.Builder()
-                        .nameToken(NameTokens.ALREADY_VOTED)
-                        .build();
-
-                placeManager.revealPlace(placeRequest);
+                if (response.getStatusCode() == SC_FORBIDDEN) {
+                    revealPlace(NameTokens.ALREADY_VOTED);
+                } else {
+                    getView().showInvalidCodeError();
+                }
             }
 
             @Override
             public void onSuccess(Void result) {
                 Cookies.setCookie(CookieNames.VOTE_CODE, code);
 
-                PlaceRequest placeRequest = new PlaceRequest.Builder()
-                        .nameToken(NameTokens.VOTE)
-                        .build();
-
-                placeManager.revealPlace(placeRequest);
+                revealPlace(NameTokens.VOTE);
             }
         });
+    }
+
+    private void revealPlace(String nameToken) {
+        PlaceRequest placeRequest = new PlaceRequest.Builder()
+                .nameToken(nameToken)
+                .build();
+
+        placeManager.revealPlace(placeRequest);
     }
 }
