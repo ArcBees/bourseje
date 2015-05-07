@@ -9,7 +9,7 @@
     <g:HTMLPanel styleName="{res.styles.main_section}">
         <w:Header/>
 
-        <section class="{res.styles.main_content}">
+        <section class="{res.styles.main_content_desktop}">
             <article>
                 <div class="{res.styles.wrapper_desktop} {res.styles.clearfix} {res.styles.txtcenter}">
                     <div class="{page.style.text_intro}">
@@ -18,7 +18,7 @@
                             <span>est</span>
                         </h2>
                     </div>
-                    <div class="{anim.style.animation} {anim.style.bounceIn} {res.grid.col} {res.grid.col_6} {res.grid.col_push_3} {page.style.box_candidates}">
+                    <div class="{anim.style.animation} {anim.style.bounceIn} {res.grid.col} {res.grid.col_4} {res.grid.col_push_4} {page.style.box_candidates}">
                         <g:Image resource="{res.voteAccent}" styleName="{page.style.avatar}"/>
                         <h3>Jason Lemay</h3>
                         <p>Arcbees</p>

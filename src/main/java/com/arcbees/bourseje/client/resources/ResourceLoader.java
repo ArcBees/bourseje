@@ -33,6 +33,7 @@ public class ResourceLoader {
             PageVoteFinishedResources pageVoteFinishedResources,
             PageHowToVoteResources pageHowToVoteResources,
             PageCandidatesResources pageCandidatesResources,
+            PageNumberOfVoteResources pageNumberOfVoteResources,
             PageResultResources pageResultResources,
             PageEndOfVoteResources pageEndOfVoteResources,
             Page404Resources page404Resources){
@@ -51,6 +52,7 @@ public class ResourceLoader {
         pageVoteResources.style().ensureInjected();
         pageHowToVoteResources.style().ensureInjected();
         pageCandidatesResources.style().ensureInjected();
+        pageNumberOfVoteResources.style().ensureInjected();
         pageResultResources.style().ensureInjected();
         pageEndOfVoteResources.style().ensureInjected();
     }

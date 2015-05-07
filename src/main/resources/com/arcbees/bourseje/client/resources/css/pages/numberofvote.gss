@@ -15,8 +15,10 @@
 .box_candidates {
     background-color: C_SECONDARY;
 
-    padding: 10px 40px;
+    padding: 10px 20px;
     margin-bottom: 10px;
+
+    position: relative;
 }
 
 .box_candidates h3 {
@@ -33,6 +35,8 @@
 }
 
 .avatar {
+    background-color: #ccc;
+    
     display: inline-block;
     margin-right: 20px;
     width: 90px;
@@ -46,4 +50,21 @@
 .candidates {
     display: inline-block;
     vertical-align: middle;
+}
+
+.nb_vote {
+    color: C_TEXT_LIGHT;
+    background-color: C_TEXT;
+    font-size: 3rem;
+    font-family: F_SECONDARY;
+    text-align: center;
+
+    display: inline-block;
+    height: 100%;
+    width: 100px;
+    padding: 35px 0;
+
+    position: absolute;
+    top: 0;
+    right: 0;
 }

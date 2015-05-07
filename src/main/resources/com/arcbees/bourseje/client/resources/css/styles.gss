@@ -70,11 +70,18 @@ input {
     width: 100%;
 }
 
+.main_content_desktop {
+    display: table;
+    height: calc(100% - 218px);
+    width: 100%;
+}
+
 .main_content .wrapper {
     width: 260px;
 }
 
-.main_content > article {
+.main_content > article,
+.main_content_desktop > article{
     display: table-cell;
 
     vertical-align: middle;

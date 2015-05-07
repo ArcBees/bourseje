@@ -19,6 +19,7 @@ package com.arcbees.bourseje.client.realtime;
 import com.arcbees.bourseje.client.realtime.candidates.CandidatesModule;
 import com.arcbees.bourseje.client.realtime.endofvote.EndOfVoteModule;
 import com.arcbees.bourseje.client.realtime.howtovote.HowToVoteModule;
+import com.arcbees.bourseje.client.realtime.numberofvote.NumberOfVoteModule;
 import com.arcbees.bourseje.client.realtime.result.ResultModule;
 import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 
@@ -27,6 +28,7 @@ public class RealtimeModule extends AbstractPresenterModule {
     protected void configure() {
         install(new HowToVoteModule());
         install(new CandidatesModule());
+        install(new NumberOfVoteModule());
         install(new ResultModule());
         install(new EndOfVoteModule());
 
