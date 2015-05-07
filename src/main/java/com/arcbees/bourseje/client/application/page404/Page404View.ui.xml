@@ -34,7 +34,9 @@
                         <p>La page que vous avez demandé
                             <span>n’est pas accessible ou n’existe pas.</span>
                         </p>
-                        <a href="http://www.jccq.qc.ca" class="{res.styles.jccq}" target="_blank">jccq.qc.ca</a>
+                        <a href="#/home" class="{res.styles.btn} {res.styles.btn_wide}">
+                            Retour à la page d'accueil
+                        </a>
                     </div>
                 </div>
             </article>

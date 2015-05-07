@@ -123,6 +123,7 @@ h3 {
 /* -- Elements ------------------------------------------- */
 
 a,
+a:hover,
 a:visited {
     color: C_TEXT;
     text-decoration: none;
