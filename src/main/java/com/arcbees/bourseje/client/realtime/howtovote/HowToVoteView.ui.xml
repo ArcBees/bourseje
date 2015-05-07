@@ -8,12 +8,12 @@
     <g:HTMLPanel styleName="{res.styles.main_section}">
         <w:Header/>
 
-        <section class="{res.styles.main_content}">
+        <section class="{res.styles.main_content_desktop}">
             <article>
                 <div class="{res.styles.wrapper_desktop} {res.styles.clearfix} {res.styles.txtcenter}">
                     <div class="{page.style.text_intro}">
-                        <h2>Les candidats</h2>
-                        <p>pour la personnalité d’affaires
+                        <h2>Comment je vote pour</h2>
+                        <p>la Bourse jeune entreprise
                             <span>de l’année 2015</span>
                         </p>
                     </div>

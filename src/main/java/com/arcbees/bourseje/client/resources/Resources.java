@@ -58,6 +58,8 @@ public interface Resources extends FontResources {
         String main_section();
 
         String logo_vote_desktop();
+
+        String main_content_desktop();
     }
 
     @Source("img/logoArcbees.svg")
@@ -77,6 +79,24 @@ public interface Resources extends FontResources {
 
     @Source("img/voteAccent.png")
     ImageResource voteAccent();
+
+    @Source("img/DominicFillion.jpg")
+    ImageResource DominicFillion();
+
+    @Source("img/JohanieGagnon.jpg")
+    ImageResource JohanieGagnon();
+
+    @Source("img/MaximeGagnon.jpg")
+    ImageResource MaximeGagnon();
+
+    @Source("img/RaphaelProvost.jpg")
+    ImageResource RaphaelProvost();
+
+    @Source("img/SimonValin.jpg")
+    ImageResource SimonValin();
+
+    @Source("img/VincentBouchard.jpg")
+    ImageResource VincentBouchard();
 
     @Source("css/normalize.gss")
     Normalize normalize();

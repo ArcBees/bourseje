@@ -1,6 +1,6 @@
 .text_intro h2,
 .text_intro p {
-    font-size: 3rem;
+    font-size: 2.5rem;
     line-height: 1.2;
 }
 
@@ -15,37 +15,37 @@
 .box_candidates {
     background-color: C_SECONDARY;
 
-    padding: 20px 10px 0;
+    padding: 25px 10px 0;
 }
 
 .box_candidates h3 {
-    font-size: 4rem;
+    font-size: 3.5rem;
     font-family: F_SECONDARY;
     line-height: 1;
 
-    margin: 1em 0 .25em;
+    margin: .75em 0 .25em;
 }
 
 .box_candidates p {
     color: C_TEXT_MEDIUM;
-    font-size: 2.5rem;
+    font-size: 2rem;
     text-transform: uppercase;
 }
 
 .avatar {
-    width: 250px;
-    height: 250px;
+    width: 200px;
+    height: 200px;
 
     vertical-align: middle;
 
-    @mixin rounded(125px);
+    @mixin rounded(100px);
 }
 
 .number {
     background-color: #000;
 
     margin: 0 -10px -50px -10px;
-    padding: 30px 0 10px;
+    padding: 20px 0 10px;
 }
 
 .number p {

@@ -1,12 +1,12 @@
 .text_intro {
-    margin-bottom: 100px;
+    margin: 30px 0 50px;
 }
 
 .text_intro h2,
 .text_intro p,
 .step h3,
 .step p {
-    font-size: 3rem;
+    font-size: 2.25rem;
     line-height: 1.2;
 }
 

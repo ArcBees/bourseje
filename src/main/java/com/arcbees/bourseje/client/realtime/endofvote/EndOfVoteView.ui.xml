@@ -9,10 +9,10 @@
     <g:HTMLPanel styleName="{res.styles.main_section}">
         <w:Header/>
 
-        <section class="{res.styles.main_content}">
+        <section class="{res.styles.main_content_desktop}">
             <article>
                 <div class="{res.styles.wrapper_desktop} {res.styles.clearfix} {res.styles.txtcenter}">
-                    <div class="{res.grid.col} {res.grid.col_6} {res.grid.col_push_3}">
+                    <div class="{res.grid.col} {res.grid.col_4} {res.grid.col_push_4}">
                         <div class="{page.style.animation} {page.style.shake}">
                                 <svg version="1.1" x="0px" y="0px" viewBox="0 0 78.291 54.715" enable-background="new 0 0 78.291 54.715" xml:space="preserve">
                                 <path d="M23.595,54.714c-0.264,0-0.529-0.064-0.77-0.194c-0.525-0.284-0.851-0.834-0.848-1.432l0.066-12.49
