@@ -1,5 +1,5 @@
-/**
- * Copyright 2014 ArcBees Inc.
+/*
+ * Copyright 2015 ArcBees Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -16,17 +16,15 @@
 
 package com.arcbees.bourseje.server.exception;
 
-import javax.inject.Singleton;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
+import javax.ws.rs.ext.ExceptionMapper;
+import javax.ws.rs.ext.Provider;
 
-import com.google.inject.AbstractModule;
-
-public class ExceptionModule extends AbstractModule {
+@Provider
+public class VoteCodeNotSetExceptionMapper implements ExceptionMapper<VoteCodeNotSetException> {
     @Override
-    protected void configure() {
-        bind(InactiveVoteExceptionMapper.class).in(Singleton.class);
-        bind(NoVoteExceptionMapper.class).in(Singleton.class);
-        bind(AlreadyVotedExceptionMapper.class).in(Singleton.class);
-        bind(VoteCodeNotFoundExceptionMapper.class).in(Singleton.class);
-        bind(VoteCodeNotSetExceptionMapper.class).in(Singleton.class);
+    public Response toResponse(VoteCodeNotSetException e) {
+        return Response.status(Status.FORBIDDEN).build();
     }
 }

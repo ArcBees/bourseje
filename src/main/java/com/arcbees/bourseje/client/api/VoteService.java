@@ -32,5 +32,9 @@ public interface VoteService {
     RestAction<List<VoteItem>> getVoteItems();
 
     @POST
+    @Path(ResourcesPath.CODE)
+    RestAction<Void> useCode(String code);
+
+    @POST
     RestAction<Void> vote(VoteItem voteItem);
 }

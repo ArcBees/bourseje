@@ -3,7 +3,7 @@
              xmlns:w="urn:import:com.arcbees.bourseje.client.application.ui">
 
     <ui:with field="res" type="com.arcbees.bourseje.client.resources.Resources"/>
-    <ui:with field="page" type="com.arcbees.bourseje.client.resources.PageIdentificationResources"/>
+    <ui:with field="pageResources" type="com.arcbees.bourseje.client.resources.PageIdentificationResources"/>
 
     <g:HTMLPanel styleName="{res.styles.main_section}">
         <w:Header/>
@@ -16,11 +16,14 @@
                         <p>Entrez votre code unique <span>à 5 chiffres</span></p>
                     </div>
 
-                    <form class="{page.style.login}">
-                        <!--<div class="{page.style.error_message}">Code non valide, réessayez</div>-->
-                        <!-- Todo Jc when the code is not valid, you must add the class on the input below and display the previous commented line  -->
-                        <input type="password" max="5" class="{page.style.input_error}"/>
-                        <button class="{res.styles.btn} {res.styles.btn_wide}" type="submit">Unique, moi toujours!
+                    <form class="{pageResources.style.login}">
+                        <div ui:field="invalidCodeMessage" class="{pageResources.style.error_message}">
+                            Code non valide, réessayez
+                        </div>
+
+                        <input ui:field="code" type="password" max="5"/>
+                        <button ui:field="submit" class="{res.styles.btn} {res.styles.btn_wide}" type="submit">
+                            Unique, moi toujours!
                         </button>
                     </form>
                 </div>

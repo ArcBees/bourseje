@@ -23,7 +23,7 @@ public class VoteItemDao extends BaseDao<VoteItem> {
         super(VoteItem.class);
     }
 
-    public VoteItem findByIp(String ip) {
-        return query().filter("ip", ip).first().now();
+    public VoteItem findByVoteCode(String code) {
+        return query().filter("code", code).first().now();
     }
 }

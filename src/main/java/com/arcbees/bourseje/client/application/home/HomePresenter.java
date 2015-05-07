@@ -73,7 +73,7 @@ public class HomePresenter extends Presenter<HomePresenter.MyView, HomePresenter
             @Override
             public void onSuccess(List<VoteItem> voteItems) {
                 PlaceRequest request = new Builder()
-                        .nameToken(NameTokens.VOTE)
+                        .nameToken(NameTokens.IDENTIFICATION)
                         .build();
 
                 placeManager.revealPlace(request);

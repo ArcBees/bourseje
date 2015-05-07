@@ -28,16 +28,15 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import com.arcbees.bourseje.server.exception.AlreadyVotedException;
+import com.arcbees.bourseje.server.exception.VoteCodeNotSetException;
 import com.arcbees.bourseje.server.services.VoteService;
+import com.arcbees.bourseje.shared.CookieNames;
 import com.arcbees.bourseje.shared.ResourcesPath;
 import com.arcbees.bourseje.shared.VoteItem;
 
 @Path(ResourcesPath.VOTE_ITEMS)
 @Produces(MediaType.APPLICATION_JSON)
 public class VoteResource {
-    private final static String COOKIE_NAME = "voted";
-
     private final VoteService voteService;
 
     @Inject
@@ -51,32 +50,35 @@ public class VoteResource {
         return Response.ok(voteService.getVoteItems()).build();
     }
 
+    @Path(ResourcesPath.CODE)
     @POST
-    public Response vote(VoteItem voteItem, @Context HttpServletRequest request,
-                         @Context HttpServletResponse response) {
-        if (alreadyVoted(request.getCookies())) {
-            throw new AlreadyVotedException();
-        } else {
-            Cookie cookie = new Cookie(COOKIE_NAME, "");
-            response.addCookie(cookie);
-        }
+    public Response useCode(String code, @Context HttpServletRequest request, @Context HttpServletResponse response) {
+        code = code.replaceAll("\"", ""); // Workaround for serialization leftover quotes
 
-        voteItem.setIp(request.getRemoteAddr());
-
-        voteService.vote(voteItem);
+        voteService.useCode(code);
 
         return Response.ok().build();
     }
 
-    private boolean alreadyVoted(Cookie[] cookies) {
+    @POST
+    public Response vote(VoteItem voteItem, @Context HttpServletRequest request,
+                         @Context HttpServletResponse response) {
+        String code = getCodeFromCookies(request.getCookies());
+
+        voteService.vote(voteItem, code);
+
+        return Response.ok().build();
+    }
+
+    private String getCodeFromCookies(Cookie[] cookies) {
         if (cookies != null) {
             for (Cookie cookie : cookies) {
-                if (cookie.getName().equals(COOKIE_NAME)) {
-                    return true;
+                if (cookie.getName().equals(CookieNames.VOTE_CODE)) {
+                    return cookie.getValue();
                 }
             }
         }
 
-        return false;
+        throw new VoteCodeNotSetException();
     }
 }
