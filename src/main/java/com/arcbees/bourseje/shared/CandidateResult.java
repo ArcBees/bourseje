@@ -30,7 +30,7 @@ public class CandidateResult {
         this.numberOfVotes = numberOfVotes;
     }
 
-    public String getName() {
+    public String getCandidateName() {
         return name;
     }
 

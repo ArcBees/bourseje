@@ -21,6 +21,7 @@ import java.util.Collection;
 import com.arcbees.bourseje.client.NameTokens;
 import com.arcbees.bourseje.client.RestCallbackImpl;
 import com.arcbees.bourseje.client.api.VoteService;
+import com.arcbees.bourseje.client.model.Candidates;
 import com.arcbees.bourseje.client.realtime.RealtimePresenter;
 import com.arcbees.bourseje.shared.CandidateResult;
 import com.google.inject.Inject;
@@ -34,6 +35,17 @@ import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 
 public class NumberOfVotePresenter extends Presenter<NumberOfVotePresenter.MyView, NumberOfVotePresenter.MyProxy> {
     interface MyView extends View {
+        void setJohanieVotes(int votes);
+
+        void setDominicVotes(int votes);
+
+        void setRaphaelVotes(int votes);
+
+        void setMaximeVotes(int votes);
+
+        void setSimonVotes(int votes);
+
+        void setVincentVotes(int votes);
     }
 
     @ProxyStandard
@@ -63,9 +75,25 @@ public class NumberOfVotePresenter extends Presenter<NumberOfVotePresenter.MyVie
             @Override
             public void onSuccess(Collection<CandidateResult> result) {
                 for (CandidateResult candidateResult : result) {
-                    //TODO set number of votes here
+                    setNumberOfVote(candidateResult);
                 }
             }
         });
+    }
+
+    private void setNumberOfVote(CandidateResult candidateResult) {
+        if (Candidates.JOHANIE.getName().equals(candidateResult.getCandidateName())) {
+            getView().setJohanieVotes(candidateResult.getNumberOfVotes());
+        } else if (Candidates.DOMINIC.getName().equals(candidateResult.getCandidateName())) {
+            getView().setDominicVotes(candidateResult.getNumberOfVotes());
+        } else if (Candidates.RAPHAEL.getName().equals(candidateResult.getCandidateName())) {
+            getView().setRaphaelVotes(candidateResult.getNumberOfVotes());
+        } else if (Candidates.MAXIME.getName().equals(candidateResult.getCandidateName())) {
+            getView().setMaximeVotes(candidateResult.getNumberOfVotes());
+        } else if (Candidates.SIMON.getName().equals(candidateResult.getCandidateName())) {
+            getView().setSimonVotes(candidateResult.getNumberOfVotes());
+        } else if (Candidates.VINCENT.getName().equals(candidateResult.getCandidateName())) {
+            getView().setVincentVotes(candidateResult.getNumberOfVotes());
+        }
     }
 }

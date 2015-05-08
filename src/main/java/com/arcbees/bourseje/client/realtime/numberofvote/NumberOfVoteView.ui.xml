@@ -25,7 +25,7 @@
                                 <p>Construction le 5e élément</p>
                             </div>
                             <div class="{page.style.nb_vote}">
-                                3333
+                                <span ui:field="johanieVotes">0</span>
                             </div>
                         </div>
                         <div class="{res.grid.col} {res.grid.col_6} {page.style.box_candidates}">
@@ -35,7 +35,7 @@
                                 <p>DFMotion</p>
                             </div>
                             <div class="{page.style.nb_vote}">
-                                3333
+                                <span ui:field="dominicVotes">0</span>
                             </div>
                         </div>
                         <div class="{res.grid.col} {res.grid.col_6} {page.style.box_candidates}">
@@ -45,7 +45,7 @@
                                 <p>iWrap</p>
                             </div>
                             <div class="{page.style.nb_vote}">
-                                3333
+                                <span ui:field="raphaelVotes">0</span>
                             </div>
                         </div>
                         <div class="{res.grid.col} {res.grid.col_6} {page.style.box_candidates}">
@@ -55,7 +55,7 @@
                                 <p>La Raffinerie</p>
                             </div>
                             <div class="{page.style.nb_vote}">
-                                3333
+                                <span ui:field="maximeVotes">0</span>
                             </div>
                         </div>
                     </div>
@@ -67,7 +67,7 @@
                                 <p>Valin Confection</p>
                             </div>
                             <div class="{page.style.nb_vote}">
-                                3333
+                                <span ui:field="simonVotes">0</span>
                             </div>
                         </div>
                         <div class="{res.grid.col} {res.grid.col_6} {page.style.box_candidates}">
@@ -77,7 +77,7 @@
                                 <p>Venice Gym</p>
                             </div>
                             <div class="{page.style.nb_vote}">
-                                3333
+                                <span ui:field="vincentVotes">0</span>
                             </div>
                         </div>
                     </div>

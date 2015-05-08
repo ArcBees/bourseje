@@ -16,7 +16,9 @@
 
 package com.arcbees.bourseje.client.realtime.numberofvote;
 
+import com.google.gwt.dom.client.SpanElement;
 import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewImpl;
 
@@ -26,9 +28,52 @@ public class NumberOfVoteView extends ViewImpl implements NumberOfVotePresenter.
     interface Binder extends UiBinder<Widget, NumberOfVoteView> {
     }
 
+    @UiField
+    SpanElement johanieVotes;
+    @UiField
+    SpanElement dominicVotes;
+    @UiField
+    SpanElement raphaelVotes;
+    @UiField
+    SpanElement maximeVotes;
+    @UiField
+    SpanElement simonVotes;
+    @UiField
+    SpanElement vincentVotes;
+
     @Inject
     NumberOfVoteView(
             Binder uiBinder) {
         initWidget(uiBinder.createAndBindUi(this));
+    }
+
+    @Override
+    public void setJohanieVotes(int votes) {
+        johanieVotes.setInnerText(String.valueOf(votes));
+    }
+
+    @Override
+    public void setDominicVotes(int votes) {
+        dominicVotes.setInnerText(String.valueOf(votes));
+    }
+
+    @Override
+    public void setRaphaelVotes(int votes) {
+        raphaelVotes.setInnerText(String.valueOf(votes));
+    }
+
+    @Override
+    public void setMaximeVotes(int votes) {
+        maximeVotes.setInnerText(String.valueOf(votes));
+    }
+
+    @Override
+    public void setSimonVotes(int votes) {
+        simonVotes.setInnerText(String.valueOf(votes));
+    }
+
+    @Override
+    public void setVincentVotes(int votes) {
+        vincentVotes.setInnerText(String.valueOf(votes));
     }
 }
