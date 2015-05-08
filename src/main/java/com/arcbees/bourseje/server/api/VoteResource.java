@@ -50,8 +50,14 @@ public class VoteResource {
         return Response.ok(voteService.getVoteItems()).build();
     }
 
-    @Path(ResourcesPath.CODE)
+    @GET
+    @Path(ResourcesPath.RESULT)
+    public Response getResults() {
+        return Response.ok(voteService.getVotesPerCandidate()).build();
+    }
+
     @POST
+    @Path(ResourcesPath.CODE)
     public Response useCode(String code, @Context HttpServletRequest request, @Context HttpServletResponse response) {
         code = code.replaceAll("\"", ""); // Workaround for serialization leftover quotes
 

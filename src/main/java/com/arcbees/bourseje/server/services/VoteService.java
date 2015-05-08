@@ -17,8 +17,10 @@
 package com.arcbees.bourseje.server.services;
 
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -29,7 +31,11 @@ import com.arcbees.bourseje.server.exception.InactiveVoteException;
 import com.arcbees.bourseje.server.exception.NoVoteException;
 import com.arcbees.bourseje.server.exception.VoteCodeNotFoundException;
 import com.arcbees.bourseje.server.guice.ServerModule;
+import com.arcbees.bourseje.shared.CandidateResult;
 import com.arcbees.bourseje.shared.VoteItem;
+import com.arcbees.gaestudio.repackaged.com.google.common.collect.Maps;
+import com.google.common.base.Function;
+import com.google.common.collect.Multimaps;
 
 public class VoteService {
     private final Calendar voteDate;
@@ -74,6 +80,32 @@ public class VoteService {
         voteItem.setCode(code);
 
         voteItemDao.put(voteItem);
+    }
+
+    public Collection<CandidateResult> getVotesPerCandidate() {
+        List<VoteItem> allVotes = voteItemDao.getAll();
+        Map<String, Collection<VoteItem>> groupedVotes = groupByCandidateName(allVotes);
+
+        return createResultsFromGroupedVotes(groupedVotes);
+    }
+
+    private Map<String, Collection<VoteItem>> groupByCandidateName(List<VoteItem> votes) {
+        return Multimaps.index(votes, new Function<VoteItem, String>() {
+            @Override
+            public String apply(VoteItem voteItem) {
+                return voteItem.getCandidateName();
+            }
+        }).asMap();
+    }
+
+    private Collection<CandidateResult> createResultsFromGroupedVotes(Map<String, Collection<VoteItem>> groupedVotes) {
+        return Maps.transformEntries(groupedVotes,
+                new Maps.EntryTransformer<String, Collection<VoteItem>, CandidateResult>() {
+                    @Override
+                    public CandidateResult transformEntry(String candidateName, Collection<VoteItem> voteItems) {
+                        return new CandidateResult(candidateName, voteItems.size());
+                    }
+                }).values();
     }
 
     private void verifyCode(String code) {

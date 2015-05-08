@@ -19,4 +19,5 @@ package com.arcbees.bourseje.shared;
 public class ResourcesPath {
     public static final String VOTE_ITEMS = "/voteitems";
     public static final String CODE = "/code";
+    public static final String RESULT = "/result";
 }

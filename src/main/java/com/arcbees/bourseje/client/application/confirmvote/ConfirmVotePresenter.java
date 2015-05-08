@@ -52,7 +52,6 @@ public class ConfirmVotePresenter extends Presenter<ConfirmVotePresenter.MyView,
     private final VoteService voteService;
 
     private String name;
-    private String company;
 
     @Inject
     ConfirmVotePresenter(
@@ -76,7 +75,7 @@ public class ConfirmVotePresenter extends Presenter<ConfirmVotePresenter.MyView,
         super.prepareFromRequest(request);
 
         name = request.getParameter(NameTokens.NAME, "noSelection");
-        company = request.getParameter(NameTokens.COMPANY, "noSelection");
+        String company = request.getParameter(NameTokens.COMPANY, "noSelection");
 
         getView().setName(name);
         getView().setCompany(company);
