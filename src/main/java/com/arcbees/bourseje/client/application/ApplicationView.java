@@ -39,7 +39,6 @@ public class ApplicationView extends ViewImpl implements ApplicationPresenter.My
         initWidget(main);
     }
 
-
     @Override
     public void setInSlot(Object slot, IsWidget content) {
         if (slot == ApplicationPresenter.SLOT_MAIN) {
@@ -48,7 +47,6 @@ public class ApplicationView extends ViewImpl implements ApplicationPresenter.My
     }
 
     private void show(final IsWidget content) {
-
         Window.scrollTo(0, 0);
 
         $(content).hide();
