@@ -16,13 +16,19 @@
 
 package com.arcbees.bourseje.client.realtime.numberofvote;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.inject.Inject;
+
+import com.arcbees.bourseje.client.model.Candidates;
+import com.arcbees.bourseje.shared.CandidateResult;
 import com.google.gwt.dom.client.SpanElement;
+import com.google.gwt.query.client.GQuery;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewImpl;
-
-import javax.inject.Inject;
 
 public class NumberOfVoteView extends ViewImpl implements NumberOfVotePresenter.MyView {
     interface Binder extends UiBinder<Widget, NumberOfVoteView> {
@@ -41,39 +47,29 @@ public class NumberOfVoteView extends ViewImpl implements NumberOfVotePresenter.
     @UiField
     SpanElement vincentVotes;
 
+    private Map<String, SpanElement> numberOfVoteElements = new HashMap<>();
+
     @Inject
     NumberOfVoteView(
             Binder uiBinder) {
         initWidget(uiBinder.createAndBindUi(this));
+
+        numberOfVoteElements.put(Candidates.JOHANIE.getName(), johanieVotes);
+        numberOfVoteElements.put(Candidates.DOMINIC.getName(), dominicVotes);
+        numberOfVoteElements.put(Candidates.RAPHAEL.getName(), raphaelVotes);
+        numberOfVoteElements.put(Candidates.MAXIME.getName(), maximeVotes);
+        numberOfVoteElements.put(Candidates.SIMON.getName(), simonVotes);
+        numberOfVoteElements.put(Candidates.VINCENT.getName(), vincentVotes);
     }
 
     @Override
-    public void setJohanieVotes(int votes) {
-        johanieVotes.setInnerText(String.valueOf(votes));
-    }
+    public void setNumberOfVotesForCandidate(CandidateResult candidateResult) {
+        SpanElement element = numberOfVoteElements.get(candidateResult.getCandidateName());
 
-    @Override
-    public void setDominicVotes(int votes) {
-        dominicVotes.setInnerText(String.valueOf(votes));
-    }
-
-    @Override
-    public void setRaphaelVotes(int votes) {
-        raphaelVotes.setInnerText(String.valueOf(votes));
-    }
-
-    @Override
-    public void setMaximeVotes(int votes) {
-        maximeVotes.setInnerText(String.valueOf(votes));
-    }
-
-    @Override
-    public void setSimonVotes(int votes) {
-        simonVotes.setInnerText(String.valueOf(votes));
-    }
-
-    @Override
-    public void setVincentVotes(int votes) {
-        vincentVotes.setInnerText(String.valueOf(votes));
+        if (element == null) {
+            GQuery.console.error("Candidate not found: " + candidateResult.getCandidateName());
+        } else {
+            element.setInnerText(String.valueOf(candidateResult.getNumberOfVotes()));
+        }
     }
 }
