@@ -71,7 +71,6 @@ public class ConfirmVotePresenter extends Presenter<ConfirmVotePresenter.MyView,
         getView().setUiHandlers(this);
     }
 
-
     @Override
     public void prepareFromRequest(PlaceRequest request) {
         super.prepareFromRequest(request);
@@ -85,8 +84,7 @@ public class ConfirmVotePresenter extends Presenter<ConfirmVotePresenter.MyView,
 
     @Override
     public void onConfirmClicked() {
-        VoteItem voteItem = new VoteItem(name + " " + company);
-//        TODO Jc split "value" into "name" and "company"
+        VoteItem voteItem = new VoteItem(name);
         dispatcher.execute(voteService.vote(voteItem), new RestCallbackImpl<Void>() {
             @Override
             public void onError(Response response) {
