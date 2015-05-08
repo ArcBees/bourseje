@@ -21,6 +21,7 @@ import javax.inject.Inject;
 import com.arcbees.bourseje.client.resources.Resources;
 import com.google.gwt.query.client.Function;
 import com.google.gwt.query.client.plugins.effects.PropertiesAnimation.EasingCurve;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.gwtplatform.mvp.client.ViewImpl;
@@ -47,6 +48,9 @@ public class ApplicationView extends ViewImpl implements ApplicationPresenter.My
     }
 
     private void show(final IsWidget content) {
+
+        Window.scrollTo(0, 0);
+
         $(content).hide();
 
         if (main.getWidget() == null) {
