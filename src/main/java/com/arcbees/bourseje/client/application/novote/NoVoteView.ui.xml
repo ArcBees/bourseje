@@ -10,9 +10,10 @@
         <w:Header/>
 
         <section class="{res.styles.main_content}">
-            <article class="{res.styles.wrapper} {res.styles.txtcenter}">
-                <div class="{page.style.batman}">
-                    <svg version="1.1" x="0px" y="0px" viewBox="0 0 48.28 57.298" enable-background="new 0 0 48.28 57.298" xml:space="preserve">
+            <article>
+                <div class="{res.styles.wrapper} {res.styles.txtcenter}">
+                    <div class="{page.style.batman}">
+                        <svg version="1.1" x="0px" y="0px" viewBox="0 0 48.28 57.298" enable-background="new 0 0 48.28 57.298" xml:space="preserve">
                         <g>
                             <path fill-rule="evenodd" clip-rule="evenodd" fill="#6D6E71" d="M24.141,2.583C10.829,2.583,0,13.413,0,26.724
                                 C0,32.868,2.303,38.687,6.5,43.181L6.436,55.672c-0.004,0.599,0.322,1.147,0.848,1.433c0.241,0.129,0.505,0.193,0.769,0.193
@@ -33,16 +34,17 @@
                                 c-0.547,1.92-2.311,3.326-4.405,3.326C29.821,24.363,28.692,23.866,27.864,23.056z"/>
                         </g>
                     </svg>
-                </div>
-                <div class="{res.styles.text_main}">
-                    <p>Il n'y a pas de session de vote
-                        <span>en ce moment.</span>
-                        <span>Mais rassurez-vous,</span>
-                        <span>Batman veille.</span>
-                    </p>
-                    <p>
-                        <a href="http://www.jccq.qc.ca" class="{res.styles.jccq}" target="_blank">jccq.qc.ca</a>
-                    </p>
+                    </div>
+                    <div class="{res.styles.text_main}">
+                        <p>Il n'y a pas de session de vote
+                            <span>en ce moment.</span>
+                            <span>Mais rassurez-vous,</span>
+                            <span>Batman veille.</span>
+                        </p>
+                        <a href="#" class="{res.styles.btn} {res.styles.btn_wide}" target="_blank">
+                            Rafraîchir
+                        </a>
+                    </div>
                 </div>
             </article>
         </section>
