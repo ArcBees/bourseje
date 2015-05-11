@@ -34,7 +34,7 @@ public interface VoteService {
     RestAction<List<VoteItem>> getVoteItems();
 
     @GET
-    @Path(ResourcesPath.RESULT)
+    @Path(ResourcesPath.NUMBER_OF_VOTES)
     RestAction<Collection<CandidateResult>> getVotesPerCandidate();
 
     @POST

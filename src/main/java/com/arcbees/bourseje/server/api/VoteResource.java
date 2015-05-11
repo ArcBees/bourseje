@@ -51,7 +51,7 @@ public class VoteResource {
     }
 
     @GET
-    @Path(ResourcesPath.RESULT)
+    @Path(ResourcesPath.NUMBER_OF_VOTES)
     public Response getVotesPerCandidate() {
         return Response.ok(voteService.getVotesPerCandidate()).build();
     }
