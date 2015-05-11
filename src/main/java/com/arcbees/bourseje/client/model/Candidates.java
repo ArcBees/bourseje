@@ -19,10 +19,10 @@
 package com.arcbees.bourseje.client.model;
 
 public class Candidates {
-    public static Candidate JOHANIE = new Candidate("Johanie Gagnon");
-    public static Candidate DOMINIC = new Candidate("Dominic Fillion");
-    public static Candidate RAPHAEL = new Candidate("Raphaël Provost");
-    public static Candidate MAXIME = new Candidate("Maxime Gagnon");
-    public static Candidate SIMON = new Candidate("Simon Valin");
-    public static Candidate VINCENT = new Candidate("Vincent Bouchard");
+    public static final Candidate JOHANIE = new Candidate("Johanie Gagnon");
+    public static final Candidate DOMINIC = new Candidate("Dominic Fillion");
+    public static final Candidate RAPHAEL = new Candidate("Raphaël Provost");
+    public static final Candidate MAXIME = new Candidate("Maxime Gagnon");
+    public static final Candidate SIMON = new Candidate("Simon Valin");
+    public static final Candidate VINCENT = new Candidate("Vincent Bouchard");
 }
