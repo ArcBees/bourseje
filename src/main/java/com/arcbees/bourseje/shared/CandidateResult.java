@@ -17,25 +17,25 @@
 package com.arcbees.bourseje.shared;
 
 public class CandidateResult {
-    private String name;
+    private String candidateName;
     private int numberOfVotes;
 
     public CandidateResult() {
     }
 
     public CandidateResult(
-            String name,
+            String candidateName,
             int numberOfVotes) {
-        this.name = name;
+        this.candidateName = candidateName;
         this.numberOfVotes = numberOfVotes;
     }
 
     public String getCandidateName() {
-        return name;
+        return candidateName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCandidateName(String candidateName) {
+        this.candidateName = candidateName;
     }
 
     public int getNumberOfVotes() {
