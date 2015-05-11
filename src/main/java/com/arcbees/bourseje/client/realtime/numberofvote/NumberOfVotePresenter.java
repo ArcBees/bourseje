@@ -16,10 +16,16 @@
 
 package com.arcbees.bourseje.client.realtime.numberofvote;
 
+import java.util.Collection;
+
 import com.arcbees.bourseje.client.NameTokens;
+import com.arcbees.bourseje.client.RestCallbackImpl;
+import com.arcbees.bourseje.client.api.VoteService;
 import com.arcbees.bourseje.client.realtime.RealtimePresenter;
+import com.arcbees.bourseje.shared.CandidateResult;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
+import com.gwtplatform.dispatch.rest.client.RestDispatch;
 import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.annotations.NameToken;
@@ -28,6 +34,7 @@ import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 
 public class NumberOfVotePresenter extends Presenter<NumberOfVotePresenter.MyView, NumberOfVotePresenter.MyProxy> {
     interface MyView extends View {
+        void setNumberOfVotesForCandidate(CandidateResult candidateResult);
     }
 
     @ProxyStandard
@@ -35,11 +42,31 @@ public class NumberOfVotePresenter extends Presenter<NumberOfVotePresenter.MyVie
     interface MyProxy extends ProxyPlace<NumberOfVotePresenter> {
     }
 
+    private final RestDispatch dispatch;
+    private final VoteService voteService;
+
     @Inject
     NumberOfVotePresenter(
             EventBus eventBus,
             MyView view,
-            MyProxy proxy) {
+            MyProxy proxy,
+            RestDispatch dispatch,
+            VoteService voteService) {
         super(eventBus, view, proxy, RealtimePresenter.SLOT_MAIN);
+
+        this.dispatch = dispatch;
+        this.voteService = voteService;
+    }
+
+    @Override
+    protected void onReveal() {
+        dispatch.execute(voteService.getVotesPerCandidate(), new RestCallbackImpl<Collection<CandidateResult>>() {
+            @Override
+            public void onSuccess(Collection<CandidateResult> result) {
+                for (CandidateResult candidateResult : result) {
+                    getView().setNumberOfVotesForCandidate(candidateResult);
+                }
+            }
+        });
     }
 }

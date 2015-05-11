@@ -1,5 +1,5 @@
-/**
- * Copyright 2014 ArcBees Inc.
+/*
+ * Copyright 2015 ArcBees Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -14,10 +14,17 @@
  * the License.
  */
 
-package com.arcbees.bourseje.shared;
+package com.arcbees.bourseje.client.model;
 
-public class ResourcesPath {
-    public static final String VOTE_ITEMS = "/voteitems";
-    public static final String CODE = "/code";
-    public static final String NUMBER_OF_VOTES = "/numberofvotes";
+public class Candidate {
+    private String name;
+
+    public Candidate(
+            String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
 }

@@ -52,7 +52,6 @@ public class ConfirmVotePresenter extends Presenter<ConfirmVotePresenter.MyView,
     private final VoteService voteService;
 
     private String name;
-    private String company;
 
     @Inject
     ConfirmVotePresenter(
@@ -71,13 +70,12 @@ public class ConfirmVotePresenter extends Presenter<ConfirmVotePresenter.MyView,
         getView().setUiHandlers(this);
     }
 
-
     @Override
     public void prepareFromRequest(PlaceRequest request) {
         super.prepareFromRequest(request);
 
         name = request.getParameter(NameTokens.NAME, "noSelection");
-        company = request.getParameter(NameTokens.COMPANY, "noSelection");
+        String company = request.getParameter(NameTokens.COMPANY, "noSelection");
 
         getView().setName(name);
         getView().setCompany(company);
@@ -85,8 +83,7 @@ public class ConfirmVotePresenter extends Presenter<ConfirmVotePresenter.MyView,
 
     @Override
     public void onConfirmClicked() {
-        VoteItem voteItem = new VoteItem(name + " " + company);
-//        TODO Jc split "value" into "name" and "company"
+        VoteItem voteItem = new VoteItem(name);
         dispatcher.execute(voteService.vote(voteItem), new RestCallbackImpl<Void>() {
             @Override
             public void onError(Response response) {

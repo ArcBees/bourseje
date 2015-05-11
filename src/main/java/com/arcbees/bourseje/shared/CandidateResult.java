@@ -1,5 +1,5 @@
-/**
- * Copyright 2014 ArcBees Inc.
+/*
+ * Copyright 2015 ArcBees Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -16,34 +16,18 @@
 
 package com.arcbees.bourseje.shared;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.googlecode.objectify.annotation.Entity;
-import com.googlecode.objectify.annotation.Id;
-import com.googlecode.objectify.annotation.Index;
-
-@Entity
-public class VoteItem {
-    @Id
-    private Long id;
+public class CandidateResult {
     private String candidateName;
+    private int numberOfVotes;
 
-    @Index
-    private String code;
-
-    public VoteItem() {
+    public CandidateResult() {
     }
 
-    public VoteItem(
-            String candidateName) {
+    public CandidateResult(
+            String candidateName,
+            int numberOfVotes) {
         this.candidateName = candidateName;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+        this.numberOfVotes = numberOfVotes;
     }
 
     public String getCandidateName() {
@@ -54,12 +38,11 @@ public class VoteItem {
         this.candidateName = candidateName;
     }
 
-    @JsonIgnore
-    public String getCode() {
-        return code;
+    public int getNumberOfVotes() {
+        return numberOfVotes;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setNumberOfVotes(int numberOfVotes) {
+        this.numberOfVotes = numberOfVotes;
     }
 }
