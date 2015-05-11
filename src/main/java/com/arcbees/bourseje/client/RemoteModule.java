@@ -22,6 +22,6 @@ import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 public class RemoteModule extends AbstractPresenterModule {
     @Override
     protected void configure() {
-        bindConstant().annotatedWith(RestApplicationPath.class).to("http://bourseje.arcbees.com/api");
+        bindConstant().annotatedWith(RestApplicationPath.class).to("http://jccqbourseje.appspot.com/api");
     }
 }
