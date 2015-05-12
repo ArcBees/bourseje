@@ -26,6 +26,7 @@ public class ApiModule extends AbstractModule {
         bind(CorsInterceptor.class).in(Singleton.class);
 
         bind(VoteResource.class);
+        bind(LoginResource.class);
         bind(AdminResource.class);
     }
 }

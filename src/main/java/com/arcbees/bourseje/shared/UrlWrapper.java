@@ -14,12 +14,26 @@
  * the License.
  */
 
-package com.arcbees.bourseje.client.realtime.numberofvote;
+package com.arcbees.bourseje.shared;
 
-import com.gwtplatform.mvp.client.UiHandlers;
+/**
+ * This class only exists to workaround serialization problems.
+ */
+public class UrlWrapper {
+    private String url;
 
-public interface NumberOfVoteUiHandlers extends UiHandlers {
-    void onLoginClicked();
+    public UrlWrapper() {
+    }
 
-    void onStartVoteClicked();
+    public UrlWrapper(String url) {
+        this.url = url;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
 }

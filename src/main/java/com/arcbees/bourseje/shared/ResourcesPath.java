@@ -24,4 +24,7 @@ public class ResourcesPath {
 
     public static final String ADMIN = "/admin";
     public static final String VOTE_STATE = "/vote-state";
+
+    public static final String LOGIN = "/login";
+    public static final String URL = "/url";
 }
