@@ -19,18 +19,35 @@ package com.arcbees.bourseje.server.services;
 import javax.inject.Inject;
 
 import com.arcbees.bourseje.server.dao.CurrentVoteStateDao;
+import com.arcbees.bourseje.server.dao.VoteItemDao;
 import com.arcbees.bourseje.shared.VoteState;
 
 public class AdminService {
+    private final VoteItemDao voteItemDao;
+    private final VoteService voteService;
     private final CurrentVoteStateDao currentVoteStateDao;
 
     @Inject
     AdminService(
+            VoteItemDao voteItemDao,
+            VoteService voteService,
             CurrentVoteStateDao currentVoteStateDao) {
+        this.voteItemDao = voteItemDao;
+        this.voteService = voteService;
         this.currentVoteStateDao = currentVoteStateDao;
     }
 
     public void setVoteState(VoteState voteState) {
+        if (voteState == VoteState.STARTED) {
+            clearVotesIfNotAlreadyStarted();
+        }
+
         currentVoteStateDao.setCurrentVoteState(voteState);
+    }
+
+    private void clearVotesIfNotAlreadyStarted() {
+        if (voteService.getCurrentVoteState() != VoteState.STARTED) {
+            voteItemDao.deleteAll();
+        }
     }
 }
