@@ -19,8 +19,8 @@ package com.arcbees.bourseje.client.application.identification;
 import javax.inject.Inject;
 
 import com.arcbees.bourseje.client.resources.PageIdentificationResources;
-import com.google.gwt.dom.client.ButtonElement;
 import com.google.gwt.dom.client.DivElement;
+import com.google.gwt.dom.client.FormElement;
 import com.google.gwt.dom.client.InputElement;
 import com.google.gwt.query.client.Function;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -28,7 +28,6 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
-import static com.google.gwt.dom.client.BrowserEvents.CLICK;
 import static com.google.gwt.query.client.GQuery.$;
 
 public class IdentificationView extends ViewWithUiHandlers<IdentificationUiHandlers> implements IdentificationPresenter.MyView {
@@ -36,7 +35,7 @@ public class IdentificationView extends ViewWithUiHandlers<IdentificationUiHandl
     }
 
     @UiField
-    ButtonElement submit;
+    FormElement form;
     @UiField
     InputElement code;
     @UiField
@@ -69,7 +68,7 @@ public class IdentificationView extends ViewWithUiHandlers<IdentificationUiHandl
     }
 
     private void initSubmit() {
-        $(submit).on(CLICK, new Function() {
+        $(form).on("submit", new Function() {
             @Override
             public void f() {
                 getUiHandlers().onSubmit(code.getValue().toUpperCase());

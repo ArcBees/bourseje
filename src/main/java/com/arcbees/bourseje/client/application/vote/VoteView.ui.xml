@@ -18,7 +18,7 @@
                         </p>
                     </div>
                     <div ui:field="voteGroup">
-                        <form action="" class="{page.style.vote_form}">
+                        <form action="javascript:;" class="{page.style.vote_form}">
                             <div class="{page.style.finalist_box}">
                                 <input name="vote" id="Johanie" type="radio"/>
                                 <label for="Johanie">
