@@ -25,8 +25,8 @@ import com.arcbees.bourseje.client.api.AdminService;
 import com.arcbees.bourseje.client.api.LoginService;
 import com.arcbees.bourseje.client.api.VoteService;
 import com.arcbees.bourseje.client.realtime.RealtimePresenter;
-import com.arcbees.bourseje.shared.UrlWrapper;
 import com.arcbees.bourseje.shared.CandidateResult;
+import com.arcbees.bourseje.shared.UrlWrapper;
 import com.arcbees.bourseje.shared.VoteState;
 import com.google.gwt.query.client.GQuery;
 import com.google.gwt.user.client.Window;
@@ -38,7 +38,6 @@ import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
-import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 
 public class NumberOfVotePresenter extends Presenter<NumberOfVotePresenter.MyView, NumberOfVotePresenter.MyProxy>
@@ -52,7 +51,6 @@ public class NumberOfVotePresenter extends Presenter<NumberOfVotePresenter.MyVie
     interface MyProxy extends ProxyPlace<NumberOfVotePresenter> {
     }
 
-    private final PlaceManager placeManager;
     private final RestDispatch dispatch;
     private final VoteService voteService;
     private final LoginService loginService;
@@ -63,14 +61,12 @@ public class NumberOfVotePresenter extends Presenter<NumberOfVotePresenter.MyVie
             EventBus eventBus,
             MyView view,
             MyProxy proxy,
-            PlaceManager placeManager,
             RestDispatch dispatch,
             VoteService voteService,
             LoginService loginService,
             AdminService adminService) {
         super(eventBus, view, proxy, RealtimePresenter.SLOT_MAIN);
 
-        this.placeManager = placeManager;
         this.dispatch = dispatch;
         this.voteService = voteService;
         this.loginService = loginService;
@@ -81,9 +77,9 @@ public class NumberOfVotePresenter extends Presenter<NumberOfVotePresenter.MyVie
 
     @Override
     public void onLoginClicked() {
-        String currentUrl = placeManager.buildHistoryToken(placeManager.getCurrentPlaceRequest());
+        String currentUrl = Window.Location.getHref();
 
-        dispatch.execute(loginService.getLoginUrl(), new AdminRestCallback<UrlWrapper>() {
+        dispatch.execute(loginService.getLoginUrl(currentUrl), new AdminRestCallback<UrlWrapper>() {
             @Override
             public void onSuccess(UrlWrapper loginUrl) {
                 Window.Location.replace(loginUrl.getUrl());

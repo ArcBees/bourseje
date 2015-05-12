@@ -18,6 +18,7 @@ package com.arcbees.bourseje.client.api;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.QueryParam;
 
 import com.arcbees.bourseje.shared.UrlWrapper;
 import com.arcbees.bourseje.shared.ResourcesPath;
@@ -27,5 +28,5 @@ import com.gwtplatform.dispatch.rest.shared.RestAction;
 public interface LoginService {
     @GET
     @Path(ResourcesPath.URL)
-    RestAction<UrlWrapper> getLoginUrl();
+    RestAction<UrlWrapper> getLoginUrl(@QueryParam("continueUrl") String continueUrl);
 }

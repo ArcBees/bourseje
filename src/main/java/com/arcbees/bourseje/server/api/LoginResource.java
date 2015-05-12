@@ -19,6 +19,7 @@ package com.arcbees.bourseje.server.api;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -38,8 +39,8 @@ public class LoginResource {
 
     @GET
     @Path(ResourcesPath.URL)
-    public Response getLoginUrl() {
-        String loginUrl = userService.createLoginURL("http://127.0.0.1:8888/boursje.html#/admin/number_of_vote");
+    public Response getLoginUrl(@QueryParam("continueUrl") String continueUrl) {
+        String loginUrl = userService.createLoginURL(continueUrl);
 
         return Response.ok(new UrlWrapper(loginUrl)).build();
     }
