@@ -17,6 +17,7 @@
 package com.arcbees.bourseje.server.dao;
 
 import com.arcbees.bourseje.server.model.CurrentVoteState;
+import com.arcbees.bourseje.shared.VoteState;
 
 public class CurrentVoteStateDao extends BaseDao<CurrentVoteState> {
     CurrentVoteStateDao() {
@@ -24,6 +25,13 @@ public class CurrentVoteStateDao extends BaseDao<CurrentVoteState> {
     }
 
     public CurrentVoteState getCurrentVoteState() {
-        return query().first().now();
+        return get(CurrentVoteState.ID);
+    }
+
+    public void setCurrentVoteState(VoteState state) {
+        CurrentVoteState currentVoteState = new CurrentVoteState();
+        currentVoteState.setState(state);
+
+        put(currentVoteState);
     }
 }

@@ -64,6 +64,10 @@ public abstract class BaseDao<T> {
         return query().id(id).now();
     }
 
+    public T get(String id) {
+        return query().id(id).now();
+    }
+
     public List<T> getSubset(Iterable<Long> ids) {
         return new ArrayList<T>(query().ids(ids).values());
     }

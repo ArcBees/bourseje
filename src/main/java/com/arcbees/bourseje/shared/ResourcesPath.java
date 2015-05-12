@@ -21,4 +21,7 @@ public class ResourcesPath {
     public static final String CURRENT_VOTE_STATE = "/current-state";
     public static final String CODE = "/code";
     public static final String NUMBER_OF_VOTES = "/numberofvotes";
+
+    public static final String ADMIN = "/admin";
+    public static final String VOTE_STATE = "/vote-state";
 }

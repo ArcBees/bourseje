@@ -14,25 +14,23 @@
  * the License.
  */
 
-package com.arcbees.bourseje.server.model;
+package com.arcbees.bourseje.server.services;
 
+import javax.inject.Inject;
+
+import com.arcbees.bourseje.server.dao.CurrentVoteStateDao;
 import com.arcbees.bourseje.shared.VoteState;
-import com.googlecode.objectify.annotation.Entity;
-import com.googlecode.objectify.annotation.Id;
 
-@Entity
-public class CurrentVoteState {
-    public static final String ID = "CURRENT_STATE";
+public class AdminService {
+    private final CurrentVoteStateDao currentVoteStateDao;
 
-    @Id
-    private String id = ID;
-    private VoteState state = VoteState.INACTIVE;
-
-    public VoteState getState() {
-        return state;
+    @Inject
+    AdminService(
+            CurrentVoteStateDao currentVoteStateDao) {
+        this.currentVoteStateDao = currentVoteStateDao;
     }
 
-    public void setState(VoteState state) {
-        this.state = state;
+    public void setVoteState(VoteState voteState) {
+        currentVoteStateDao.setCurrentVoteState(voteState);
     }
 }
