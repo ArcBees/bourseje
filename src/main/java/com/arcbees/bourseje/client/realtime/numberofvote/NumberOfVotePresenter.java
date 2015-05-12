@@ -89,6 +89,10 @@ public class NumberOfVotePresenter extends Presenter<NumberOfVotePresenter.MyVie
 
     @Override
     public void onStartVoteClicked() {
+        if (!Window.confirm("Are you sure? This will reset all the votes.")) {
+            return;
+        }
+
         dispatch.execute(adminService.setVoteState(VoteState.STARTED), new AdminRestCallback<Void>() {
             @Override
             public void onSuccess(Void result) {
