@@ -18,6 +18,7 @@ package com.arcbees.bourseje.client.realtime.numberofvote;
 
 import java.util.Collection;
 
+import com.arcbees.bourseje.client.AdminRestCallback;
 import com.arcbees.bourseje.client.NameTokens;
 import com.arcbees.bourseje.client.RestCallbackImpl;
 import com.arcbees.bourseje.client.api.AdminService;
@@ -70,7 +71,7 @@ public class NumberOfVotePresenter extends Presenter<NumberOfVotePresenter.MyVie
 
     @Override
     public void onStartVoteClicked() {
-        dispatch.execute(adminService.setVoteState(VoteState.STARTED), new RestCallbackImpl<Void>() {
+        dispatch.execute(adminService.setVoteState(VoteState.STARTED), new AdminRestCallback<Void>() {
             @Override
             public void onSuccess(Void result) {
                 GQuery.console.info("Vote started!");
