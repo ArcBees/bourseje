@@ -56,6 +56,12 @@ public class VoteResource {
         return Response.ok(voteService.getVotesPerCandidate()).build();
     }
 
+    @GET
+    @Path(ResourcesPath.CURRENT_VOTE_STATE)
+    public Response getCurrentVoteState() {
+        return Response.ok(voteService.getCurrentVoteState()).build();
+    }
+
     @POST
     @Path(ResourcesPath.CODE)
     public Response useCode(String code, @Context HttpServletRequest request, @Context HttpServletResponse response) {

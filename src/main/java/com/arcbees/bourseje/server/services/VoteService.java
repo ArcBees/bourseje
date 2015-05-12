@@ -25,14 +25,17 @@ import java.util.Map;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import com.arcbees.bourseje.server.dao.CurrentVoteStateDao;
 import com.arcbees.bourseje.server.dao.VoteItemDao;
 import com.arcbees.bourseje.server.exception.AlreadyVotedException;
 import com.arcbees.bourseje.server.exception.InactiveVoteException;
 import com.arcbees.bourseje.server.exception.NoVoteException;
 import com.arcbees.bourseje.server.exception.VoteCodeNotFoundException;
 import com.arcbees.bourseje.server.guice.ServerModule;
+import com.arcbees.bourseje.server.model.CurrentVoteState;
 import com.arcbees.bourseje.shared.CandidateResult;
 import com.arcbees.bourseje.shared.VoteItem;
+import com.arcbees.bourseje.shared.VoteState;
 import com.arcbees.gaestudio.repackaged.com.google.common.collect.Maps;
 import com.google.common.base.Function;
 import com.google.common.collect.Multimaps;
@@ -40,15 +43,18 @@ import com.google.common.collect.Multimaps;
 public class VoteService {
     private final Calendar voteDate;
     private final VoteItemDao voteItemDao;
+    private final CurrentVoteStateDao currentVoteStateDao;
     private final FilesService filesService;
 
     @Inject
     VoteService(
             @Named(ServerModule.VOTE_DATE) Calendar voteDate,
             VoteItemDao voteItemDao,
+            CurrentVoteStateDao currentVoteStateDao,
             FilesService filesService) {
         this.voteDate = voteDate;
         this.voteItemDao = voteItemDao;
+        this.currentVoteStateDao = currentVoteStateDao;
         this.filesService = filesService;
     }
 
@@ -63,6 +69,12 @@ public class VoteService {
         } else {
             throw new NoVoteException();
         }
+    }
+
+    public VoteState getCurrentVoteState() {
+        CurrentVoteState currentVoteState = currentVoteStateDao.getCurrentVoteState();
+
+        return currentVoteState == null ? VoteState.INACTIVE : currentVoteState.getState();
     }
 
     private boolean sameDay(Calendar today) {
