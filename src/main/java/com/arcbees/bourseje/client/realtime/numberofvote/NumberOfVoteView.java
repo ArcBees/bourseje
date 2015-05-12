@@ -23,14 +23,20 @@ import javax.inject.Inject;
 
 import com.arcbees.bourseje.client.model.Candidates;
 import com.arcbees.bourseje.shared.CandidateResult;
+import com.google.gwt.dom.client.ButtonElement;
 import com.google.gwt.dom.client.SpanElement;
+import com.google.gwt.query.client.Function;
 import com.google.gwt.query.client.GQuery;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Widget;
-import com.gwtplatform.mvp.client.ViewImpl;
+import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
-public class NumberOfVoteView extends ViewImpl implements NumberOfVotePresenter.MyView {
+import static com.arcbees.gaestudio.repackaged.com.google.gwt.dom.client.BrowserEvents.CLICK;
+import static com.google.gwt.query.client.GQuery.$;
+
+public class NumberOfVoteView extends ViewWithUiHandlers<NumberOfVoteUiHandlers>
+        implements NumberOfVotePresenter.MyView {
     interface Binder extends UiBinder<Widget, NumberOfVoteView> {
     }
 
@@ -46,6 +52,8 @@ public class NumberOfVoteView extends ViewImpl implements NumberOfVotePresenter.
     SpanElement simonVotes;
     @UiField
     SpanElement vincentVotes;
+    @UiField
+    ButtonElement startVote;
 
     private Map<String, SpanElement> numberOfVoteElements = new HashMap<>();
 
@@ -60,6 +68,17 @@ public class NumberOfVoteView extends ViewImpl implements NumberOfVotePresenter.
         numberOfVoteElements.put(Candidates.MAXIME.getName(), maximeVotes);
         numberOfVoteElements.put(Candidates.SIMON.getName(), simonVotes);
         numberOfVoteElements.put(Candidates.VINCENT.getName(), vincentVotes);
+
+        initButtons();
+    }
+
+    private void initButtons() {
+        $(startVote).on(CLICK, new Function() {
+            @Override
+            public void f() {
+                getUiHandlers().onStartVoteClicked();
+            }
+        });
     }
 
     @Override

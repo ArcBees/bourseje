@@ -17,7 +17,6 @@
 package com.arcbees.bourseje.client.api;
 
 import java.util.Collection;
-import java.util.List;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -26,12 +25,14 @@ import javax.ws.rs.Path;
 import com.arcbees.bourseje.shared.CandidateResult;
 import com.arcbees.bourseje.shared.ResourcesPath;
 import com.arcbees.bourseje.shared.VoteItem;
+import com.arcbees.bourseje.shared.VoteState;
 import com.gwtplatform.dispatch.rest.shared.RestAction;
 
 @Path(ResourcesPath.VOTE_ITEMS)
 public interface VoteService {
     @GET
-    RestAction<List<VoteItem>> getVoteItems();
+    @Path(ResourcesPath.CURRENT_VOTE_STATE)
+    RestAction<VoteState> getCurrentVoteState();
 
     @GET
     @Path(ResourcesPath.NUMBER_OF_VOTES)

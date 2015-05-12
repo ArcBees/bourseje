@@ -16,58 +16,43 @@
 
 package com.arcbees.bourseje.server.services;
 
-import java.util.Calendar;
 import java.util.Collection;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
-import javax.inject.Named;
 
+import com.arcbees.bourseje.server.dao.CurrentVoteStateDao;
 import com.arcbees.bourseje.server.dao.VoteItemDao;
 import com.arcbees.bourseje.server.exception.AlreadyVotedException;
-import com.arcbees.bourseje.server.exception.InactiveVoteException;
-import com.arcbees.bourseje.server.exception.NoVoteException;
 import com.arcbees.bourseje.server.exception.VoteCodeNotFoundException;
-import com.arcbees.bourseje.server.guice.ServerModule;
+import com.arcbees.bourseje.server.model.CurrentVoteState;
 import com.arcbees.bourseje.shared.CandidateResult;
 import com.arcbees.bourseje.shared.VoteItem;
+import com.arcbees.bourseje.shared.VoteState;
 import com.arcbees.gaestudio.repackaged.com.google.common.collect.Maps;
 import com.google.common.base.Function;
 import com.google.common.collect.Multimaps;
 
 public class VoteService {
-    private final Calendar voteDate;
     private final VoteItemDao voteItemDao;
+    private final CurrentVoteStateDao currentVoteStateDao;
     private final FilesService filesService;
 
     @Inject
     VoteService(
-            @Named(ServerModule.VOTE_DATE) Calendar voteDate,
             VoteItemDao voteItemDao,
+            CurrentVoteStateDao currentVoteStateDao,
             FilesService filesService) {
-        this.voteDate = voteDate;
         this.voteItemDao = voteItemDao;
+        this.currentVoteStateDao = currentVoteStateDao;
         this.filesService = filesService;
     }
 
-    public List<VoteItem> getVoteItems() {
-        Calendar today = Calendar.getInstance();
-        today.setTime(new Date());
+    public VoteState getCurrentVoteState() {
+        CurrentVoteState currentVoteState = currentVoteStateDao.getCurrentVoteState();
 
-        if (today.after(voteDate)) {
-            return voteItemDao.getAll();
-        } else if (sameDay(today)) {
-            throw new InactiveVoteException();
-        } else {
-            throw new NoVoteException();
-        }
-    }
-
-    private boolean sameDay(Calendar today) {
-        return today.get(Calendar.YEAR) == voteDate.get(Calendar.YEAR) &&
-                today.get(Calendar.DAY_OF_YEAR) == voteDate.get(Calendar.DAY_OF_YEAR);
+        return currentVoteState == null ? VoteState.INACTIVE : currentVoteState.getState();
     }
 
     public void useCode(String code) {

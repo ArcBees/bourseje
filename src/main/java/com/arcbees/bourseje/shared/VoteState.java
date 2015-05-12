@@ -1,5 +1,5 @@
-/**
- * Copyright 2014 ArcBees Inc.
+/*
+ * Copyright 2015 ArcBees Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -16,12 +16,7 @@
 
 package com.arcbees.bourseje.shared;
 
-public class ResourcesPath {
-    public static final String VOTE_ITEMS = "/voteitems";
-    public static final String CURRENT_VOTE_STATE = "/current-state";
-    public static final String CODE = "/code";
-    public static final String NUMBER_OF_VOTES = "/numberofvotes";
-
-    public static final String ADMIN = "/admin";
-    public static final String VOTE_STATE = "/vote-state";
+public enum VoteState {
+    INACTIVE,
+    STARTED
 }

@@ -18,24 +18,51 @@ package com.arcbees.bourseje.client;
 
 import javax.inject.Inject;
 
+import com.arcbees.bourseje.client.api.VoteService;
 import com.arcbees.bourseje.client.resources.Resources;
+import com.arcbees.bourseje.shared.VoteState;
+import com.gwtplatform.dispatch.rest.client.RestDispatch;
 import com.gwtplatform.mvp.client.Bootstrapper;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
+import com.gwtplatform.mvp.shared.proxy.PlaceRequest;
 
 public class BootstrapperImpl implements Bootstrapper {
     private final PlaceManager placeManager;
+    private final RestDispatch restDispatch;
+    private final VoteService voteService;
 
     @Inject
     BootstrapperImpl(
             Resources resources,
-            PlaceManager placeManager) {
+            PlaceManager placeManager,
+            RestDispatch restDispatch,
+            VoteService voteService) {
         this.placeManager = placeManager;
+        this.restDispatch = restDispatch;
+        this.voteService = voteService;
 
         resources.styles().ensureInjected();
     }
 
     @Override
     public void onBootstrap() {
-        placeManager.revealCurrentPlace();
+        restDispatch.execute(voteService.getCurrentVoteState(), new RestCallbackImpl<VoteState>() {
+            @Override
+            public void onSuccess(VoteState result) {
+                if (result == VoteState.STARTED) {
+                    placeManager.revealCurrentPlace();
+                } else {
+                    revealPlace(NameTokens.NO_VOTE);
+                }
+            }
+        });
+    }
+
+    private void revealPlace(String nameToken) {
+        PlaceRequest placeRequest = new PlaceRequest.Builder()
+                .nameToken(nameToken)
+                .build();
+
+        placeManager.revealPlace(placeRequest);
     }
 }

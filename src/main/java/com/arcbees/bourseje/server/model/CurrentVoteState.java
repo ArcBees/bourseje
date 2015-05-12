@@ -1,5 +1,5 @@
-/**
- * Copyright 2014 ArcBees Inc.
+/*
+ * Copyright 2015 ArcBees Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -14,10 +14,25 @@
  * the License.
  */
 
-package com.arcbees.bourseje.client.application.home;
+package com.arcbees.bourseje.server.model;
 
-import com.gwtplatform.mvp.client.UiHandlers;
+import com.arcbees.bourseje.shared.VoteState;
+import com.googlecode.objectify.annotation.Entity;
+import com.googlecode.objectify.annotation.Id;
 
-public interface HomeUiHandlers extends UiHandlers {
-    void onCliquezClicked();
+@Entity
+public class CurrentVoteState {
+    public static final String ID = "CURRENT_STATE";
+
+    @Id
+    private String id = ID;
+    private VoteState state = VoteState.INACTIVE;
+
+    public VoteState getState() {
+        return state;
+    }
+
+    public void setState(VoteState state) {
+        this.state = state;
+    }
 }

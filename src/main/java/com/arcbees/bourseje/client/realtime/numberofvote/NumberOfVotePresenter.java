@@ -20,20 +20,25 @@ import java.util.Collection;
 
 import com.arcbees.bourseje.client.NameTokens;
 import com.arcbees.bourseje.client.RestCallbackImpl;
+import com.arcbees.bourseje.client.api.AdminService;
 import com.arcbees.bourseje.client.api.VoteService;
 import com.arcbees.bourseje.client.realtime.RealtimePresenter;
 import com.arcbees.bourseje.shared.CandidateResult;
+import com.arcbees.bourseje.shared.VoteState;
+import com.google.gwt.query.client.GQuery;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.dispatch.rest.client.RestDispatch;
+import com.gwtplatform.mvp.client.HasUiHandlers;
 import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 
-public class NumberOfVotePresenter extends Presenter<NumberOfVotePresenter.MyView, NumberOfVotePresenter.MyProxy> {
-    interface MyView extends View {
+public class NumberOfVotePresenter extends Presenter<NumberOfVotePresenter.MyView, NumberOfVotePresenter.MyProxy>
+        implements NumberOfVoteUiHandlers {
+    interface MyView extends View, HasUiHandlers<NumberOfVoteUiHandlers> {
         void setNumberOfVotesForCandidate(CandidateResult candidateResult);
     }
 
@@ -44,6 +49,7 @@ public class NumberOfVotePresenter extends Presenter<NumberOfVotePresenter.MyVie
 
     private final RestDispatch dispatch;
     private final VoteService voteService;
+    private final AdminService adminService;
 
     @Inject
     NumberOfVotePresenter(
@@ -51,11 +57,25 @@ public class NumberOfVotePresenter extends Presenter<NumberOfVotePresenter.MyVie
             MyView view,
             MyProxy proxy,
             RestDispatch dispatch,
-            VoteService voteService) {
+            VoteService voteService,
+            AdminService adminService) {
         super(eventBus, view, proxy, RealtimePresenter.SLOT_MAIN);
 
         this.dispatch = dispatch;
         this.voteService = voteService;
+        this.adminService = adminService;
+
+        getView().setUiHandlers(this);
+    }
+
+    @Override
+    public void onStartVoteClicked() {
+        dispatch.execute(adminService.setVoteState(VoteState.STARTED), new RestCallbackImpl<Void>() {
+            @Override
+            public void onSuccess(Void result) {
+                GQuery.console.info("Vote started!");
+            }
+        });
     }
 
     @Override

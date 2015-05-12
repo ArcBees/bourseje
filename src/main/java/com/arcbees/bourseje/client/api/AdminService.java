@@ -1,5 +1,5 @@
-/**
- * Copyright 2014 ArcBees Inc.
+/*
+ * Copyright 2015 ArcBees Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -14,14 +14,18 @@
  * the License.
  */
 
-package com.arcbees.bourseje.shared;
+package com.arcbees.bourseje.client.api;
 
-public class ResourcesPath {
-    public static final String VOTE_ITEMS = "/voteitems";
-    public static final String CURRENT_VOTE_STATE = "/current-state";
-    public static final String CODE = "/code";
-    public static final String NUMBER_OF_VOTES = "/numberofvotes";
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
 
-    public static final String ADMIN = "/admin";
-    public static final String VOTE_STATE = "/vote-state";
+import com.arcbees.bourseje.shared.ResourcesPath;
+import com.arcbees.bourseje.shared.VoteState;
+import com.gwtplatform.dispatch.rest.shared.RestAction;
+
+@Path(ResourcesPath.ADMIN)
+public interface AdminService {
+    @PUT
+    @Path(ResourcesPath.VOTE_STATE)
+    RestAction<Void> setVoteState(VoteState voteState);
 }
