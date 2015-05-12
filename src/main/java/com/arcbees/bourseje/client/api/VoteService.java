@@ -26,12 +26,17 @@ import javax.ws.rs.Path;
 import com.arcbees.bourseje.shared.CandidateResult;
 import com.arcbees.bourseje.shared.ResourcesPath;
 import com.arcbees.bourseje.shared.VoteItem;
+import com.arcbees.bourseje.shared.VoteState;
 import com.gwtplatform.dispatch.rest.shared.RestAction;
 
 @Path(ResourcesPath.VOTE_ITEMS)
 public interface VoteService {
     @GET
     RestAction<List<VoteItem>> getVoteItems();
+
+    @GET
+    @Path(ResourcesPath.CURRENT_VOTE_STATE)
+    RestAction<VoteState> getCurrentVoteState();
 
     @GET
     @Path(ResourcesPath.NUMBER_OF_VOTES)
