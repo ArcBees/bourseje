@@ -72,7 +72,7 @@ public class IdentificationView extends ViewWithUiHandlers<IdentificationUiHandl
         $(submit).on(CLICK, new Function() {
             @Override
             public void f() {
-                getUiHandlers().onSubmit(code.getValue());
+                getUiHandlers().onSubmit(code.getValue().toUpperCase());
             }
         });
     }
