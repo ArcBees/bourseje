@@ -16,7 +16,7 @@
                         <p>Entrez votre code unique <span>à 5 chiffres</span></p>
                     </div>
 
-                    <form ui:field="form" action="javascript:void(0);" class="{pageResources.style.login}">
+                    <form ui:field="form" action="javascript:;" class="{pageResources.style.login}">
                         <div ui:field="invalidCodeMessage" class="{pageResources.style.error_message}">
                             Code non valide, réessayez
                         </div>
