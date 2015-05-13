@@ -51,6 +51,8 @@ public class BootstrapperImpl implements Bootstrapper {
             public void onSuccess(VoteState result) {
                 if (result == VoteState.STARTED) {
                     placeManager.revealCurrentPlace();
+                } else if (result == VoteState.STOPPED) {
+                    revealPlace(NameTokens.VOTE_FINISHED);
                 } else {
                     revealPlace(NameTokens.VOTE_INACTIVE);
                 }
