@@ -86,8 +86,8 @@
                         </svg>
                     </div>
                     <div class="{res.styles.text_main} {page.style.text_appear}">
-                        <h2>A VOTÉ!</h2>
-                        <p>Merci beaucoup pour votre vote</p>
+                        <h2>Vote reçu</h2>
+                        <p>Merci d'avoir voté!</p>
                     </div>
                 </div>
             </article>

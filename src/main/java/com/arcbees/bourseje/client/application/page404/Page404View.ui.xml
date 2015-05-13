@@ -31,7 +31,7 @@
                     </div>
                     <div class="{res.styles.text_main}">
                         <h2>PAGE 404</h2>
-                        <p>La page que vous avez demandé
+                        <p>La page que vous avez demandée
                             <span>n’est pas accessible ou n’existe pas.</span>
                         </p>
                         <a href="#/home" class="{res.styles.btn} {res.styles.btn_wide}">
