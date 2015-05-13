@@ -23,6 +23,7 @@ import javax.inject.Inject;
 
 import com.arcbees.bourseje.client.model.Candidates;
 import com.arcbees.bourseje.shared.CandidateResult;
+import com.arcbees.bourseje.shared.VoteState;
 import com.google.gwt.dom.client.ButtonElement;
 import com.google.gwt.dom.client.SpanElement;
 import com.google.gwt.query.client.Function;
@@ -60,6 +61,8 @@ public class AdminDashboardView extends ViewWithUiHandlers<AdminDashboardUiHandl
     ButtonElement startVote;
     @UiField
     ButtonElement stopVote;
+    @UiField
+    SpanElement currentState;
 
     private Map<String, SpanElement> numberOfVoteElements = new HashMap<>();
 
@@ -118,5 +121,10 @@ public class AdminDashboardView extends ViewWithUiHandlers<AdminDashboardUiHandl
         } else {
             element.setInnerText(String.valueOf(candidateResult.getNumberOfVotes()));
         }
+    }
+
+    @Override
+    public void setCurrentState(VoteState currentState) {
+        this.currentState.setInnerText(currentState.toString());
     }
 }
