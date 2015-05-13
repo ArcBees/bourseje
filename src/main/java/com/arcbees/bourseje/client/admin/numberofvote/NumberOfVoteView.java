@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.arcbees.bourseje.client.realtime.numberofvote;
+package com.arcbees.bourseje.client.admin.numberofvote;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2015 ArcBees Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -14,14 +14,12 @@
  * the License.
  */
 
-package com.arcbees.bourseje.client.realtime.numberofvote;
+package com.arcbees.bourseje.client.admin.numberofvote;
 
-import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
+import com.gwtplatform.mvp.client.UiHandlers;
 
-public class NumberOfVoteModule extends AbstractPresenterModule {
-    @Override
-    protected void configure() {
-        bindPresenter(NumberOfVotePresenter.class, NumberOfVotePresenter.MyView.class,
-                NumberOfVoteView.class, NumberOfVotePresenter.MyProxy.class);
-    }
+public interface NumberOfVoteUiHandlers extends UiHandlers {
+    void onLoginClicked();
+
+    void onStartVoteClicked();
 }

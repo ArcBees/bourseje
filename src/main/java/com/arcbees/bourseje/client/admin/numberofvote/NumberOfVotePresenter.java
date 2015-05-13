@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.arcbees.bourseje.client.realtime.numberofvote;
+package com.arcbees.bourseje.client.admin.numberofvote;
 
 import java.util.Collection;
 
@@ -24,7 +24,7 @@ import com.arcbees.bourseje.client.RestCallbackImpl;
 import com.arcbees.bourseje.client.api.AdminService;
 import com.arcbees.bourseje.client.api.LoginService;
 import com.arcbees.bourseje.client.api.VoteService;
-import com.arcbees.bourseje.client.realtime.RealtimePresenter;
+import com.arcbees.bourseje.client.admin.AdminPresenter;
 import com.arcbees.bourseje.shared.CandidateResult;
 import com.arcbees.bourseje.shared.UrlWrapper;
 import com.arcbees.bourseje.shared.VoteState;
@@ -65,7 +65,7 @@ public class NumberOfVotePresenter extends Presenter<NumberOfVotePresenter.MyVie
             VoteService voteService,
             LoginService loginService,
             AdminService adminService) {
-        super(eventBus, view, proxy, RealtimePresenter.SLOT_MAIN);
+        super(eventBus, view, proxy, AdminPresenter.SLOT_MAIN);
 
         this.dispatch = dispatch;
         this.voteService = voteService;

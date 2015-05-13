@@ -14,10 +14,10 @@
  * the License.
  */
 
-package com.arcbees.bourseje.client.realtime.result;
+package com.arcbees.bourseje.client.admin.result;
 
 import com.arcbees.bourseje.client.NameTokens;
-import com.arcbees.bourseje.client.realtime.RealtimePresenter;
+import com.arcbees.bourseje.client.admin.AdminPresenter;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.Presenter;
@@ -40,6 +40,6 @@ public class ResultPresenter extends Presenter<ResultPresenter.MyView, ResultPre
             EventBus eventBus,
             MyView view,
             MyProxy proxy) {
-        super(eventBus, view, proxy, RealtimePresenter.SLOT_MAIN);
+        super(eventBus, view, proxy, AdminPresenter.SLOT_MAIN);
     }
 }

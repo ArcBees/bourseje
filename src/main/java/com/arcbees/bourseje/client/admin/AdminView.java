@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.arcbees.bourseje.client.realtime;
+package com.arcbees.bourseje.client.admin;
 
 import com.arcbees.bourseje.client.resources.Resources;
 import com.google.gwt.query.client.Function;
@@ -27,11 +27,11 @@ import javax.inject.Inject;
 
 import static com.google.gwt.query.client.GQuery.$;
 
-public class RealtimeView extends ViewImpl implements RealtimePresenter.MyView {
+public class AdminView extends ViewImpl implements AdminPresenter.MyView {
     private final SimplePanel main;
 
     @Inject
-    RealtimeView(Resources resources) {
+    AdminView(Resources resources) {
         main = new SimplePanel();
         main.setStyleName(resources.styles().container());
 
@@ -40,7 +40,7 @@ public class RealtimeView extends ViewImpl implements RealtimePresenter.MyView {
 
     @Override
     public void setInSlot(Object slot, IsWidget content) {
-        if (slot == RealtimePresenter.SLOT_MAIN) {
+        if (slot == AdminPresenter.SLOT_MAIN) {
             show(content);
         }
     }
