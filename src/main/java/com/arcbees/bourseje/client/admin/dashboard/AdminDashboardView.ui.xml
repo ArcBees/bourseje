@@ -5,6 +5,8 @@
     <ui:with field="res" type="com.arcbees.bourseje.client.resources.Resources"/>
     <ui:with field="page" type="com.arcbees.bourseje.client.resources.PageNumberOfVoteResources"/>
 
+    <ui:import field="com.arcbees.bourseje.client.NameTokens.*"/>
+
     <g:HTMLPanel styleName="{res.styles.main_section}">
         <w:Header/>
 
@@ -84,6 +86,8 @@
                 </div>
             </article>
         </section>
+
+        <a href="#{WINNER}" class="{res.styles.btn} {res.styles.btn_wide}">Go to Winner page</a>
 
         <button ui:field="login" class="{res.styles.btn} {res.styles.btn_wide}">
             Login

@@ -16,15 +16,31 @@
 
 package com.arcbees.bourseje.client.model;
 
+import com.google.gwt.resources.client.ImageResource;
+
 public class Candidate {
     private String name;
+    private String company;
+    private ImageResource picture;
 
     public Candidate(
-            String name) {
+            String name,
+            String company,
+            ImageResource picture) {
         this.name = name;
+        this.company = company;
+        this.picture = picture;
     }
 
     public String getName() {
         return name;
+    }
+
+    public String getCompany() {
+        return company;
+    }
+
+    public ImageResource getPicture() {
+        return picture;
     }
 }

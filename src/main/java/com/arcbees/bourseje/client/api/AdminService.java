@@ -33,6 +33,10 @@ public interface AdminService {
     @Path(ResourcesPath.CANDIDATE_RESULTS)
     RestAction<Collection<CandidateResult>> getVotesPerCandidate();
 
+    @GET
+    @Path(ResourcesPath.WINNER)
+    RestAction<CandidateResult> getWinner();
+
     @PUT
     @Path(ResourcesPath.VOTE_STATE)
     RestAction<Void> setVoteState(VoteState voteState);

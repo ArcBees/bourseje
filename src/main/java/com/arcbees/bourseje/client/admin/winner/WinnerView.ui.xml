@@ -19,11 +19,11 @@
                         </h2>
                     </div>
                     <div class="{anim.style.animation} {anim.style.bounceIn} {res.grid.col} {res.grid.col_4} {res.grid.col_push_4} {page.style.box_candidates}">
-                        <g:Image resource="{res.voteAccent}" styleName="{page.style.avatar}"/>
-                        <h3>Jason Lemay</h3>
-                        <p>Arcbees</p>
+                        <g:Image ui:field="picture" resource="{res.voteAccent}" styleName="{page.style.avatar}"/>
+                        <h3 ui:field="name">undefined</h3>
+                        <p ui:field="company">undefined</p>
                         <div class="{page.style.number}">
-                            <p>100<span>voix</span></p>
+                            <p ui:field="numberOfVotes">undefined<span>voix</span></p>
                         </div>
                     </div>
                 </div>
