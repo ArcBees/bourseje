@@ -23,8 +23,6 @@ import com.arcbees.bourseje.client.api.AdminService;
 import com.arcbees.bourseje.client.model.Candidate;
 import com.arcbees.bourseje.client.model.Candidates;
 import com.arcbees.bourseje.shared.CandidateResult;
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
 import com.google.gwt.resources.client.ImageResource;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
@@ -77,8 +75,7 @@ public class WinnerPresenter extends Presenter<WinnerPresenter.MyView, WinnerPre
     }
 
     private void setInView(CandidateResult winner) {
-        Candidate candidate = getCandidate(winner);
-
+        Candidate candidate = Candidates.getByName(winner.getCandidateName()).orNull();
         if (candidate == null) {
             return;
         }
@@ -87,14 +84,5 @@ public class WinnerPresenter extends Presenter<WinnerPresenter.MyView, WinnerPre
         getView().setName(candidate.getName());
         getView().setCompany(candidate.getCompany());
         getView().setVotes(winner.getNumberOfVotes());
-    }
-
-    private Candidate getCandidate(final CandidateResult winner) {
-        return Iterables.tryFind(Candidates.getAll(), new Predicate<Candidate>() {
-            @Override
-            public boolean apply(Candidate candidate) {
-                return candidate.getName().equals(winner.getCandidateName());
-            }
-        }).orNull();
     }
 }

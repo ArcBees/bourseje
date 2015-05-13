@@ -21,6 +21,9 @@ package com.arcbees.bourseje.client.model;
 import java.util.List;
 
 import com.arcbees.bourseje.client.resources.Resources;
+import com.google.common.base.Optional;
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.gwt.core.client.GWT;
 
@@ -34,13 +37,20 @@ public class Candidates {
     public static final Candidate SIMON = new Candidate("Simon Valin", "Valin Confection", resources.SimonValin());
     public static final Candidate VINCENT = new Candidate("Vincent Bouchard", "Venice Gym", resources.VincentBouchard());
 
-    public static List<Candidate> getAll() {
-        return Lists.newArrayList(
-                JOHANIE,
-                DOMINIC,
-                RAPHAEL,
-                MAXIME,
-                SIMON,
-                VINCENT);
+    private static List<Candidate> allCandidates = Lists.newArrayList(
+            JOHANIE,
+            DOMINIC,
+            RAPHAEL,
+            MAXIME,
+            SIMON,
+            VINCENT);
+
+    public static Optional<Candidate> getByName(final String name) {
+        return Iterables.tryFind(allCandidates, new Predicate<Candidate>() {
+            @Override
+            public boolean apply(Candidate candidate) {
+                return candidate.getName().equals(name);
+            }
+        });
     }
 }
