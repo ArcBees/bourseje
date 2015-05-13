@@ -22,4 +22,8 @@ public interface AdminDashboardUiHandlers extends UiHandlers {
     void onLoginClicked();
 
     void onStartVoteClicked();
+
+    void onStopVoteClicked();
+
+    void onInactiveVoteClicked();
 }

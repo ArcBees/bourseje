@@ -24,7 +24,6 @@ public class ExceptionModule extends AbstractModule {
     @Override
     protected void configure() {
         bind(InactiveVoteExceptionMapper.class).in(Singleton.class);
-        bind(NoVoteExceptionMapper.class).in(Singleton.class);
         bind(AlreadyVotedExceptionMapper.class).in(Singleton.class);
         bind(VoteCodeNotFoundExceptionMapper.class).in(Singleton.class);
         bind(VoteCodeNotSetExceptionMapper.class).in(Singleton.class);

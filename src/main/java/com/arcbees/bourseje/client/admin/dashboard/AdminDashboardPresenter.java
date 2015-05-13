@@ -20,11 +20,9 @@ import java.util.Collection;
 
 import com.arcbees.bourseje.client.AdminRestCallback;
 import com.arcbees.bourseje.client.NameTokens;
-import com.arcbees.bourseje.client.RestCallbackImpl;
+import com.arcbees.bourseje.client.admin.AdminPresenter;
 import com.arcbees.bourseje.client.api.AdminService;
 import com.arcbees.bourseje.client.api.LoginService;
-import com.arcbees.bourseje.client.api.VoteService;
-import com.arcbees.bourseje.client.admin.AdminPresenter;
 import com.arcbees.bourseje.shared.CandidateResult;
 import com.arcbees.bourseje.shared.UrlWrapper;
 import com.arcbees.bourseje.shared.VoteState;
@@ -52,7 +50,6 @@ public class AdminDashboardPresenter extends Presenter<AdminDashboardPresenter.M
     }
 
     private final RestDispatch dispatch;
-    private final VoteService voteService;
     private final LoginService loginService;
     private final AdminService adminService;
 
@@ -62,13 +59,11 @@ public class AdminDashboardPresenter extends Presenter<AdminDashboardPresenter.M
             MyView view,
             MyProxy proxy,
             RestDispatch dispatch,
-            VoteService voteService,
             LoginService loginService,
             AdminService adminService) {
         super(eventBus, view, proxy, AdminPresenter.SLOT_MAIN);
 
         this.dispatch = dispatch;
-        this.voteService = voteService;
         this.loginService = loginService;
         this.adminService = adminService;
 
@@ -89,21 +84,33 @@ public class AdminDashboardPresenter extends Presenter<AdminDashboardPresenter.M
 
     @Override
     public void onStartVoteClicked() {
-        if (!Window.confirm("Are you sure? This will reset all the votes.")) {
-            return;
+        if (Window.confirm("Are you sure? This will reset all the votes.")) {
+            setVoteState(VoteState.STARTED, "Vote started!");
         }
+    }
 
-        dispatch.execute(adminService.setVoteState(VoteState.STARTED), new AdminRestCallback<Void>() {
+    @Override
+    public void onStopVoteClicked() {
+        setVoteState(VoteState.FINISHED, "Vote stopped!");
+    }
+
+    @Override
+    public void onInactiveVoteClicked() {
+        setVoteState(VoteState.INACTIVE, "Vote set as inactive!");
+    }
+
+    private void setVoteState(VoteState voteState, final String successMessage) {
+        dispatch.execute(adminService.setVoteState(voteState), new AdminRestCallback<Void>() {
             @Override
             public void onSuccess(Void result) {
-                GQuery.console.info("Vote started!");
+                GQuery.console.info(successMessage);
             }
         });
     }
 
     @Override
     protected void onReveal() {
-        dispatch.execute(voteService.getVotesPerCandidate(), new RestCallbackImpl<Collection<CandidateResult>>() {
+        dispatch.execute(adminService.getVotesPerCandidate(), new AdminRestCallback<Collection<CandidateResult>>() {
             @Override
             public void onSuccess(Collection<CandidateResult> result) {
                 for (CandidateResult candidateResult : result) {

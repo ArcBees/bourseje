@@ -18,5 +18,6 @@ package com.arcbees.bourseje.shared;
 
 public enum VoteState {
     INACTIVE,
-    STARTED
+    STARTED,
+    FINISHED
 }

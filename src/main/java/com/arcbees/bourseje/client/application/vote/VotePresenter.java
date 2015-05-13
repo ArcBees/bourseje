@@ -18,6 +18,8 @@ package com.arcbees.bourseje.client.application.vote;
 
 import com.arcbees.bourseje.client.NameTokens;
 import com.arcbees.bourseje.client.application.ApplicationPresenter;
+import com.arcbees.bourseje.shared.CookieNames;
+import com.google.gwt.user.client.Cookies;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.HasUiHandlers;
@@ -51,6 +53,17 @@ public class VotePresenter extends Presenter<VotePresenter.MyView, VotePresenter
         this.placeManager = placeManager;
 
         getView().setUiHandlers(this);
+    }
+
+    @Override
+    public void prepareFromRequest(PlaceRequest request) {
+        if (Cookies.getCookie(CookieNames.VOTE_CODE) == null) {
+            PlaceRequest placeRequest = new PlaceRequest.Builder()
+                    .nameToken(NameTokens.IDENTIFICATION)
+                    .build();
+
+            placeManager.revealPlace(placeRequest);
+        }
     }
 
     @Override

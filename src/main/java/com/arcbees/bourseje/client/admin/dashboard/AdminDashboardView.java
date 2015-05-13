@@ -55,7 +55,11 @@ public class AdminDashboardView extends ViewWithUiHandlers<AdminDashboardUiHandl
     @UiField
     ButtonElement login;
     @UiField
+    ButtonElement inactiveVote;
+    @UiField
     ButtonElement startVote;
+    @UiField
+    ButtonElement stopVote;
 
     private Map<String, SpanElement> numberOfVoteElements = new HashMap<>();
 
@@ -82,12 +86,27 @@ public class AdminDashboardView extends ViewWithUiHandlers<AdminDashboardUiHandl
             }
         });
 
+        $(inactiveVote).on(CLICK, new Function() {
+            @Override
+            public void f() {
+                getUiHandlers().onInactiveVoteClicked();
+            }
+        });
+
         $(startVote).on(CLICK, new Function() {
             @Override
             public void f() {
                 getUiHandlers().onStartVoteClicked();
             }
         });
+
+        $(stopVote).on(CLICK, new Function() {
+            @Override
+            public void f() {
+                getUiHandlers().onStopVoteClicked();
+            }
+        });
+
     }
 
     @Override
