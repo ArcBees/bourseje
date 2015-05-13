@@ -17,6 +17,8 @@
 package com.arcbees.bourseje.server.services;
 
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
@@ -100,6 +102,15 @@ public class VoteService {
                         return new CandidateResult(candidateName, voteItems.size());
                     }
                 }).values();
+    }
+
+    public CandidateResult getWinner() {
+        return Collections.max(getVotesPerCandidate(), new Comparator<CandidateResult>() {
+            @Override
+            public int compare(CandidateResult c1, CandidateResult c2) {
+                return Integer.compare(c1.getNumberOfVotes(), c2.getNumberOfVotes());
+            }
+        });
     }
 
     private void verifyCode(String code) {

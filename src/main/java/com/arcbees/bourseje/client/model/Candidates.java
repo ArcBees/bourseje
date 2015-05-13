@@ -18,6 +18,10 @@
 
 package com.arcbees.bourseje.client.model;
 
+import java.util.List;
+
+import com.google.common.collect.Lists;
+
 public class Candidates {
     public static final Candidate JOHANIE = new Candidate("Johanie Gagnon");
     public static final Candidate DOMINIC = new Candidate("Dominic Fillion");
@@ -25,4 +29,14 @@ public class Candidates {
     public static final Candidate MAXIME = new Candidate("Maxime Gagnon");
     public static final Candidate SIMON = new Candidate("Simon Valin");
     public static final Candidate VINCENT = new Candidate("Vincent Bouchard");
+
+    public static List<Candidate> getAll() {
+        return Lists.newArrayList(
+                JOHANIE,
+                DOMINIC,
+                RAPHAEL,
+                MAXIME,
+                SIMON,
+                VINCENT);
+    }
 }
