@@ -91,7 +91,7 @@ public class AdminDashboardPresenter extends Presenter<AdminDashboardPresenter.M
 
     @Override
     public void onStopVoteClicked() {
-        setVoteState(VoteState.STOPPED, "Vote stopped!");
+        setVoteState(VoteState.FINISHED, "Vote stopped!");
     }
 
     private void setVoteState(VoteState voteState, final String successMessage) {
