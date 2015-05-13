@@ -89,21 +89,27 @@ public class ConfirmVotePresenter extends Presenter<ConfirmVotePresenter.MyView,
             public void onError(Response response) {
                 super.onError(response);
 
-                PlaceRequest placeRequest = new PlaceRequest.Builder()
-                        .nameToken(NameTokens.ALREADY_VOTED)
-                        .build();
-
-                placeManager.revealPlace(placeRequest);
+                if (response.getStatusCode() == Response.SC_FORBIDDEN) {
+                    revealPlace(NameTokens.ALREADY_VOTED);
+                } else {
+                    revealPlace(NameTokens.VOTE_FINISHED);
+                }
             }
 
             @Override
             public void onSuccess(Void aVoid) {
-                PlaceRequest placeRequest = new PlaceRequest.Builder()
-                        .nameToken(NameTokens.THANKS)
-                        .build();
-
-                placeManager.revealPlace(placeRequest);
+                revealPlace(NameTokens.THANKS);
             }
         });
     }
+
+    private void revealPlace(String nameToken) {
+        PlaceRequest placeRequest = new PlaceRequest.Builder()
+                .nameToken(nameToken)
+                .build();
+
+        placeManager.revealPlace(placeRequest);
+    }
+
+
 }

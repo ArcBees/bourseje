@@ -25,6 +25,7 @@ import javax.inject.Inject;
 import com.arcbees.bourseje.server.dao.CurrentVoteStateDao;
 import com.arcbees.bourseje.server.dao.VoteItemDao;
 import com.arcbees.bourseje.server.exception.AlreadyVotedException;
+import com.arcbees.bourseje.server.exception.InactiveVoteException;
 import com.arcbees.bourseje.server.exception.VoteCodeNotFoundException;
 import com.arcbees.bourseje.server.model.CurrentVoteState;
 import com.arcbees.bourseje.shared.CandidateResult;
@@ -60,11 +61,19 @@ public class VoteService {
     }
 
     public void vote(VoteItem voteItem, String code) {
+        verifyVoteIsActive();
+
         verifyCode(code);
 
         voteItem.setCode(code);
 
         voteItemDao.put(voteItem);
+    }
+
+    private void verifyVoteIsActive() {
+        if (getCurrentVoteState() != VoteState.STARTED) {
+            throw new InactiveVoteException();
+        }
     }
 
     public Collection<CandidateResult> getVotesPerCandidate() {
