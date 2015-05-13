@@ -93,6 +93,11 @@
             Login
         </button>
 
+        <p>
+            <span>Current vote state:</span>
+            <span ui:field="currentState"></span>
+        </p>
+
         <button ui:field="inactiveVote" class="{res.styles.btn} {res.styles.btn_wide}">
             Set vote as inactive
         </button>

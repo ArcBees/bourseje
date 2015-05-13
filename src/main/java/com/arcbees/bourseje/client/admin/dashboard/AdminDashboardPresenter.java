@@ -20,13 +20,14 @@ import java.util.Collection;
 
 import com.arcbees.bourseje.client.AdminRestCallback;
 import com.arcbees.bourseje.client.NameTokens;
+import com.arcbees.bourseje.client.RestCallbackImpl;
 import com.arcbees.bourseje.client.admin.AdminPresenter;
 import com.arcbees.bourseje.client.api.AdminService;
 import com.arcbees.bourseje.client.api.LoginService;
+import com.arcbees.bourseje.client.api.VoteService;
 import com.arcbees.bourseje.shared.CandidateResult;
 import com.arcbees.bourseje.shared.UrlWrapper;
 import com.arcbees.bourseje.shared.VoteState;
-import com.google.gwt.query.client.GQuery;
 import com.google.gwt.user.client.Window;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
@@ -42,6 +43,8 @@ public class AdminDashboardPresenter extends Presenter<AdminDashboardPresenter.M
         implements AdminDashboardUiHandlers {
     interface MyView extends View, HasUiHandlers<AdminDashboardUiHandlers> {
         void setNumberOfVotesForCandidate(CandidateResult candidateResult);
+
+        void setCurrentState(VoteState currentState);
     }
 
     @ProxyStandard
@@ -52,6 +55,7 @@ public class AdminDashboardPresenter extends Presenter<AdminDashboardPresenter.M
     private final RestDispatch dispatch;
     private final LoginService loginService;
     private final AdminService adminService;
+    private final VoteService voteService;
 
     @Inject
     AdminDashboardPresenter(
@@ -60,12 +64,14 @@ public class AdminDashboardPresenter extends Presenter<AdminDashboardPresenter.M
             MyProxy proxy,
             RestDispatch dispatch,
             LoginService loginService,
-            AdminService adminService) {
+            AdminService adminService,
+            VoteService voteService) {
         super(eventBus, view, proxy, AdminPresenter.SLOT_MAIN);
 
         this.dispatch = dispatch;
         this.loginService = loginService;
         this.adminService = adminService;
+        this.voteService = voteService;
 
         getView().setUiHandlers(this);
     }
@@ -85,25 +91,25 @@ public class AdminDashboardPresenter extends Presenter<AdminDashboardPresenter.M
     @Override
     public void onStartVoteClicked() {
         if (Window.confirm("Are you sure? This will reset all the votes.")) {
-            setVoteState(VoteState.STARTED, "Vote started!");
+            setVoteState(VoteState.STARTED);
         }
     }
 
     @Override
     public void onStopVoteClicked() {
-        setVoteState(VoteState.FINISHED, "Vote stopped!");
+        setVoteState(VoteState.FINISHED);
     }
 
     @Override
     public void onInactiveVoteClicked() {
-        setVoteState(VoteState.INACTIVE, "Vote set as inactive!");
+        setVoteState(VoteState.INACTIVE);
     }
 
-    private void setVoteState(VoteState voteState, final String successMessage) {
+    private void setVoteState(final VoteState voteState) {
         dispatch.execute(adminService.setVoteState(voteState), new AdminRestCallback<Void>() {
             @Override
             public void onSuccess(Void result) {
-                GQuery.console.info(successMessage);
+                getView().setCurrentState(voteState);
             }
         });
     }
@@ -116,6 +122,13 @@ public class AdminDashboardPresenter extends Presenter<AdminDashboardPresenter.M
                 for (CandidateResult candidateResult : result) {
                     getView().setNumberOfVotesForCandidate(candidateResult);
                 }
+            }
+        });
+
+        dispatch.execute(voteService.getCurrentVoteState(), new RestCallbackImpl<VoteState>() {
+            @Override
+            public void onSuccess(VoteState currentState) {
+                getView().setCurrentState(currentState);
             }
         });
     }
