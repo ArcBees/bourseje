@@ -32,5 +32,5 @@ public class NameTokens {
 
     // admin
     public static final String ADMIN_DASHBOARD = "/admin/dashboard";
-    public static final String RESULT = "/admin/result";
+    public static final String WINNER = "/admin/winner";
 }

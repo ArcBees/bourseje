@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.arcbees.bourseje.client.admin.result;
+package com.arcbees.bourseje.client.admin.winner;
 
 import com.arcbees.bourseje.client.NameTokens;
 import com.arcbees.bourseje.client.admin.AdminPresenter;
@@ -26,17 +26,17 @@ import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 
-public class ResultPresenter extends Presenter<ResultPresenter.MyView, ResultPresenter.MyProxy> {
+public class WinnerPresenter extends Presenter<WinnerPresenter.MyView, WinnerPresenter.MyProxy> {
     interface MyView extends View {
     }
 
     @ProxyStandard
-    @NameToken(NameTokens.RESULT)
-    interface MyProxy extends ProxyPlace<ResultPresenter> {
+    @NameToken(NameTokens.WINNER)
+    interface MyProxy extends ProxyPlace<WinnerPresenter> {
     }
 
     @Inject
-    ResultPresenter(
+    WinnerPresenter(
             EventBus eventBus,
             MyView view,
             MyProxy proxy) {

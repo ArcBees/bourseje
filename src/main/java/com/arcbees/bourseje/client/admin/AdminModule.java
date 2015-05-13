@@ -17,14 +17,14 @@
 package com.arcbees.bourseje.client.admin;
 
 import com.arcbees.bourseje.client.admin.dashboard.AdminDashboardModule;
-import com.arcbees.bourseje.client.admin.result.ResultModule;
+import com.arcbees.bourseje.client.admin.winner.WinnerModule;
 import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 
 public class AdminModule extends AbstractPresenterModule {
     @Override
     protected void configure() {
         install(new AdminDashboardModule());
-        install(new ResultModule());
+        install(new WinnerModule());
 
         bindPresenter(AdminPresenter.class, AdminPresenter.MyView.class, AdminView.class,
                 AdminPresenter.MyProxy.class);
