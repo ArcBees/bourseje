@@ -14,21 +14,19 @@
  * the License.
  */
 
-package com.arcbees.bourseje.client.realtime.candidates;
+package com.arcbees.bourseje.client.admin;
 
-import com.google.gwt.uibinder.client.UiBinder;
-import com.google.gwt.user.client.ui.Widget;
-import com.gwtplatform.mvp.client.ViewImpl;
+import com.arcbees.bourseje.client.admin.dashboard.AdminDashboardModule;
+import com.arcbees.bourseje.client.admin.winner.WinnerModule;
+import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 
-import javax.inject.Inject;
+public class AdminModule extends AbstractPresenterModule {
+    @Override
+    protected void configure() {
+        install(new AdminDashboardModule());
+        install(new WinnerModule());
 
-public class CandidatesView extends ViewImpl implements CandidatesPresenter.MyView {
-    interface Binder extends UiBinder<Widget, CandidatesView> {
-    }
-
-    @Inject
-    CandidatesView(
-            Binder uiBinder) {
-        initWidget(uiBinder.createAndBindUi(this));
+        bindPresenter(AdminPresenter.class, AdminPresenter.MyView.class, AdminView.class,
+                AdminPresenter.MyProxy.class);
     }
 }

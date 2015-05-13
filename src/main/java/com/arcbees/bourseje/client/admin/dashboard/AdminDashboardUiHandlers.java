@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2015 ArcBees Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -14,14 +14,12 @@
  * the License.
  */
 
-package com.arcbees.bourseje.client.realtime.candidates;
+package com.arcbees.bourseje.client.admin.dashboard;
 
-import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
+import com.gwtplatform.mvp.client.UiHandlers;
 
-public class CandidatesModule extends AbstractPresenterModule {
-    @Override
-    protected void configure() {
-        bindPresenter(CandidatesPresenter.class, CandidatesPresenter.MyView.class,
-                CandidatesView.class, CandidatesPresenter.MyProxy.class);
-    }
+public interface AdminDashboardUiHandlers extends UiHandlers {
+    void onLoginClicked();
+
+    void onStartVoteClicked();
 }

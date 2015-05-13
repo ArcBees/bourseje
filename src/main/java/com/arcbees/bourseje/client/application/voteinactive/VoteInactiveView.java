@@ -1,5 +1,5 @@
-/*
- * Copyright 2015 ArcBees Inc.
+/**
+ * Copyright 2014 ArcBees Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -14,12 +14,21 @@
  * the License.
  */
 
-package com.arcbees.bourseje.client.realtime.numberofvote;
+package com.arcbees.bourseje.client.application.voteinactive;
 
-import com.gwtplatform.mvp.client.UiHandlers;
+import javax.inject.Inject;
 
-public interface NumberOfVoteUiHandlers extends UiHandlers {
-    void onLoginClicked();
+import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.user.client.ui.Widget;
+import com.gwtplatform.mvp.client.ViewImpl;
 
-    void onStartVoteClicked();
+public class VoteInactiveView extends ViewImpl implements VoteInactivePresenter.MyView {
+    interface Binder extends UiBinder<Widget, VoteInactiveView> {
+    }
+
+    @Inject
+    VoteInactiveView(
+            Binder uiBinder) {
+        initWidget(uiBinder.createAndBindUi(this));
+    }
 }

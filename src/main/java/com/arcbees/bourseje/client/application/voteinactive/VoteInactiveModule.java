@@ -14,14 +14,14 @@
  * the License.
  */
 
-package com.arcbees.bourseje.client.realtime.endofvote;
+package com.arcbees.bourseje.client.application.voteinactive;
 
 import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 
-public class EndOfVoteModule extends AbstractPresenterModule {
+public class VoteInactiveModule extends AbstractPresenterModule {
     @Override
     protected void configure() {
-        bindPresenter(EndOfVotePresenter.class, EndOfVotePresenter.MyView.class,
-                EndOfVoteView.class, EndOfVotePresenter.MyProxy.class);
+        bindPresenter(VoteInactivePresenter.class, VoteInactivePresenter.MyView.class,
+                VoteInactiveView.class, VoteInactivePresenter.MyProxy.class);
     }
 }

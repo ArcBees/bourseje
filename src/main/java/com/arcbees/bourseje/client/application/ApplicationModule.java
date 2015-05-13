@@ -20,7 +20,7 @@ import com.arcbees.bourseje.client.application.alreadyvoted.AlreadyVotedModule;
 import com.arcbees.bourseje.client.application.confirmvote.ConfirmVoteModule;
 import com.arcbees.bourseje.client.application.home.HomeModule;
 import com.arcbees.bourseje.client.application.identification.IdentificationModule;
-import com.arcbees.bourseje.client.application.novote.NoVoteModule;
+import com.arcbees.bourseje.client.application.voteinactive.VoteInactiveModule;
 import com.arcbees.bourseje.client.application.page404.Page404Module;
 import com.arcbees.bourseje.client.application.thanks.ThanksModule;
 import com.arcbees.bourseje.client.application.vote.VoteModule;
@@ -32,7 +32,7 @@ public class ApplicationModule extends AbstractPresenterModule {
     protected void configure() {
         install(new AlreadyVotedModule());
         install(new ConfirmVoteModule());
-        install(new NoVoteModule());
+        install(new VoteInactiveModule());
         install(new VoteModule());
         install(new HomeModule());
         install(new ThanksModule());

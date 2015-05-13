@@ -14,14 +14,14 @@
  * the License.
  */
 
-package com.arcbees.bourseje.client.application.novote;
+package com.arcbees.bourseje.client.admin.winner;
 
 import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 
-public class NoVoteModule extends AbstractPresenterModule {
+public class WinnerModule extends AbstractPresenterModule {
     @Override
     protected void configure() {
-        bindPresenter(NoVotePresenter.class, NoVotePresenter.MyView.class,
-                NoVoteView.class, NoVotePresenter.MyProxy.class);
+        bindPresenter(WinnerPresenter.class, WinnerPresenter.MyView.class,
+                WinnerView.class, WinnerPresenter.MyProxy.class);
     }
 }

@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.arcbees.bourseje.client.realtime;
+package com.arcbees.bourseje.client.admin;
 
 import com.google.gwt.event.shared.GwtEvent.Type;
 import com.google.inject.Inject;
@@ -26,19 +26,19 @@ import com.gwtplatform.mvp.client.annotations.ProxyStandard;
 import com.gwtplatform.mvp.client.proxy.Proxy;
 import com.gwtplatform.mvp.client.proxy.RevealContentHandler;
 
-public class RealtimePresenter extends Presenter<RealtimePresenter.MyView, RealtimePresenter.MyProxy> {
+public class AdminPresenter extends Presenter<AdminPresenter.MyView, AdminPresenter.MyProxy> {
     interface MyView extends View {
     }
 
     @ProxyStandard
-    interface MyProxy extends Proxy<RealtimePresenter> {
+    interface MyProxy extends Proxy<AdminPresenter> {
     }
 
     @ContentSlot
     public static final Type<RevealContentHandler<?>> SLOT_MAIN = new Type<>();
 
     @Inject
-    RealtimePresenter(
+    AdminPresenter(
             EventBus eventBus,
             MyView view,
             MyProxy proxy) {

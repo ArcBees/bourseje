@@ -1,9 +1,9 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
              xmlns:g="urn:import:com.google.gwt.user.client.ui"
-             xmlns:w="urn:import:com.arcbees.bourseje.client.realtime.ui">
+             xmlns:w="urn:import:com.arcbees.bourseje.client.admin.ui">
 
     <ui:with field="res" type="com.arcbees.bourseje.client.resources.Resources"/>
-    <ui:with field="page" type="com.arcbees.bourseje.client.resources.PageCandidatesResources"/>
+    <ui:with field="page" type="com.arcbees.bourseje.client.resources.PageNumberOfVoteResources"/>
 
     <g:HTMLPanel styleName="{res.styles.main_section}">
         <w:Header/>
@@ -13,7 +13,9 @@
                 <div class="{res.styles.wrapper_desktop} {res.styles.clearfix}">
                     <div class="{page.style.text_intro} {res.styles.txtcenter}">
                         <h2>Les candidats</h2>
-                        <p>pour la Bourse jeune entreprise de l’année 2015</p>
+                        <p>pour la Bourse jeune entreprise
+                            <span>de l’année 2015</span>
+                        </p>
                     </div>
                     <div class="{res.grid.row}">
                         <div class="{res.grid.col} {res.grid.col_6} {page.style.box_candidates}">
@@ -22,12 +24,18 @@
                                 <h3>Johanie Gagnon</h3>
                                 <p>Construction le 5e élément</p>
                             </div>
+                            <div class="{page.style.nb_vote}">
+                                <span ui:field="johanieVotes">0</span>
+                            </div>
                         </div>
                         <div class="{res.grid.col} {res.grid.col_6} {page.style.box_candidates}">
                             <g:Image resource="{res.DominicFillion}" styleName="{page.style.avatar}"/>
                             <div class="{page.style.candidates}">
                                 <h3>Dominic Fillion</h3>
                                 <p>DFMotion</p>
+                            </div>
+                            <div class="{page.style.nb_vote}">
+                                <span ui:field="dominicVotes">0</span>
                             </div>
                         </div>
                         <div class="{res.grid.col} {res.grid.col_6} {page.style.box_candidates}">
@@ -36,12 +44,18 @@
                                 <h3>Raphaël Provost</h3>
                                 <p>iWrap</p>
                             </div>
+                            <div class="{page.style.nb_vote}">
+                                <span ui:field="raphaelVotes">0</span>
+                            </div>
                         </div>
                         <div class="{res.grid.col} {res.grid.col_6} {page.style.box_candidates}">
                             <g:Image resource="{res.MaximeGagnon}" styleName="{page.style.avatar}"/>
                             <div class="{page.style.candidates}">
                                 <h3>Maxime Gagnon</h3>
                                 <p>La Raffinerie</p>
+                            </div>
+                            <div class="{page.style.nb_vote}">
+                                <span ui:field="maximeVotes">0</span>
                             </div>
                         </div>
                     </div>
@@ -52,7 +66,9 @@
                                 <h3>Simon Valin</h3>
                                 <p>Valin Confection</p>
                             </div>
-
+                            <div class="{page.style.nb_vote}">
+                                <span ui:field="simonVotes">0</span>
+                            </div>
                         </div>
                         <div class="{res.grid.col} {res.grid.col_6} {page.style.box_candidates}">
                             <g:Image resource="{res.VincentBouchard}" styleName="{page.style.avatar}"/>
@@ -60,12 +76,22 @@
                                 <h3>Vincent Bouchard</h3>
                                 <p>Venice Gym</p>
                             </div>
-
+                            <div class="{page.style.nb_vote}">
+                                <span ui:field="vincentVotes">0</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </article>
         </section>
+
+        <button ui:field="login" class="{res.styles.btn} {res.styles.btn_wide}">
+            Login
+        </button>
+
+        <button ui:field="startVote" class="{res.styles.btn} {res.styles.btn_wide}">
+            Start vote
+        </button>
 
         <w:Footer/>
     </g:HTMLPanel>

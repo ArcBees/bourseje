@@ -14,10 +14,10 @@
  * the License.
  */
 
-package com.arcbees.bourseje.client.realtime.candidates;
+package com.arcbees.bourseje.client.application.voteinactive;
 
 import com.arcbees.bourseje.client.NameTokens;
-import com.arcbees.bourseje.client.realtime.RealtimePresenter;
+import com.arcbees.bourseje.client.application.ApplicationPresenter;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.Presenter;
@@ -26,20 +26,20 @@ import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 
-public class CandidatesPresenter extends Presenter<CandidatesPresenter.MyView, CandidatesPresenter.MyProxy> {
+public class VoteInactivePresenter extends Presenter<VoteInactivePresenter.MyView, VoteInactivePresenter.MyProxy> {
     interface MyView extends View {
     }
 
     @ProxyStandard
-    @NameToken(NameTokens.CANDIDATES)
-    interface MyProxy extends ProxyPlace<CandidatesPresenter> {
+    @NameToken(NameTokens.VOTE_INACTIVE)
+    interface MyProxy extends ProxyPlace<VoteInactivePresenter> {
     }
 
     @Inject
-    CandidatesPresenter(
+    VoteInactivePresenter(
             EventBus eventBus,
             MyView view,
             MyProxy proxy) {
-        super(eventBus, view, proxy, RealtimePresenter.SLOT_MAIN);
+        super(eventBus, view, proxy, ApplicationPresenter.SLOT_MAIN);
     }
 }

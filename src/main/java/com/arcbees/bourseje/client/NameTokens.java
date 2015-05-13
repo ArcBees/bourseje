@@ -17,24 +17,21 @@
 package com.arcbees.bourseje.client;
 
 public class NameTokens {
-    public static final String NAME = "name";
-    public static final String COMPANY = "company";
+    public static final String PARAM_NAME = "name";
+    public static final String PARAM_COMPANY = "company";
 
-    public static final String NO_VOTE = "/no_vote";
     public static final String HOME = "/home";
     public static final String IDENTIFICATION = "/identification";
     public static final String VOTE = "/vote";
     public static final String CONFIRM_VOTE = "/confirm_vote";
     public static final String THANKS = "/thanks";
+
+    public static final String VOTE_INACTIVE = "/vote_inactive";
     public static final String ALREADY_VOTED = "/already_voted";
     public static final String VOTE_FINISHED = "/vote_finished";
-    public static final String PAGE_404 = "/error";
-
-    public static final String HOW_TO_VOTE = "/how_to";
-    public static final String CANDIDATES = "/candidates";
-    public static final String END_OF_VOTE = "/end_vote";
+    public static final String PAGE_404 = "/not_found";
 
     // admin
-    public static final String NUMBER_OF_VOTE = "/admin/number_of_vote";
-    public static final String RESULT = "/admin/result";
+    public static final String ADMIN_DASHBOARD = "/admin/dashboard";
+    public static final String WINNER = "/admin/winner";
 }

@@ -74,8 +74,8 @@ public class ConfirmVotePresenter extends Presenter<ConfirmVotePresenter.MyView,
     public void prepareFromRequest(PlaceRequest request) {
         super.prepareFromRequest(request);
 
-        name = request.getParameter(NameTokens.NAME, "noSelection");
-        String company = request.getParameter(NameTokens.COMPANY, "noSelection");
+        name = request.getParameter(NameTokens.PARAM_NAME, "noSelection");
+        String company = request.getParameter(NameTokens.PARAM_COMPANY, "noSelection");
 
         getView().setName(name);
         getView().setCompany(company);

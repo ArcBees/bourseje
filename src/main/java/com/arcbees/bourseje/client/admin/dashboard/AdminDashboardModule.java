@@ -14,14 +14,14 @@
  * the License.
  */
 
-package com.arcbees.bourseje.client.realtime.howtovote;
+package com.arcbees.bourseje.client.admin.dashboard;
 
 import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 
-public class HowToVoteModule extends AbstractPresenterModule {
+public class AdminDashboardModule extends AbstractPresenterModule {
     @Override
     protected void configure() {
-        bindPresenter(HowToVotePresenter.class, HowToVotePresenter.MyView.class,
-                HowToVoteView.class, HowToVotePresenter.MyProxy.class);
+        bindPresenter(AdminDashboardPresenter.class, AdminDashboardPresenter.MyView.class,
+                AdminDashboardView.class, AdminDashboardPresenter.MyProxy.class);
     }
 }

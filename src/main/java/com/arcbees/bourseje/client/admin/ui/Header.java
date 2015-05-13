@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.arcbees.bourseje.client.realtime.ui;
+package com.arcbees.bourseje.client.admin.ui;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -23,15 +23,15 @@ import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 
 
-public class Footer implements IsWidget {
-    interface Binder extends UiBinder<HTMLPanel, Footer> {
+public class Header implements IsWidget {
+    interface Binder extends UiBinder<HTMLPanel, Header> {
     }
 
     private static Binder binder = GWT.create(Binder.class);
 
     private final Widget widget;
 
-    public Footer() {
+    public Header() {
         widget = binder.createAndBindUi(this);
     }
 
