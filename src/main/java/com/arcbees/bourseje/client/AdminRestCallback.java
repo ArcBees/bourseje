@@ -14,12 +14,14 @@
  * the License.
  */
 
-package com.arcbees.bourseje.client.realtime.numberofvote;
+package com.arcbees.bourseje.client;
 
-import com.gwtplatform.mvp.client.UiHandlers;
+import com.google.gwt.http.client.Response;
+import com.google.gwt.query.client.GQuery;
 
-public interface NumberOfVoteUiHandlers extends UiHandlers {
-    void onLoginClicked();
-
-    void onStartVoteClicked();
+public abstract class AdminRestCallback<T> extends RestCallbackImpl<T> {
+    @Override
+    public void onError(Response response) {
+        GQuery.console.error("Error calling API. You are probably not logged in.");
+    }
 }

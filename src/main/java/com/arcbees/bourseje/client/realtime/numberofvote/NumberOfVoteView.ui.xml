@@ -85,6 +85,10 @@
             </article>
         </section>
 
+        <button ui:field="login" class="{res.styles.btn} {res.styles.btn_wide}">
+            Login
+        </button>
+
         <button ui:field="startVote" class="{res.styles.btn} {res.styles.btn_wide}">
             Start vote
         </button>

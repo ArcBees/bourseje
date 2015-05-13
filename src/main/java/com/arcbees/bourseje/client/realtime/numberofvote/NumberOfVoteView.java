@@ -53,6 +53,8 @@ public class NumberOfVoteView extends ViewWithUiHandlers<NumberOfVoteUiHandlers>
     @UiField
     SpanElement vincentVotes;
     @UiField
+    ButtonElement login;
+    @UiField
     ButtonElement startVote;
 
     private Map<String, SpanElement> numberOfVoteElements = new HashMap<>();
@@ -73,6 +75,13 @@ public class NumberOfVoteView extends ViewWithUiHandlers<NumberOfVoteUiHandlers>
     }
 
     private void initButtons() {
+        $(login).on(CLICK, new Function() {
+            @Override
+            public void f() {
+                getUiHandlers().onLoginClicked();
+            }
+        });
+
         $(startVote).on(CLICK, new Function() {
             @Override
             public void f() {

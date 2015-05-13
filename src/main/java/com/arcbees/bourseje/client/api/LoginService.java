@@ -14,12 +14,19 @@
  * the License.
  */
 
-package com.arcbees.bourseje.client.realtime.numberofvote;
+package com.arcbees.bourseje.client.api;
 
-import com.gwtplatform.mvp.client.UiHandlers;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.QueryParam;
 
-public interface NumberOfVoteUiHandlers extends UiHandlers {
-    void onLoginClicked();
+import com.arcbees.bourseje.shared.UrlWrapper;
+import com.arcbees.bourseje.shared.ResourcesPath;
+import com.gwtplatform.dispatch.rest.shared.RestAction;
 
-    void onStartVoteClicked();
+@Path(ResourcesPath.LOGIN)
+public interface LoginService {
+    @GET
+    @Path(ResourcesPath.URL)
+    RestAction<UrlWrapper> getLoginUrl(@QueryParam("continueUrl") String continueUrl);
 }

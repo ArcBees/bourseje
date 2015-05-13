@@ -18,14 +18,18 @@ package com.arcbees.bourseje.client.realtime.numberofvote;
 
 import java.util.Collection;
 
+import com.arcbees.bourseje.client.AdminRestCallback;
 import com.arcbees.bourseje.client.NameTokens;
 import com.arcbees.bourseje.client.RestCallbackImpl;
 import com.arcbees.bourseje.client.api.AdminService;
+import com.arcbees.bourseje.client.api.LoginService;
 import com.arcbees.bourseje.client.api.VoteService;
 import com.arcbees.bourseje.client.realtime.RealtimePresenter;
 import com.arcbees.bourseje.shared.CandidateResult;
+import com.arcbees.bourseje.shared.UrlWrapper;
 import com.arcbees.bourseje.shared.VoteState;
 import com.google.gwt.query.client.GQuery;
+import com.google.gwt.user.client.Window;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.dispatch.rest.client.RestDispatch;
@@ -49,6 +53,7 @@ public class NumberOfVotePresenter extends Presenter<NumberOfVotePresenter.MyVie
 
     private final RestDispatch dispatch;
     private final VoteService voteService;
+    private final LoginService loginService;
     private final AdminService adminService;
 
     @Inject
@@ -58,19 +63,37 @@ public class NumberOfVotePresenter extends Presenter<NumberOfVotePresenter.MyVie
             MyProxy proxy,
             RestDispatch dispatch,
             VoteService voteService,
+            LoginService loginService,
             AdminService adminService) {
         super(eventBus, view, proxy, RealtimePresenter.SLOT_MAIN);
 
         this.dispatch = dispatch;
         this.voteService = voteService;
+        this.loginService = loginService;
         this.adminService = adminService;
 
         getView().setUiHandlers(this);
     }
 
     @Override
+    public void onLoginClicked() {
+        String currentUrl = Window.Location.getHref();
+
+        dispatch.execute(loginService.getLoginUrl(currentUrl), new AdminRestCallback<UrlWrapper>() {
+            @Override
+            public void onSuccess(UrlWrapper loginUrl) {
+                Window.Location.replace(loginUrl.getUrl());
+            }
+        });
+    }
+
+    @Override
     public void onStartVoteClicked() {
-        dispatch.execute(adminService.setVoteState(VoteState.STARTED), new RestCallbackImpl<Void>() {
+        if (!Window.confirm("Are you sure? This will reset all the votes.")) {
+            return;
+        }
+
+        dispatch.execute(adminService.setVoteState(VoteState.STARTED), new AdminRestCallback<Void>() {
             @Override
             public void onSuccess(Void result) {
                 GQuery.console.info("Vote started!");
