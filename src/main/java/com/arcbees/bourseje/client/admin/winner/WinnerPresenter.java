@@ -75,7 +75,7 @@ public class WinnerPresenter extends Presenter<WinnerPresenter.MyView, WinnerPre
     }
 
     private void setInView(CandidateResult winner) {
-        Candidate candidate = Candidates.getByName(winner.getCandidateName()).orNull();
+        Candidate candidate = Candidates.getByName(winner.getCandidateName());
         if (candidate == null) {
             return;
         }

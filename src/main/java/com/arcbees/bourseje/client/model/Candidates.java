@@ -21,7 +21,6 @@ package com.arcbees.bourseje.client.model;
 import java.util.List;
 
 import com.arcbees.bourseje.client.resources.Resources;
-import com.google.common.base.Optional;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
@@ -45,12 +44,12 @@ public class Candidates {
             SIMON,
             VINCENT);
 
-    public static Optional<Candidate> getByName(final String name) {
+    public static Candidate getByName(final String name) {
         return Iterables.tryFind(allCandidates, new Predicate<Candidate>() {
             @Override
             public boolean apply(Candidate candidate) {
                 return candidate.getName().equals(name);
             }
-        });
+        }).orNull();
     }
 }

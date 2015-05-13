@@ -20,9 +20,12 @@ import com.arcbees.bourseje.client.NameTokens;
 import com.arcbees.bourseje.client.RestCallbackImpl;
 import com.arcbees.bourseje.client.api.VoteService;
 import com.arcbees.bourseje.client.application.ApplicationPresenter;
+import com.arcbees.bourseje.client.model.Candidate;
+import com.arcbees.bourseje.client.model.Candidates;
 import com.arcbees.bourseje.shared.CookieNames;
 import com.arcbees.bourseje.shared.VoteItem;
 import com.google.gwt.http.client.Response;
+import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.user.client.Cookies;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
@@ -42,6 +45,8 @@ public class ConfirmVotePresenter extends Presenter<ConfirmVotePresenter.MyView,
         void setName(String name);
 
         void setCompany(String company);
+
+        void setPicture(ImageResource picture);
     }
 
     @ProxyStandard
@@ -80,10 +85,15 @@ public class ConfirmVotePresenter extends Presenter<ConfirmVotePresenter.MyView,
         }
 
         name = request.getParameter(NameTokens.PARAM_NAME, "noSelection");
-        String company = request.getParameter(NameTokens.PARAM_COMPANY, "noSelection");
+        Candidate candidate = Candidates.getByName(name);
 
-        getView().setName(name);
-        getView().setCompany(company);
+        if (candidate == null) {
+            revealPlace(NameTokens.VOTE);
+        } else {
+            getView().setName(name);
+            getView().setCompany(candidate.getCompany());
+            getView().setPicture(candidate.getPicture());
+        }
     }
 
     @Override
