@@ -25,6 +25,6 @@ import javax.ws.rs.ext.Provider;
 public class InactiveVoteExceptionMapper implements ExceptionMapper<InactiveVoteException> {
     @Override
     public Response toResponse(InactiveVoteException e) {
-        return Response.status(Status.FORBIDDEN).build();
+        return Response.status(Status.SERVICE_UNAVAILABLE).build();
     }
 }

@@ -17,6 +17,8 @@
 package com.arcbees.bourseje.server.services;
 
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
@@ -25,6 +27,7 @@ import javax.inject.Inject;
 import com.arcbees.bourseje.server.dao.CurrentVoteStateDao;
 import com.arcbees.bourseje.server.dao.VoteItemDao;
 import com.arcbees.bourseje.server.exception.AlreadyVotedException;
+import com.arcbees.bourseje.server.exception.InactiveVoteException;
 import com.arcbees.bourseje.server.exception.VoteCodeNotFoundException;
 import com.arcbees.bourseje.server.model.CurrentVoteState;
 import com.arcbees.bourseje.shared.CandidateResult;
@@ -60,11 +63,19 @@ public class VoteService {
     }
 
     public void vote(VoteItem voteItem, String code) {
+        verifyVoteIsActive();
+
         verifyCode(code);
 
         voteItem.setCode(code);
 
         voteItemDao.put(voteItem);
+    }
+
+    private void verifyVoteIsActive() {
+        if (getCurrentVoteState() != VoteState.STARTED) {
+            throw new InactiveVoteException();
+        }
     }
 
     public Collection<CandidateResult> getVotesPerCandidate() {
@@ -91,6 +102,15 @@ public class VoteService {
                         return new CandidateResult(candidateName, voteItems.size());
                     }
                 }).values();
+    }
+
+    public CandidateResult getWinner() {
+        return Collections.max(getVotesPerCandidate(), new Comparator<CandidateResult>() {
+            @Override
+            public int compare(CandidateResult c1, CandidateResult c2) {
+                return Integer.compare(c1.getNumberOfVotes(), c2.getNumberOfVotes());
+            }
+        });
     }
 
     private void verifyCode(String code) {

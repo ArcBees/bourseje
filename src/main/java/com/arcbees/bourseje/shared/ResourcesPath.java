@@ -30,4 +30,5 @@ public class ResourcesPath {
     // login
     public static final String LOGIN = "/login";
     public static final String URL = "/url";
+    public static final String WINNER = "/winner";
 }

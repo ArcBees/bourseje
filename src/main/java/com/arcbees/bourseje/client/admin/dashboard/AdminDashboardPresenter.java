@@ -84,14 +84,26 @@ public class AdminDashboardPresenter extends Presenter<AdminDashboardPresenter.M
 
     @Override
     public void onStartVoteClicked() {
-        if (!Window.confirm("Are you sure? This will reset all the votes.")) {
-            return;
+        if (Window.confirm("Are you sure? This will reset all the votes.")) {
+            setVoteState(VoteState.STARTED, "Vote started!");
         }
+    }
 
-        dispatch.execute(adminService.setVoteState(VoteState.STARTED), new AdminRestCallback<Void>() {
+    @Override
+    public void onStopVoteClicked() {
+        setVoteState(VoteState.FINISHED, "Vote stopped!");
+    }
+
+    @Override
+    public void onInactiveVoteClicked() {
+        setVoteState(VoteState.INACTIVE, "Vote set as inactive!");
+    }
+
+    private void setVoteState(VoteState voteState, final String successMessage) {
+        dispatch.execute(adminService.setVoteState(voteState), new AdminRestCallback<Void>() {
             @Override
             public void onSuccess(Void result) {
-                GQuery.console.info("Vote started!");
+                GQuery.console.info(successMessage);
             }
         });
     }

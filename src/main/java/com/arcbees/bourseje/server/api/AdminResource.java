@@ -49,6 +49,12 @@ public class AdminResource {
         return Response.ok(voteService.getVotesPerCandidate()).build();
     }
 
+    @GET
+    @Path(ResourcesPath.WINNER)
+    public Response getWinner() {
+        return Response.ok(voteService.getWinner()).build();
+    }
+
     @PUT
     @Path(ResourcesPath.VOTE_STATE)
     public Response setVoteState(VoteState voteState) {

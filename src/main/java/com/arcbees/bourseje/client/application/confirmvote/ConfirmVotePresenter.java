@@ -20,8 +20,10 @@ import com.arcbees.bourseje.client.NameTokens;
 import com.arcbees.bourseje.client.RestCallbackImpl;
 import com.arcbees.bourseje.client.api.VoteService;
 import com.arcbees.bourseje.client.application.ApplicationPresenter;
+import com.arcbees.bourseje.shared.CookieNames;
 import com.arcbees.bourseje.shared.VoteItem;
 import com.google.gwt.http.client.Response;
+import com.google.gwt.user.client.Cookies;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.dispatch.rest.client.RestDispatch;
@@ -72,7 +74,10 @@ public class ConfirmVotePresenter extends Presenter<ConfirmVotePresenter.MyView,
 
     @Override
     public void prepareFromRequest(PlaceRequest request) {
-        super.prepareFromRequest(request);
+        if (Cookies.getCookie(CookieNames.VOTE_CODE) == null) {
+            revealPlace(NameTokens.IDENTIFICATION);
+            return;
+        }
 
         name = request.getParameter(NameTokens.PARAM_NAME, "noSelection");
         String company = request.getParameter(NameTokens.PARAM_COMPANY, "noSelection");
@@ -89,21 +94,25 @@ public class ConfirmVotePresenter extends Presenter<ConfirmVotePresenter.MyView,
             public void onError(Response response) {
                 super.onError(response);
 
-                PlaceRequest placeRequest = new PlaceRequest.Builder()
-                        .nameToken(NameTokens.ALREADY_VOTED)
-                        .build();
-
-                placeManager.revealPlace(placeRequest);
+                if (response.getStatusCode() == Response.SC_FORBIDDEN) {
+                    revealPlace(NameTokens.ALREADY_VOTED);
+                } else {
+                    revealPlace(NameTokens.VOTE_FINISHED);
+                }
             }
 
             @Override
             public void onSuccess(Void aVoid) {
-                PlaceRequest placeRequest = new PlaceRequest.Builder()
-                        .nameToken(NameTokens.THANKS)
-                        .build();
-
-                placeManager.revealPlace(placeRequest);
+                revealPlace(NameTokens.THANKS);
             }
         });
+    }
+
+    private void revealPlace(String nameToken) {
+        PlaceRequest placeRequest = new PlaceRequest.Builder()
+                .nameToken(nameToken)
+                .build();
+
+        placeManager.revealPlace(placeRequest);
     }
 }
