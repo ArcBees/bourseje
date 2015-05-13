@@ -41,7 +41,7 @@
                             <span>Mais rassurez-vous,</span>
                             <span>Batman veille.</span>
                         </p>
-                        <a href="#" class="{res.styles.btn} {res.styles.btn_wide}" target="_blank">
+                        <a href="/" class="{res.styles.btn} {res.styles.btn_wide}">
                             Rafraîchir
                         </a>
                     </div>
