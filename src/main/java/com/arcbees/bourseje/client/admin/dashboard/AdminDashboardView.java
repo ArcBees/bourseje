@@ -55,6 +55,8 @@ public class AdminDashboardView extends ViewWithUiHandlers<AdminDashboardUiHandl
     @UiField
     ButtonElement login;
     @UiField
+    ButtonElement inactiveVote;
+    @UiField
     ButtonElement startVote;
     @UiField
     ButtonElement stopVote;
@@ -81,6 +83,13 @@ public class AdminDashboardView extends ViewWithUiHandlers<AdminDashboardUiHandl
             @Override
             public void f() {
                 getUiHandlers().onLoginClicked();
+            }
+        });
+
+        $(inactiveVote).on(CLICK, new Function() {
+            @Override
+            public void f() {
+                getUiHandlers().onInactiveVoteClicked();
             }
         });
 

@@ -94,6 +94,11 @@ public class AdminDashboardPresenter extends Presenter<AdminDashboardPresenter.M
         setVoteState(VoteState.FINISHED, "Vote stopped!");
     }
 
+    @Override
+    public void onInactiveVoteClicked() {
+        setVoteState(VoteState.INACTIVE, "Vote set as inactive!");
+    }
+
     private void setVoteState(VoteState voteState, final String successMessage) {
         dispatch.execute(adminService.setVoteState(voteState), new AdminRestCallback<Void>() {
             @Override

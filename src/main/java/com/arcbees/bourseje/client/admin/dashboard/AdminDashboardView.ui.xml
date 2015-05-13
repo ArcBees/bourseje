@@ -89,6 +89,10 @@
             Login
         </button>
 
+        <button ui:field="inactiveVote" class="{res.styles.btn} {res.styles.btn_wide}">
+            Set vote as inactive
+        </button>
+
         <button ui:field="startVote" class="{res.styles.btn} {res.styles.btn_wide}">
             Start vote
         </button>
