@@ -17,8 +17,8 @@
 package com.arcbees.bourseje.client;
 
 public class NameTokens {
-    public static final String NAME = "name";
-    public static final String COMPANY = "company";
+    public static final String PARAM_NAME = "name";
+    public static final String PARAM_COMPANY = "company";
 
     public static final String VOTE_INACTIVE = "/vote_inactive";
     public static final String HOME = "/home";

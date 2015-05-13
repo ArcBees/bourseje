@@ -57,8 +57,8 @@ public class VotePresenter extends Presenter<VotePresenter.MyView, VotePresenter
     public void onVoteClicked(String name, String company) {
         PlaceRequest place = new PlaceRequest.Builder()
                 .nameToken(NameTokens.CONFIRM_VOTE)
-                .with(NameTokens.NAME, name)
-                .with(NameTokens.COMPANY, company)
+                .with(NameTokens.PARAM_NAME, name)
+                .with(NameTokens.PARAM_COMPANY, company)
                 .build();
 
         placeManager.revealPlace(place);
