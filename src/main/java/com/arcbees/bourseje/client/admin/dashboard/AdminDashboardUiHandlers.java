@@ -14,11 +14,11 @@
  * the License.
  */
 
-package com.arcbees.bourseje.client.admin.numberofvote;
+package com.arcbees.bourseje.client.admin.dashboard;
 
 import com.gwtplatform.mvp.client.UiHandlers;
 
-public interface NumberOfVoteUiHandlers extends UiHandlers {
+public interface AdminDashboardUiHandlers extends UiHandlers {
     void onLoginClicked();
 
     void onStartVoteClicked();

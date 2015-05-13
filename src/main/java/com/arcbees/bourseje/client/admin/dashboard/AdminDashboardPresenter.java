@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.arcbees.bourseje.client.admin.numberofvote;
+package com.arcbees.bourseje.client.admin.dashboard;
 
 import java.util.Collection;
 
@@ -40,15 +40,15 @@ import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 
-public class NumberOfVotePresenter extends Presenter<NumberOfVotePresenter.MyView, NumberOfVotePresenter.MyProxy>
-        implements NumberOfVoteUiHandlers {
-    interface MyView extends View, HasUiHandlers<NumberOfVoteUiHandlers> {
+public class AdminDashboardPresenter extends Presenter<AdminDashboardPresenter.MyView, AdminDashboardPresenter.MyProxy>
+        implements AdminDashboardUiHandlers {
+    interface MyView extends View, HasUiHandlers<AdminDashboardUiHandlers> {
         void setNumberOfVotesForCandidate(CandidateResult candidateResult);
     }
 
     @ProxyStandard
-    @NameToken(NameTokens.NUMBER_OF_VOTE)
-    interface MyProxy extends ProxyPlace<NumberOfVotePresenter> {
+    @NameToken(NameTokens.ADMIN_DASHBOARD)
+    interface MyProxy extends ProxyPlace<AdminDashboardPresenter> {
     }
 
     private final RestDispatch dispatch;
@@ -57,7 +57,7 @@ public class NumberOfVotePresenter extends Presenter<NumberOfVotePresenter.MyVie
     private final AdminService adminService;
 
     @Inject
-    NumberOfVotePresenter(
+    AdminDashboardPresenter(
             EventBus eventBus,
             MyView view,
             MyProxy proxy,

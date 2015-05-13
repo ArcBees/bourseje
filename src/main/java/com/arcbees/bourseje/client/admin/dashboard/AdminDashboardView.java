@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.arcbees.bourseje.client.admin.numberofvote;
+package com.arcbees.bourseje.client.admin.dashboard;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -35,9 +35,9 @@ import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 import static com.arcbees.gaestudio.repackaged.com.google.gwt.dom.client.BrowserEvents.CLICK;
 import static com.google.gwt.query.client.GQuery.$;
 
-public class NumberOfVoteView extends ViewWithUiHandlers<NumberOfVoteUiHandlers>
-        implements NumberOfVotePresenter.MyView {
-    interface Binder extends UiBinder<Widget, NumberOfVoteView> {
+public class AdminDashboardView extends ViewWithUiHandlers<AdminDashboardUiHandlers>
+        implements AdminDashboardPresenter.MyView {
+    interface Binder extends UiBinder<Widget, AdminDashboardView> {
     }
 
     @UiField
@@ -60,7 +60,7 @@ public class NumberOfVoteView extends ViewWithUiHandlers<NumberOfVoteUiHandlers>
     private Map<String, SpanElement> numberOfVoteElements = new HashMap<>();
 
     @Inject
-    NumberOfVoteView(
+    AdminDashboardView(
             Binder uiBinder) {
         initWidget(uiBinder.createAndBindUi(this));
 

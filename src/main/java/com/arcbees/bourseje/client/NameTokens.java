@@ -31,6 +31,6 @@ public class NameTokens {
     public static final String PAGE_404 = "/error";
 
     // admin
-    public static final String NUMBER_OF_VOTE = "/admin/number_of_vote";
+    public static final String ADMIN_DASHBOARD = "/admin/dashboard";
     public static final String RESULT = "/admin/result";
 }
