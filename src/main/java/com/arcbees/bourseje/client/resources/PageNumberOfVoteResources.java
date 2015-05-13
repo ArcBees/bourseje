@@ -30,6 +30,8 @@ public interface PageNumberOfVoteResources extends ClientBundle {
         String candidates();
 
         String nb_vote();
+
+        String current_state_text();
     }
 
     @Source({"com/arcbees/gsss/animation/client/animationsettings.gss",

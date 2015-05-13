@@ -83,33 +83,27 @@
                             </div>
                         </div>
                     </div>
+                    <a href="#{WINNER}" class="{res.styles.btn} {res.styles.btn_wide}">Go to Winner page</a>
+
+                    <div class="{res.grid.row}">
+                        <div class="{res.grid.col} {res.grid.col_6} {res.styles.txtcenter}">
+                            <button ui:field="login" class="{res.styles.btn}">Login</button>
+                        </div>
+                        <div class="{res.grid.col} {res.grid.col_6} {res.styles.txtcenter}">
+                            <p class="{page.style.current_state_text}">
+                                <span>Current vote state:</span>
+                                <span ui:field="currentState"></span>
+                            </p>
+                            <button ui:field="inactiveVote" class="{res.styles.btn}">Set as inactive</button>
+                            <button ui:field="startVote" class="{res.styles.btn}">Start</button>
+                            <button ui:field="stopVote" class="{res.styles.btn}">Stop</button>
+                        </div>
+
+                    </div>
+
                 </div>
             </article>
         </section>
-
-        <a href="#{WINNER}" class="{res.styles.btn} {res.styles.btn_wide}">Go to Winner page</a>
-
-        <button ui:field="login" class="{res.styles.btn} {res.styles.btn_wide}">
-            Login
-        </button>
-
-        <p>
-            <span>Current vote state:</span>
-            <span ui:field="currentState"></span>
-        </p>
-
-        <button ui:field="inactiveVote" class="{res.styles.btn} {res.styles.btn_wide}">
-            Set vote as inactive
-        </button>
-
-        <button ui:field="startVote" class="{res.styles.btn} {res.styles.btn_wide}">
-            Start vote
-        </button>
-
-        <button ui:field="stopVote" class="{res.styles.btn} {res.styles.btn_wide}">
-            Stop vote
-        </button>
-
         <w:Footer/>
     </g:HTMLPanel>
 </ui:UiBinder>
