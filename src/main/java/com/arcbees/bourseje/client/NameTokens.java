@@ -20,7 +20,7 @@ public class NameTokens {
     public static final String NAME = "name";
     public static final String COMPANY = "company";
 
-    public static final String NO_VOTE = "/no_vote";
+    public static final String VOTE_INACTIVE = "/vote_inactive";
     public static final String HOME = "/home";
     public static final String IDENTIFICATION = "/identification";
     public static final String VOTE = "/vote";

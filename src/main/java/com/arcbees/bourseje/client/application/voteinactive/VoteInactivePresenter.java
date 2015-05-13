@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.arcbees.bourseje.client.application.novote;
+package com.arcbees.bourseje.client.application.voteinactive;
 
 import com.arcbees.bourseje.client.NameTokens;
 import com.arcbees.bourseje.client.application.ApplicationPresenter;
@@ -26,17 +26,17 @@ import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 
-public class NoVotePresenter extends Presenter<NoVotePresenter.MyView, NoVotePresenter.MyProxy> {
+public class VoteInactivePresenter extends Presenter<VoteInactivePresenter.MyView, VoteInactivePresenter.MyProxy> {
     interface MyView extends View {
     }
 
     @ProxyStandard
-    @NameToken(NameTokens.NO_VOTE)
-    interface MyProxy extends ProxyPlace<NoVotePresenter> {
+    @NameToken(NameTokens.VOTE_INACTIVE)
+    interface MyProxy extends ProxyPlace<VoteInactivePresenter> {
     }
 
     @Inject
-    NoVotePresenter(
+    VoteInactivePresenter(
             EventBus eventBus,
             MyView view,
             MyProxy proxy) {

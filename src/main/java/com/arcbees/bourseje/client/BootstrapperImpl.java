@@ -52,7 +52,7 @@ public class BootstrapperImpl implements Bootstrapper {
                 if (result == VoteState.STARTED) {
                     placeManager.revealCurrentPlace();
                 } else {
-                    revealPlace(NameTokens.NO_VOTE);
+                    revealPlace(NameTokens.VOTE_INACTIVE);
                 }
             }
         });

@@ -1,5 +1,5 @@
 /**
- * Copyright 2014 ArcBees Inc.
+ * Copyright 2015 ArcBees Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -14,21 +14,14 @@
  * the License.
  */
 
-package com.arcbees.bourseje.client.application.novote;
+package com.arcbees.bourseje.client.application.voteinactive;
 
-import javax.inject.Inject;
+import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 
-import com.google.gwt.uibinder.client.UiBinder;
-import com.google.gwt.user.client.ui.Widget;
-import com.gwtplatform.mvp.client.ViewImpl;
-
-public class NoVoteView extends ViewImpl implements NoVotePresenter.MyView {
-    interface Binder extends UiBinder<Widget, NoVoteView> {
-    }
-
-    @Inject
-    NoVoteView(
-            Binder uiBinder) {
-        initWidget(uiBinder.createAndBindUi(this));
+public class VoteInactiveModule extends AbstractPresenterModule {
+    @Override
+    protected void configure() {
+        bindPresenter(VoteInactivePresenter.class, VoteInactivePresenter.MyView.class,
+                VoteInactiveView.class, VoteInactivePresenter.MyProxy.class);
     }
 }
