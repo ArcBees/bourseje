@@ -20,15 +20,19 @@ package com.arcbees.bourseje.client.model;
 
 import java.util.List;
 
+import com.arcbees.bourseje.client.resources.Resources;
 import com.google.common.collect.Lists;
+import com.google.gwt.core.client.GWT;
 
 public class Candidates {
-    public static final Candidate JOHANIE = new Candidate("Johanie Gagnon", "Construction le 5e élément");
-    public static final Candidate DOMINIC = new Candidate("Dominic Fillion", "DFMotion");
-    public static final Candidate RAPHAEL = new Candidate("Raphaël Provost", "iWrap");
-    public static final Candidate MAXIME = new Candidate("Maxime Gagnon", "La Raffinerie");
-    public static final Candidate SIMON = new Candidate("Simon Valin", "Valin Confection");
-    public static final Candidate VINCENT = new Candidate("Vincent Bouchard", "Venice Gym");
+    private static final Resources resources = GWT.create(Resources.class);
+
+    public static final Candidate JOHANIE = new Candidate("Johanie Gagnon", "Construction le 5e élément", resources.JohanieGagnon());
+    public static final Candidate DOMINIC = new Candidate("Dominic Fillion", "DFMotion", resources.DominicFillion());
+    public static final Candidate RAPHAEL = new Candidate("Raphaël Provost", "iWrap", resources.RaphaelProvost());
+    public static final Candidate MAXIME = new Candidate("Maxime Gagnon", "La Raffinerie", resources.MaximeGagnon());
+    public static final Candidate SIMON = new Candidate("Simon Valin", "Valin Confection", resources.SimonValin());
+    public static final Candidate VINCENT = new Candidate("Vincent Bouchard", "Venice Gym", resources.VincentBouchard());
 
     public static List<Candidate> getAll() {
         return Lists.newArrayList(

@@ -20,8 +20,10 @@ import javax.inject.Inject;
 
 import com.google.gwt.dom.client.HeadingElement;
 import com.google.gwt.dom.client.ParagraphElement;
+import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewImpl;
 
@@ -29,6 +31,8 @@ public class WinnerView extends ViewImpl implements WinnerPresenter.MyView {
     interface Binder extends UiBinder<Widget, WinnerView> {
     }
 
+    @UiField
+    Image picture;
     @UiField
     HeadingElement name;
     @UiField
@@ -40,6 +44,11 @@ public class WinnerView extends ViewImpl implements WinnerPresenter.MyView {
     WinnerView(
             Binder uiBinder) {
         initWidget(uiBinder.createAndBindUi(this));
+    }
+
+    @Override
+    public void setPicture(ImageResource picture) {
+        this.picture.setResource(picture);
     }
 
     @Override

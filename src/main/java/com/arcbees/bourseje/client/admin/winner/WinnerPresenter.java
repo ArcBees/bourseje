@@ -25,6 +25,7 @@ import com.arcbees.bourseje.client.model.Candidates;
 import com.arcbees.bourseje.shared.CandidateResult;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
+import com.google.gwt.resources.client.ImageResource;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.dispatch.rest.client.RestDispatch;
@@ -36,6 +37,8 @@ import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 
 public class WinnerPresenter extends Presenter<WinnerPresenter.MyView, WinnerPresenter.MyProxy> {
     interface MyView extends View {
+        void setPicture(ImageResource picture);
+
         void setName(String name);
 
         void setCompany(String company);
@@ -80,6 +83,7 @@ public class WinnerPresenter extends Presenter<WinnerPresenter.MyView, WinnerPre
             return;
         }
 
+        getView().setPicture(candidate.getPicture());
         getView().setName(candidate.getName());
         getView().setCompany(candidate.getCompany());
         getView().setVotes(winner.getNumberOfVotes());
