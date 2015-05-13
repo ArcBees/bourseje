@@ -16,15 +16,23 @@
 
 package com.arcbees.bourseje.client.api;
 
+import java.util.Collection;
+
+import javax.ws.rs.GET;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 
+import com.arcbees.bourseje.shared.CandidateResult;
 import com.arcbees.bourseje.shared.ResourcesPath;
 import com.arcbees.bourseje.shared.VoteState;
 import com.gwtplatform.dispatch.rest.shared.RestAction;
 
 @Path(ResourcesPath.ADMIN)
 public interface AdminService {
+    @GET
+    @Path(ResourcesPath.CANDIDATE_RESULTS)
+    RestAction<Collection<CandidateResult>> getVotesPerCandidate();
+
     @PUT
     @Path(ResourcesPath.VOTE_STATE)
     RestAction<Void> setVoteState(VoteState voteState);

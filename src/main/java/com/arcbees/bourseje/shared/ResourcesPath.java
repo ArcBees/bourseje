@@ -17,14 +17,17 @@
 package com.arcbees.bourseje.shared;
 
 public class ResourcesPath {
+    // vote
     public static final String VOTE_ITEMS = "/voteitems";
     public static final String CURRENT_VOTE_STATE = "/current-state";
     public static final String CODE = "/code";
-    public static final String NUMBER_OF_VOTES = "/numberofvotes";
 
+    // admin
     public static final String ADMIN = "/admin";
     public static final String VOTE_STATE = "/vote-state";
+    public static final String CANDIDATE_RESULTS = "/candidate-results";
 
+    // login
     public static final String LOGIN = "/login";
     public static final String URL = "/url";
 }
