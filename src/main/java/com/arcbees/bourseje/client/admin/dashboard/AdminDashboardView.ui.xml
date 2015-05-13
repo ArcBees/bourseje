@@ -1,6 +1,6 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
              xmlns:g="urn:import:com.google.gwt.user.client.ui"
-             xmlns:w="urn:import:com.arcbees.bourseje.client.realtime.ui">
+             xmlns:w="urn:import:com.arcbees.bourseje.client.admin.ui">
 
     <ui:with field="res" type="com.arcbees.bourseje.client.resources.Resources"/>
     <ui:with field="page" type="com.arcbees.bourseje.client.resources.PageNumberOfVoteResources"/>
