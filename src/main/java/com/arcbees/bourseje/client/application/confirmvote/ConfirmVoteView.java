@@ -20,9 +20,11 @@ import javax.inject.Inject;
 
 import com.google.gwt.dom.client.DivElement;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
@@ -34,6 +36,8 @@ public class ConfirmVoteView extends ViewWithUiHandlers<ConfirmVoteUiHandlers> i
     DivElement name;
     @UiField
     DivElement company;
+    @UiField
+    Image picture;
 
     @Inject
     ConfirmVoteView(
@@ -49,6 +53,11 @@ public class ConfirmVoteView extends ViewWithUiHandlers<ConfirmVoteUiHandlers> i
     @Override
     public void setCompany(String company) {
         this.company.setInnerText(company);
+    }
+
+    @Override
+    public void setPicture(ImageResource picture) {
+        this.picture.setResource(picture);
     }
 
     @UiHandler("confirm")
