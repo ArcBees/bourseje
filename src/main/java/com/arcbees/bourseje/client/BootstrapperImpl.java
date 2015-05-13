@@ -21,6 +21,7 @@ import javax.inject.Inject;
 import com.arcbees.bourseje.client.api.VoteService;
 import com.arcbees.bourseje.client.resources.Resources;
 import com.arcbees.bourseje.shared.VoteState;
+import com.google.gwt.place.shared.PlaceHistoryHandler;
 import com.gwtplatform.dispatch.rest.client.RestDispatch;
 import com.gwtplatform.mvp.client.Bootstrapper;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
@@ -28,6 +29,7 @@ import com.gwtplatform.mvp.shared.proxy.PlaceRequest;
 
 public class BootstrapperImpl implements Bootstrapper {
     private final PlaceManager placeManager;
+    private final PlaceHistoryHandler.Historian historian;
     private final RestDispatch restDispatch;
     private final VoteService voteService;
 
@@ -35,9 +37,11 @@ public class BootstrapperImpl implements Bootstrapper {
     BootstrapperImpl(
             Resources resources,
             PlaceManager placeManager,
+            PlaceHistoryHandler.Historian historian,
             RestDispatch restDispatch,
             VoteService voteService) {
         this.placeManager = placeManager;
+        this.historian = historian;
         this.restDispatch = restDispatch;
         this.voteService = voteService;
 
@@ -46,6 +50,19 @@ public class BootstrapperImpl implements Bootstrapper {
 
     @Override
     public void onBootstrap() {
+        if (inAdminSection()) {
+            placeManager.revealCurrentPlace();
+        } else {
+            redirectBasedOnCurrentVoteState();
+        }
+    }
+
+    private boolean inAdminSection() {
+        String currentNameToken = historian.getToken();
+        return currentNameToken.startsWith(NameTokens.PREFIX_ADMIN);
+    }
+
+    private void redirectBasedOnCurrentVoteState() {
         restDispatch.execute(voteService.getCurrentVoteState(), new RestCallbackImpl<VoteState>() {
             @Override
             public void onSuccess(VoteState result) {
