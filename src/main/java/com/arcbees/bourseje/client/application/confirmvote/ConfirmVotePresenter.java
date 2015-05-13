@@ -85,7 +85,7 @@ public class ConfirmVotePresenter extends Presenter<ConfirmVotePresenter.MyView,
         }
 
         name = request.getParameter(NameTokens.PARAM_NAME, "noSelection");
-        Candidate candidate = Candidates.getByName(name).orNull();
+        Candidate candidate = Candidates.getByName(name);
 
         if (candidate == null) {
             revealPlace(NameTokens.VOTE);
