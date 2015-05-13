@@ -28,7 +28,7 @@ public class NameTokens {
     public static final String THANKS = "/thanks";
     public static final String ALREADY_VOTED = "/already_voted";
     public static final String VOTE_FINISHED = "/vote_finished";
-    public static final String PAGE_404 = "/error";
+    public static final String PAGE_404 = "/not_found";
 
     // admin
     public static final String ADMIN_DASHBOARD = "/admin/dashboard";
