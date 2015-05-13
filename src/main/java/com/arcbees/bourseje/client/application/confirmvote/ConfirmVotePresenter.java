@@ -110,6 +110,4 @@ public class ConfirmVotePresenter extends Presenter<ConfirmVotePresenter.MyView,
 
         placeManager.revealPlace(placeRequest);
     }
-
-
 }
