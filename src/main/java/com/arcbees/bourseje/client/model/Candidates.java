@@ -23,12 +23,12 @@ import java.util.List;
 import com.google.common.collect.Lists;
 
 public class Candidates {
-    public static final Candidate JOHANIE = new Candidate("Johanie Gagnon");
-    public static final Candidate DOMINIC = new Candidate("Dominic Fillion");
-    public static final Candidate RAPHAEL = new Candidate("Raphaël Provost");
-    public static final Candidate MAXIME = new Candidate("Maxime Gagnon");
-    public static final Candidate SIMON = new Candidate("Simon Valin");
-    public static final Candidate VINCENT = new Candidate("Vincent Bouchard");
+    public static final Candidate JOHANIE = new Candidate("Johanie Gagnon", "Construction le 5e élément");
+    public static final Candidate DOMINIC = new Candidate("Dominic Fillion", "DFMotion");
+    public static final Candidate RAPHAEL = new Candidate("Raphaël Provost", "iWrap");
+    public static final Candidate MAXIME = new Candidate("Maxime Gagnon", "La Raffinerie");
+    public static final Candidate SIMON = new Candidate("Simon Valin", "Valin Confection");
+    public static final Candidate VINCENT = new Candidate("Vincent Bouchard", "Venice Gym");
 
     public static List<Candidate> getAll() {
         return Lists.newArrayList(

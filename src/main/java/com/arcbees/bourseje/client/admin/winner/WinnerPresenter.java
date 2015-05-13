@@ -81,7 +81,7 @@ public class WinnerPresenter extends Presenter<WinnerPresenter.MyView, WinnerPre
         }
 
         getView().setName(candidate.getName());
-        getView().setCompany("Arcbees");
+        getView().setCompany(candidate.getCompany());
         getView().setVotes(winner.getNumberOfVotes());
     }
 
