@@ -32,6 +32,7 @@ public class NameTokens {
     public static final String PAGE_404 = "/not_found";
 
     // admin
-    public static final String ADMIN_DASHBOARD = "/admin/dashboard";
-    public static final String WINNER = "/admin/winner";
+    public static final String PREFIX_ADMIN = "/admin";
+    public static final String ADMIN_DASHBOARD = PREFIX_ADMIN + "/dashboard";
+    public static final String WINNER = PREFIX_ADMIN + "/winner";
 }
