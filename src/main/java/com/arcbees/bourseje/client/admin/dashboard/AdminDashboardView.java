@@ -56,6 +56,8 @@ public class AdminDashboardView extends ViewWithUiHandlers<AdminDashboardUiHandl
     ButtonElement login;
     @UiField
     ButtonElement startVote;
+    @UiField
+    ButtonElement stopVote;
 
     private Map<String, SpanElement> numberOfVoteElements = new HashMap<>();
 
@@ -88,6 +90,14 @@ public class AdminDashboardView extends ViewWithUiHandlers<AdminDashboardUiHandl
                 getUiHandlers().onStartVoteClicked();
             }
         });
+
+        $(stopVote).on(CLICK, new Function() {
+            @Override
+            public void f() {
+                getUiHandlers().onStopVoteClicked();
+            }
+        });
+
     }
 
     @Override

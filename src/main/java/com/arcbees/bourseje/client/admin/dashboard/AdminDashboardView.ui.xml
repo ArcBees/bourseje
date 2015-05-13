@@ -93,6 +93,10 @@
             Start vote
         </button>
 
+        <button ui:field="stopVote" class="{res.styles.btn} {res.styles.btn_wide}">
+            Stop vote
+        </button>
+
         <w:Footer/>
     </g:HTMLPanel>
 </ui:UiBinder>
