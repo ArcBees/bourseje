@@ -30,10 +30,6 @@ public class NameTokens {
     public static final String VOTE_FINISHED = "/vote_finished";
     public static final String PAGE_404 = "/error";
 
-    public static final String HOW_TO_VOTE = "/how_to";
-    public static final String CANDIDATES = "/candidates";
-    public static final String END_OF_VOTE = "/end_vote";
-
     // admin
     public static final String NUMBER_OF_VOTE = "/admin/number_of_vote";
     public static final String RESULT = "/admin/result";
