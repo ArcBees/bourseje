@@ -79,7 +79,7 @@
                                     </div>
                                 </label>
                             </div>
-                            <g:Button ui:field="submit" styleName="{res.styles.btn} {res.styles.btn_wide}">VOTER
+                            <g:Button ui:field="submit" styleName="{res.styles.btn} {res.styles.btn_wide}">VOTEZ
                             </g:Button>
                         </form>
                     </div>
