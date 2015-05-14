@@ -13,8 +13,8 @@
                 <div class="{res.styles.wrapper} {res.styles.clearfix}">
                     <div class="{res.styles.text_step}">
                         <h2>Étape 2</h2>
-                        <p>Choisissez votre Jeune entreprise Coup de coeur
-                            <span>de l’année 2015</span>
+                        <p>Choisissez votre Jeune entreprise
+                            <span>Coup de coeur de l’année 2015</span>
                         </p>
                     </div>
                     <div ui:field="voteGroup">
