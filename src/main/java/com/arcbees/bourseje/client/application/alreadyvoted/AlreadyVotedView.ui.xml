@@ -45,7 +45,7 @@
                         <h2>Code déjà utilisé</h2>
                         <p>Pas la peine d'essayer <span>de se déguiser en ninja, on t'a reconnu!</span></p>
                         <a href="#/identification" class="{res.styles.btn} {res.styles.btn_wide}">
-                            Entrer un nouveau code
+                            Entrez un nouveau code
                         </a>
                     </div>
                 </div>
