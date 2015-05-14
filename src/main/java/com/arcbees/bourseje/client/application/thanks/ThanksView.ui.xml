@@ -88,6 +88,9 @@
                     <div class="{res.styles.text_main} {page.style.text_appear}">
                         <h2>Vote reçu</h2>
                         <p>Merci d'avoir voté!</p>
+                        <a href="#/identification" class="{res.styles.btn} {res.styles.btn_wide}">
+                            Entrer un nouveau code
+                        </a>
                     </div>
                 </div>
             </article>
