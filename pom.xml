@@ -18,7 +18,7 @@
         <gin.version>2.1.2</gin.version>
         <gwtquery.version>1.4.1</gwtquery.version>
         <gae-studio.version>0.8.3</gae-studio.version>
-        <gsss.version>1.1-SNAPSHOT</gsss.version>
+        <gsss.version>1.1</gsss.version>
 
         <!-- server -->
         <gae.version>1.9.19</gae.version>
