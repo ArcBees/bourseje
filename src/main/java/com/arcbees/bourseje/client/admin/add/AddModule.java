@@ -14,17 +14,14 @@
  * the License.
  */
 
-package com.arcbees.bourseje.client.resources;
+package com.arcbees.bourseje.client.admin.add;
 
-public class Colors {
-    public static final String C_PRIMARY = "#1face3";
-    public static final String C_SECONDARY = "#fff";
-    public static final String C_ERROR = "#ca2228";
+import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 
-    public static final String C_TEXT = "#000";
-    public static final String C_TEXT_MEDIUM = "#6b6b6b";
-    public static final String C_TEXT_LIGHT = C_SECONDARY;
-
-    public static final String C_STRIPE_LIGHT = C_SECONDARY;
-    public static final String C_STRIPE_COLORED = C_PRIMARY;
+public class AddModule extends AbstractPresenterModule {
+    @Override
+    protected void configure() {
+        bindPresenter(AddPresenter.class, AddPresenter.MyView.class,
+                AddView.class, AddPresenter.MyProxy.class);
+    }
 }

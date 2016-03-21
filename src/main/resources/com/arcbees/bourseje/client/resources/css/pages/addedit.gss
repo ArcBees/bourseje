@@ -1,0 +1,35 @@
+.addedit {
+    background-color: #fff;
+    font-size: 1.8rem;
+
+    padding: 30px;
+    margin-top: 145px;
+}
+
+.addedit__photo {
+    text-align: center;
+}
+
+.addedit__label {
+    display: block;
+    margin-bottom: 4px;
+}
+
+.addedit__input {
+    background-color: #f2f2f2;
+
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+    border: 0;
+
+    @mixin shadow_inner(-2px, 3px, 12px, .15);
+}
+
+.addedit__buttons {
+    text-align: right;
+}
+
+.addedit__button {
+    margin-left: 10px;
+}

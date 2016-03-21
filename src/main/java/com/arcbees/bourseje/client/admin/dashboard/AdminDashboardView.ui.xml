@@ -13,18 +13,22 @@
         <section class="{res.styles.main_content_desktop}">
             <article>
                 <div class="{res.styles.wrapper_desktop} {res.styles.clearfix}">
+                    <button ui:field="login" class="{res.styles.btn} {page.style.btn_login}">Login</button>
+
                     <div class="{page.style.text_intro} {res.styles.txtcenter}">
                         <h2>Les candidats</h2>
-                        <p>pour la Bourse jeune entreprise
-                            <span>de l’année 2015</span>
-                        </p>
+                        <p>pour la Bourse Jeune Entreprise 2016</p>
                     </div>
-                    <div class="{res.grid.row}">
+                    <div class="{res.grid.row} {res.styles.clearfix}">
                         <div class="{res.grid.col} {res.grid.col_6} {page.style.box_candidates}">
                             <g:Image resource="{res.JohanieGagnon}" styleName="{page.style.avatar}"/>
                             <div class="{page.style.candidates}">
                                 <h3>Johanie Gagnon</h3>
                                 <p>Construction le 5e élément</p>
+                                <div>
+                                    <a href="#" class="{page.style.box_candidates__link}"><i class="fa fa-pencil"></i> Modifier</a>
+                                    <a href="#" class="{page.style.box_candidates__link}"><i class="fa fa-times-circle"></i> Supprimer</a>
+                                </div>
                             </div>
                             <div class="{page.style.nb_vote}">
                                 <span ui:field="johanieVotes">0</span>
@@ -35,6 +39,10 @@
                             <div class="{page.style.candidates}">
                                 <h3>Dominic Fillion</h3>
                                 <p>DFMotion</p>
+                                <div>
+                                    <a href="#" class="{page.style.box_candidates__link}"><i class="fa fa-pencil"></i> Modifier</a>
+                                    <a href="#" class="{page.style.box_candidates__link}"><i class="fa fa-times-circle"></i> Supprimer</a>
+                                </div>
                             </div>
                             <div class="{page.style.nb_vote}">
                                 <span ui:field="dominicVotes">0</span>
@@ -45,6 +53,10 @@
                             <div class="{page.style.candidates}">
                                 <h3>Raphaël Provost</h3>
                                 <p>iWrap</p>
+                                <div>
+                                    <a href="#" class="{page.style.box_candidates__link}"><i class="fa fa-pencil"></i> Modifier</a>
+                                    <a href="#" class="{page.style.box_candidates__link}"><i class="fa fa-times-circle"></i> Supprimer</a>
+                                </div>
                             </div>
                             <div class="{page.style.nb_vote}">
                                 <span ui:field="raphaelVotes">0</span>
@@ -55,18 +67,24 @@
                             <div class="{page.style.candidates}">
                                 <h3>Maxime Gagnon</h3>
                                 <p>La Raffinerie</p>
+                                <div>
+                                    <a href="#" class="{page.style.box_candidates__link}"><i class="fa fa-pencil"></i> Modifier</a>
+                                    <a href="#" class="{page.style.box_candidates__link}"><i class="fa fa-times-circle"></i> Supprimer</a>
+                                </div>
                             </div>
                             <div class="{page.style.nb_vote}">
                                 <span ui:field="maximeVotes">0</span>
                             </div>
                         </div>
-                    </div>
-                    <div class="{res.grid.row}">
                         <div class="{res.grid.col} {res.grid.col_6} {page.style.box_candidates}">
                             <g:Image resource="{res.SimonValin}" styleName="{page.style.avatar}"/>
                             <div class="{page.style.candidates}">
                                 <h3>Simon Valin</h3>
                                 <p>Valin Confection</p>
+                                <div>
+                                    <a href="#" class="{page.style.box_candidates__link}"><i class="fa fa-pencil"></i> Modifier</a>
+                                    <a href="#" class="{page.style.box_candidates__link}"><i class="fa fa-times-circle"></i> Supprimer</a>
+                                </div>
                             </div>
                             <div class="{page.style.nb_vote}">
                                 <span ui:field="simonVotes">0</span>
@@ -77,28 +95,31 @@
                             <div class="{page.style.candidates}">
                                 <h3>Vincent Bouchard</h3>
                                 <p>Venice Gym</p>
+                                <div>
+                                    <a href="#" class="{page.style.box_candidates__link}"><i class="fa fa-pencil"></i> Modifier</a>
+                                    <a href="#" class="{page.style.box_candidates__link}"><i class="fa fa-times-circle"></i> Supprimer</a>
+                                </div>
                             </div>
                             <div class="{page.style.nb_vote}">
                                 <span ui:field="vincentVotes">0</span>
                             </div>
                         </div>
+                        <a  href="#{ADD}" class="{res.grid.col} {res.grid.col_6} {page.style.box_candidates} {page.style.box_candidates__button}">
+                            <i class="fa fa-plus-circle"></i> Ajouter un candidat
+                        </a>
                     </div>
-                    <a href="#{WINNER}" class="{res.styles.btn} {res.styles.btn_wide}">Go to Winner page</a>
 
-                    <div class="{res.grid.row}">
-                        <div class="{res.grid.col} {res.grid.col_6} {res.styles.txtcenter}">
-                            <button ui:field="login" class="{res.styles.btn}">Login</button>
-                        </div>
-                        <div class="{res.grid.col} {res.grid.col_6} {res.styles.txtcenter}">
+                    <div class="{res.grid.row} {res.styles.clearfix}">
+                        <div class="{res.grid.col} {res.grid.col_full} {res.styles.txtcenter} {page.style.buttons}">
                             <p class="{page.style.current_state_text}">
-                                <span>Current vote state:</span>
-                                <span ui:field="currentState"></span>
+                                <span>Statut du vote :</span>
+                                <strong ui:field="currentState"></strong>
                             </p>
                             <button ui:field="inactiveVote" class="{res.styles.btn}">Set as inactive</button>
-                            <button ui:field="startVote" class="{res.styles.btn}">Start</button>
-                            <button ui:field="stopVote" class="{res.styles.btn}">Stop</button>
+                            <button ui:field="startVote" class="{res.styles.btn}"><i class="fa fa-play"></i> Démarrer</button>
+                            <button ui:field="stopVote" class="{res.styles.btn}"><i class="fa fa-stop"></i> Arrêter</button>
+                            <a href="#{WINNER}" class="{res.styles.btn} {page.style.btn_gagnant}"><i class="fa fa-trophy"></i> Voir le gagnant</a>
                         </div>
-
                     </div>
 
                 </div>

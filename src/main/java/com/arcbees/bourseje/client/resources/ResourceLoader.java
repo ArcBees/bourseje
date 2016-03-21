@@ -36,7 +36,8 @@ public class ResourceLoader {
             PageNumberOfVoteResources pageNumberOfVoteResources,
             PageResultResources pageResultResources,
             PageEndOfVoteResources pageEndOfVoteResources,
-            Page404Resources page404Resources){
+            Page404Resources page404Resources,
+            PageAddEditResources pageAddEditResources){
         appResources.normalize().ensureInjected();
         appResources.styles().ensureInjected();
         appResources.grid().ensureInjected();
@@ -55,5 +56,6 @@ public class ResourceLoader {
         pageNumberOfVoteResources.style().ensureInjected();
         pageResultResources.style().ensureInjected();
         pageEndOfVoteResources.style().ensureInjected();
+        pageAddEditResources.style().ensureInjected();
     }
 }

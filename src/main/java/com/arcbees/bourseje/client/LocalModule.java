@@ -22,6 +22,6 @@ import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 public class LocalModule extends AbstractPresenterModule {
     @Override
     protected void configure() {
-        bindConstant().annotatedWith(RestApplicationPath.class).to("http://127.0.0.1:8888/api");
+        bindConstant().annotatedWith(RestApplicationPath.class).to("http://192.168.1.137:8888/api");
     }
 }
