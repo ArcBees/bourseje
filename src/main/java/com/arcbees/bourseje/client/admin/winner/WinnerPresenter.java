@@ -20,7 +20,7 @@ import com.arcbees.bourseje.client.AdminRestCallback;
 import com.arcbees.bourseje.client.NameTokens;
 import com.arcbees.bourseje.client.admin.AdminPresenter;
 import com.arcbees.bourseje.client.api.AdminService;
-import com.arcbees.bourseje.client.model.Candidate;
+import com.arcbees.bourseje.shared.Candidate;
 import com.arcbees.bourseje.client.model.Candidates;
 import com.arcbees.bourseje.shared.CandidateResult;
 import com.google.gwt.resources.client.ImageResource;
