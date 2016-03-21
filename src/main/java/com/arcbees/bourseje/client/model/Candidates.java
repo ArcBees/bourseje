@@ -21,6 +21,7 @@ package com.arcbees.bourseje.client.model;
 import java.util.List;
 
 import com.arcbees.bourseje.client.resources.Resources;
+import com.arcbees.bourseje.shared.Candidate;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
