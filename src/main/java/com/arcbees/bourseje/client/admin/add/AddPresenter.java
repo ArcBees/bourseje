@@ -16,14 +16,9 @@
 
 package com.arcbees.bourseje.client.admin.add;
 
-import com.arcbees.bourseje.client.AdminRestCallback;
 import com.arcbees.bourseje.client.NameTokens;
 import com.arcbees.bourseje.client.admin.AdminPresenter;
 import com.arcbees.bourseje.client.api.AdminService;
-import com.arcbees.bourseje.client.model.Candidate;
-import com.arcbees.bourseje.client.model.Candidates;
-import com.arcbees.bourseje.shared.CandidateResult;
-import com.google.gwt.resources.client.ImageResource;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.dispatch.rest.client.RestDispatch;

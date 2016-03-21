@@ -43,18 +43,6 @@ public class AdminDashboardView extends ViewWithUiHandlers<AdminDashboardUiHandl
     }
 
     @UiField
-    SpanElement johanieVotes;
-    @UiField
-    SpanElement dominicVotes;
-    @UiField
-    SpanElement raphaelVotes;
-    @UiField
-    SpanElement maximeVotes;
-    @UiField
-    SpanElement simonVotes;
-    @UiField
-    SpanElement vincentVotes;
-    @UiField
     ButtonElement login;
     @UiField
     ButtonElement inactiveVote;
@@ -72,12 +60,12 @@ public class AdminDashboardView extends ViewWithUiHandlers<AdminDashboardUiHandl
             Binder uiBinder) {
         initWidget(uiBinder.createAndBindUi(this));
 
-        numberOfVoteElements.put(Candidates.JOHANIE.getName(), johanieVotes);
+        /*numberOfVoteElements.put(Candidates.JOHANIE.getName(), johanieVotes);
         numberOfVoteElements.put(Candidates.DOMINIC.getName(), dominicVotes);
         numberOfVoteElements.put(Candidates.RAPHAEL.getName(), raphaelVotes);
         numberOfVoteElements.put(Candidates.MAXIME.getName(), maximeVotes);
         numberOfVoteElements.put(Candidates.SIMON.getName(), simonVotes);
-        numberOfVoteElements.put(Candidates.VINCENT.getName(), vincentVotes);
+        numberOfVoteElements.put(Candidates.VINCENT.getName(), vincentVotes);*/
 
         initButtons();
     }
