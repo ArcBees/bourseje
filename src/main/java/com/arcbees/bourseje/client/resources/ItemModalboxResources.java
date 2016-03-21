@@ -19,22 +19,17 @@ package com.arcbees.bourseje.client.resources;
 import com.arcbees.gsss.animation.client.AnimationResources;
 import com.google.gwt.resources.client.ClientBundle;
 
-public interface PageAddEditResources extends ClientBundle {
+public interface ItemModalboxResources extends ClientBundle {
     interface Style extends AnimationResources.Animation {
+        String modalbox();
 
-        String addedit();
+        String modalbox__text();
 
-        String addedit__label();
+        String modalbox__buttons();
 
-        String addedit__input();
+        String modalbox_mask();
 
-        String addedit__photo();
-
-        String addedit__buttons();
-
-        String addedit__button();
-
-        String addedit__photo__placeholder();
+        String modalbox__button();
     }
 
     @Source({"com/arcbees/gsss/animation/client/animationsettings.gss",
@@ -42,6 +37,6 @@ public interface PageAddEditResources extends ClientBundle {
             "com/arcbees/gsss/mixin/client/mixins.gss",
             "css/colors.gss",
             "fonts/fonts.gss",
-            "css/pages/addedit.gss"})
+            "css/items/modalbox.gss"})
     Style style();
 }

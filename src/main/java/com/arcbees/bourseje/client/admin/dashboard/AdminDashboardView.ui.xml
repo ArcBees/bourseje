@@ -4,6 +4,7 @@
 
     <ui:with field="res" type="com.arcbees.bourseje.client.resources.Resources"/>
     <ui:with field="page" type="com.arcbees.bourseje.client.resources.PageNumberOfVoteResources"/>
+    <ui:with field="modal" type="com.arcbees.bourseje.client.resources.ItemModalboxResources"/>
 
     <ui:import field="com.arcbees.bourseje.client.NameTokens.*"/>
 
@@ -124,6 +125,17 @@
 
                 </div>
             </article>
+        </section>
+        <!-- TODO: Hello Oli! It's me, Modal -->
+        <div class="{modal.style.modalbox_mask}" style="display:none;"></div>
+        <section class="{modal.style.modalbox}" style="display:none;">
+            <p class="{modal.style.modalbox__text}">
+                Êtes-vous sûr de vouloir supprimer ce candidat de la liste?
+            </p>
+            <div class="{modal.style.modalbox__buttons}">
+                <button class="{res.styles.btn} {res.styles.btn_secondary} {modal.style.modalbox__button}">Non, annuler</button>
+                <button class="{res.styles.btn} {res.styles.btn_primary} {modal.style.modalbox__button}">Oui, supprimer</button>
+            </div>
         </section>
         <w:Footer/>
     </g:HTMLPanel>

@@ -12,7 +12,7 @@
             <div class="{page.style.addedit} {res.styles.wrapper_desktop}">
                 <form class="{res.grid.row} {res.styles.clearfix}">
                     <a href="#" class="{res.grid.col} {res.grid.col_1_4} {page.style.addedit__photo}">
-                        <div class="addedit__photo__placeholder">
+                        <div class="{page.style.addedit__photo__placeholder}">
                             <!-- TODO: Image goes here -->
                         </div>
                         Ajouter une photo
