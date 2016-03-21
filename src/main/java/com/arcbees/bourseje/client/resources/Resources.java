@@ -1,5 +1,5 @@
 /**
- * Copyright 2014 ArcBees Inc.
+ * Copyright 2016 ArcBees Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -60,6 +60,10 @@ public interface Resources extends FontResources {
         String logo_vote_desktop();
 
         String main_content_desktop();
+
+        String btn_secondary();
+
+        String btn_primary();
     }
 
     @Source("img/logoArcbees.svg")

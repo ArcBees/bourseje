@@ -1,5 +1,5 @@
 /**
- * Copyright 2014 ArcBees Inc.
+ * Copyright 2016 ArcBees Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -34,4 +34,5 @@ public class NameTokens {
     public static final String PREFIX_ADMIN = "/admin";
     public static final String ADMIN_DASHBOARD = PREFIX_ADMIN + "/dashboard";
     public static final String WINNER = PREFIX_ADMIN + "/winner";
+    public static final String ADD = PREFIX_ADMIN + "/add";
 }

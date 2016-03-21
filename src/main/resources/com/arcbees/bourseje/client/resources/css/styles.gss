@@ -27,9 +27,20 @@ body {
 }
 
 body {
-    background-color: C_PRIMARY;
+    background: rgba(31,172,227,1);
+    /* @alternate */ background: -moz-linear-gradient(-45deg, rgba(31,172,227,1) 0%, rgba(126,194,67,1) 100%);
+    /* @alternate */ background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(31,172,227,1)), color-stop(100%, rgba(126,194,67,1)));
+    /* @alternate */ background: -webkit-linear-gradient(-45deg, rgba(31,172,227,1) 0%, rgba(126,194,67,1) 100%);
+    /* @alternate */ background: -o-linear-gradient(-45deg, rgba(31,172,227,1) 0%, rgba(126,194,67,1) 100%);
+    /* @alternate */ background: -ms-linear-gradient(-45deg, rgba(31,172,227,1) 0%, rgba(126,194,67,1) 100%);
+    /* @alternate */ background: linear-gradient(135deg, rgba(31,172,227,1) 0%, rgba(126,194,67,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1face3', endColorstr='#7ec243', GradientType=1 );
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     font-family: F_PRIMARY, Arial, sans-serif;
     line-height: 1.25;
+
+    height: 100%;
 }
 
 p:first-child,
@@ -66,7 +77,7 @@ input {
 
 .main_content {
     display: table;
-    height: calc(100% - 200px);
+    height: calc(100% - 180px);
     width: 100%;
 }
 
@@ -234,6 +245,16 @@ input {
     width: 100%;
 }
 
+.btn_primary {
+    background-color: C_PRIMARY;
+    color: #fff;
+}
+
+.btn_secondary {
+    background-color: #c2c2c2;
+    color: #fff;
+}
+
 /* -- Styles ------------------------------------------- */
 
 .logo_vote {
@@ -245,7 +266,7 @@ input {
 .logo_vote_desktop {
     width: 200px;
     height: 92px;
-    margin: 15px auto;
+    margin: 30px auto 0;
 }
 
 .text_step {
@@ -278,22 +299,20 @@ a.jccq:hover {
 }
 
 footer {
-    background-color: C_SECONDARY;
+    background-color: #000;
     padding: 15px 0;
-    border-bottom: 6px solid C_PRIMARY;
-}
-
-footer p {
-    font-size: 10px;
-
-    margin-left: -40px;
 }
 
 .logoArcbees {
     width: 55px;
-    height: 60px;
+    height: 45px;
+    margin-top: 9px;
 
     float: right;
+}
+
+.logoArcbees > a > svg {
+    fill: #fff;
 }
 
 .logoJccq {

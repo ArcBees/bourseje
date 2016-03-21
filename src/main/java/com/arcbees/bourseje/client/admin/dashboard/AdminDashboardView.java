@@ -1,5 +1,5 @@
 /**
- * Copyright 2014 ArcBees Inc.
+ * Copyright 2016 ArcBees Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -25,6 +25,7 @@ import com.arcbees.bourseje.client.model.Candidates;
 import com.arcbees.bourseje.shared.CandidateResult;
 import com.arcbees.bourseje.shared.VoteState;
 import com.google.gwt.dom.client.ButtonElement;
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.SpanElement;
 import com.google.gwt.query.client.Function;
 import com.google.gwt.query.client.GQuery;
@@ -62,7 +63,7 @@ public class AdminDashboardView extends ViewWithUiHandlers<AdminDashboardUiHandl
     @UiField
     ButtonElement stopVote;
     @UiField
-    SpanElement currentState;
+    Element currentState;
 
     private Map<String, SpanElement> numberOfVoteElements = new HashMap<>();
 

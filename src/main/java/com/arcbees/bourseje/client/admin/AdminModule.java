@@ -1,5 +1,5 @@
 /**
- * Copyright 2014 ArcBees Inc.
+ * Copyright 2016 ArcBees Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -16,6 +16,7 @@
 
 package com.arcbees.bourseje.client.admin;
 
+import com.arcbees.bourseje.client.admin.add.AddModule;
 import com.arcbees.bourseje.client.admin.dashboard.AdminDashboardModule;
 import com.arcbees.bourseje.client.admin.winner.WinnerModule;
 import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
@@ -25,6 +26,7 @@ public class AdminModule extends AbstractPresenterModule {
     protected void configure() {
         install(new AdminDashboardModule());
         install(new WinnerModule());
+        install(new AddModule());
 
         bindPresenter(AdminPresenter.class, AdminPresenter.MyView.class, AdminView.class,
                 AdminPresenter.MyProxy.class);

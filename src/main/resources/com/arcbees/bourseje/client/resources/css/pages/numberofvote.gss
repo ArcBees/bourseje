@@ -17,6 +17,7 @@
 
     padding: 10px 20px;
     margin-bottom: 10px;
+    height: 110px;
 
     position: relative;
 }
@@ -26,12 +27,33 @@
     font-family: F_SECONDARY;
     line-height: 1;
 
-    margin: 1em 0 .25em;
+    margin: 0 0 .25em;
 }
 
 .box_candidates p {
     color: C_TEXT_MEDIUM;
     text-transform: uppercase;
+    font-size: 90%;
+}
+
+.box_candidates__link {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.box_candidates__link:hover {
+    color: C_PRIMARY;
+}
+
+.box_candidates__button {
+    font-size: 2.5rem;
+    font-family: F_SECONDARY;
+    line-height: 3.5;
+    text-align: center;
+}
+
+.box_candidates__button > i {
+    margin-right: 20px;
 }
 
 .avatar {
@@ -71,4 +93,23 @@
 
 .current_state_text {
     margin-bottom: -15px;
+}
+
+.btn_login {
+    position: absolute;
+    top: -130px;
+    right: 10px;
+}
+
+.buttons {
+    margin-top: 40px;
+    margin-bottom: 10px;
+
+    position: relative;
+}
+
+.btn_gagnant {
+    position: absolute;
+    top: 3px;
+    right: 10px;
 }

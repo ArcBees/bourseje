@@ -19,29 +19,22 @@ package com.arcbees.bourseje.client.resources;
 import com.arcbees.gsss.animation.client.AnimationResources;
 import com.google.gwt.resources.client.ClientBundle;
 
-public interface PageNumberOfVoteResources extends ClientBundle {
+public interface PageAddEditResources extends ClientBundle {
     interface Style extends AnimationResources.Animation {
-        String avatar();
 
-        String box_candidates();
+        String addedit();
 
-        String text_intro();
+        String addedit__label();
 
-        String candidates();
+        String addedit__input();
 
-        String nb_vote();
+        String addedit__photo();
 
-        String current_state_text();
+        String addedit__buttons();
 
-        String box_candidates__button();
+        String addedit__button();
 
-        String btn_login();
-
-        String buttons();
-
-        String btn_gagnant();
-
-        String box_candidates__link();
+        String addedit__photo__placeholder();
     }
 
     @Source({"com/arcbees/gsss/animation/client/animationsettings.gss",
@@ -49,6 +42,6 @@ public interface PageNumberOfVoteResources extends ClientBundle {
             "com/arcbees/gsss/mixin/client/mixins.gss",
             "css/colors.gss",
             "fonts/fonts.gss",
-            "css/pages/numberofvote.gss"})
+            "css/pages/addedit.gss"})
     Style style();
 }

@@ -1,0 +1,40 @@
+.modalbox {
+    background-color: #fff;
+    text-align: center;
+    font-size: 2rem;
+
+    width: 900px;
+    margin-left: -450px;
+    margin-top: -90px;
+    padding: 50px;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 9999;
+}
+
+.modalbox__text {
+    font-size: 2rem;
+
+    margin-bottom: 25px;
+}
+
+.modalbox__buttons {
+
+}
+
+.modalbox__button {
+    margin: 0 10px;
+}
+
+.modalbox_mask {
+    background-color: rgba(0, 0, 0, .85);
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9000;
+}

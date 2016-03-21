@@ -19,29 +19,17 @@ package com.arcbees.bourseje.client.resources;
 import com.arcbees.gsss.animation.client.AnimationResources;
 import com.google.gwt.resources.client.ClientBundle;
 
-public interface PageNumberOfVoteResources extends ClientBundle {
+public interface ItemModalboxResources extends ClientBundle {
     interface Style extends AnimationResources.Animation {
-        String avatar();
+        String modalbox();
 
-        String box_candidates();
+        String modalbox__text();
 
-        String text_intro();
+        String modalbox__buttons();
 
-        String candidates();
+        String modalbox_mask();
 
-        String nb_vote();
-
-        String current_state_text();
-
-        String box_candidates__button();
-
-        String btn_login();
-
-        String buttons();
-
-        String btn_gagnant();
-
-        String box_candidates__link();
+        String modalbox__button();
     }
 
     @Source({"com/arcbees/gsss/animation/client/animationsettings.gss",
@@ -49,6 +37,6 @@ public interface PageNumberOfVoteResources extends ClientBundle {
             "com/arcbees/gsss/mixin/client/mixins.gss",
             "css/colors.gss",
             "fonts/fonts.gss",
-            "css/pages/numberofvote.gss"})
+            "css/items/modalbox.gss"})
     Style style();
 }

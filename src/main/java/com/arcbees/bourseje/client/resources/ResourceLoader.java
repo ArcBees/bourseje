@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 ArcBees Inc.
+ * Copyright 2016 ArcBees Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -36,7 +36,9 @@ public class ResourceLoader {
             PageNumberOfVoteResources pageNumberOfVoteResources,
             PageResultResources pageResultResources,
             PageEndOfVoteResources pageEndOfVoteResources,
-            Page404Resources page404Resources){
+            Page404Resources page404Resources,
+            PageAddEditResources pageAddEditResources,
+            ItemModalboxResources itemModalboxResources){
         appResources.normalize().ensureInjected();
         appResources.styles().ensureInjected();
         appResources.grid().ensureInjected();
@@ -55,5 +57,7 @@ public class ResourceLoader {
         pageNumberOfVoteResources.style().ensureInjected();
         pageResultResources.style().ensureInjected();
         pageEndOfVoteResources.style().ensureInjected();
+        pageAddEditResources.style().ensureInjected();
+        itemModalboxResources.style().ensureInjected();
     }
 }
