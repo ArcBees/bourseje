@@ -129,6 +129,7 @@ public class AdminDashboardPresenter extends Presenter<AdminDashboardPresenter.M
         dispatch.execute(adminService.getVotesPerCandidate(), new AdminRestCallback<Collection<CandidateResult>>() {
             @Override
             public void onSuccess(Collection<CandidateResult> result) {
+                //TODO : Retrieve candidates from server
                 List<Candidate> candidates = new ArrayList<>(Arrays.asList(
                         new Candidate("Dominic Fillion", "Arcbees", resources.DominicFillion()),
                         new Candidate("Johanie Gagnon", "Arcbees", resources.JohanieGagnon()),
@@ -137,9 +138,7 @@ public class AdminDashboardPresenter extends Presenter<AdminDashboardPresenter.M
                         new Candidate("Olivier Lafleur", "Arcbees", resources.RaphaelProvost()),
                         new Candidate("Olivier Lafleur", "Arcbees", resources.VincentBouchard())));
 
-                Map<String, Integer> results = convertToMap(candidates, result);
-
-                getView().setCandidates(candidates, results);
+                getView().setCandidates(candidates, convertToMap(candidates, result));
             }
         });
 
