@@ -16,7 +16,10 @@
 
 package com.arcbees.bourseje.client.admin.dashboard;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 
 import com.arcbees.bourseje.client.AdminRestCallback;
 import com.arcbees.bourseje.client.NameTokens;
@@ -48,7 +51,7 @@ public class AdminDashboardPresenter extends Presenter<AdminDashboardPresenter.M
 
         void setCurrentState(VoteState currentState);
 
-        void addCandidate(Candidate candidate);
+        void setCandidates(List<Candidate> candidates);
     }
 
     @ProxyStandard
@@ -123,12 +126,15 @@ public class AdminDashboardPresenter extends Presenter<AdminDashboardPresenter.M
 
     @Override
     protected void onReveal() {
-        getView().addCandidate(new Candidate("Olivier Lafleur", "Arcbees", resources.DominicFillion()));
-        getView().addCandidate(new Candidate("Olivier Lafleur", "Arcbees", resources.JohanieGagnon()));
-        getView().addCandidate(new Candidate("Olivier Lafleur", "Arcbees", resources.MaximeGagnon()));
-        getView().addCandidate(new Candidate("Olivier Lafleur", "Arcbees", resources.SimonValin()));
-        getView().addCandidate(new Candidate("Olivier Lafleur", "Arcbees", resources.RaphaelProvost()));
-        getView().addCandidate(new Candidate("Olivier Lafleur", "Arcbees", resources.VincentBouchard()));
+        List<Candidate> candidates = new ArrayList<>(Arrays.asList(
+                new Candidate("Olivier Lafleur", "Arcbees", resources.DominicFillion()),
+                new Candidate("Olivier Lafleur", "Arcbees", resources.JohanieGagnon()),
+                new Candidate("Olivier Lafleur", "Arcbees", resources.MaximeGagnon()),
+                new Candidate("Olivier Lafleur", "Arcbees", resources.SimonValin()),
+                new Candidate("Olivier Lafleur", "Arcbees", resources.RaphaelProvost()),
+                new Candidate("Olivier Lafleur", "Arcbees", resources.VincentBouchard())));
+
+        getView().setCandidates(candidates);
 
         dispatch.execute(adminService.getVotesPerCandidate(), new AdminRestCallback<Collection<CandidateResult>>() {
             @Override

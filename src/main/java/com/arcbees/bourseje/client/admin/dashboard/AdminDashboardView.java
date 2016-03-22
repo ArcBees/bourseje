@@ -17,6 +17,7 @@
 package com.arcbees.bourseje.client.admin.dashboard;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -122,9 +123,11 @@ public class AdminDashboardView extends ViewWithUiHandlers<AdminDashboardUiHandl
     }
 
     @Override
-    public void addCandidate(Candidate candidate) {
-        CandidateWidget candidateWidget = new CandidateWidget(candidate);
+    public void setCandidates(List<Candidate> candidatesList) {
+        for(Candidate candidate : candidatesList) {
+            CandidateWidget candidateWidget = new CandidateWidget(candidate);
 
-        $(candidates).before(candidateWidget.asWidget().getElement());
+            $(candidates).before(candidateWidget.asWidget().getElement());
+        }
     }
 }
