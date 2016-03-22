@@ -49,8 +49,6 @@ import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 public class AdminDashboardPresenter extends Presenter<AdminDashboardPresenter.MyView, AdminDashboardPresenter.MyProxy>
         implements AdminDashboardUiHandlers {
     interface MyView extends View, HasUiHandlers<AdminDashboardUiHandlers> {
-        void setNumberOfVotesForCandidate(CandidateResult candidateResult);
-
         void setCurrentState(VoteState currentState);
 
         void setCandidates(List<Candidate> candidates, Map<String, Integer> candidateResults);

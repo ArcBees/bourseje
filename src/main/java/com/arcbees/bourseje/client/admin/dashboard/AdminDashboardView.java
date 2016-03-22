@@ -16,7 +16,6 @@
 
 package com.arcbees.bourseje.client.admin.dashboard;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -24,13 +23,10 @@ import javax.inject.Inject;
 
 import com.arcbees.bourseje.client.admin.ui.CandidateWidget;
 import com.arcbees.bourseje.shared.Candidate;
-import com.arcbees.bourseje.shared.CandidateResult;
 import com.arcbees.bourseje.shared.VoteState;
 import com.google.gwt.dom.client.ButtonElement;
 import com.google.gwt.dom.client.Element;
-import com.google.gwt.dom.client.SpanElement;
 import com.google.gwt.query.client.Function;
-import com.google.gwt.query.client.GQuery;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.HTMLPanel;
@@ -58,19 +54,10 @@ public class AdminDashboardView extends ViewWithUiHandlers<AdminDashboardUiHandl
     @UiField
     HTMLPanel candidates;
 
-    private Map<String, SpanElement> numberOfVoteElements = new HashMap<>();
-
     @Inject
     AdminDashboardView(
             Binder uiBinder) {
         initWidget(uiBinder.createAndBindUi(this));
-
-        /*numberOfVoteElements.put(Candidates.JOHANIE.getName(), johanieVotes);
-        numberOfVoteElements.put(Candidates.DOMINIC.getName(), dominicVotes);
-        numberOfVoteElements.put(Candidates.RAPHAEL.getName(), raphaelVotes);
-        numberOfVoteElements.put(Candidates.MAXIME.getName(), maximeVotes);
-        numberOfVoteElements.put(Candidates.SIMON.getName(), simonVotes);
-        numberOfVoteElements.put(Candidates.VINCENT.getName(), vincentVotes);*/
 
         initButtons();
     }
@@ -104,17 +91,6 @@ public class AdminDashboardView extends ViewWithUiHandlers<AdminDashboardUiHandl
             }
         });
 
-    }
-
-    @Override
-    public void setNumberOfVotesForCandidate(CandidateResult candidateResult) {
-        SpanElement element = numberOfVoteElements.get(candidateResult.getCandidateName());
-
-        if (element == null) {
-            GQuery.console.error("Candidate not found: " + candidateResult.getCandidateName());
-        } else {
-            element.setInnerText(String.valueOf(candidateResult.getNumberOfVotes()));
-        }
     }
 
     @Override
