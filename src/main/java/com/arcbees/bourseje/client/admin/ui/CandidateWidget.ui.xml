@@ -8,8 +8,8 @@
         <div class="{res.grid.col} {res.grid.col_6} {page.style.box_candidates}">
             <g:Image resource="{res.JohanieGagnon}" styleName="{page.style.avatar}"/>
             <div class="{page.style.candidates}">
-                <h3>Johanie Gagnon</h3>
-                <p>Construction le 5e élément</p>
+                <h3 ui:field="nom"></h3>
+                <p ui:field="company"></p>
                 <div>
                     <a href="#" class="{page.style.box_candidates__link}"><i class="fa fa-pencil"></i> Modifier</a>
                     <a href="#" class="{page.style.box_candidates__link}"><i class="fa fa-times-circle"></i> Supprimer</a>
