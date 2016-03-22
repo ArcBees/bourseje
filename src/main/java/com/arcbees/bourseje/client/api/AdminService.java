@@ -19,9 +19,11 @@ package com.arcbees.bourseje.client.api;
 import java.util.Collection;
 
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 
+import com.arcbees.bourseje.shared.Candidate;
 import com.arcbees.bourseje.shared.CandidateResult;
 import com.arcbees.bourseje.shared.ResourcesPath;
 import com.arcbees.bourseje.shared.VoteState;
@@ -40,4 +42,8 @@ public interface AdminService {
     @PUT
     @Path(ResourcesPath.VOTE_STATE)
     RestAction<Void> setVoteState(VoteState voteState);
+
+    @POST
+    @Path(ResourcesPath.CANDIDATE)
+    RestAction<Void> addCandidate(Candidate candidate);
 }

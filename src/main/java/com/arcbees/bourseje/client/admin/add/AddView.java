@@ -18,7 +18,9 @@ package com.arcbees.bourseje.client.admin.add;
 
 import javax.inject.Inject;
 
+import com.arcbees.bourseje.shared.Candidate;
 import com.google.gwt.dom.client.ButtonElement;
+import com.google.gwt.dom.client.InputElement;
 import com.google.gwt.query.client.Function;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -34,6 +36,10 @@ public class AddView extends ViewWithUiHandlers<AddUiHandlers> implements AddPre
 
     @UiField
     ButtonElement addCandidate;
+    @UiField
+    InputElement name;
+    @UiField
+    InputElement company;
 
     @Inject
     AddView(
@@ -47,7 +53,11 @@ public class AddView extends ViewWithUiHandlers<AddUiHandlers> implements AddPre
         $(addCandidate).on(CLICK, new Function() {
             @Override
             public void f() {
-                getUiHandlers().onAddCandidateClicked();
+                if(!name.getValue().isEmpty() && !company.getValue().isEmpty()) {
+                    Candidate candidate = new Candidate(name.getValue(), company.getValue(), null);
+
+                    getUiHandlers().onAddCandidateClicked(candidate);
+                }
             }
         });
     }

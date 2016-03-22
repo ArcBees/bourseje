@@ -20,7 +20,8 @@
                         <h2>Les candidats</h2>
                         <p>pour la Bourse Jeune Entreprise 2016</p>
                     </div>
-                    <g:HTMLPanel ui:field="candidates" styleName="{res.grid.row} {res.styles.clearfix}">
+                    <g:HTMLPanel styleName="{res.grid.row} {res.styles.clearfix}">
+                        <span ui:field="candidates"></span>
                         <a  href="#{ADD}" class="{res.grid.col} {res.grid.col_6} {page.style.box_candidates} {page.style.box_candidates__button}">
                             <i class="fa fa-plus-circle"></i> Ajouter un candidat
                         </a>

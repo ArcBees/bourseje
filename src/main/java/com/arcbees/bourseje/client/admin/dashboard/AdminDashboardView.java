@@ -26,10 +26,10 @@ import com.arcbees.bourseje.shared.Candidate;
 import com.arcbees.bourseje.shared.VoteState;
 import com.google.gwt.dom.client.ButtonElement;
 import com.google.gwt.dom.client.Element;
+import com.google.gwt.dom.client.SpanElement;
 import com.google.gwt.query.client.Function;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
@@ -52,7 +52,7 @@ public class AdminDashboardView extends ViewWithUiHandlers<AdminDashboardUiHandl
     @UiField
     Element currentState;
     @UiField
-    HTMLPanel candidates;
+    SpanElement candidates;
 
     @Inject
     AdminDashboardView(
@@ -100,10 +100,12 @@ public class AdminDashboardView extends ViewWithUiHandlers<AdminDashboardUiHandl
 
     @Override
     public void setCandidates(List<Candidate> candidatesList, Map<String, Integer> candidateResults) {
+        candidates.setInnerHTML("");
+
         for(Candidate candidate : candidatesList) {
             CandidateWidget candidateWidget = new CandidateWidget(candidate, candidateResults.get(candidate.getName()));
 
-            $(candidates).before(candidateWidget.asWidget().getElement());
+            $(candidates).append(candidateWidget.asWidget().getElement());
         }
     }
 }
