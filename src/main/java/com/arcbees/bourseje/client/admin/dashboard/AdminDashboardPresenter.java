@@ -19,7 +19,9 @@ package com.arcbees.bourseje.client.admin.dashboard;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.arcbees.bourseje.client.AdminRestCallback;
 import com.arcbees.bourseje.client.NameTokens;
@@ -51,7 +53,7 @@ public class AdminDashboardPresenter extends Presenter<AdminDashboardPresenter.M
 
         void setCurrentState(VoteState currentState);
 
-        void setCandidates(List<Candidate> candidates);
+        void setCandidates(List<Candidate> candidates, Map<String, Integer> candidateResults);
     }
 
     @ProxyStandard
@@ -126,22 +128,20 @@ public class AdminDashboardPresenter extends Presenter<AdminDashboardPresenter.M
 
     @Override
     protected void onReveal() {
-        List<Candidate> candidates = new ArrayList<>(Arrays.asList(
-                new Candidate("Olivier Lafleur", "Arcbees", resources.DominicFillion()),
-                new Candidate("Olivier Lafleur", "Arcbees", resources.JohanieGagnon()),
-                new Candidate("Olivier Lafleur", "Arcbees", resources.MaximeGagnon()),
-                new Candidate("Olivier Lafleur", "Arcbees", resources.SimonValin()),
-                new Candidate("Olivier Lafleur", "Arcbees", resources.RaphaelProvost()),
-                new Candidate("Olivier Lafleur", "Arcbees", resources.VincentBouchard())));
-
-        getView().setCandidates(candidates);
-
         dispatch.execute(adminService.getVotesPerCandidate(), new AdminRestCallback<Collection<CandidateResult>>() {
             @Override
             public void onSuccess(Collection<CandidateResult> result) {
-                for (CandidateResult candidateResult : result) {
-                    getView().setNumberOfVotesForCandidate(candidateResult);
-                }
+                List<Candidate> candidates = new ArrayList<>(Arrays.asList(
+                        new Candidate("Dominic Fillion", "Arcbees", resources.DominicFillion()),
+                        new Candidate("Johanie Gagnon", "Arcbees", resources.JohanieGagnon()),
+                        new Candidate("Olivier Lafleur", "Arcbees", resources.MaximeGagnon()),
+                        new Candidate("Olivier Lafleur", "Arcbees", resources.SimonValin()),
+                        new Candidate("Olivier Lafleur", "Arcbees", resources.RaphaelProvost()),
+                        new Candidate("Olivier Lafleur", "Arcbees", resources.VincentBouchard())));
+
+                Map<String, Integer> results = convertToMap(candidates, result);
+
+                getView().setCandidates(candidates, results);
             }
         });
 
@@ -151,5 +151,24 @@ public class AdminDashboardPresenter extends Presenter<AdminDashboardPresenter.M
                 getView().setCurrentState(currentState);
             }
         });
+    }
+
+    private Map<String, Integer> convertToMap(List<Candidate> candidatesList, Collection<CandidateResult> candidateResults) {
+        Map<String, Integer> resultsMap = new HashMap<>();
+        Map<String, Integer> results = new HashMap<>();
+
+        for (CandidateResult result : candidateResults) {
+            resultsMap.put(result.getCandidateName(), result.getNumberOfVotes());
+        }
+
+        for (Candidate candidate : candidatesList) {
+            if(resultsMap.containsKey(candidate.getName())) {
+                results.put(candidate.getName(), resultsMap.get(candidate.getName()));
+            } else {
+                results.put(candidate.getName(), 0);
+            }
+        }
+
+        return results;
     }
 }

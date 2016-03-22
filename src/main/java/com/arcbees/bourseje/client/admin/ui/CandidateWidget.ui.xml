@@ -16,7 +16,7 @@
                 </div>
             </div>
             <div class="{page.style.nb_vote}">
-                <span class="nbVotes">0</span>
+                <span ui:field="nbVotes" class="nbVotes">0</span>
             </div>
         </div>
     </g:HTMLPanel>

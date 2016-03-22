@@ -20,6 +20,7 @@ import com.arcbees.bourseje.shared.Candidate;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.HeadingElement;
 import com.google.gwt.dom.client.ParagraphElement;
+import com.google.gwt.dom.client.SpanElement;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.HTMLPanel;
@@ -41,13 +42,16 @@ public class CandidateWidget implements IsWidget {
     HeadingElement name;
     @UiField
     Image image;
+    @UiField
+    SpanElement nbVotes;
 
-    public CandidateWidget(Candidate candidate) {
+    public CandidateWidget(Candidate candidate, int nbOfVotes) {
         widget = binder.createAndBindUi(this);
 
         company.setInnerHTML(candidate.getCompany());
         name.setInnerHTML(candidate.getName());
         image.setResource(candidate.getPicture());
+        nbVotes.setInnerHTML(String.valueOf(nbOfVotes));
     }
 
     @Override

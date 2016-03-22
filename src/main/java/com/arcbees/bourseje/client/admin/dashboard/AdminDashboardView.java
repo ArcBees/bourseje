@@ -123,9 +123,9 @@ public class AdminDashboardView extends ViewWithUiHandlers<AdminDashboardUiHandl
     }
 
     @Override
-    public void setCandidates(List<Candidate> candidatesList) {
+    public void setCandidates(List<Candidate> candidatesList, Map<String, Integer> candidateResults) {
         for(Candidate candidate : candidatesList) {
-            CandidateWidget candidateWidget = new CandidateWidget(candidate);
+            CandidateWidget candidateWidget = new CandidateWidget(candidate, candidateResults.get(candidate.getName()));
 
             $(candidates).before(candidateWidget.asWidget().getElement());
         }
