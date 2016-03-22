@@ -25,6 +25,7 @@ import com.arcbees.bourseje.client.admin.AdminPresenter;
 import com.arcbees.bourseje.client.api.AdminService;
 import com.arcbees.bourseje.client.api.LoginService;
 import com.arcbees.bourseje.client.api.VoteService;
+import com.arcbees.bourseje.shared.Candidate;
 import com.arcbees.bourseje.shared.CandidateResult;
 import com.arcbees.bourseje.shared.UrlWrapper;
 import com.arcbees.bourseje.shared.VoteState;
@@ -45,6 +46,8 @@ public class AdminDashboardPresenter extends Presenter<AdminDashboardPresenter.M
         void setNumberOfVotesForCandidate(CandidateResult candidateResult);
 
         void setCurrentState(VoteState currentState);
+
+        void addCandidate(Candidate candidate);
     }
 
     @ProxyStandard
@@ -116,6 +119,13 @@ public class AdminDashboardPresenter extends Presenter<AdminDashboardPresenter.M
 
     @Override
     protected void onReveal() {
+        getView().addCandidate(new Candidate("Olivier Lafleur", "Arcbees", null));
+        getView().addCandidate(new Candidate("Olivier Lafleur", "Arcbees", null));
+        getView().addCandidate(new Candidate("Olivier Lafleur", "Arcbees", null));
+        getView().addCandidate(new Candidate("Olivier Lafleur", "Arcbees", null));
+        getView().addCandidate(new Candidate("Olivier Lafleur", "Arcbees", null));
+        getView().addCandidate(new Candidate("Olivier Lafleur", "Arcbees", null));
+
         dispatch.execute(adminService.getVotesPerCandidate(), new AdminRestCallback<Collection<CandidateResult>>() {
             @Override
             public void onSuccess(Collection<CandidateResult> result) {

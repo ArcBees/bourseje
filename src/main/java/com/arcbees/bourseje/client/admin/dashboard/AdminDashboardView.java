@@ -21,7 +21,8 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
-import com.arcbees.bourseje.client.model.Candidates;
+import com.arcbees.bourseje.client.admin.ui.CandidateWidget;
+import com.arcbees.bourseje.shared.Candidate;
 import com.arcbees.bourseje.shared.CandidateResult;
 import com.arcbees.bourseje.shared.VoteState;
 import com.google.gwt.dom.client.ButtonElement;
@@ -31,6 +32,7 @@ import com.google.gwt.query.client.Function;
 import com.google.gwt.query.client.GQuery;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
@@ -52,6 +54,8 @@ public class AdminDashboardView extends ViewWithUiHandlers<AdminDashboardUiHandl
     ButtonElement stopVote;
     @UiField
     Element currentState;
+    @UiField
+    HTMLPanel candidates;
 
     private Map<String, SpanElement> numberOfVoteElements = new HashMap<>();
 
@@ -115,5 +119,12 @@ public class AdminDashboardView extends ViewWithUiHandlers<AdminDashboardUiHandl
     @Override
     public void setCurrentState(VoteState currentState) {
         this.currentState.setInnerText(currentState.toString());
+    }
+
+    @Override
+    public void addCandidate(Candidate candidate) {
+        CandidateWidget candidateWidget = new CandidateWidget(candidate);
+
+        $(candidates).before(candidateWidget.asWidget().getElement());
     }
 }

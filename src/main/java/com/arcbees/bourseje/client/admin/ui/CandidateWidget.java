@@ -16,6 +16,7 @@
 
 package com.arcbees.bourseje.client.admin.ui;
 
+import com.arcbees.bourseje.shared.Candidate;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.user.client.ui.HTMLPanel;
@@ -29,8 +30,10 @@ public class CandidateWidget implements IsWidget {
     private static Binder binder = GWT.create(Binder.class);
 
     private final Widget widget;
+    private final Candidate candidate;
 
-    public CandidateWidget() {
+    public CandidateWidget(Candidate candidate) {
+        this.candidate = candidate;
         widget = binder.createAndBindUi(this);
     }
 
