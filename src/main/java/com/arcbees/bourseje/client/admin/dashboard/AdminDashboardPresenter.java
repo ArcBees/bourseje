@@ -25,6 +25,7 @@ import com.arcbees.bourseje.client.admin.AdminPresenter;
 import com.arcbees.bourseje.client.api.AdminService;
 import com.arcbees.bourseje.client.api.LoginService;
 import com.arcbees.bourseje.client.api.VoteService;
+import com.arcbees.bourseje.client.resources.Resources;
 import com.arcbees.bourseje.shared.Candidate;
 import com.arcbees.bourseje.shared.CandidateResult;
 import com.arcbees.bourseje.shared.UrlWrapper;
@@ -59,6 +60,7 @@ public class AdminDashboardPresenter extends Presenter<AdminDashboardPresenter.M
     private final LoginService loginService;
     private final AdminService adminService;
     private final VoteService voteService;
+    private final Resources resources;
 
     @Inject
     AdminDashboardPresenter(
@@ -68,13 +70,15 @@ public class AdminDashboardPresenter extends Presenter<AdminDashboardPresenter.M
             RestDispatch dispatch,
             LoginService loginService,
             AdminService adminService,
-            VoteService voteService) {
+            VoteService voteService,
+            Resources resources) {
         super(eventBus, view, proxy, AdminPresenter.SLOT_MAIN);
 
         this.dispatch = dispatch;
         this.loginService = loginService;
         this.adminService = adminService;
         this.voteService = voteService;
+        this.resources = resources;
 
         getView().setUiHandlers(this);
     }
@@ -119,12 +123,12 @@ public class AdminDashboardPresenter extends Presenter<AdminDashboardPresenter.M
 
     @Override
     protected void onReveal() {
-        getView().addCandidate(new Candidate("Olivier Lafleur", "Arcbees", null));
-        getView().addCandidate(new Candidate("Olivier Lafleur", "Arcbees", null));
-        getView().addCandidate(new Candidate("Olivier Lafleur", "Arcbees", null));
-        getView().addCandidate(new Candidate("Olivier Lafleur", "Arcbees", null));
-        getView().addCandidate(new Candidate("Olivier Lafleur", "Arcbees", null));
-        getView().addCandidate(new Candidate("Olivier Lafleur", "Arcbees", null));
+        getView().addCandidate(new Candidate("Olivier Lafleur", "Arcbees", resources.DominicFillion()));
+        getView().addCandidate(new Candidate("Olivier Lafleur", "Arcbees", resources.JohanieGagnon()));
+        getView().addCandidate(new Candidate("Olivier Lafleur", "Arcbees", resources.MaximeGagnon()));
+        getView().addCandidate(new Candidate("Olivier Lafleur", "Arcbees", resources.SimonValin()));
+        getView().addCandidate(new Candidate("Olivier Lafleur", "Arcbees", resources.RaphaelProvost()));
+        getView().addCandidate(new Candidate("Olivier Lafleur", "Arcbees", resources.VincentBouchard()));
 
         dispatch.execute(adminService.getVotesPerCandidate(), new AdminRestCallback<Collection<CandidateResult>>() {
             @Override

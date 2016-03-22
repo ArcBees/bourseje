@@ -23,6 +23,7 @@ import com.google.gwt.dom.client.ParagraphElement;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.HTMLPanel;
+import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -37,13 +38,16 @@ public class CandidateWidget implements IsWidget {
     @UiField
     ParagraphElement company;
     @UiField
-    HeadingElement nom;
+    HeadingElement name;
+    @UiField
+    Image image;
 
     public CandidateWidget(Candidate candidate) {
         widget = binder.createAndBindUi(this);
 
         company.setInnerHTML(candidate.getCompany());
-        nom.setInnerHTML(candidate.getName());
+        name.setInnerHTML(candidate.getName());
+        image.setResource(candidate.getPicture());
     }
 
     @Override
