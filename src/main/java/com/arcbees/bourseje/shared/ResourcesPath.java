@@ -27,6 +27,7 @@ public class ResourcesPath {
     public static final String ADMIN = "/admin";
     public static final String VOTE_STATE = "/vote-state";
     public static final String CANDIDATE_RESULTS = "/candidate-results";
+    public static final String CANDIDATE = "/candidate";
 
     // login
     public static final String LOGIN = "/login";
