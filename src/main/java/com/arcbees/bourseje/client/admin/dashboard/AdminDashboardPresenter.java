@@ -16,8 +16,6 @@
 
 package com.arcbees.bourseje.client.admin.dashboard;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -28,6 +26,7 @@ import com.arcbees.bourseje.client.NameTokens;
 import com.arcbees.bourseje.client.RestCallbackImpl;
 import com.arcbees.bourseje.client.admin.AdminPresenter;
 import com.arcbees.bourseje.client.api.AdminService;
+import com.arcbees.bourseje.client.api.CandidateService;
 import com.arcbees.bourseje.client.api.LoginService;
 import com.arcbees.bourseje.client.api.VoteService;
 import com.arcbees.bourseje.client.resources.Resources;
@@ -35,6 +34,7 @@ import com.arcbees.bourseje.shared.Candidate;
 import com.arcbees.bourseje.shared.CandidateResult;
 import com.arcbees.bourseje.shared.UrlWrapper;
 import com.arcbees.bourseje.shared.VoteState;
+import com.google.gwt.query.client.GQuery;
 import com.google.gwt.user.client.Window;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
@@ -64,6 +64,7 @@ public class AdminDashboardPresenter extends Presenter<AdminDashboardPresenter.M
     private final AdminService adminService;
     private final VoteService voteService;
     private final Resources resources;
+    private final CandidateService candidateService;
 
     @Inject
     AdminDashboardPresenter(
@@ -74,7 +75,8 @@ public class AdminDashboardPresenter extends Presenter<AdminDashboardPresenter.M
             LoginService loginService,
             AdminService adminService,
             VoteService voteService,
-            Resources resources) {
+            Resources resources,
+            CandidateService candidateService) {
         super(eventBus, view, proxy, AdminPresenter.SLOT_MAIN);
 
         this.dispatch = dispatch;
@@ -82,6 +84,7 @@ public class AdminDashboardPresenter extends Presenter<AdminDashboardPresenter.M
         this.adminService = adminService;
         this.voteService = voteService;
         this.resources = resources;
+        this.candidateService = candidateService;
 
         getView().setUiHandlers(this);
     }
@@ -128,17 +131,13 @@ public class AdminDashboardPresenter extends Presenter<AdminDashboardPresenter.M
     protected void onReveal() {
         dispatch.execute(adminService.getVotesPerCandidate(), new AdminRestCallback<Collection<CandidateResult>>() {
             @Override
-            public void onSuccess(Collection<CandidateResult> result) {
-                //TODO : Retrieve candidates from server
-                List<Candidate> candidates = new ArrayList<>(Arrays.asList(
-                        new Candidate("Dominic Fillion", "Arcbees", resources.DominicFillion()),
-                        new Candidate("Johanie Gagnon", "Arcbees", resources.JohanieGagnon()),
-                        new Candidate("Olivier Lafleur", "Arcbees", resources.MaximeGagnon()),
-                        new Candidate("Olivier Lafleur", "Arcbees", resources.SimonValin()),
-                        new Candidate("Olivier Lafleur", "Arcbees", resources.RaphaelProvost()),
-                        new Candidate("Olivier Lafleur", "Arcbees", resources.VincentBouchard())));
-
-                getView().setCandidates(candidates, convertToMap(candidates, result));
+            public void onSuccess(final Collection<CandidateResult> votesPerCandidate) {
+                dispatch.execute(candidateService.getCandidates(), new RestCallbackImpl<List<Candidate>>() {
+                    @Override
+                    public void onSuccess(List<Candidate> candidates) {
+                        getView().setCandidates(candidates, convertToMap(candidates, votesPerCandidate));
+                    }
+                });
             }
         });
 

@@ -50,7 +50,11 @@ public class CandidateWidget implements IsWidget {
 
         company.setInnerHTML(candidate.getCompany());
         name.setInnerHTML(candidate.getName());
-        image.setResource(candidate.getPicture());
+
+        if(candidate.getPicture() != null) {
+            image.setResource(candidate.getPicture());
+        }
+
         nbVotes.setInnerHTML(String.valueOf(nbOfVotes));
     }
 
