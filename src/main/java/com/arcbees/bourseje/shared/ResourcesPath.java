@@ -21,11 +21,13 @@ public class ResourcesPath {
     public static final String VOTE_ITEMS = "/voteitems";
     public static final String CURRENT_VOTE_STATE = "/current-state";
     public static final String CODE = "/code";
+    public static final String CANDIDATES = "/candidates";
 
     // admin
     public static final String ADMIN = "/admin";
     public static final String VOTE_STATE = "/vote-state";
     public static final String CANDIDATE_RESULTS = "/candidate-results";
+    public static final String CANDIDATE = "/candidate";
 
     // login
     public static final String LOGIN = "/login";

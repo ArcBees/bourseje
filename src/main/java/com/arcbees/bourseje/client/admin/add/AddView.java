@@ -18,17 +18,48 @@ package com.arcbees.bourseje.client.admin.add;
 
 import javax.inject.Inject;
 
+import com.arcbees.bourseje.shared.Candidate;
+import com.google.gwt.dom.client.ButtonElement;
+import com.google.gwt.dom.client.InputElement;
+import com.google.gwt.query.client.Function;
 import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Widget;
-import com.gwtplatform.mvp.client.ViewImpl;
+import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
-public class AddView extends ViewImpl implements AddPresenter.MyView {
+import static com.google.gwt.dom.client.BrowserEvents.CLICK;
+import static com.google.gwt.query.client.GQuery.$;
+
+public class AddView extends ViewWithUiHandlers<AddUiHandlers> implements AddPresenter.MyView {
     interface Binder extends UiBinder<Widget, AddView> {
     }
+
+    @UiField
+    ButtonElement addCandidate;
+    @UiField
+    InputElement name;
+    @UiField
+    InputElement company;
 
     @Inject
     AddView(
             Binder uiBinder) {
         initWidget(uiBinder.createAndBindUi(this));
+
+        initButtons();
+    }
+
+    private void initButtons() {
+        $(addCandidate).on(CLICK, new Function() {
+            @Override
+            public void f() {
+                if(!name.getValue().isEmpty() && !company.getValue().isEmpty()) {
+                    //TODO : Add picture of the candidate instead of null
+                    Candidate candidate = new Candidate(name.getValue(), company.getValue(), null);
+
+                    getUiHandlers().onAddCandidateClicked(candidate);
+                }
+            }
+        });
     }
 }

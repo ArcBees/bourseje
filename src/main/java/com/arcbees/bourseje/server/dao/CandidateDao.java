@@ -1,5 +1,5 @@
 /**
- * Copyright 2014 ArcBees Inc.
+ * Copyright 2016 ArcBees Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -14,20 +14,12 @@
  * the License.
  */
 
-package com.arcbees.bourseje.server.api;
+package com.arcbees.bourseje.server.dao;
 
-import javax.inject.Singleton;
+import com.arcbees.bourseje.shared.Candidate;
 
-import com.google.inject.AbstractModule;
-
-public class ApiModule extends AbstractModule {
-    @Override
-    protected void configure() {
-        bind(CorsInterceptor.class).in(Singleton.class);
-
-        bind(VoteResource.class);
-        bind(LoginResource.class);
-        bind(AdminResource.class);
-        bind(CandidateResource.class);
+public class CandidateDao extends BaseDao<Candidate> {
+    CandidateDao() {
+        super(Candidate.class);
     }
 }

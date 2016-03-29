@@ -18,6 +18,7 @@ package com.arcbees.bourseje.server.api;
 
 import javax.inject.Inject;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -26,6 +27,7 @@ import javax.ws.rs.core.Response;
 
 import com.arcbees.bourseje.server.services.AdminService;
 import com.arcbees.bourseje.server.services.VoteService;
+import com.arcbees.bourseje.shared.Candidate;
 import com.arcbees.bourseje.shared.ResourcesPath;
 import com.arcbees.bourseje.shared.VoteState;
 
@@ -59,6 +61,14 @@ public class AdminResource {
     @Path(ResourcesPath.VOTE_STATE)
     public Response setVoteState(VoteState voteState) {
         adminService.setVoteState(voteState);
+
+        return Response.ok().build();
+    }
+
+    @POST
+    @Path(ResourcesPath.CANDIDATE)
+    public Response addCandidate(Candidate candidate) {
+        adminService.addCandidate(candidate);
 
         return Response.ok().build();
     }
