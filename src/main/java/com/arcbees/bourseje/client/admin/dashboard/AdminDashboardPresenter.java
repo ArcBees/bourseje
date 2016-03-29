@@ -17,17 +17,24 @@
 package com.arcbees.bourseje.client.admin.dashboard;
 
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import com.arcbees.bourseje.client.AdminRestCallback;
 import com.arcbees.bourseje.client.NameTokens;
 import com.arcbees.bourseje.client.RestCallbackImpl;
 import com.arcbees.bourseje.client.admin.AdminPresenter;
 import com.arcbees.bourseje.client.api.AdminService;
+import com.arcbees.bourseje.client.api.CandidateService;
 import com.arcbees.bourseje.client.api.LoginService;
 import com.arcbees.bourseje.client.api.VoteService;
+import com.arcbees.bourseje.client.resources.Resources;
+import com.arcbees.bourseje.shared.Candidate;
 import com.arcbees.bourseje.shared.CandidateResult;
 import com.arcbees.bourseje.shared.UrlWrapper;
 import com.arcbees.bourseje.shared.VoteState;
+import com.google.gwt.query.client.GQuery;
 import com.google.gwt.user.client.Window;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
@@ -42,9 +49,9 @@ import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 public class AdminDashboardPresenter extends Presenter<AdminDashboardPresenter.MyView, AdminDashboardPresenter.MyProxy>
         implements AdminDashboardUiHandlers {
     interface MyView extends View, HasUiHandlers<AdminDashboardUiHandlers> {
-        void setNumberOfVotesForCandidate(CandidateResult candidateResult);
-
         void setCurrentState(VoteState currentState);
+
+        void setCandidates(List<Candidate> candidates, Map<String, Integer> candidateResults);
     }
 
     @ProxyStandard
@@ -56,6 +63,8 @@ public class AdminDashboardPresenter extends Presenter<AdminDashboardPresenter.M
     private final LoginService loginService;
     private final AdminService adminService;
     private final VoteService voteService;
+    private final Resources resources;
+    private final CandidateService candidateService;
 
     @Inject
     AdminDashboardPresenter(
@@ -65,13 +74,17 @@ public class AdminDashboardPresenter extends Presenter<AdminDashboardPresenter.M
             RestDispatch dispatch,
             LoginService loginService,
             AdminService adminService,
-            VoteService voteService) {
+            VoteService voteService,
+            Resources resources,
+            CandidateService candidateService) {
         super(eventBus, view, proxy, AdminPresenter.SLOT_MAIN);
 
         this.dispatch = dispatch;
         this.loginService = loginService;
         this.adminService = adminService;
         this.voteService = voteService;
+        this.resources = resources;
+        this.candidateService = candidateService;
 
         getView().setUiHandlers(this);
     }
@@ -118,10 +131,13 @@ public class AdminDashboardPresenter extends Presenter<AdminDashboardPresenter.M
     protected void onReveal() {
         dispatch.execute(adminService.getVotesPerCandidate(), new AdminRestCallback<Collection<CandidateResult>>() {
             @Override
-            public void onSuccess(Collection<CandidateResult> result) {
-                for (CandidateResult candidateResult : result) {
-                    getView().setNumberOfVotesForCandidate(candidateResult);
-                }
+            public void onSuccess(final Collection<CandidateResult> votesPerCandidate) {
+                dispatch.execute(candidateService.getCandidates(), new RestCallbackImpl<List<Candidate>>() {
+                    @Override
+                    public void onSuccess(List<Candidate> candidates) {
+                        getView().setCandidates(candidates, convertToMap(candidates, votesPerCandidate));
+                    }
+                });
             }
         });
 
@@ -131,5 +147,24 @@ public class AdminDashboardPresenter extends Presenter<AdminDashboardPresenter.M
                 getView().setCurrentState(currentState);
             }
         });
+    }
+
+    private Map<String, Integer> convertToMap(List<Candidate> candidatesList, Collection<CandidateResult> candidateResults) {
+        Map<String, Integer> resultsMap = new HashMap<>();
+        Map<String, Integer> results = new HashMap<>();
+
+        for (CandidateResult result : candidateResults) {
+            resultsMap.put(result.getCandidateName(), result.getNumberOfVotes());
+        }
+
+        for (Candidate candidate : candidatesList) {
+            if(resultsMap.containsKey(candidate.getName())) {
+                results.put(candidate.getName(), resultsMap.get(candidate.getName()));
+            } else {
+                results.put(candidate.getName(), 0);
+            }
+        }
+
+        return results;
     }
 }

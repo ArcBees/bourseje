@@ -16,20 +16,26 @@
 
 package com.arcbees.bourseje.client.admin.add;
 
+import com.arcbees.bourseje.client.AdminRestCallback;
 import com.arcbees.bourseje.client.NameTokens;
 import com.arcbees.bourseje.client.admin.AdminPresenter;
 import com.arcbees.bourseje.client.api.AdminService;
+import com.arcbees.bourseje.shared.Candidate;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.dispatch.rest.client.RestDispatch;
+import com.gwtplatform.mvp.client.HasUiHandlers;
 import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
+import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
+import com.gwtplatform.mvp.shared.proxy.PlaceRequest;
 
-public class AddPresenter extends Presenter<AddPresenter.MyView, AddPresenter.MyProxy> {
-    interface MyView extends View {
+public class AddPresenter extends Presenter<AddPresenter.MyView, AddPresenter.MyProxy>
+        implements AddUiHandlers {
+    interface MyView extends View, HasUiHandlers<AddUiHandlers> {
     }
 
     @ProxyStandard
@@ -39,6 +45,7 @@ public class AddPresenter extends Presenter<AddPresenter.MyView, AddPresenter.My
 
     private final RestDispatch dispatch;
     private final AdminService adminService;
+    private final PlaceManager placeManager;
 
     @Inject
     AddPresenter(
@@ -46,9 +53,27 @@ public class AddPresenter extends Presenter<AddPresenter.MyView, AddPresenter.My
             MyView view,
             MyProxy proxy,
             RestDispatch dispatch,
-            AdminService adminService) {
+            AdminService adminService,
+            PlaceManager placeManager) {
         super(eventBus, view, proxy, AdminPresenter.SLOT_MAIN);
         this.dispatch = dispatch;
         this.adminService = adminService;
+        this.placeManager = placeManager;
+
+        getView().setUiHandlers(this);
+    }
+
+    @Override
+    public void onAddCandidateClicked(Candidate candidate) {
+        dispatch.execute(adminService.addCandidate(candidate), new AdminRestCallback<Void>() {
+            @Override
+            public void onSuccess(Void result) {
+                PlaceRequest placeRequest = new PlaceRequest.Builder()
+                        .nameToken(NameTokens.ADMIN_DASHBOARD)
+                        .build();
+
+                placeManager.revealPlace(placeRequest);
+            }
+        });
     }
 }

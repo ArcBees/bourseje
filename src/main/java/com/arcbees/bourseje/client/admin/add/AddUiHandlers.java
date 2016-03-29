@@ -1,12 +1,12 @@
 /**
- * Copyright 2014 ArcBees Inc.
- *
+ * Copyright 2016 ArcBees Inc.
+ * <p/>
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
  * the License at
- *
+ * <p/>
  * http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p/>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
@@ -14,20 +14,11 @@
  * the License.
  */
 
-package com.arcbees.bourseje.server.api;
+package com.arcbees.bourseje.client.admin.add;
 
-import javax.inject.Singleton;
+import com.arcbees.bourseje.shared.Candidate;
+import com.gwtplatform.mvp.client.UiHandlers;
 
-import com.google.inject.AbstractModule;
-
-public class ApiModule extends AbstractModule {
-    @Override
-    protected void configure() {
-        bind(CorsInterceptor.class).in(Singleton.class);
-
-        bind(VoteResource.class);
-        bind(LoginResource.class);
-        bind(AdminResource.class);
-        bind(CandidateResource.class);
-    }
+public interface AddUiHandlers extends UiHandlers {
+    void onAddCandidateClicked(Candidate candidate);
 }

@@ -1,12 +1,12 @@
-/*
- * Copyright 2015 ArcBees Inc.
- *
+/**
+ * Copyright 2016 ArcBees Inc.
+ * <p/>
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
  * the License at
- *
+ * <p/>
  * http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p/>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
@@ -16,34 +16,17 @@
 
 package com.arcbees.bourseje.client.api;
 
-import java.util.Collection;
+import java.util.List;
 
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 
 import com.arcbees.bourseje.shared.Candidate;
-import com.arcbees.bourseje.shared.CandidateResult;
 import com.arcbees.bourseje.shared.ResourcesPath;
-import com.arcbees.bourseje.shared.VoteState;
 import com.gwtplatform.dispatch.rest.shared.RestAction;
 
-@Path(ResourcesPath.ADMIN)
-public interface AdminService {
+@Path(ResourcesPath.CANDIDATES)
+public interface CandidateService {
     @GET
-    @Path(ResourcesPath.CANDIDATE_RESULTS)
-    RestAction<Collection<CandidateResult>> getVotesPerCandidate();
-
-    @GET
-    @Path(ResourcesPath.WINNER)
-    RestAction<CandidateResult> getWinner();
-
-    @PUT
-    @Path(ResourcesPath.VOTE_STATE)
-    RestAction<Void> setVoteState(VoteState voteState);
-
-    @POST
-    @Path(ResourcesPath.CANDIDATE)
-    RestAction<Void> addCandidate(Candidate candidate);
+    RestAction<List<Candidate>> getCandidates();
 }

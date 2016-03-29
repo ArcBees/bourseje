@@ -19,13 +19,13 @@
                     </a>
                     <div class="{res.grid.col} {res.grid.col_3_4}">
                         <label class="{page.style.addedit__label}">Prénom et Nom</label>
-                        <input class="{page.style.addedit__input}" type="text" />
+                        <input ui:field="name" class="{page.style.addedit__input}" type="text" required="required"/>
                         <label class="{page.style.addedit__label}">Compagnie</label>
-                        <input class="{page.style.addedit__input}" type="text" />
+                        <input ui:field="company" class="{page.style.addedit__input}" type="text" required="required"/>
                     </div>
                     <div class="{res.grid.col} {res.grid.col_full} {page.style.addedit__buttons}">
                         <button class="{page.style.addedit__button} {res.styles.btn} {res.styles.btn_secondary}">Annuler</button>
-                        <button type="submit" class="{page.style.addedit__button} {res.styles.btn} {res.styles.btn_primary}">Ajouter</button>
+                        <button ui:field="addCandidate" type="submit" class="{page.style.addedit__button} {res.styles.btn} {res.styles.btn_primary}">Ajouter</button>
                     </div>
                 </form>
             </div>

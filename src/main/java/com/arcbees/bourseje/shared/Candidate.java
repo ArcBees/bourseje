@@ -14,14 +14,22 @@
  * the License.
  */
 
-package com.arcbees.bourseje.client.model;
+package com.arcbees.bourseje.shared;
 
 import com.google.gwt.resources.client.ImageResource;
+import com.googlecode.objectify.annotation.Entity;
+import com.googlecode.objectify.annotation.Id;
 
+@Entity
 public class Candidate {
+    @Id
+    private Long id;
     private String name;
     private String company;
     private ImageResource picture;
+
+    public Candidate() {
+    }
 
     public Candidate(
             String name,
@@ -32,15 +40,35 @@ public class Candidate {
         this.picture = picture;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getCompany() {
         return company;
     }
 
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
     public ImageResource getPicture() {
         return picture;
+    }
+
+    public void setPicture(ImageResource picture) {
+        this.picture = picture;
     }
 }
