@@ -32,9 +32,7 @@ public class CandidateWidget implements IsWidget {
     interface Binder extends UiBinder<HTMLPanel, CandidateWidget> {
     }
 
-    private static Binder binder = GWT.create(Binder.class);
-
-    private final Widget widget;
+    private final static Binder binder = GWT.create(Binder.class);
 
     @UiField
     ParagraphElement company;
@@ -45,17 +43,19 @@ public class CandidateWidget implements IsWidget {
     @UiField
     SpanElement nbVotes;
 
+    private final Widget widget;
+
     public CandidateWidget(Candidate candidate, int nbOfVotes) {
         widget = binder.createAndBindUi(this);
 
-        company.setInnerHTML(candidate.getCompany());
-        name.setInnerHTML(candidate.getName());
+        company.setInnerText(candidate.getCompany());
+        name.setInnerText(candidate.getName());
 
-        if(candidate.getPicture() != null) {
+        if (candidate.getPicture() != null) {
             image.setResource(candidate.getPicture());
         }
 
-        nbVotes.setInnerHTML(String.valueOf(nbOfVotes));
+        nbVotes.setInnerText(String.valueOf(nbOfVotes));
     }
 
     @Override

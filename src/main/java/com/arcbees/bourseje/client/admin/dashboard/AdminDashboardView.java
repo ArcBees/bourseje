@@ -52,7 +52,7 @@ public class AdminDashboardView extends ViewWithUiHandlers<AdminDashboardUiHandl
     @UiField
     Element currentState;
     @UiField
-    SpanElement candidates;
+    SpanElement candidatesElement;
 
     @Inject
     AdminDashboardView(
@@ -99,13 +99,13 @@ public class AdminDashboardView extends ViewWithUiHandlers<AdminDashboardUiHandl
     }
 
     @Override
-    public void setCandidates(List<Candidate> candidatesList, Map<String, Integer> candidateResults) {
-        candidates.setInnerHTML("");
+    public void setCandidates(List<Candidate> candidates, Map<String, Integer> candidateResults) {
+        candidatesElement.removeAllChildren();
 
-        for(Candidate candidate : candidatesList) {
+        for(Candidate candidate : candidates) {
             CandidateWidget candidateWidget = new CandidateWidget(candidate, candidateResults.get(candidate.getName()));
 
-            $(candidates).append(candidateWidget.asWidget().getElement());
+            $(candidatesElement).append(candidateWidget.asWidget().getElement());
         }
     }
 }

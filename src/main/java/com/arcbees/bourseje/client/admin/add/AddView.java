@@ -54,6 +54,7 @@ public class AddView extends ViewWithUiHandlers<AddUiHandlers> implements AddPre
             @Override
             public void f() {
                 if(!name.getValue().isEmpty() && !company.getValue().isEmpty()) {
+                    //TODO : Add picture of the candidate instead of null
                     Candidate candidate = new Candidate(name.getValue(), company.getValue(), null);
 
                     getUiHandlers().onAddCandidateClicked(candidate);
