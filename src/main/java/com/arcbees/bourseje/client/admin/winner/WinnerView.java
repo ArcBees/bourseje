@@ -19,8 +19,8 @@ package com.arcbees.bourseje.client.admin.winner;
 import javax.inject.Inject;
 
 import com.google.gwt.dom.client.HeadingElement;
+import com.google.gwt.dom.client.ImageElement;
 import com.google.gwt.dom.client.ParagraphElement;
-import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Image;
@@ -32,7 +32,7 @@ public class WinnerView extends ViewImpl implements WinnerPresenter.MyView {
     }
 
     @UiField
-    Image picture;
+    ImageElement picture;
     @UiField
     HeadingElement name;
     @UiField
@@ -47,8 +47,8 @@ public class WinnerView extends ViewImpl implements WinnerPresenter.MyView {
     }
 
     @Override
-    public void setPicture(ImageResource picture) {
-        this.picture.setResource(picture);
+    public void setPicture(String picture) {
+        this.picture.setSrc(picture);
     }
 
     @Override

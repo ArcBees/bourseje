@@ -25,7 +25,6 @@ import com.arcbees.bourseje.client.model.Candidates;
 import com.arcbees.bourseje.shared.CookieNames;
 import com.arcbees.bourseje.shared.VoteItem;
 import com.google.gwt.http.client.Response;
-import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.user.client.Cookies;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
@@ -46,7 +45,7 @@ public class ConfirmVotePresenter extends Presenter<ConfirmVotePresenter.MyView,
 
         void setCompany(String company);
 
-        void setPicture(ImageResource picture);
+        void setPictureSource(String source);
     }
 
     @ProxyStandard
@@ -92,7 +91,7 @@ public class ConfirmVotePresenter extends Presenter<ConfirmVotePresenter.MyView,
         } else {
             getView().setName(name);
             getView().setCompany(candidate.getCompany());
-            getView().setPicture(candidate.getPicture());
+            getView().setPictureSource(candidate.getPicture());
         }
     }
 

@@ -30,12 +30,12 @@ import com.google.gwt.core.client.GWT;
 public class Candidates {
     private static final Resources resources = GWT.create(Resources.class);
 
-    public static final Candidate JOHANIE = new Candidate("Johanie Gagnon", "Construction le 5e élément", resources.JohanieGagnon());
-    public static final Candidate DOMINIC = new Candidate("Dominic Fillion", "DFMotion", resources.DominicFillion());
-    public static final Candidate RAPHAEL = new Candidate("Raphaël Provost", "iWrap", resources.RaphaelProvost());
-    public static final Candidate MAXIME = new Candidate("Maxime Gagnon", "La Raffinerie", resources.MaximeGagnon());
-    public static final Candidate SIMON = new Candidate("Simon Valin", "Valin Confection", resources.SimonValin());
-    public static final Candidate VINCENT = new Candidate("Vincent Bouchard", "Venice Gym", resources.VincentBouchard());
+    public static final Candidate JOHANIE = new Candidate("Johanie Gagnon", "Construction le 5e élément", null);
+    public static final Candidate DOMINIC = new Candidate("Dominic Fillion", "DFMotion", null);
+    public static final Candidate RAPHAEL = new Candidate("Raphaël Provost", "iWrap", null);
+    public static final Candidate MAXIME = new Candidate("Maxime Gagnon", "La Raffinerie", null);
+    public static final Candidate SIMON = new Candidate("Simon Valin", "Valin Confection", null);
+    public static final Candidate VINCENT = new Candidate("Vincent Bouchard", "Venice Gym", null);
 
     private static List<Candidate> allCandidates = Lists.newArrayList(
             JOHANIE,

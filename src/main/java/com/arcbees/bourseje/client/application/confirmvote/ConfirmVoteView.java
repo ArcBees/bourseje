@@ -1,5 +1,5 @@
-/**
- * Copyright 2014 ArcBees Inc.
+/*
+ * Copyright 2016 ArcBees Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -16,17 +16,16 @@
 
 package com.arcbees.bourseje.client.application.confirmvote;
 
-import javax.inject.Inject;
-
 import com.google.gwt.dom.client.DivElement;
+import com.google.gwt.dom.client.ImageElement;
 import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
-import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
+
+import javax.inject.Inject;
 
 public class ConfirmVoteView extends ViewWithUiHandlers<ConfirmVoteUiHandlers> implements ConfirmVotePresenter.MyView {
     interface Binder extends UiBinder<Widget, ConfirmVoteView> {
@@ -37,7 +36,7 @@ public class ConfirmVoteView extends ViewWithUiHandlers<ConfirmVoteUiHandlers> i
     @UiField
     DivElement company;
     @UiField
-    Image picture;
+    ImageElement picture;
 
     @Inject
     ConfirmVoteView(
@@ -56,8 +55,8 @@ public class ConfirmVoteView extends ViewWithUiHandlers<ConfirmVoteUiHandlers> i
     }
 
     @Override
-    public void setPicture(ImageResource picture) {
-        this.picture.setResource(picture);
+    public void setPictureSource(String source) {
+        this.picture.setSrc(source);
     }
 
     @UiHandler("confirm")

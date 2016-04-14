@@ -1,5 +1,5 @@
-/**
- * Copyright 2014 ArcBees Inc.
+/*
+ * Copyright 2016 ArcBees Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -16,7 +16,6 @@
 
 package com.arcbees.bourseje.server.guice;
 
-import com.arcbees.gaestudio.server.guice.GaeStudioModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.servlet.GuiceServletContextListener;
@@ -24,6 +23,6 @@ import com.google.inject.servlet.GuiceServletContextListener;
 public class GuiceServletConfig extends GuiceServletContextListener {
     @Override
     protected Injector getInjector() {
-        return Guice.createInjector(new ServerModule(), new DispatchServletModule(), new GaeStudioModule());
+        return Guice.createInjector(new ServerModule(), new ServletModule());
     }
 }

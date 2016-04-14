@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2016 ArcBees Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -16,11 +16,6 @@
 
 package com.arcbees.bourseje.client.admin.dashboard;
 
-import java.util.List;
-import java.util.Map;
-
-import javax.inject.Inject;
-
 import com.arcbees.bourseje.client.admin.ui.CandidateWidget;
 import com.arcbees.bourseje.shared.Candidate;
 import com.arcbees.bourseje.shared.VoteState;
@@ -33,7 +28,11 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
-import static com.arcbees.gaestudio.repackaged.com.google.gwt.dom.client.BrowserEvents.CLICK;
+import javax.inject.Inject;
+import java.util.List;
+import java.util.Map;
+
+import static com.google.gwt.dom.client.BrowserEvents.CLICK;
 import static com.google.gwt.query.client.GQuery.$;
 
 public class AdminDashboardView extends ViewWithUiHandlers<AdminDashboardUiHandlers>
@@ -102,7 +101,7 @@ public class AdminDashboardView extends ViewWithUiHandlers<AdminDashboardUiHandl
     public void setCandidates(List<Candidate> candidates, Map<String, Integer> candidateResults) {
         candidatesElement.removeAllChildren();
 
-        for(Candidate candidate : candidates) {
+        for (Candidate candidate : candidates) {
             CandidateWidget candidateWidget = new CandidateWidget(candidate, candidateResults.get(candidate.getName()));
 
             $(candidatesElement).append(candidateWidget.asWidget().getElement());

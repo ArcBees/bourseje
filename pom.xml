@@ -17,7 +17,6 @@
         <gwtp.version>1.4</gwtp.version>
         <gin.version>2.1.2</gin.version>
         <gwtquery.version>1.4.1</gwtquery.version>
-        <gae-studio.version>0.8.3</gae-studio.version>
         <gsss.version>1.1</gsss.version>
 
         <!-- server -->
@@ -26,6 +25,7 @@
         <arcbees.version>1.1.1</arcbees.version>
         <resteasy.version>3.0.11.Final</resteasy.version>
         <objectify.version>4.0</objectify.version>
+        <gwtupload.version>1.0.4-SNAPSHOT</gwtupload.version>
 
         <!-- maven -->
         <maven-compiler-plugin.version>2.3.2</maven-compiler-plugin.version>
@@ -51,6 +51,16 @@
             </snapshots>
         </repository>
     </repositories>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>commons-fileupload</groupId>
+                <artifactId>commons-fileupload</artifactId>
+                <version>1.2.1</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <!-- Google Web Toolkit dependencies -->
@@ -139,11 +149,6 @@
             <version>${objectify.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.arcbees.gaestudio</groupId>
-            <artifactId>gae-studio-webapp</artifactId>
-            <version>${gae-studio.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.vectomatic</groupId>
             <artifactId>lib-gwt-svg</artifactId>
             <version>0.5.9</version>
@@ -164,6 +169,27 @@
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>${guava.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.appengine.tools</groupId>
+            <artifactId>appengine-gcs-client</artifactId>
+            <version>RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>com.googlecode.gwtupload</groupId>
+            <artifactId>gwtupload-gae</artifactId>
+            <version>${gwtupload.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.google.appengine</groupId>
+                    <artifactId>appengine-tools-sdk</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.googlecode.gwtupload</groupId>
+            <artifactId>gwtupload</artifactId>
+            <version>${gwtupload.version}</version>
         </dependency>
     </dependencies>
 
@@ -210,7 +236,8 @@
                     <includes>**/*GwtTest.java</includes>
                     <mode>htmlunit</mode>
 
-                    <extraJvmArgs>-Xss1024K -Xmx1024M -XX:MaxPermSize=256M -Duser.language=en -Duser.country=US</extraJvmArgs>
+                    <extraJvmArgs>-Xss1024K -Xmx1024M -XX:MaxPermSize=256M -Duser.language=en -Duser.country=US
+                    </extraJvmArgs>
                     <logLevel>INFO</logLevel>
 
                     <copyWebapp>true</copyWebapp>

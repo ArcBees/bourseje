@@ -19,6 +19,7 @@ package com.arcbees.bourseje.client.admin.ui;
 import com.arcbees.bourseje.shared.Candidate;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.HeadingElement;
+import com.google.gwt.dom.client.ImageElement;
 import com.google.gwt.dom.client.ParagraphElement;
 import com.google.gwt.dom.client.SpanElement;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -39,7 +40,7 @@ public class CandidateWidget implements IsWidget {
     @UiField
     HeadingElement name;
     @UiField
-    Image image;
+    ImageElement image;
     @UiField
     SpanElement nbVotes;
 
@@ -52,7 +53,7 @@ public class CandidateWidget implements IsWidget {
         name.setInnerText(candidate.getName());
 
         if (candidate.getPicture() != null) {
-            image.setResource(candidate.getPicture());
+            image.setSrc(candidate.getPicture());
         }
 
         nbVotes.setInnerText(String.valueOf(nbOfVotes));

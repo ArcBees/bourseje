@@ -16,7 +16,6 @@
 
 package com.arcbees.bourseje.shared;
 
-import com.google.gwt.resources.client.ImageResource;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 
@@ -26,7 +25,7 @@ public class Candidate {
     private Long id;
     private String name;
     private String company;
-    private ImageResource picture;
+    private String picture;
 
     public Candidate() {
     }
@@ -34,7 +33,7 @@ public class Candidate {
     public Candidate(
             String name,
             String company,
-            ImageResource picture) {
+            String picture) {
         this.name = name;
         this.company = company;
         this.picture = picture;
@@ -64,11 +63,11 @@ public class Candidate {
         this.company = company;
     }
 
-    public ImageResource getPicture() {
+    public String getPicture() {
         return picture;
     }
 
-    public void setPicture(ImageResource picture) {
+    public void setPicture(String picture) {
         this.picture = picture;
     }
 }

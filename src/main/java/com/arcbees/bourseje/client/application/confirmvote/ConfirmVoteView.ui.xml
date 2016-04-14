@@ -16,7 +16,7 @@
                         <p>Confirmez votre choix</p>
                     </div>
                     <div class="{page.style.choice_box}">
-                        <g:Image ui:field="picture" resource="{res.voteAccent}" styleName="{page.style.choice_avatar}"/>
+                        <img ui:field="picture" src="" class="{page.style.choice_avatar}"/>
                         <div class="{page.style.choice_finalist}">
                             <div ui:field="name" class="{page.style.choice_finalist_name}"/>
                             <div ui:field="company" class="{page.style.choice_finalist_company}"/>
