@@ -102,10 +102,10 @@ public class AdminDashboardView extends ViewWithUiHandlers<AdminDashboardUiHandl
         candidatesElement.removeAllChildren();
 
         for (Candidate candidate : candidates) {
-            CandidateAdminWidget candidateAdminWidget = new CandidateAdminWidget(candidate, candidateResults.get
-                    (candidate.getName()));
+            CandidateAdminWidget candidateWidget = new CandidateAdminWidget(
+                    candidate, candidateResults.get(candidate.getName()));
 
-            $(candidatesElement).append(candidateAdminWidget.asWidget().getElement());
+            $(candidatesElement).append(candidateWidget.asWidget().getElement());
         }
     }
 }
