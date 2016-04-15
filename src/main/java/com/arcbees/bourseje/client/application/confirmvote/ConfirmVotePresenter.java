@@ -18,14 +18,15 @@ package com.arcbees.bourseje.client.application.confirmvote;
 
 import com.arcbees.bourseje.client.NameTokens;
 import com.arcbees.bourseje.client.RestCallbackImpl;
+import com.arcbees.bourseje.client.api.CandidateService;
 import com.arcbees.bourseje.client.api.VoteService;
 import com.arcbees.bourseje.client.application.ApplicationPresenter;
-import com.arcbees.bourseje.client.model.Candidates;
 import com.arcbees.bourseje.shared.Candidate;
 import com.arcbees.bourseje.shared.CookieNames;
 import com.arcbees.bourseje.shared.VoteItem;
 import com.google.gwt.http.client.Response;
 import com.google.gwt.user.client.Cookies;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.dispatch.rest.client.RestDispatch;
@@ -56,6 +57,7 @@ public class ConfirmVotePresenter extends Presenter<ConfirmVotePresenter.MyView,
     private final PlaceManager placeManager;
     private final RestDispatch dispatcher;
     private final VoteService voteService;
+    private final CandidateService candidateService;
 
     private String name;
 
@@ -66,12 +68,14 @@ public class ConfirmVotePresenter extends Presenter<ConfirmVotePresenter.MyView,
             MyProxy proxy,
             PlaceManager placeManager,
             RestDispatch dispatcher,
-            VoteService voteService) {
+            VoteService voteService,
+            CandidateService candidateService) {
         super(eventBus, view, proxy, ApplicationPresenter.SLOT_MAIN);
 
         this.placeManager = placeManager;
         this.dispatcher = dispatcher;
         this.voteService = voteService;
+        this.candidateService = candidateService;
 
         getView().setUiHandlers(this);
     }
@@ -84,15 +88,25 @@ public class ConfirmVotePresenter extends Presenter<ConfirmVotePresenter.MyView,
         }
 
         name = request.getParameter(NameTokens.PARAM_NAME, "noSelection");
-        Candidate candidate = Candidates.getByName(name);
+        getCandidateByName(name);
 
-        if (candidate == null) {
-            revealPlace(NameTokens.VOTE);
-        } else {
-            getView().setName(name);
-            getView().setCompany(candidate.getCompany());
-            getView().setPictureSource(candidate.getPicture());
-        }
+
+    }
+
+    private void getCandidateByName(String name) {
+        dispatcher.execute(candidateService.getByCandidateName(name), new AsyncCallback<Candidate>() {
+            @Override
+            public void onFailure(Throwable caught) {
+                revealPlace(NameTokens.VOTE);
+            }
+
+            @Override
+            public void onSuccess(Candidate candidate) {
+                getView().setName(candidate.getName());
+                getView().setCompany(candidate.getCompany());
+                getView().setPictureSource(candidate.getPicture());
+            }
+        });
     }
 
     @Override
