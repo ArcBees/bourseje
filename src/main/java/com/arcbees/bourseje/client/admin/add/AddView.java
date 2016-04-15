@@ -76,7 +76,7 @@ public class AddView extends ViewWithUiHandlers<AddUiHandlers>
                 new BaseUploadStatus(),
                 null);
         uploader.setAutoSubmit(false);
-        uploader.setValidExtensions(".jpg, .gif, .png");
+        uploader.setValidExtensions(".jpg, .gif, .png, .jpeg");
 
         // handlers
         uploader.addOnFinishUploadHandler(this);

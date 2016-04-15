@@ -19,66 +19,7 @@
                     </div>
                     <div ui:field="voteGroup">
                         <form action="javascript:;" class="{page.style.vote_form}">
-                            <div class="{page.style.finalist_box}">
-                                <input name="vote" id="Johanie" type="radio"/>
-                                <label for="Johanie">
-                                    <g:Image resource="{res.JohanieGagnon}" styleName="{page.style.finalist_avatar}"/>
-                                    <div class="{page.style.finalist}">
-                                        <p class="{page.style.finalist_name}">Johanie Gagnon</p>
-                                        <p>Construction le 5<sup>e</sup> élément</p>
-                                    </div>
-                                </label>
-                            </div>
-                            <div class="{page.style.finalist_box}">
-                                <input name="vote" id="Dominic" type="radio"/>
-                                <label for="Dominic">
-                                    <g:Image resource="{res.DominicFillion}" styleName="{page.style.finalist_avatar}"/>
-                                    <div class="{page.style.finalist}">
-                                        <p class="{page.style.finalist_name}">Dominic Fillion</p>
-                                        <p>DFMotion</p>
-                                    </div>
-                                </label>
-                            </div>
-                            <div class="{page.style.finalist_box}">
-                                <input name="vote" id="Raphael" type="radio"/>
-                                <label for="Raphael">
-                                    <g:Image resource="{res.RaphaelProvost}" styleName="{page.style.finalist_avatar}"/>
-                                    <div class="{page.style.finalist}">
-                                        <p class="{page.style.finalist_name}">Raphaël Provost</p>
-                                        <p>iWrap</p>
-                                    </div>
-                                </label>
-                            </div>
-                            <div class="{page.style.finalist_box}">
-                                <input name="vote" id="Maxime" type="radio"/>
-                                <label for="Maxime">
-                                    <g:Image resource="{res.MaximeGagnon}" styleName="{page.style.finalist_avatar}"/>
-                                    <div class="{page.style.finalist}">
-                                        <p class="{page.style.finalist_name}">Maxime Gagnon</p>
-                                        <p>La Raffinerie</p>
-                                    </div>
-                                </label>
-                            </div>
-                            <div class="{page.style.finalist_box}">
-                                <input name="vote" id="Simon" type="radio"/>
-                                <label for="Simon">
-                                    <g:Image resource="{res.SimonValin}" styleName="{page.style.finalist_avatar}"/>
-                                    <div class="{page.style.finalist}">
-                                        <p class="{page.style.finalist_name}">Simon Valin</p>
-                                        <p>Valin Confection</p>
-                                    </div>
-                                </label>
-                            </div>
-                            <div class="{page.style.finalist_box}">
-                                <input name="vote" id="Vincent" type="radio"/>
-                                <label for="Vincent">
-                                    <g:Image resource="{res.VincentBouchard}" styleName="{page.style.finalist_avatar}"/>
-                                    <div class="{page.style.finalist}">
-                                        <p class="{page.style.finalist_name}">Vincent Bouchard</p>
-                                        <p>Venice Gym</p>
-                                    </div>
-                                </label>
-                            </div>
+                            <span ui:field="candidatesElement"/>
                             <g:Button ui:field="submit" styleName="{res.styles.btn} {res.styles.btn_wide}">VOTEZ
                             </g:Button>
                         </form>
