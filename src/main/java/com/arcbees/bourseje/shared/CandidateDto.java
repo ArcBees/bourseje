@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 ArcBees Inc.
+ * Copyright 2016 ArcBees Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -16,25 +16,35 @@
 
 package com.arcbees.bourseje.shared;
 
-public class CandidateResult {
-    private String candidateName;
-    private int numberOfVotes;
+public class CandidateDto {
+    private String name;
+    private String company;
+    private String picture;
 
-    public CandidateResult() {
+    public CandidateDto() {
     }
 
-    public CandidateResult(
-            String candidateName,
-            int numberOfVotes) {
-        this.candidateName = candidateName;
-        this.numberOfVotes = numberOfVotes;
+    public String getName() {
+        return name;
     }
 
-    public int getNumberOfVotes() {
-        return numberOfVotes;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getCandidateName() {
-        return candidateName;
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 }

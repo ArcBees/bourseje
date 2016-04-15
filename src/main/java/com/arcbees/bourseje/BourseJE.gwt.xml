@@ -11,6 +11,7 @@
     <inherits name="com.google.common.collect.Collect"/>
     <inherits name="org.vectomatic.libgwtsvg"/>
     <inherits name="gwtupload.GWTUpload"/>
+    <inherits name="com.arcbees.ui.ui"/>
 
     <source path='client'/>
     <source path='shared'/>

@@ -1,6 +1,7 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
-             xmlns:g="urn:import:com.google.gwt.user.client.ui"
-             xmlns:w="urn:import:com.arcbees.bourseje.client.admin.ui">
+        xmlns:g="urn:import:com.google.gwt.user.client.ui"
+        xmlns:w="urn:import:com.arcbees.bourseje.client.admin.ui"
+        xmlns:arcbees="urn:import:com.arcbees.ui">
 
     <ui:with field="res" type="com.arcbees.bourseje.client.resources.Resources"/>
     <ui:with field="page" type="com.arcbees.bourseje.client.resources.PageAddEditResources"/>
@@ -11,7 +12,7 @@
         <section class="{res.styles.main_content_desktop}">
             <div class="{page.style.addedit} {res.styles.wrapper_desktop}">
                 <form class="{res.grid.row} {res.styles.clearfix}">
-                    <g:SimplePanel ui:field="uploaderPanel"/>
+                    <arcbees:ReplacePanel ui:field="uploaderPanel"/>
                     <div class="{res.grid.col} {res.grid.col_3_4}">
                         <label class="{page.style.addedit__label}">Prénom et Nom</label>
                         <input ui:field="name" class="{page.style.addedit__input}" type="text" required="required"/>

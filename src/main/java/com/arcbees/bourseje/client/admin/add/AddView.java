@@ -16,7 +16,10 @@
 
 package com.arcbees.bourseje.client.admin.add;
 
+import javax.inject.Inject;
+
 import com.arcbees.bourseje.shared.Candidate;
+import com.arcbees.ui.ReplacePanel;
 import com.google.common.base.Strings;
 import com.google.gwt.dom.client.ButtonElement;
 import com.google.gwt.dom.client.InputElement;
@@ -25,16 +28,14 @@ import com.google.gwt.event.dom.client.ChangeHandler;
 import com.google.gwt.query.client.Function;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
+
 import gwtupload.client.BaseUploadStatus;
 import gwtupload.client.IFileInput;
 import gwtupload.client.IUploader;
 import gwtupload.client.IUploader.OnFinishUploaderHandler;
 import gwtupload.client.SingleUploader;
-
-import javax.inject.Inject;
 
 import static com.google.gwt.dom.client.BrowserEvents.CLICK;
 import static com.google.gwt.query.client.GQuery.$;
@@ -51,7 +52,7 @@ public class AddView extends ViewWithUiHandlers<AddUiHandlers>
     @UiField
     InputElement company;
     @UiField
-    SimplePanel uploaderPanel;
+    ReplacePanel uploaderPanel;
 
     private final ImagePlaceHolder imagePlaceHolder;
 
@@ -75,7 +76,7 @@ public class AddView extends ViewWithUiHandlers<AddUiHandlers>
                 new BaseUploadStatus(),
                 null);
         uploader.setAutoSubmit(false);
-        uploader.setValidExtensions(".jpg, .gif, .png");
+        uploader.setValidExtensions(".jpg, .gif, .png, .jpeg");
 
         // handlers
         uploader.addOnFinishUploadHandler(this);

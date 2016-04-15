@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2014 ArcBees Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -16,9 +16,13 @@
 
 package com.arcbees.bourseje.client.application.vote;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
+import com.arcbees.bourseje.shared.Candidate;
 import com.google.gwt.dom.client.DivElement;
+import com.google.gwt.dom.client.SpanElement;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.query.client.GQuery;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -35,6 +39,8 @@ public class VoteView extends ViewWithUiHandlers<VoteUiHandlers> implements Vote
 
     @UiField
     DivElement voteGroup;
+    @UiField
+    SpanElement candidatesElement;
 
     @Inject
     VoteView(
@@ -49,5 +55,15 @@ public class VoteView extends ViewWithUiHandlers<VoteUiHandlers> implements Vote
         String company = $vote.find("p").last().text();
 
         getUiHandlers().onVoteClicked(name, company);
+    }
+
+    public void setCandidatesElement(List<Candidate> candidateList) {
+        candidatesElement.removeAllChildren();
+
+        for (Candidate candidate : candidateList) {
+            CandidateVoteWidget candidateVoteWidget = new CandidateVoteWidget(candidate);
+
+            $(candidatesElement).append(candidateVoteWidget.asWidget().getElement());
+        }
     }
 }

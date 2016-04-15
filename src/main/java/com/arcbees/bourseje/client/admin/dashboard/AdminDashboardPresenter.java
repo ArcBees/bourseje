@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2014 ArcBees Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -34,7 +34,6 @@ import com.arcbees.bourseje.shared.Candidate;
 import com.arcbees.bourseje.shared.CandidateResult;
 import com.arcbees.bourseje.shared.UrlWrapper;
 import com.arcbees.bourseje.shared.VoteState;
-import com.google.gwt.query.client.GQuery;
 import com.google.gwt.user.client.Window;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
@@ -90,6 +89,32 @@ public class AdminDashboardPresenter extends Presenter<AdminDashboardPresenter.M
     }
 
     @Override
+    protected void onReveal() {
+        dispatch.execute(adminService.getVotesPerCandidate(), new AdminRestCallback<Collection<CandidateResult>>() {
+            @Override
+            public void onSuccess(final Collection<CandidateResult> votesPerCandidate) {
+                setVotesPerCandidates(votesPerCandidate);
+            }
+        });
+
+        dispatch.execute(voteService.getCurrentVoteState(), new AdminRestCallback<VoteState>() {
+            @Override
+            public void onSuccess(VoteState currentState) {
+                getView().setCurrentState(currentState);
+            }
+        });
+    }
+
+    private void setVotesPerCandidates(final Collection<CandidateResult> votesPerCandidate) {
+        dispatch.execute(candidateService.getCandidates(), new RestCallbackImpl<List<Candidate>>() {
+            @Override
+            public void onSuccess(List<Candidate> candidates) {
+                getView().setCandidates(candidates, convertToMap(candidates, votesPerCandidate));
+            }
+        });
+    }
+
+    @Override
     public void onLoginClicked() {
         String currentUrl = Window.Location.getHref();
 
@@ -127,29 +152,8 @@ public class AdminDashboardPresenter extends Presenter<AdminDashboardPresenter.M
         });
     }
 
-    @Override
-    protected void onReveal() {
-        dispatch.execute(adminService.getVotesPerCandidate(), new AdminRestCallback<Collection<CandidateResult>>() {
-            @Override
-            public void onSuccess(final Collection<CandidateResult> votesPerCandidate) {
-                dispatch.execute(candidateService.getCandidates(), new RestCallbackImpl<List<Candidate>>() {
-                    @Override
-                    public void onSuccess(List<Candidate> candidates) {
-                        getView().setCandidates(candidates, convertToMap(candidates, votesPerCandidate));
-                    }
-                });
-            }
-        });
-
-        dispatch.execute(voteService.getCurrentVoteState(), new RestCallbackImpl<VoteState>() {
-            @Override
-            public void onSuccess(VoteState currentState) {
-                getView().setCurrentState(currentState);
-            }
-        });
-    }
-
-    private Map<String, Integer> convertToMap(List<Candidate> candidatesList, Collection<CandidateResult> candidateResults) {
+    private Map<String, Integer> convertToMap(List<Candidate> candidatesList, Collection<CandidateResult>
+            candidateResults) {
         Map<String, Integer> resultsMap = new HashMap<>();
         Map<String, Integer> results = new HashMap<>();
 
@@ -158,7 +162,7 @@ public class AdminDashboardPresenter extends Presenter<AdminDashboardPresenter.M
         }
 
         for (Candidate candidate : candidatesList) {
-            if(resultsMap.containsKey(candidate.getName())) {
+            if (resultsMap.containsKey(candidate.getName())) {
                 results.put(candidate.getName(), resultsMap.get(candidate.getName()));
             } else {
                 results.put(candidate.getName(), 0);

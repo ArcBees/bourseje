@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2016 ArcBees Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -25,12 +25,11 @@ import com.google.gwt.dom.client.SpanElement;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.HTMLPanel;
-import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 
-public class CandidateWidget implements IsWidget {
-    interface Binder extends UiBinder<HTMLPanel, CandidateWidget> {
+public class CandidateAdminWidget implements IsWidget {
+    interface Binder extends UiBinder<HTMLPanel, CandidateAdminWidget> {
     }
 
     private final static Binder binder = GWT.create(Binder.class);
@@ -46,7 +45,7 @@ public class CandidateWidget implements IsWidget {
 
     private final Widget widget;
 
-    public CandidateWidget(Candidate candidate, int nbOfVotes) {
+    public CandidateAdminWidget(Candidate candidate, int nbOfVotes) {
         widget = binder.createAndBindUi(this);
 
         company.setInnerText(candidate.getCompany());

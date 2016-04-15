@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 ArcBees Inc.
+ * Copyright 2014 ArcBees Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -16,7 +16,12 @@
 
 package com.arcbees.bourseje.client.admin.dashboard;
 
-import com.arcbees.bourseje.client.admin.ui.CandidateWidget;
+import java.util.List;
+import java.util.Map;
+
+import javax.inject.Inject;
+
+import com.arcbees.bourseje.client.admin.ui.CandidateAdminWidget;
 import com.arcbees.bourseje.shared.Candidate;
 import com.arcbees.bourseje.shared.VoteState;
 import com.google.gwt.dom.client.ButtonElement;
@@ -27,10 +32,6 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
-
-import javax.inject.Inject;
-import java.util.List;
-import java.util.Map;
 
 import static com.google.gwt.dom.client.BrowserEvents.CLICK;
 import static com.google.gwt.query.client.GQuery.$;
@@ -89,7 +90,6 @@ public class AdminDashboardView extends ViewWithUiHandlers<AdminDashboardUiHandl
                 getUiHandlers().onStopVoteClicked();
             }
         });
-
     }
 
     @Override
@@ -102,9 +102,10 @@ public class AdminDashboardView extends ViewWithUiHandlers<AdminDashboardUiHandl
         candidatesElement.removeAllChildren();
 
         for (Candidate candidate : candidates) {
-            CandidateWidget candidateWidget = new CandidateWidget(candidate, candidateResults.get(candidate.getName()));
+            CandidateAdminWidget candidateAdminWidget = new CandidateAdminWidget(candidate, candidateResults.get
+                    (candidate.getName()));
 
-            $(candidatesElement).append(candidateWidget.asWidget().getElement());
+            $(candidatesElement).append(candidateAdminWidget.asWidget().getElement());
         }
     }
 }
