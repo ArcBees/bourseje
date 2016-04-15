@@ -34,4 +34,8 @@ public class CandidateService {
     public Collection<Candidate> getCandidates() {
         return candidateDao.getAll();
     }
+
+    public Candidate getCandidateByName(String candidateName) {
+        return candidateDao.getByCandidateName(candidateName);
+    }
 }

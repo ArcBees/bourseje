@@ -16,7 +16,7 @@
 
 package com.arcbees.bourseje.client.api;
 
-import java.util.List;
+import java.util.Collection;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -33,7 +33,7 @@ import com.gwtplatform.dispatch.rest.shared.RestAction;
 public interface AdminService {
     @GET
     @Path(ResourcesPath.CANDIDATE_RESULTS)
-    RestAction<List<CandidateResult>> getVotesPerCandidate();
+    RestAction<Collection<CandidateResult>> getVotesPerCandidate();
 
     @GET
     @Path(ResourcesPath.WINNER)

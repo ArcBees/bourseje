@@ -16,10 +16,14 @@
 
 package com.arcbees.bourseje.client.admin.dashboard;
 
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.arcbees.bourseje.client.AdminRestCallback;
 import com.arcbees.bourseje.client.NameTokens;
+import com.arcbees.bourseje.client.RestCallbackImpl;
 import com.arcbees.bourseje.client.admin.AdminPresenter;
 import com.arcbees.bourseje.client.api.AdminService;
 import com.arcbees.bourseje.client.api.CandidateService;
@@ -27,6 +31,7 @@ import com.arcbees.bourseje.client.api.LoginService;
 import com.arcbees.bourseje.client.api.VoteService;
 import com.arcbees.bourseje.client.resources.Resources;
 import com.arcbees.bourseje.shared.Candidate;
+import com.arcbees.bourseje.shared.CandidateResult;
 import com.arcbees.bourseje.shared.UrlWrapper;
 import com.arcbees.bourseje.shared.VoteState;
 import com.google.gwt.user.client.Window;
@@ -45,7 +50,7 @@ public class AdminDashboardPresenter extends Presenter<AdminDashboardPresenter.M
     interface MyView extends View, HasUiHandlers<AdminDashboardUiHandlers> {
         void setCurrentState(VoteState currentState);
 
-        void setCandidates(List<Candidate> result);
+        void setCandidates(List<Candidate> candidates, Map<String, Integer> candidateResults);
     }
 
     @ProxyStandard
@@ -85,10 +90,10 @@ public class AdminDashboardPresenter extends Presenter<AdminDashboardPresenter.M
 
     @Override
     protected void onReveal() {
-        dispatch.execute(candidateService.getCandidates(), new AdminRestCallback<List<Candidate>>() {
+        dispatch.execute(adminService.getVotesPerCandidate(), new AdminRestCallback<Collection<CandidateResult>>() {
             @Override
-            public void onSuccess(List<Candidate> result) {
-                getView().setCandidates(result);
+            public void onSuccess(final Collection<CandidateResult> votesPerCandidate) {
+                setVotesPerCandidates(votesPerCandidate);
             }
         });
 
@@ -96,6 +101,15 @@ public class AdminDashboardPresenter extends Presenter<AdminDashboardPresenter.M
             @Override
             public void onSuccess(VoteState currentState) {
                 getView().setCurrentState(currentState);
+            }
+        });
+    }
+
+    private void setVotesPerCandidates(final Collection<CandidateResult> votesPerCandidate) {
+        dispatch.execute(candidateService.getCandidates(), new RestCallbackImpl<List<Candidate>>() {
+            @Override
+            public void onSuccess(List<Candidate> candidates) {
+                getView().setCandidates(candidates, convertToMap(candidates, votesPerCandidate));
             }
         });
     }
@@ -136,5 +150,25 @@ public class AdminDashboardPresenter extends Presenter<AdminDashboardPresenter.M
                 getView().setCurrentState(voteState);
             }
         });
+    }
+
+    private Map<String, Integer> convertToMap(List<Candidate> candidatesList, Collection<CandidateResult>
+            candidateResults) {
+        Map<String, Integer> resultsMap = new HashMap<>();
+        Map<String, Integer> results = new HashMap<>();
+
+        for (CandidateResult result : candidateResults) {
+            resultsMap.put(result.getCandidateName(), result.getNumberOfVotes());
+        }
+
+        for (Candidate candidate : candidatesList) {
+            if (resultsMap.containsKey(candidate.getName())) {
+                results.put(candidate.getName(), resultsMap.get(candidate.getName()));
+            } else {
+                results.put(candidate.getName(), 0);
+            }
+        }
+
+        return results;
     }
 }

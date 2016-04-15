@@ -20,6 +20,7 @@ import java.util.List;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.QueryParam;
 
 import com.arcbees.bourseje.shared.Candidate;
 import com.arcbees.bourseje.shared.ResourcesPath;
@@ -29,4 +30,7 @@ import com.gwtplatform.dispatch.rest.shared.RestAction;
 public interface CandidateService {
     @GET
     RestAction<List<Candidate>> getCandidates();
+
+    @GET
+    RestAction<Candidate> getByCandidateName(@QueryParam("name") String name);
 }

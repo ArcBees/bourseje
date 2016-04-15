@@ -40,4 +40,9 @@ public class CandidateResource {
     public Response getCandidates() {
         return Response.ok(candidateService.getCandidates()).build();
     }
+
+    @GET
+    public Response getByCandidateName(String name) {
+        return Response.ok(candidateService.getCandidateByName(name)).build();
+    }
 }

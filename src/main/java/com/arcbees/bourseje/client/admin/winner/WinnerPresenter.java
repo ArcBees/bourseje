@@ -20,6 +20,8 @@ import com.arcbees.bourseje.client.AdminRestCallback;
 import com.arcbees.bourseje.client.NameTokens;
 import com.arcbees.bourseje.client.admin.AdminPresenter;
 import com.arcbees.bourseje.client.api.AdminService;
+import com.arcbees.bourseje.client.api.CandidateService;
+import com.arcbees.bourseje.shared.Candidate;
 import com.arcbees.bourseje.shared.CandidateResult;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
@@ -48,6 +50,7 @@ public class WinnerPresenter extends Presenter<WinnerPresenter.MyView, WinnerPre
 
     private final RestDispatch dispatch;
     private final AdminService adminService;
+    private CandidateService candidateService;
 
     @Inject
     WinnerPresenter(
@@ -55,27 +58,39 @@ public class WinnerPresenter extends Presenter<WinnerPresenter.MyView, WinnerPre
             MyView view,
             MyProxy proxy,
             RestDispatch dispatch,
-            AdminService adminService) {
+            AdminService adminService,
+            CandidateService candidateService) {
         super(eventBus, view, proxy, AdminPresenter.SLOT_MAIN);
 
         this.dispatch = dispatch;
         this.adminService = adminService;
+        this.candidateService = candidateService;
     }
 
     @Override
     protected void onReveal() {
         dispatch.execute(adminService.getWinner(), new AdminRestCallback<CandidateResult>() {
             @Override
-            public void onSuccess(CandidateResult winner) {
-                setInView(winner);
+            public void onSuccess(final CandidateResult candidateResult) {
+                getCandidateByName(candidateResult);
             }
         });
     }
 
-    private void setInView(CandidateResult winner) {
-        getView().setPicture(winner.getCandidate().getPicture());
-        getView().setName(winner.getCandidate().getName());
-        getView().setCompany(winner.getCandidate().getCompany());
-        getView().setVotes(winner.getNumberOfVotes());
+    private void getCandidateByName(final CandidateResult candidateResult) {
+        dispatch.execute(candidateService.getByCandidateName(candidateResult.getCandidateName()), new
+                AdminRestCallback<Candidate>() {
+                    @Override
+                    public void onSuccess(Candidate candidate) {
+                        setInView(candidate, candidateResult.getNumberOfVotes());
+                    }
+                });
+    }
+
+    private void setInView(Candidate candidate, int votes) {
+        getView().setPicture(candidate.getPicture());
+        getView().setName(candidate.getName());
+        getView().setCompany(candidate.getCompany());
+        getView().setVotes(votes);
     }
 }

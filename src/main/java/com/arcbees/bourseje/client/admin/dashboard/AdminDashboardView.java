@@ -17,6 +17,7 @@
 package com.arcbees.bourseje.client.admin.dashboard;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -97,10 +98,11 @@ public class AdminDashboardView extends ViewWithUiHandlers<AdminDashboardUiHandl
     }
 
     @Override
-    public void setCandidates(List<Candidate> result) {
-        for (Candidate candidate : result) {
-            // TODO: Add vote results to candidateWidget
-            CandidateWidget candidateWidget = new CandidateWidget(candidate, 0);
+    public void setCandidates(List<Candidate> candidates, Map<String, Integer> candidateResults) {
+        candidatesElement.removeAllChildren();
+
+        for(Candidate candidate : candidates) {
+            CandidateWidget candidateWidget = new CandidateWidget(candidate, candidateResults.get(candidate.getName()));
 
             $(candidatesElement).append(candidateWidget.asWidget().getElement());
         }

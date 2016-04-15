@@ -24,14 +24,12 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
-import com.arcbees.bourseje.server.dao.CandidateDao;
 import com.arcbees.bourseje.server.dao.CurrentVoteStateDao;
 import com.arcbees.bourseje.server.dao.VoteItemDao;
 import com.arcbees.bourseje.server.exception.AlreadyVotedException;
 import com.arcbees.bourseje.server.exception.InactiveVoteException;
 import com.arcbees.bourseje.server.exception.VoteCodeNotFoundException;
 import com.arcbees.bourseje.server.model.CurrentVoteState;
-import com.arcbees.bourseje.shared.Candidate;
 import com.arcbees.bourseje.shared.CandidateResult;
 import com.arcbees.bourseje.shared.VoteItem;
 import com.arcbees.bourseje.shared.VoteState;
@@ -43,18 +41,15 @@ public class VoteService {
     private final VoteItemDao voteItemDao;
     private final CurrentVoteStateDao currentVoteStateDao;
     private final FilesService filesService;
-    private final CandidateDao candidateDao;
 
     @Inject
     VoteService(
             VoteItemDao voteItemDao,
             CurrentVoteStateDao currentVoteStateDao,
-            FilesService filesService,
-            CandidateDao candidateDao) {
+            FilesService filesService) {
         this.voteItemDao = voteItemDao;
         this.currentVoteStateDao = currentVoteStateDao;
         this.filesService = filesService;
-        this.candidateDao = candidateDao;
     }
 
     public VoteState getCurrentVoteState() {
@@ -104,15 +99,9 @@ public class VoteService {
                 new Maps.EntryTransformer<String, Collection<VoteItem>, CandidateResult>() {
                     @Override
                     public CandidateResult transformEntry(String candidateName, Collection<VoteItem> voteItems) {
-                        Candidate candidate = getCandidateByName(candidateName);
-
-                        return new CandidateResult(candidate, voteItems.size());
+                        return new CandidateResult(candidateName, voteItems.size());
                     }
                 }).values();
-    }
-
-    private Candidate getCandidateByName(String candidateName) {
-        return candidateDao.getByCandidateName(candidateName);
     }
 
     public CandidateResult getWinner() {
