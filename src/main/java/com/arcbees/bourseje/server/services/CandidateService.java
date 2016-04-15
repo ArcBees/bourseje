@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2016 ArcBees Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -18,10 +18,10 @@ package com.arcbees.bourseje.server.services;
 
 import java.util.Collection;
 
+import javax.inject.Inject;
+
 import com.arcbees.bourseje.server.dao.CandidateDao;
 import com.arcbees.bourseje.shared.Candidate;
-
-import javax.inject.Inject;
 
 public class CandidateService {
     private final CandidateDao candidateDao;

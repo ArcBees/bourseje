@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 ArcBees Inc.
+ * Copyright 2014 ArcBees Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -16,12 +16,22 @@
 
 package com.arcbees.bourseje.server.services;
 
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+
+import javax.inject.Inject;
+
+import com.arcbees.bourseje.server.dao.CandidateDao;
 import com.arcbees.bourseje.server.dao.CurrentVoteStateDao;
 import com.arcbees.bourseje.server.dao.VoteItemDao;
 import com.arcbees.bourseje.server.exception.AlreadyVotedException;
 import com.arcbees.bourseje.server.exception.InactiveVoteException;
 import com.arcbees.bourseje.server.exception.VoteCodeNotFoundException;
 import com.arcbees.bourseje.server.model.CurrentVoteState;
+import com.arcbees.bourseje.shared.Candidate;
 import com.arcbees.bourseje.shared.CandidateResult;
 import com.arcbees.bourseje.shared.VoteItem;
 import com.arcbees.bourseje.shared.VoteState;
@@ -29,22 +39,22 @@ import com.google.common.base.Function;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Multimaps;
 
-import javax.inject.Inject;
-import java.util.*;
-
 public class VoteService {
     private final VoteItemDao voteItemDao;
     private final CurrentVoteStateDao currentVoteStateDao;
     private final FilesService filesService;
+    private final CandidateDao candidateDao;
 
     @Inject
     VoteService(
             VoteItemDao voteItemDao,
             CurrentVoteStateDao currentVoteStateDao,
-            FilesService filesService) {
+            FilesService filesService,
+            CandidateDao candidateDao) {
         this.voteItemDao = voteItemDao;
         this.currentVoteStateDao = currentVoteStateDao;
         this.filesService = filesService;
+        this.candidateDao = candidateDao;
     }
 
     public VoteState getCurrentVoteState() {
@@ -94,9 +104,15 @@ public class VoteService {
                 new Maps.EntryTransformer<String, Collection<VoteItem>, CandidateResult>() {
                     @Override
                     public CandidateResult transformEntry(String candidateName, Collection<VoteItem> voteItems) {
-                        return new CandidateResult(candidateName, voteItems.size());
+                        Candidate candidate = getCandidateByName(candidateName);
+
+                        return new CandidateResult(candidate, voteItems.size());
                     }
                 }).values();
+    }
+
+    private Candidate getCandidateByName(String candidateName) {
+        return candidateDao.getByCandidateName(candidateName);
     }
 
     public CandidateResult getWinner() {

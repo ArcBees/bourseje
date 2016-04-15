@@ -16,6 +16,8 @@
 
 package com.arcbees.bourseje.client.admin.add;
 
+import javax.inject.Inject;
+
 import com.arcbees.bourseje.shared.Candidate;
 import com.google.common.base.Strings;
 import com.google.gwt.dom.client.ButtonElement;
@@ -28,13 +30,12 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
+
 import gwtupload.client.BaseUploadStatus;
 import gwtupload.client.IFileInput;
 import gwtupload.client.IUploader;
 import gwtupload.client.IUploader.OnFinishUploaderHandler;
 import gwtupload.client.SingleUploader;
-
-import javax.inject.Inject;
 
 import static com.google.gwt.dom.client.BrowserEvents.CLICK;
 import static com.google.gwt.query.client.GQuery.$;

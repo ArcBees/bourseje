@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2016 ArcBees Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -14,16 +14,37 @@
  * the License.
  */
 
-package com.arcbees.bourseje.server.dao;
+package com.arcbees.bourseje.shared;
 
-import com.arcbees.bourseje.shared.Candidate;
+public class CandidateDto {
+    private String name;
+    private String company;
+    private String picture;
 
-public class CandidateDao extends BaseDao<Candidate> {
-    CandidateDao() {
-        super(Candidate.class);
+    public CandidateDto() {
     }
 
-    public Candidate getByCandidateName(String name) {
-        return query().filter("name", name).first().now();
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 }

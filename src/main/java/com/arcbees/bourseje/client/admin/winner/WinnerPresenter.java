@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 ArcBees Inc.
+ * Copyright 2014 ArcBees Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -20,8 +20,6 @@ import com.arcbees.bourseje.client.AdminRestCallback;
 import com.arcbees.bourseje.client.NameTokens;
 import com.arcbees.bourseje.client.admin.AdminPresenter;
 import com.arcbees.bourseje.client.api.AdminService;
-import com.arcbees.bourseje.client.model.Candidates;
-import com.arcbees.bourseje.shared.Candidate;
 import com.arcbees.bourseje.shared.CandidateResult;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
@@ -59,6 +57,7 @@ public class WinnerPresenter extends Presenter<WinnerPresenter.MyView, WinnerPre
             RestDispatch dispatch,
             AdminService adminService) {
         super(eventBus, view, proxy, AdminPresenter.SLOT_MAIN);
+
         this.dispatch = dispatch;
         this.adminService = adminService;
     }
@@ -74,14 +73,9 @@ public class WinnerPresenter extends Presenter<WinnerPresenter.MyView, WinnerPre
     }
 
     private void setInView(CandidateResult winner) {
-        Candidate candidate = Candidates.getByName(winner.getCandidateName());
-        if (candidate == null) {
-            return;
-        }
-
-        getView().setPicture(candidate.getPicture());
-        getView().setName(candidate.getName());
-        getView().setCompany(candidate.getCompany());
+        getView().setPicture(winner.getCandidate().getPicture());
+        getView().setName(winner.getCandidate().getName());
+        getView().setCompany(winner.getCandidate().getCompany());
         getView().setVotes(winner.getNumberOfVotes());
     }
 }
