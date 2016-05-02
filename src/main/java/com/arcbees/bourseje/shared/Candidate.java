@@ -18,11 +18,13 @@ package com.arcbees.bourseje.shared;
 
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
+import com.googlecode.objectify.annotation.Index;
 
 @Entity
 public class Candidate {
     @Id
     private Long id;
+    @Index
     private String name;
     private String company;
     private String picture;

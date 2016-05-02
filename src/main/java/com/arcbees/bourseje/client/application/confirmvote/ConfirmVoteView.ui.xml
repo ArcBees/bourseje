@@ -18,8 +18,8 @@
                     <div class="{page.style.choice_box}">
                         <img ui:field="picture" src="" class="{page.style.choice_avatar}"/>
                         <div class="{page.style.choice_finalist}">
-                            <div ui:field="name" class="{page.style.choice_finalist_name}"/>
-                            <div ui:field="company" class="{page.style.choice_finalist_company}"/>
+                            <span ui:field="name" class="{page.style.choice_finalist_name}"/>
+                            <span ui:field="company" class="{page.style.choice_finalist_company}"/>
                         </div>
                     </div>
                     <g:Button ui:field="confirm" styleName="{res.styles.btn} {res.styles.btn_wide}">C'est mon

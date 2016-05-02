@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2014 ArcBees Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -16,12 +16,15 @@
 
 package com.arcbees.bourseje.shared;
 
+import static com.arcbees.bourseje.shared.Parameters.NAME;
+
 public class ResourcesPath {
     // vote
     public static final String VOTE_ITEMS = "/voteitems";
     public static final String CURRENT_VOTE_STATE = "/current-state";
     public static final String CODE = "/code";
     public static final String CANDIDATES = "/candidates";
+    public static final String CANDIDATE_NAME = "/{" + NAME + "}";
 
     // admin
     public static final String ADMIN = "/admin";

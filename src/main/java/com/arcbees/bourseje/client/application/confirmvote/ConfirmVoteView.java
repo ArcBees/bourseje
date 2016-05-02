@@ -18,8 +18,8 @@ package com.arcbees.bourseje.client.application.confirmvote;
 
 import javax.inject.Inject;
 
-import com.google.gwt.dom.client.DivElement;
 import com.google.gwt.dom.client.ImageElement;
+import com.google.gwt.dom.client.SpanElement;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -32,9 +32,9 @@ public class ConfirmVoteView extends ViewWithUiHandlers<ConfirmVoteUiHandlers> i
     }
 
     @UiField
-    DivElement name;
+    SpanElement name;
     @UiField
-    DivElement company;
+    SpanElement company;
     @UiField
     ImageElement picture;
 

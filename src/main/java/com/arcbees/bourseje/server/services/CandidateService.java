@@ -36,6 +36,8 @@ public class CandidateService {
     }
 
     public Candidate getCandidateByName(String candidateName) {
-        return candidateDao.getByCandidateName(candidateName);
+        Candidate byCandidateName = candidateDao.getByCandidateName(candidateName);
+
+        return byCandidateName;
     }
 }

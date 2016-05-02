@@ -26,7 +26,6 @@ import com.arcbees.bourseje.shared.CookieNames;
 import com.arcbees.bourseje.shared.VoteItem;
 import com.google.gwt.http.client.Response;
 import com.google.gwt.user.client.Cookies;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.dispatch.rest.client.RestDispatch;
@@ -55,7 +54,7 @@ public class ConfirmVotePresenter extends Presenter<ConfirmVotePresenter.MyView,
     }
 
     private final PlaceManager placeManager;
-    private final RestDispatch dispatcher;
+    private final RestDispatch dispatch;
     private final VoteService voteService;
     private final CandidateService candidateService;
 
@@ -67,13 +66,13 @@ public class ConfirmVotePresenter extends Presenter<ConfirmVotePresenter.MyView,
             MyView view,
             MyProxy proxy,
             PlaceManager placeManager,
-            RestDispatch dispatcher,
+            RestDispatch dispatch,
             VoteService voteService,
             CandidateService candidateService) {
         super(eventBus, view, proxy, ApplicationPresenter.SLOT_MAIN);
 
         this.placeManager = placeManager;
-        this.dispatcher = dispatcher;
+        this.dispatch = dispatch;
         this.voteService = voteService;
         this.candidateService = candidateService;
 
@@ -88,15 +87,13 @@ public class ConfirmVotePresenter extends Presenter<ConfirmVotePresenter.MyView,
         }
 
         name = request.getParameter(NameTokens.PARAM_NAME, "noSelection");
-        getCandidateByName(name);
-
-
+        setCandidateInView(name);
     }
 
-    private void getCandidateByName(String name) {
-        dispatcher.execute(candidateService.getByCandidateName(name), new AsyncCallback<Candidate>() {
+    private void setCandidateInView(String name) {
+        dispatch.execute(candidateService.getCandidateByName(name), new RestCallbackImpl<Candidate>() {
             @Override
-            public void onFailure(Throwable caught) {
+            public void onFailure(Throwable throwable) {
                 revealPlace(NameTokens.VOTE);
             }
 
@@ -112,7 +109,7 @@ public class ConfirmVotePresenter extends Presenter<ConfirmVotePresenter.MyView,
     @Override
     public void onConfirmClicked() {
         VoteItem voteItem = new VoteItem(name);
-        dispatcher.execute(voteService.vote(voteItem), new RestCallbackImpl<Void>() {
+        dispatch.execute(voteService.vote(voteItem), new RestCallbackImpl<Void>() {
             @Override
             public void onError(Response response) {
                 super.onError(response);
