@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 ArcBees Inc.
+ * Copyright 2014 ArcBees Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -16,8 +16,10 @@
 
 package com.arcbees.bourseje.client.application.confirmvote;
 
-import com.google.gwt.dom.client.DivElement;
+import javax.inject.Inject;
+
 import com.google.gwt.dom.client.ImageElement;
+import com.google.gwt.dom.client.SpanElement;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -25,16 +27,14 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
-import javax.inject.Inject;
-
 public class ConfirmVoteView extends ViewWithUiHandlers<ConfirmVoteUiHandlers> implements ConfirmVotePresenter.MyView {
     interface Binder extends UiBinder<Widget, ConfirmVoteView> {
     }
 
     @UiField
-    DivElement name;
+    SpanElement name;
     @UiField
-    DivElement company;
+    SpanElement company;
     @UiField
     ImageElement picture;
 

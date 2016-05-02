@@ -1,0 +1,20 @@
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:g="urn:import:com.google.gwt.user.client.ui">
+
+    <ui:with field="res" type="com.arcbees.bourseje.client.resources.Resources"/>
+    <ui:with field="page" type="com.arcbees.bourseje.client.resources.PageVoteResources"/>
+    <ui:with field="candidateId" type="java.lang.String"/>
+
+    <g:HTMLPanel>
+        <div class="{page.style.finalist_box}">
+            <input name="vote" ui:field="inputRadio" type="radio"/>
+            <label for="{candidateId}">
+                <img ui:field="image" src="" class="{page.style.finalist_avatar}"/>
+                <div class="{page.style.finalist}">
+                    <p ui:field="name" class="{page.style.finalist_name}"/>
+                    <p ui:field="company"/>
+                </div>
+            </label>
+        </div>
+    </g:HTMLPanel>
+</ui:UiBinder>

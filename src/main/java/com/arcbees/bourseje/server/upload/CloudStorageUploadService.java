@@ -34,7 +34,7 @@ import com.google.appengine.tools.cloudstorage.GcsServiceFactory;
 import com.google.appengine.tools.cloudstorage.RetryParams;
 
 public class CloudStorageUploadService implements ImageUploadService {
-    private static final String[] IMAGE_FILE_EXTENSIONS = new String[]{"jpg", "png", "gif"};
+    private static final String[] IMAGE_FILE_EXTENSIONS = new String[]{"jpg", "png", "gif", "jpeg"};
     private static final String BUCKET_NAME = "imagesBucket";
     private static final int BUFFER_SIZE = 2 * 1024 * 1024;
 

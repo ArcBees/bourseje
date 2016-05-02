@@ -18,6 +18,7 @@ package com.arcbees.bourseje.client.admin.winner;
 
 import com.arcbees.bourseje.client.AdminRestCallback;
 import com.arcbees.bourseje.client.NameTokens;
+import com.arcbees.bourseje.client.RestCallbackImpl;
 import com.arcbees.bourseje.client.admin.AdminPresenter;
 import com.arcbees.bourseje.client.api.AdminService;
 import com.arcbees.bourseje.client.api.CandidateService;
@@ -78,7 +79,7 @@ public class WinnerPresenter extends Presenter<WinnerPresenter.MyView, WinnerPre
     }
 
     private void getCandidateByName(final CandidateResult candidateResult) {
-        dispatch.execute(candidateService.getByCandidateName(candidateResult.getCandidateName()), new
+        dispatch.execute(candidateService.getCandidateByName(candidateResult.getCandidateName()), new
                 AdminRestCallback<Candidate>() {
                     @Override
                     public void onSuccess(Candidate candidate) {

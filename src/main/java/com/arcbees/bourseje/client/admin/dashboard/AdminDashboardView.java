@@ -21,7 +21,7 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
-import com.arcbees.bourseje.client.admin.ui.CandidateWidget;
+import com.arcbees.bourseje.client.admin.ui.CandidateAdminWidget;
 import com.arcbees.bourseje.shared.Candidate;
 import com.arcbees.bourseje.shared.VoteState;
 import com.google.gwt.dom.client.ButtonElement;
@@ -101,8 +101,9 @@ public class AdminDashboardView extends ViewWithUiHandlers<AdminDashboardUiHandl
     public void setCandidates(List<Candidate> candidates, Map<String, Integer> candidateResults) {
         candidatesElement.removeAllChildren();
 
-        for(Candidate candidate : candidates) {
-            CandidateWidget candidateWidget = new CandidateWidget(candidate, candidateResults.get(candidate.getName()));
+        for (Candidate candidate : candidates) {
+            CandidateAdminWidget candidateWidget = new CandidateAdminWidget(
+                    candidate, candidateResults.get(candidate.getName()));
 
             $(candidatesElement).append(candidateWidget.asWidget().getElement());
         }
