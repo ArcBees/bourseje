@@ -70,6 +70,16 @@ public class VotePresenter extends Presenter<VotePresenter.MyView, VotePresenter
     }
 
     @Override
+    protected void onReveal() {
+        dispatch.execute(candidateService.getCandidates(), new RestCallbackImpl<List<Candidate>>() {
+            @Override
+            public void onSuccess(List<Candidate> result) {
+                getView().setCandidatesElement(result);
+            }
+        });
+    }
+
+    @Override
     public void prepareFromRequest(final PlaceRequest request) {
         if (Cookies.getCookie(CookieNames.VOTE_CODE) == null) {
             PlaceRequest placeRequest = new PlaceRequest.Builder()
@@ -78,13 +88,6 @@ public class VotePresenter extends Presenter<VotePresenter.MyView, VotePresenter
 
             placeManager.revealPlace(placeRequest);
         }
-
-        dispatch.execute(candidateService.getCandidates(), new RestCallbackImpl<List<Candidate>>() {
-            @Override
-            public void onSuccess(List<Candidate> result) {
-                getView().setCandidatesElement(result);
-            }
-        });
     }
 
     @Override

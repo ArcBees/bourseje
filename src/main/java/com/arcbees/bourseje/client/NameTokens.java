@@ -35,4 +35,5 @@ public class NameTokens {
     public static final String ADMIN_DASHBOARD = PREFIX_ADMIN + "/dashboard";
     public static final String WINNER = PREFIX_ADMIN + "/winner";
     public static final String ADD = PREFIX_ADMIN + "/add";
+    public static final String EDIT = PREFIX_ADMIN+ "/edit";
 }

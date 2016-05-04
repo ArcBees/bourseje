@@ -25,11 +25,12 @@ import com.arcbees.bourseje.client.AdminRestCallback;
 import com.arcbees.bourseje.client.NameTokens;
 import com.arcbees.bourseje.client.RestCallbackImpl;
 import com.arcbees.bourseje.client.admin.AdminPresenter;
+import com.arcbees.bourseje.client.admin.dashboard.candidate.CandidateAdminPresenter;
+import com.arcbees.bourseje.client.admin.dashboard.candidate.CandidateAdminPresenterFactory;
 import com.arcbees.bourseje.client.api.AdminService;
 import com.arcbees.bourseje.client.api.CandidateService;
 import com.arcbees.bourseje.client.api.LoginService;
 import com.arcbees.bourseje.client.api.VoteService;
-import com.arcbees.bourseje.client.resources.Resources;
 import com.arcbees.bourseje.shared.Candidate;
 import com.arcbees.bourseje.shared.CandidateResult;
 import com.arcbees.bourseje.shared.UrlWrapper;
@@ -43,14 +44,13 @@ import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
+import com.gwtplatform.mvp.client.presenter.slots.Slot;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 
 public class AdminDashboardPresenter extends Presenter<AdminDashboardPresenter.MyView, AdminDashboardPresenter.MyProxy>
         implements AdminDashboardUiHandlers {
     interface MyView extends View, HasUiHandlers<AdminDashboardUiHandlers> {
         void setCurrentState(VoteState currentState);
-
-        void setCandidates(List<Candidate> candidates, Map<String, Integer> candidateResults);
     }
 
     @ProxyStandard
@@ -58,12 +58,14 @@ public class AdminDashboardPresenter extends Presenter<AdminDashboardPresenter.M
     interface MyProxy extends ProxyPlace<AdminDashboardPresenter> {
     }
 
+    public final static Slot<CandidateAdminPresenter> SLOT_CANDIDATES = new Slot<>();
+
     private final RestDispatch dispatch;
     private final LoginService loginService;
     private final AdminService adminService;
     private final VoteService voteService;
-    private final Resources resources;
     private final CandidateService candidateService;
+    private final CandidateAdminPresenterFactory presenterWidgetFactory;
 
     @Inject
     AdminDashboardPresenter(
@@ -74,22 +76,24 @@ public class AdminDashboardPresenter extends Presenter<AdminDashboardPresenter.M
             LoginService loginService,
             AdminService adminService,
             VoteService voteService,
-            Resources resources,
-            CandidateService candidateService) {
+            CandidateService candidateService,
+            CandidateAdminPresenterFactory presenterWidgetFactory) {
         super(eventBus, view, proxy, AdminPresenter.SLOT_MAIN);
 
         this.dispatch = dispatch;
         this.loginService = loginService;
         this.adminService = adminService;
         this.voteService = voteService;
-        this.resources = resources;
         this.candidateService = candidateService;
+        this.presenterWidgetFactory = presenterWidgetFactory;
 
         getView().setUiHandlers(this);
     }
 
     @Override
     protected void onReveal() {
+        clearSlot(SLOT_CANDIDATES);
+
         dispatch.execute(adminService.getVotesPerCandidate(), new AdminRestCallback<Collection<CandidateResult>>() {
             @Override
             public void onSuccess(final Collection<CandidateResult> votesPerCandidate) {
@@ -109,9 +113,18 @@ public class AdminDashboardPresenter extends Presenter<AdminDashboardPresenter.M
         dispatch.execute(candidateService.getCandidates(), new RestCallbackImpl<List<Candidate>>() {
             @Override
             public void onSuccess(List<Candidate> candidates) {
-                getView().setCandidates(candidates, convertToMap(candidates, votesPerCandidate));
+                createCandidates(candidates, convertToMap(candidates, votesPerCandidate));
             }
         });
+    }
+
+    private void createCandidates(List<Candidate> candidates, Map<String, Integer> votesPerCandidates) {
+        for (Candidate candidate : candidates) {
+            Integer nbOfVotes = votesPerCandidates.get(candidate.getName());
+            CandidateAdminPresenter widget = presenterWidgetFactory.create(candidate, nbOfVotes);
+
+            addToSlot(SLOT_CANDIDATES, widget);
+        }
     }
 
     @Override

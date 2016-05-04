@@ -1,5 +1,5 @@
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
-             xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+        xmlns:g='urn:import:com.google.gwt.user.client.ui'>
 
     <ui:with field="res" type="com.arcbees.bourseje.client.resources.Resources"/>
     <ui:with field="page" type="com.arcbees.bourseje.client.resources.PageNumberOfVoteResources"/>
@@ -11,8 +11,14 @@
                 <h3 ui:field="name"></h3>
                 <p ui:field="company"></p>
                 <div>
-                    <a href="#" class="{page.style.box_candidates__link}"><i class="fa fa-pencil"></i> Modifier</a>
-                    <a href="#" class="{page.style.box_candidates__link}"><i class="fa fa-times-circle"></i> Supprimer</a>
+                    <g:Anchor ui:field="modify" href="javascript:;" styleName="{page.style.box_candidates__link}">
+                        <i class="fa fa-pencil"></i>
+                        Modifier
+                    </g:Anchor>
+                    <g:Anchor ui:field="delete" href="javascript:;" styleName="{page.style.box_candidates__link}">
+                        <i class="fa fa-times-circle"></i>
+                        Supprimer
+                    </g:Anchor>
                 </div>
             </div>
             <div class="{page.style.nb_vote}">

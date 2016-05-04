@@ -18,6 +18,8 @@ package com.arcbees.bourseje.client.admin;
 
 import com.arcbees.bourseje.client.admin.add.AddModule;
 import com.arcbees.bourseje.client.admin.dashboard.AdminDashboardModule;
+import com.arcbees.bourseje.client.admin.edit.EditModule;
+import com.arcbees.bourseje.client.admin.dashboard.candidate.CandidateAdminModule;
 import com.arcbees.bourseje.client.admin.winner.WinnerModule;
 import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 
@@ -27,6 +29,8 @@ public class AdminModule extends AbstractPresenterModule {
         install(new AdminDashboardModule());
         install(new WinnerModule());
         install(new AddModule());
+        install(new EditModule());
+        install(new CandidateAdminModule());
 
         bindPresenter(AdminPresenter.class, AdminPresenter.MyView.class, AdminView.class,
                 AdminPresenter.MyProxy.class);

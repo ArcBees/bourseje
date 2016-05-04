@@ -18,12 +18,14 @@ package com.arcbees.bourseje.client.application.confirmvote;
 
 import com.arcbees.bourseje.client.NameTokens;
 import com.arcbees.bourseje.client.RestCallbackImpl;
+import com.arcbees.bourseje.client.admin.event.VoteEvent;
+import com.arcbees.bourseje.client.api.CandidateService;
 import com.arcbees.bourseje.client.api.VoteService;
 import com.arcbees.bourseje.client.application.ApplicationPresenter;
-import com.arcbees.bourseje.client.model.Candidates;
 import com.arcbees.bourseje.shared.Candidate;
 import com.arcbees.bourseje.shared.CookieNames;
 import com.arcbees.bourseje.shared.VoteItem;
+import com.google.gwt.event.shared.HasHandlers;
 import com.google.gwt.http.client.Response;
 import com.google.gwt.user.client.Cookies;
 import com.google.inject.Inject;
@@ -54,8 +56,9 @@ public class ConfirmVotePresenter extends Presenter<ConfirmVotePresenter.MyView,
     }
 
     private final PlaceManager placeManager;
-    private final RestDispatch dispatcher;
+    private final RestDispatch dispatch;
     private final VoteService voteService;
+    private final CandidateService candidateService;
 
     private String name;
 
@@ -65,13 +68,15 @@ public class ConfirmVotePresenter extends Presenter<ConfirmVotePresenter.MyView,
             MyView view,
             MyProxy proxy,
             PlaceManager placeManager,
-            RestDispatch dispatcher,
-            VoteService voteService) {
+            RestDispatch dispatch,
+            VoteService voteService,
+            CandidateService candidateService) {
         super(eventBus, view, proxy, ApplicationPresenter.SLOT_MAIN);
 
         this.placeManager = placeManager;
-        this.dispatcher = dispatcher;
+        this.dispatch = dispatch;
         this.voteService = voteService;
+        this.candidateService = candidateService;
 
         getView().setUiHandlers(this);
     }
@@ -84,21 +89,29 @@ public class ConfirmVotePresenter extends Presenter<ConfirmVotePresenter.MyView,
         }
 
         name = request.getParameter(NameTokens.PARAM_NAME, "noSelection");
-        Candidate candidate = Candidates.getByName(name);
+        setCandidateInView(name);
+    }
 
-        if (candidate == null) {
-            revealPlace(NameTokens.VOTE);
-        } else {
-            getView().setName(name);
-            getView().setCompany(candidate.getCompany());
-            getView().setPictureSource(candidate.getPicture());
-        }
+    private void setCandidateInView(String name) {
+        dispatch.execute(candidateService.getCandidateByName(name), new RestCallbackImpl<Candidate>() {
+            @Override
+            public void onFailure(Throwable throwable) {
+                revealPlace(NameTokens.VOTE);
+            }
+
+            @Override
+            public void onSuccess(Candidate candidate) {
+                getView().setName(candidate.getName());
+                getView().setCompany(candidate.getCompany());
+                getView().setPictureSource(candidate.getPicture());
+            }
+        });
     }
 
     @Override
     public void onConfirmClicked() {
         VoteItem voteItem = new VoteItem(name);
-        dispatcher.execute(voteService.vote(voteItem), new RestCallbackImpl<Void>() {
+        dispatch.execute(voteService.vote(voteItem), new RestCallbackImpl<Void>() {
             @Override
             public void onError(Response response) {
                 super.onError(response);
@@ -118,6 +131,8 @@ public class ConfirmVotePresenter extends Presenter<ConfirmVotePresenter.MyView,
     }
 
     private void revealPlace(String nameToken) {
+        VoteEvent.fire(this);
+
         PlaceRequest placeRequest = new PlaceRequest.Builder()
                 .nameToken(nameToken)
                 .build();

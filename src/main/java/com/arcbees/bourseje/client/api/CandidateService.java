@@ -18,11 +18,14 @@ package com.arcbees.bourseje.client.api;
 
 import java.util.List;
 
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import javax.ws.rs.QueryParam;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.core.Response;
 
 import com.arcbees.bourseje.shared.Candidate;
+import com.arcbees.bourseje.shared.Parameters;
 import com.arcbees.bourseje.shared.ResourcesPath;
 import com.gwtplatform.dispatch.rest.shared.RestAction;
 
@@ -32,5 +35,6 @@ public interface CandidateService {
     RestAction<List<Candidate>> getCandidates();
 
     @GET
-    RestAction<Candidate> getByCandidateName(@QueryParam("name") String name);
+    @Path(ResourcesPath.CANDIDATE_NAME)
+    RestAction<Candidate> getCandidateByName(@PathParam(Parameters.NAME) String name);
 }

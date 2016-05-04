@@ -14,30 +14,10 @@
  * the License.
  */
 
-package com.arcbees.bourseje.server.services;
+package com.arcbees.bourseje.client.admin.dashboard.candidate;
 
-import java.util.Collection;
-
-import javax.inject.Inject;
-
-import com.arcbees.bourseje.server.dao.CandidateDao;
 import com.arcbees.bourseje.shared.Candidate;
 
-public class CandidateService {
-    private final CandidateDao candidateDao;
-
-    @Inject
-    public CandidateService(CandidateDao candidateDao) {
-        this.candidateDao = candidateDao;
-    }
-
-    public Collection<Candidate> getCandidates() {
-        return candidateDao.getAll();
-    }
-
-    public Candidate getCandidateByName(String candidateName) {
-        Candidate byCandidateName = candidateDao.getByCandidateName(candidateName);
-
-        return byCandidateName;
-    }
+public interface CandidateAdminPresenterFactory {
+    CandidateAdminPresenter create(Candidate candidate, int nbOfVotes);
 }

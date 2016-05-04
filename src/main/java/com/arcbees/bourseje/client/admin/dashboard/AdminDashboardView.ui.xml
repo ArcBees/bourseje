@@ -1,6 +1,6 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
-             xmlns:g="urn:import:com.google.gwt.user.client.ui"
-             xmlns:w="urn:import:com.arcbees.bourseje.client.admin.ui">
+        xmlns:g="urn:import:com.google.gwt.user.client.ui"
+        xmlns:w="urn:import:com.arcbees.bourseje.client.admin.ui">
 
     <ui:with field="res" type="com.arcbees.bourseje.client.resources.Resources"/>
     <ui:with field="page" type="com.arcbees.bourseje.client.resources.PageNumberOfVoteResources"/>
@@ -21,9 +21,11 @@
                         <p>pour la Bourse Jeune Entreprise 2016</p>
                     </div>
                     <g:HTMLPanel styleName="{res.grid.row} {res.styles.clearfix}">
-                        <span ui:field="candidatesElement"></span>
-                        <a  href="#{ADD}" class="{res.grid.col} {res.grid.col_6} {page.style.box_candidates} {page.style.box_candidates__button}">
-                            <i class="fa fa-plus-circle"></i> Ajouter un candidat
+                        <g:HTMLPanel ui:field="candidatesElement"/>
+                        <a href="#{ADD}"
+                                class="{res.grid.col} {res.grid.col_6} {page.style.box_candidates} {page.style.box_candidates__button}">
+                            <i class="fa fa-plus-circle"></i>
+                            Ajouter un candidat
                         </a>
                     </g:HTMLPanel>
 
@@ -34,9 +36,18 @@
                                 <strong ui:field="currentState"></strong>
                             </p>
                             <button ui:field="inactiveVote" class="{res.styles.btn}">Set as inactive</button>
-                            <button ui:field="startVote" class="{res.styles.btn}"><i class="fa fa-play"></i> Démarrer</button>
-                            <button ui:field="stopVote" class="{res.styles.btn}"><i class="fa fa-stop"></i> Arrêter</button>
-                            <a href="#{WINNER}" class="{res.styles.btn} {page.style.btn_gagnant}"><i class="fa fa-trophy"></i> Voir le gagnant</a>
+                            <button ui:field="startVote" class="{res.styles.btn}">
+                                <i class="fa fa-play"></i>
+                                Démarrer
+                            </button>
+                            <button ui:field="stopVote" class="{res.styles.btn}">
+                                <i class="fa fa-stop"></i>
+                                Arrêter
+                            </button>
+                            <a href="#{WINNER}" class="{res.styles.btn} {page.style.btn_gagnant}">
+                                <i class="fa fa-trophy"></i>
+                                Voir le gagnant
+                            </a>
                         </div>
                     </div>
 
@@ -50,8 +61,12 @@
                 Êtes-vous sûr de vouloir supprimer ce candidat de la liste?
             </p>
             <div class="{modal.style.modalbox__buttons}">
-                <button class="{res.styles.btn} {res.styles.btn_secondary} {modal.style.modalbox__button}">Non, annuler</button>
-                <button class="{res.styles.btn} {res.styles.btn_primary} {modal.style.modalbox__button}">Oui, supprimer</button>
+                <button class="{res.styles.btn} {res.styles.btn_secondary} {modal.style.modalbox__button}">Non,
+                    annuler
+                </button>
+                <button class="{res.styles.btn} {res.styles.btn_primary} {modal.style.modalbox__button}">Oui,
+                    supprimer
+                </button>
             </div>
         </section>
         <w:Footer/>

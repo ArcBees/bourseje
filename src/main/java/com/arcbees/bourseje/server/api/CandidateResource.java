@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2016 ArcBees Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -16,16 +16,17 @@
 
 package com.arcbees.bourseje.server.api;
 
-import com.arcbees.bourseje.server.services.CandidateService;
-import com.arcbees.bourseje.shared.ResourcesPath;
-
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+
+import com.arcbees.bourseje.server.services.CandidateService;
+import com.arcbees.bourseje.shared.Parameters;
+import com.arcbees.bourseje.shared.ResourcesPath;
 
 @Path(ResourcesPath.CANDIDATES)
 @Produces(MediaType.APPLICATION_JSON)
@@ -43,7 +44,8 @@ public class CandidateResource {
     }
 
     @GET
-    public Response getByCandidateName(@QueryParam("name") String name) {
+    @Path(ResourcesPath.CANDIDATE_NAME)
+    public Response getCandidateByName(@PathParam(Parameters.NAME) String name) {
         return Response.ok(candidateService.getCandidateByName(name)).build();
     }
 }
