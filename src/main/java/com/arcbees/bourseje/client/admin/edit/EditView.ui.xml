@@ -23,8 +23,8 @@
                         <button class="{page.style.addedit__button} {res.styles.btn} {res.styles.btn_secondary}">
                             Annuler
                         </button>
-                        <button ui:field="addCandidate" type="submit"
-                                class="{page.style.addedit__button} {res.styles.btn} {res.styles.btn_primary}">Ajouter
+                        <button ui:field="updateCandidate" type="submit"
+                                class="{page.style.addedit__button} {res.styles.btn} {res.styles.btn_primary}">Modifier
                         </button>
                     </div>
                 </form>

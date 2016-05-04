@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2014 ArcBees Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -20,6 +20,8 @@ import javax.inject.Singleton;
 
 import com.arcbees.bourseje.server.api.ApiModule;
 import com.arcbees.bourseje.server.exception.ExceptionModule;
+import com.arcbees.bourseje.server.upload.CloudStorageUploadService;
+import com.arcbees.bourseje.server.upload.ImageUploadService;
 import com.google.inject.AbstractModule;
 import com.googlecode.objectify.ObjectifyFilter;
 
@@ -27,6 +29,7 @@ public class ServerModule extends AbstractModule {
     @Override
     protected void configure() {
         bind(ObjectifyFilter.class).in(Singleton.class);
+        bind(ImageUploadService.class).to(CloudStorageUploadService.class);
 
         install(new ApiModule());
         install(new ExceptionModule());

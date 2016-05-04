@@ -30,16 +30,16 @@ public class CandidateResult {
         this.numberOfVotes = numberOfVotes;
     }
 
+    public int getNumberOfVotes() {
+        return numberOfVotes;
+    }
+
     public String getCandidateName() {
         return candidateName;
     }
 
     public void setCandidateName(String candidateName) {
         this.candidateName = candidateName;
-    }
-
-    public int getNumberOfVotes() {
-        return numberOfVotes;
     }
 
     public void setNumberOfVotes(int numberOfVotes) {

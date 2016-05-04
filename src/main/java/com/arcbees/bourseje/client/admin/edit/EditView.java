@@ -14,10 +14,11 @@
  * the License.
  */
 
-package com.arcbees.bourseje.client.admin.add;
+package com.arcbees.bourseje.client.admin.edit;
 
 import javax.inject.Inject;
 
+import com.arcbees.bourseje.client.admin.add.ImagePlaceHolder;
 import com.arcbees.bourseje.shared.Candidate;
 import com.arcbees.ui.ReplacePanel;
 import com.google.common.base.Strings;
@@ -40,13 +41,13 @@ import gwtupload.client.SingleUploader;
 import static com.google.gwt.dom.client.BrowserEvents.CLICK;
 import static com.google.gwt.query.client.GQuery.$;
 
-public class AddView extends ViewWithUiHandlers<AddUiHandlers>
-        implements AddPresenter.MyView, OnFinishUploaderHandler, ChangeHandler {
-    interface Binder extends UiBinder<Widget, AddView> {
+public class EditView extends ViewWithUiHandlers<EditUiHandlers>
+        implements EditPresenter.MyView, OnFinishUploaderHandler, ChangeHandler {
+    interface Binder extends UiBinder<Widget, EditView> {
     }
 
     @UiField
-    ButtonElement addCandidate;
+    ButtonElement updateCandidate;
     @UiField
     InputElement name;
     @UiField
@@ -60,7 +61,7 @@ public class AddView extends ViewWithUiHandlers<AddUiHandlers>
     private String url;
 
     @Inject
-    AddView(
+    EditView(
             Binder uiBinder) {
         initWidget(uiBinder.createAndBindUi(this));
 
@@ -77,8 +78,6 @@ public class AddView extends ViewWithUiHandlers<AddUiHandlers>
                 null);
         uploader.setAutoSubmit(false);
         uploader.setValidExtensions(".jpg, .gif, .png, .jpeg");
-
-        // handlers
         uploader.addOnFinishUploadHandler(this);
         uploader.getFileInput().addChangeHandler(this);
 
@@ -97,8 +96,16 @@ public class AddView extends ViewWithUiHandlers<AddUiHandlers>
         imagePlaceHolder.setImageSource(url);
     }
 
+    @Override
+    public void setCandidate(Candidate candidate) {
+        name.setValue(candidate.getName());
+        company.setValue(candidate.getCompany());
+        url = candidate.getPicture();
+        imagePlaceHolder.setImageSource(url);
+    }
+
     private void initButtons() {
-        $(addCandidate).on(CLICK, new Function() {
+        $(updateCandidate).on(CLICK, new Function() {
             @Override
             public void f() {
                 if (!name.getValue().isEmpty() && !company.getValue().isEmpty()) {

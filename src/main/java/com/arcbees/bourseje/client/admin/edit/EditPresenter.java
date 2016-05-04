@@ -14,12 +14,14 @@
  * the License.
  */
 
-package com.arcbees.bourseje.client.admin.add;
+package com.arcbees.bourseje.client.admin.edit;
 
 import com.arcbees.bourseje.client.AdminRestCallback;
 import com.arcbees.bourseje.client.NameTokens;
+import com.arcbees.bourseje.client.RestCallbackImpl;
 import com.arcbees.bourseje.client.admin.AdminPresenter;
 import com.arcbees.bourseje.client.api.AdminService;
+import com.arcbees.bourseje.client.api.CandidateService;
 import com.arcbees.bourseje.shared.Candidate;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
@@ -33,39 +35,60 @@ import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 import com.gwtplatform.mvp.shared.proxy.PlaceRequest;
 
-public class AddPresenter extends Presenter<AddPresenter.MyView, AddPresenter.MyProxy>
-        implements AddUiHandlers {
-    interface MyView extends View, HasUiHandlers<AddUiHandlers> {
+public class EditPresenter extends Presenter<EditPresenter.MyView, EditPresenter.MyProxy>
+        implements EditUiHandlers {
+
+    private Candidate candidateToUpdate;
+
+    interface MyView extends View, HasUiHandlers<EditUiHandlers> {
+        void setCandidate(Candidate candidate);
     }
 
     @ProxyStandard
-    @NameToken(NameTokens.ADD)
-    interface MyProxy extends ProxyPlace<AddPresenter> {
+    @NameToken(NameTokens.EDIT)
+    interface MyProxy extends ProxyPlace<EditPresenter> {
     }
 
     private final RestDispatch dispatch;
     private final AdminService adminService;
+    private CandidateService candidateService;
     private final PlaceManager placeManager;
 
     @Inject
-    AddPresenter(
+    EditPresenter(
             EventBus eventBus,
             MyView view,
             MyProxy proxy,
             RestDispatch dispatch,
             AdminService adminService,
+            CandidateService candidateService,
             PlaceManager placeManager) {
         super(eventBus, view, proxy, AdminPresenter.SLOT_MAIN);
+
         this.dispatch = dispatch;
         this.adminService = adminService;
+        this.candidateService = candidateService;
         this.placeManager = placeManager;
 
         getView().setUiHandlers(this);
     }
 
     @Override
+    public void prepareFromRequest(PlaceRequest request) {
+        String name = request.getParameter("name", "");
+
+        dispatch.execute(candidateService.getCandidateByName(name), new RestCallbackImpl<Candidate>() {
+            @Override
+            public void onSuccess(Candidate candidate) {
+                candidateToUpdate = candidate;
+                getView().setCandidate(candidate);
+            }
+        });
+    }
+
+    @Override
     public void onAddCandidateClicked(Candidate candidate) {
-        dispatch.execute(adminService.addCandidate(candidate), new AdminRestCallback<Void>() {
+        dispatch.execute(adminService.updateCandidate(candidateToUpdate.getName(), candidate), new AdminRestCallback<Void>() {
             @Override
             public void onSuccess(Void result) {
                 PlaceRequest placeRequest = new PlaceRequest.Builder()

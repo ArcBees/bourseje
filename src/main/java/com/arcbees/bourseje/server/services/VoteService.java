@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2014 ArcBees Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -33,8 +33,8 @@ import com.arcbees.bourseje.server.model.CurrentVoteState;
 import com.arcbees.bourseje.shared.CandidateResult;
 import com.arcbees.bourseje.shared.VoteItem;
 import com.arcbees.bourseje.shared.VoteState;
-import com.arcbees.gaestudio.repackaged.com.google.common.collect.Maps;
 import com.google.common.base.Function;
+import com.google.common.collect.Maps;
 import com.google.common.collect.Multimaps;
 
 public class VoteService {

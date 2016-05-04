@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2016 ArcBees Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -14,16 +14,16 @@
  * the License.
  */
 
-package com.arcbees.bourseje.server.dao;
+package com.arcbees.bourseje.client.admin.dashboard.candidate;
 
-import com.arcbees.bourseje.shared.Candidate;
+import com.google.gwt.inject.client.assistedinject.GinFactoryModuleBuilder;
+import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 
-public class CandidateDao extends BaseDao<Candidate> {
-    CandidateDao() {
-        super(Candidate.class);
-    }
-
-    public Candidate getByCandidateName(String name) {
-        return query().filter("name", name).first().now();
+public class CandidateAdminModule extends AbstractPresenterModule {
+    @Override
+    protected void configure() {
+        install(new GinFactoryModuleBuilder().build(CandidateAdminPresenterFactory.class));
+        
+        bind(CandidateAdminPresenter.MyView.class).to(CandidateAdminView.class);
     }
 }

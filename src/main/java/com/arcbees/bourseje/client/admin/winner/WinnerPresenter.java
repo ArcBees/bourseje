@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2014 ArcBees Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -20,10 +20,9 @@ import com.arcbees.bourseje.client.AdminRestCallback;
 import com.arcbees.bourseje.client.NameTokens;
 import com.arcbees.bourseje.client.admin.AdminPresenter;
 import com.arcbees.bourseje.client.api.AdminService;
+import com.arcbees.bourseje.client.api.CandidateService;
 import com.arcbees.bourseje.shared.Candidate;
-import com.arcbees.bourseje.client.model.Candidates;
 import com.arcbees.bourseje.shared.CandidateResult;
-import com.google.gwt.resources.client.ImageResource;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.dispatch.rest.client.RestDispatch;
@@ -35,7 +34,7 @@ import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 
 public class WinnerPresenter extends Presenter<WinnerPresenter.MyView, WinnerPresenter.MyProxy> {
     interface MyView extends View {
-        void setPicture(ImageResource picture);
+        void setPicture(String picture);
 
         void setName(String name);
 
@@ -51,6 +50,7 @@ public class WinnerPresenter extends Presenter<WinnerPresenter.MyView, WinnerPre
 
     private final RestDispatch dispatch;
     private final AdminService adminService;
+    private CandidateService candidateService;
 
     @Inject
     WinnerPresenter(
@@ -58,31 +58,39 @@ public class WinnerPresenter extends Presenter<WinnerPresenter.MyView, WinnerPre
             MyView view,
             MyProxy proxy,
             RestDispatch dispatch,
-            AdminService adminService) {
+            AdminService adminService,
+            CandidateService candidateService) {
         super(eventBus, view, proxy, AdminPresenter.SLOT_MAIN);
+
         this.dispatch = dispatch;
         this.adminService = adminService;
+        this.candidateService = candidateService;
     }
 
     @Override
     protected void onReveal() {
         dispatch.execute(adminService.getWinner(), new AdminRestCallback<CandidateResult>() {
             @Override
-            public void onSuccess(CandidateResult winner) {
-                setInView(winner);
+            public void onSuccess(final CandidateResult candidateResult) {
+                getCandidateByName(candidateResult);
             }
         });
     }
 
-    private void setInView(CandidateResult winner) {
-        Candidate candidate = Candidates.getByName(winner.getCandidateName());
-        if (candidate == null) {
-            return;
-        }
+    private void getCandidateByName(final CandidateResult candidateResult) {
+        dispatch.execute(candidateService.getCandidateByName(candidateResult.getCandidateName()), new
+                AdminRestCallback<Candidate>() {
+                    @Override
+                    public void onSuccess(Candidate candidate) {
+                        setInView(candidate, candidateResult.getNumberOfVotes());
+                    }
+                });
+    }
 
+    private void setInView(Candidate candidate, int votes) {
         getView().setPicture(candidate.getPicture());
         getView().setName(candidate.getName());
         getView().setCompany(candidate.getCompany());
-        getView().setVotes(winner.getNumberOfVotes());
+        getView().setVotes(votes);
     }
 }

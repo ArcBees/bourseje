@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2016 ArcBees Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -14,16 +14,11 @@
  * the License.
  */
 
-package com.arcbees.bourseje.server.dao;
+package com.arcbees.bourseje.client.admin.edit;
 
 import com.arcbees.bourseje.shared.Candidate;
+import com.gwtplatform.mvp.client.UiHandlers;
 
-public class CandidateDao extends BaseDao<Candidate> {
-    CandidateDao() {
-        super(Candidate.class);
-    }
-
-    public Candidate getByCandidateName(String name) {
-        return query().filter("name", name).first().now();
-    }
+public interface EditUiHandlers extends UiHandlers {
+    void onAddCandidateClicked(Candidate candidate);
 }

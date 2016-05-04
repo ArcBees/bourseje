@@ -1,5 +1,5 @@
-/**
- * Copyright 2016 ArcBees Inc.
+/*
+ * Copyright 2014 ArcBees Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -14,16 +14,17 @@
  * the License.
  */
 
-package com.arcbees.bourseje.server.dao;
+package com.arcbees.bourseje.server.guice;
 
-import com.arcbees.bourseje.shared.Candidate;
+import com.arcbees.bourseje.server.upload.Upload;
+import com.arcbees.guicyresteasy.GuiceRestEasyFilterDispatcher;
+import com.googlecode.objectify.ObjectifyFilter;
 
-public class CandidateDao extends BaseDao<Candidate> {
-    CandidateDao() {
-        super(Candidate.class);
-    }
-
-    public Candidate getByCandidateName(String name) {
-        return query().filter("name", name).first().now();
+public class ServletModule extends com.google.inject.servlet.ServletModule {
+    @Override
+    public void configureServlets() {
+        filter("/*").through(ObjectifyFilter.class);
+        filter("/api/*").through(GuiceRestEasyFilterDispatcher.class);
+        serve("*.gupld").with(Upload.class);
     }
 }

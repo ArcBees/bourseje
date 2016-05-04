@@ -1,0 +1,13 @@
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:g="urn:import:com.google.gwt.user.client.ui">
+
+    <ui:with field="res" type="com.arcbees.bourseje.client.resources.Resources"/>
+    <ui:with field="page" type="com.arcbees.bourseje.client.resources.PageAddEditResources"/>
+
+    <g:Anchor href="#" ui:field="anchor" styleName="{res.grid.col} {res.grid.col_1_4} {page.style.addedit__photo}">
+        <div class="{page.style.addedit__photo__placeholder}">
+            <img ui:field="image" src=""/>
+        </div>
+        Ajouter une photo
+    </g:Anchor>
+</ui:UiBinder>

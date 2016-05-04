@@ -1,5 +1,5 @@
-/**
- * Copyright 2014 ArcBees Inc.
+/*
+ * Copyright 2016 ArcBees Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -14,17 +14,14 @@
  * the License.
  */
 
-package com.arcbees.bourseje.server.guice;
+package com.arcbees.bourseje.client.admin.edit;
 
-import com.arcbees.guicyresteasy.GuiceRestEasyFilterDispatcher;
-import com.google.inject.servlet.ServletModule;
-import com.googlecode.objectify.ObjectifyFilter;
+import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 
-public class DispatchServletModule extends ServletModule {
+public class EditModule extends AbstractPresenterModule {
     @Override
-    public void configureServlets() {
-        filter("/*").through(ObjectifyFilter.class);
-
-        filter("/api/*").through(GuiceRestEasyFilterDispatcher.class);
+    protected void configure() {
+        bindPresenter(EditPresenter.class, EditPresenter.MyView.class,
+                EditView.class, EditPresenter.MyProxy.class);
     }
 }

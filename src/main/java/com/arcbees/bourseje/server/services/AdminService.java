@@ -59,4 +59,17 @@ public class AdminService {
     public void addCandidate(Candidate candidate) {
         candidateDao.put(candidate);
     }
+
+    public void updateCandidate(String name, Candidate candidate) {
+        Candidate oldCandidate = candidateDao.getByCandidateName(name);
+
+        candidateDao.delete(oldCandidate);
+        candidateDao.put(candidate);
+    }
+
+    public void removeCandidate(String name) {
+        Candidate candidateToDelete = candidateDao.getByCandidateName(name);
+
+        candidateDao.delete(candidateToDelete);
+    }
 }

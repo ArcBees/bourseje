@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2016 ArcBees Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -14,16 +14,25 @@
  * the License.
  */
 
-package com.arcbees.bourseje.server.dao;
+package com.arcbees.bourseje.client.admin.event;
 
-import com.arcbees.bourseje.shared.Candidate;
+import com.google.gwt.event.shared.GwtEvent;
+import com.google.gwt.event.shared.HasHandlers;
 
-public class CandidateDao extends BaseDao<Candidate> {
-    CandidateDao() {
-        super(Candidate.class);
+public class VoteEvent extends GwtEvent<VoteEventHandler> {
+    public static final Type<VoteEventHandler> TYPE = new Type<>();
+
+    @Override
+    public Type<VoteEventHandler> getAssociatedType() {
+        return TYPE;
+}
+
+    public static void fire(HasHandlers source) {
+        source.fireEvent(new VoteEvent());
     }
 
-    public Candidate getByCandidateName(String name) {
-        return query().filter("name", name).first().now();
+    @Override
+    protected void dispatch(VoteEventHandler handler) {
+        handler.onVote(this);
     }
 }
