@@ -22,6 +22,7 @@ import com.arcbees.bourseje.client.AdminRestCallback;
 import com.arcbees.bourseje.client.NameTokens;
 import com.arcbees.bourseje.client.api.AdminService;
 import com.arcbees.bourseje.shared.Candidate;
+import com.google.gwt.user.client.Window;
 import com.google.inject.assistedinject.Assisted;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.dispatch.rest.client.RestDispatch;
@@ -82,11 +83,13 @@ public class CandidateAdminPresenter extends PresenterWidget<CandidateAdminPrese
 
     @Override
     public void onDelete() {
-        dispatch.execute(adminService.removeCandidate(candidate.getName()), new AdminRestCallback<Void>() {
-            @Override
-            public void onSuccess(Void result) {
-                removeFromParentSlot();
-            }
-        });
+        if (Window.confirm("Are you sure you want to delete " + candidate.getName())) {
+            dispatch.execute(adminService.removeCandidate(candidate.getName()), new AdminRestCallback<Void>() {
+                @Override
+                public void onSuccess(Void result) {
+                    removeFromParentSlot();
+                }
+            });
+        }
     }
 }
