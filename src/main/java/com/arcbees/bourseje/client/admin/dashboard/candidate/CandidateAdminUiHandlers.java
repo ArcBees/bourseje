@@ -14,27 +14,13 @@
  * the License.
  */
 
-package com.arcbees.bourseje.client.api;
-
-import java.util.List;
-
-import javax.ws.rs.DELETE;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.core.Response;
+package com.arcbees.bourseje.client.admin.dashboard.candidate;
 
 import com.arcbees.bourseje.shared.Candidate;
-import com.arcbees.bourseje.shared.Parameters;
-import com.arcbees.bourseje.shared.ResourcesPath;
-import com.gwtplatform.dispatch.rest.shared.RestAction;
+import com.gwtplatform.mvp.client.UiHandlers;
 
-@Path(ResourcesPath.CANDIDATES)
-public interface CandidateService {
-    @GET
-    RestAction<List<Candidate>> getCandidates();
+public interface CandidateAdminUiHandlers extends UiHandlers {
+    void onModify(Candidate candidate);
 
-    @GET
-    @Path(ResourcesPath.CANDIDATE_NAME)
-    RestAction<Candidate> getCandidateByName(@PathParam(Parameters.NAME) String name);
+    void onDelete();
 }

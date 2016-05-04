@@ -1,0 +1,36 @@
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+        xmlns:g="urn:import:com.google.gwt.user.client.ui"
+        xmlns:w="urn:import:com.arcbees.bourseje.client.admin.ui"
+        xmlns:arcbees="urn:import:com.arcbees.ui">
+
+    <ui:with field="res" type="com.arcbees.bourseje.client.resources.Resources"/>
+    <ui:with field="page" type="com.arcbees.bourseje.client.resources.PageAddEditResources"/>
+
+    <g:HTMLPanel styleName="{res.styles.main_section}">
+        <w:Header/>
+
+        <section class="{res.styles.main_content_desktop}">
+            <div class="{page.style.addedit} {res.styles.wrapper_desktop}">
+                <form class="{res.grid.row} {res.styles.clearfix}">
+                    <arcbees:ReplacePanel ui:field="uploaderPanel"/>
+                    <div class="{res.grid.col} {res.grid.col_3_4}">
+                        <label class="{page.style.addedit__label}">Prénom et Nom</label>
+                        <input ui:field="name" class="{page.style.addedit__input}" type="text" required="required"/>
+                        <label class="{page.style.addedit__label}">Compagnie</label>
+                        <input ui:field="company" class="{page.style.addedit__input}" type="text" required="required"/>
+                    </div>
+                    <div class="{res.grid.col} {res.grid.col_full} {page.style.addedit__buttons}">
+                        <button class="{page.style.addedit__button} {res.styles.btn} {res.styles.btn_secondary}">
+                            Annuler
+                        </button>
+                        <button ui:field="updateCandidate" type="submit"
+                                class="{page.style.addedit__button} {res.styles.btn} {res.styles.btn_primary}">Modifier
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <w:Footer/>
+    </g:HTMLPanel>
+</ui:UiBinder>

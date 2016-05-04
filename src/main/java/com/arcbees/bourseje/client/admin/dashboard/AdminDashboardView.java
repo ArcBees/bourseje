@@ -16,20 +16,15 @@
 
 package com.arcbees.bourseje.client.admin.dashboard;
 
-import java.util.List;
-import java.util.Map;
-
 import javax.inject.Inject;
 
-import com.arcbees.bourseje.client.admin.ui.CandidateAdminWidget;
-import com.arcbees.bourseje.shared.Candidate;
 import com.arcbees.bourseje.shared.VoteState;
 import com.google.gwt.dom.client.ButtonElement;
 import com.google.gwt.dom.client.Element;
-import com.google.gwt.dom.client.SpanElement;
 import com.google.gwt.query.client.Function;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
@@ -52,12 +47,14 @@ public class AdminDashboardView extends ViewWithUiHandlers<AdminDashboardUiHandl
     @UiField
     Element currentState;
     @UiField
-    SpanElement candidatesElement;
+    HTMLPanel candidatesElement;
 
     @Inject
     AdminDashboardView(
             Binder uiBinder) {
         initWidget(uiBinder.createAndBindUi(this));
+
+        bindSlot(AdminDashboardPresenter.SLOT_CANDIDATES, candidatesElement);
 
         initButtons();
     }
@@ -95,17 +92,5 @@ public class AdminDashboardView extends ViewWithUiHandlers<AdminDashboardUiHandl
     @Override
     public void setCurrentState(VoteState currentState) {
         this.currentState.setInnerText(currentState.toString());
-    }
-
-    @Override
-    public void setCandidates(List<Candidate> candidates, Map<String, Integer> candidateResults) {
-        candidatesElement.removeAllChildren();
-
-        for (Candidate candidate : candidates) {
-            CandidateAdminWidget candidateWidget = new CandidateAdminWidget(
-                    candidate, candidateResults.get(candidate.getName()));
-
-            $(candidatesElement).append(candidateWidget.asWidget().getElement());
-        }
     }
 }

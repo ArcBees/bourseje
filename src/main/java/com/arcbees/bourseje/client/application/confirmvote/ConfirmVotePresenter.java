@@ -18,12 +18,14 @@ package com.arcbees.bourseje.client.application.confirmvote;
 
 import com.arcbees.bourseje.client.NameTokens;
 import com.arcbees.bourseje.client.RestCallbackImpl;
+import com.arcbees.bourseje.client.admin.event.VoteEvent;
 import com.arcbees.bourseje.client.api.CandidateService;
 import com.arcbees.bourseje.client.api.VoteService;
 import com.arcbees.bourseje.client.application.ApplicationPresenter;
 import com.arcbees.bourseje.shared.Candidate;
 import com.arcbees.bourseje.shared.CookieNames;
 import com.arcbees.bourseje.shared.VoteItem;
+import com.google.gwt.event.shared.HasHandlers;
 import com.google.gwt.http.client.Response;
 import com.google.gwt.user.client.Cookies;
 import com.google.inject.Inject;
@@ -129,6 +131,8 @@ public class ConfirmVotePresenter extends Presenter<ConfirmVotePresenter.MyView,
     }
 
     private void revealPlace(String nameToken) {
+        VoteEvent.fire(this);
+
         PlaceRequest placeRequest = new PlaceRequest.Builder()
                 .nameToken(nameToken)
                 .build();
