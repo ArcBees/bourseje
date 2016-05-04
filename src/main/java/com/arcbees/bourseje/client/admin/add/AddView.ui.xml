@@ -12,7 +12,9 @@
         <section class="{res.styles.main_content_desktop}">
             <div class="{page.style.addedit} {res.styles.wrapper_desktop}">
                 <form class="{res.grid.row} {res.styles.clearfix}">
-                    <arcbees:ReplacePanel ui:field="uploaderPanel"/>
+                    <div class="{res.grid.col} {res.grid.col_m_1_4}">
+                        <arcbees:ReplacePanel ui:field="uploaderPanel"/>
+                    </div>
                     <div class="{res.grid.col} {res.grid.col_3_4}">
                         <label class="{page.style.addedit__label}">Prénom et Nom</label>
                         <input ui:field="name" class="{page.style.addedit__input}" type="text" required="required"/>

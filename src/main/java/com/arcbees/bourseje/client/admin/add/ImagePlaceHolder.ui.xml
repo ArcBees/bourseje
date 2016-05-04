@@ -4,7 +4,7 @@
     <ui:with field="res" type="com.arcbees.bourseje.client.resources.Resources"/>
     <ui:with field="page" type="com.arcbees.bourseje.client.resources.PageAddEditResources"/>
 
-    <g:Anchor href="#" ui:field="anchor" styleName="{res.grid.col} {res.grid.col_1_4} {page.style.addedit__photo}">
+    <g:Anchor href="#" ui:field="anchor" styleName="{page.style.addedit__photo}">
         <div class="{page.style.addedit__photo__placeholder}">
             <img ui:field="image" src=""/>
         </div>
