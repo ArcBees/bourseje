@@ -20,7 +20,7 @@
                         <input ui:field="company" class="{page.style.addedit__input}" type="text" required="required"/>
                     </div>
                     <div class="{res.grid.col} {res.grid.col_full} {page.style.addedit__buttons}">
-                        <button class="{page.style.addedit__button} {res.styles.btn} {res.styles.btn_secondary}">
+                        <button ui:field="cancel" type="reset" class="{page.style.addedit__button} {res.styles.btn} {res.styles.btn_secondary}">
                             Annuler
                         </button>
                         <button ui:field="updateCandidate" type="submit"

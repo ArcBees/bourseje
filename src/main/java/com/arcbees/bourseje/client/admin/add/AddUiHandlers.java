@@ -21,4 +21,6 @@ import com.gwtplatform.mvp.client.UiHandlers;
 
 public interface AddUiHandlers extends UiHandlers {
     void onAddCandidateClicked(Candidate candidate);
+
+    void onCancel();
 }

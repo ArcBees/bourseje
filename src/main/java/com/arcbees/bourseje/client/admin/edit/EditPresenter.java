@@ -91,12 +91,21 @@ public class EditPresenter extends Presenter<EditPresenter.MyView, EditPresenter
         dispatch.execute(adminService.updateCandidate(candidateToUpdate.getName(), candidate), new AdminRestCallback<Void>() {
             @Override
             public void onSuccess(Void result) {
-                PlaceRequest placeRequest = new PlaceRequest.Builder()
-                        .nameToken(NameTokens.ADMIN_DASHBOARD)
-                        .build();
-
-                placeManager.revealPlace(placeRequest);
+                goToDashboard();
             }
         });
+    }
+
+    @Override
+    public void onCancel() {
+        goToDashboard();
+    }
+
+    private void goToDashboard() {
+        PlaceRequest placeRequest = new PlaceRequest.Builder()
+                .nameToken(NameTokens.ADMIN_DASHBOARD)
+                .build();
+
+        placeManager.revealPlace(placeRequest);
     }
 }
