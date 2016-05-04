@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2014 ArcBees Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -16,8 +16,8 @@
 
 package com.arcbees.bourseje.client;
 
-import com.arcbees.bourseje.client.application.ApplicationModule;
 import com.arcbees.bourseje.client.admin.AdminModule;
+import com.arcbees.bourseje.client.application.ApplicationModule;
 import com.arcbees.bourseje.client.resources.ResourceLoader;
 import com.gwtplatform.dispatch.rest.client.gin.RestDispatchAsyncModule;
 import com.gwtplatform.mvp.client.annotations.DefaultPlace;
@@ -33,7 +33,10 @@ public class ClientModule extends AbstractPresenterModule {
     protected void configure() {
         install(new RestDispatchAsyncModule());
 
-        install(new DefaultModule(DefaultPlaceManager.class, RouteTokenFormatter.class));
+        install(new DefaultModule.Builder()
+                .placeManager(DefaultPlaceManager.class)
+                .tokenFormatter(RouteTokenFormatter.class)
+                .build());
         install(new ApplicationModule());
         install(new AdminModule());
 

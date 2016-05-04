@@ -18,13 +18,16 @@ package com.arcbees.bourseje.client.api;
 
 import java.util.Collection;
 
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 
 import com.arcbees.bourseje.shared.Candidate;
 import com.arcbees.bourseje.shared.CandidateResult;
+import com.arcbees.bourseje.shared.Parameters;
 import com.arcbees.bourseje.shared.ResourcesPath;
 import com.arcbees.bourseje.shared.VoteState;
 import com.gwtplatform.dispatch.rest.shared.RestAction;
@@ -46,4 +49,12 @@ public interface AdminService {
     @POST
     @Path(ResourcesPath.CANDIDATE)
     RestAction<Void> addCandidate(Candidate candidate);
+
+    @PUT
+    @Path(ResourcesPath.CANDIDATE + ResourcesPath.CANDIDATE_NAME)
+    RestAction<Void> updateCandidate(@PathParam(Parameters.NAME) String name, Candidate candidate);
+
+    @DELETE
+    @Path(ResourcesPath.CANDIDATE + ResourcesPath.CANDIDATE_NAME)
+    RestAction<Void> removeCandidate(@PathParam(Parameters.NAME) String name);
 }

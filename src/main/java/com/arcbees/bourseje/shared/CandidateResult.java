@@ -37,4 +37,12 @@ public class CandidateResult {
     public String getCandidateName() {
         return candidateName;
     }
+
+    public void setCandidateName(String candidateName) {
+        this.candidateName = candidateName;
+    }
+
+    public void setNumberOfVotes(int numberOfVotes) {
+        this.numberOfVotes = numberOfVotes;
+    }
 }

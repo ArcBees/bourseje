@@ -16,15 +16,13 @@
 
 package com.arcbees.bourseje.client.admin;
 
-import com.google.gwt.event.shared.GwtEvent.Type;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.View;
-import com.gwtplatform.mvp.client.annotations.ContentSlot;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
+import com.gwtplatform.mvp.client.presenter.slots.NestedSlot;
 import com.gwtplatform.mvp.client.proxy.Proxy;
-import com.gwtplatform.mvp.client.proxy.RevealContentHandler;
 
 public class AdminPresenter extends Presenter<AdminPresenter.MyView, AdminPresenter.MyProxy> {
     interface MyView extends View {
@@ -34,8 +32,7 @@ public class AdminPresenter extends Presenter<AdminPresenter.MyView, AdminPresen
     interface MyProxy extends Proxy<AdminPresenter> {
     }
 
-    @ContentSlot
-    public static final Type<RevealContentHandler<?>> SLOT_MAIN = new Type<>();
+    public static final NestedSlot SLOT_MAIN = new NestedSlot();
 
     @Inject
     AdminPresenter(

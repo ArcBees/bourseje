@@ -17,10 +17,12 @@
 package com.arcbees.bourseje.server.api;
 
 import javax.inject.Inject;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -28,6 +30,7 @@ import javax.ws.rs.core.Response;
 import com.arcbees.bourseje.server.services.AdminService;
 import com.arcbees.bourseje.server.services.VoteService;
 import com.arcbees.bourseje.shared.Candidate;
+import com.arcbees.bourseje.shared.Parameters;
 import com.arcbees.bourseje.shared.ResourcesPath;
 import com.arcbees.bourseje.shared.VoteState;
 
@@ -69,6 +72,22 @@ public class AdminResource {
     @Path(ResourcesPath.CANDIDATE)
     public Response addCandidate(Candidate candidate) {
         adminService.addCandidate(candidate);
+
+        return Response.ok().build();
+    }
+
+    @PUT
+    @Path(ResourcesPath.CANDIDATE + ResourcesPath.CANDIDATE_NAME)
+    public Response updateCandidate(@PathParam(Parameters.NAME) String name, Candidate candidate) {
+        adminService.updateCandidate(name, candidate);
+
+        return Response.ok().build();
+    }
+
+    @DELETE
+    @Path(ResourcesPath.CANDIDATE + ResourcesPath.CANDIDATE_NAME)
+    public Response removeCandidate(@PathParam(Parameters.NAME) String name) {
+        adminService.removeCandidate(name);
 
         return Response.ok().build();
     }
