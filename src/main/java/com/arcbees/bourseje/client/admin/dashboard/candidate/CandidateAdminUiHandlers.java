@@ -16,11 +16,10 @@
 
 package com.arcbees.bourseje.client.admin.dashboard.candidate;
 
-import com.arcbees.bourseje.shared.Candidate;
 import com.gwtplatform.mvp.client.UiHandlers;
 
 public interface CandidateAdminUiHandlers extends UiHandlers {
-    void onModify(Candidate candidate);
+    void onModify();
 
     void onDelete();
 }

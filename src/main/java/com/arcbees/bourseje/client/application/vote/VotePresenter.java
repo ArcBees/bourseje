@@ -87,6 +87,8 @@ public class VotePresenter extends Presenter<VotePresenter.MyView, VotePresenter
 
     @Override
     protected void onReveal() {
+        clearSlot(SLOT_CANDIDATES);
+
         dispatch.execute(candidateService.getCandidates(), new RestCallbackImpl<List<Candidate>>() {
             @Override
             public void onSuccess(List<Candidate> result) {

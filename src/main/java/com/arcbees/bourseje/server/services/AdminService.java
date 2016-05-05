@@ -61,10 +61,13 @@ public class AdminService {
     }
 
     public void updateCandidate(Long id, Candidate candidate) {
-        Candidate oldCandidate = candidateDao.get(id);
+        Candidate modifiedCandidate = candidateDao.get(id);
 
-        candidateDao.delete(oldCandidate);
-        candidateDao.put(candidate);
+        modifiedCandidate.setPicture(candidate.getPicture());
+        modifiedCandidate.setName(candidate.getName());
+        modifiedCandidate.setCompany(candidate.getCompany());
+
+        candidateDao.put(modifiedCandidate);
     }
 
     public void removeCandidate(Long id) {

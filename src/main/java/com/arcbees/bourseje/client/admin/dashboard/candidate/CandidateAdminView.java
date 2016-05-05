@@ -65,9 +65,7 @@ public class CandidateAdminView extends ViewWithUiHandlers<CandidateAdminUiHandl
 
     @UiHandler("modify")
     void onModify(ClickEvent event) {
-        Candidate candidate = new Candidate(name.getInnerText(), company.getInnerText(), image.getSrc());
-
-        getUiHandlers().onModify(candidate);
+        getUiHandlers().onModify();
     }
 
     @UiHandler("delete")

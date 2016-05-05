@@ -38,11 +38,11 @@ public class CandidateAdminPresenter extends PresenterWidget<CandidateAdminPrese
         void setCandidate(Candidate candidate, int nbOfVotes);
     }
 
-    private PlaceManager placeManager;
-    private AdminService adminService;
-    private RestDispatch dispatch;
-    private Candidate candidate;
-    private int nbOfVotes;
+    private final Candidate candidate;
+    private final PlaceManager placeManager;
+    private final AdminService adminService;
+    private final RestDispatch dispatch;
+    private final int nbOfVotes;
 
     @Inject
     CandidateAdminPresenter(
@@ -70,10 +70,10 @@ public class CandidateAdminPresenter extends PresenterWidget<CandidateAdminPrese
     }
 
     @Override
-    public void onModify(Candidate candidate) {
+    public void onModify() {
         PlaceRequest placeRequest = new PlaceRequest.Builder()
                 .nameToken(NameTokens.EDIT)
-                .with("name", candidate.getName())
+                .with(NameTokens.PARAM_ID, String.valueOf(candidate.getId()))
                 .build();
 
         placeManager.revealPlace(placeRequest);

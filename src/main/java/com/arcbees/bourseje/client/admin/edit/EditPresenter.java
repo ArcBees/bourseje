@@ -75,7 +75,7 @@ public class EditPresenter extends Presenter<EditPresenter.MyView, EditPresenter
 
     @Override
     public void prepareFromRequest(PlaceRequest request) {
-        Long candidateId = Long.valueOf(request.getParameter("id", ""));
+        Long candidateId = Long.valueOf(request.getParameter(NameTokens.PARAM_ID, "invalid parameter"));
 
         dispatch.execute(candidateService.getCandidateById(candidateId), new RestCallbackImpl<Candidate>() {
             @Override
