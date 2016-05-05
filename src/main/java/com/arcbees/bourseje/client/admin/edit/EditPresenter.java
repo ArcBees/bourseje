@@ -88,7 +88,7 @@ public class EditPresenter extends Presenter<EditPresenter.MyView, EditPresenter
 
     @Override
     public void onAddCandidateClicked(Candidate candidate) {
-        dispatch.execute(adminService.updateCandidate(candidateToUpdate.getName(), candidate), new AdminRestCallback<Void>() {
+        dispatch.execute(adminService.updateCandidate(candidateToUpdate.getId(), candidate), new AdminRestCallback<Void>() {
             @Override
             public void onSuccess(Void result) {
                 goToDashboard();

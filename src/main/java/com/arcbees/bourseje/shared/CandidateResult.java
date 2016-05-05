@@ -20,6 +20,9 @@ public class CandidateResult {
     private Long candidateId;
     private int numberOfVotes;
 
+    public CandidateResult() {
+    }
+
     public CandidateResult(
             Long candidateId,
             int numberOfVotes) {

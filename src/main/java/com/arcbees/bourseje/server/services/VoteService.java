@@ -22,7 +22,6 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Nullable;
 import javax.inject.Inject;
 
 import com.arcbees.bourseje.server.dao.CurrentVoteStateDao;

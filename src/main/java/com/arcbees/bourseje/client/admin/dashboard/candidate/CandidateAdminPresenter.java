@@ -38,7 +38,6 @@ public class CandidateAdminPresenter extends PresenterWidget<CandidateAdminPrese
         void setCandidate(Candidate candidate, int nbOfVotes);
     }
 
-    private EventBus eventBus;
     private PlaceManager placeManager;
     private AdminService adminService;
     private RestDispatch dispatch;
@@ -55,7 +54,6 @@ public class CandidateAdminPresenter extends PresenterWidget<CandidateAdminPrese
             @Assisted Candidate candidate,
             @Assisted int nbOfVotes) {
         super(eventBus, view);
-        this.eventBus = eventBus;
 
         this.placeManager = placeManager;
         this.adminService = adminService;
@@ -84,7 +82,7 @@ public class CandidateAdminPresenter extends PresenterWidget<CandidateAdminPrese
     @Override
     public void onDelete() {
         if (Window.confirm("Are you sure you want to delete " + candidate.getName() + " ?")) {
-            dispatch.execute(adminService.removeCandidate(candidate.getName()), new AdminRestCallback<Void>() {
+            dispatch.execute(adminService.removeCandidate(candidate.getId()), new AdminRestCallback<Void>() {
                 @Override
                 public void onSuccess(Void result) {
                     removeFromParentSlot();
