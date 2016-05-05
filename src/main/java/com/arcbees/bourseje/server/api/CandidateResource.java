@@ -44,8 +44,8 @@ public class CandidateResource {
     }
 
     @GET
-    @Path(ResourcesPath.CANDIDATE_NAME)
-    public Response getCandidateByName(@PathParam(Parameters.NAME) String name) {
-        return Response.ok(candidateService.getCandidateByName(name)).build();
+    @Path(ResourcesPath.CANDIDATE_ID)
+    public Response getCandidateById(@PathParam(Parameters.ID) Long id) {
+        return Response.ok(candidateService.getCandidateById(id)).build();
     }
 }

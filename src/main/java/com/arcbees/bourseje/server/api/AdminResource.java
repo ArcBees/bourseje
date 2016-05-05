@@ -77,17 +77,17 @@ public class AdminResource {
     }
 
     @PUT
-    @Path(ResourcesPath.CANDIDATE + ResourcesPath.CANDIDATE_NAME)
-    public Response updateCandidate(@PathParam(Parameters.NAME) String name, Candidate candidate) {
-        adminService.updateCandidate(name, candidate);
+    @Path(ResourcesPath.CANDIDATE + ResourcesPath.CANDIDATE_ID)
+    public Response updateCandidate(@PathParam(Parameters.ID) Long id, Candidate candidate) {
+        adminService.updateCandidate(id, candidate);
 
         return Response.ok().build();
     }
 
     @DELETE
-    @Path(ResourcesPath.CANDIDATE + ResourcesPath.CANDIDATE_NAME)
-    public Response removeCandidate(@PathParam(Parameters.NAME) String name) {
-        adminService.removeCandidate(name);
+    @Path(ResourcesPath.CANDIDATE + ResourcesPath.CANDIDATE_ID)
+    public Response removeCandidate(@PathParam(Parameters.ID) Long id) {
+        adminService.removeCandidate(id);
 
         return Response.ok().build();
     }

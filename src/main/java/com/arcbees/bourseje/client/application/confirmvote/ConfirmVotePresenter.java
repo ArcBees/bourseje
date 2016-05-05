@@ -18,14 +18,12 @@ package com.arcbees.bourseje.client.application.confirmvote;
 
 import com.arcbees.bourseje.client.NameTokens;
 import com.arcbees.bourseje.client.RestCallbackImpl;
-import com.arcbees.bourseje.client.admin.event.VoteEvent;
 import com.arcbees.bourseje.client.api.CandidateService;
 import com.arcbees.bourseje.client.api.VoteService;
 import com.arcbees.bourseje.client.application.ApplicationPresenter;
 import com.arcbees.bourseje.shared.Candidate;
 import com.arcbees.bourseje.shared.CookieNames;
 import com.arcbees.bourseje.shared.VoteItem;
-import com.google.gwt.event.shared.HasHandlers;
 import com.google.gwt.http.client.Response;
 import com.google.gwt.user.client.Cookies;
 import com.google.inject.Inject;
@@ -60,7 +58,7 @@ public class ConfirmVotePresenter extends Presenter<ConfirmVotePresenter.MyView,
     private final VoteService voteService;
     private final CandidateService candidateService;
 
-    private String name;
+    private String id;
 
     @Inject
     ConfirmVotePresenter(
@@ -88,12 +86,12 @@ public class ConfirmVotePresenter extends Presenter<ConfirmVotePresenter.MyView,
             return;
         }
 
-        name = request.getParameter(NameTokens.PARAM_NAME, "noSelection");
-        setCandidateInView(name);
+        id = request.getParameter(NameTokens.PARAM_ID, "noSelection");
+        setCandidateInView(id);
     }
 
-    private void setCandidateInView(String name) {
-        dispatch.execute(candidateService.getCandidateByName(name), new RestCallbackImpl<Candidate>() {
+    private void setCandidateInView(String id) {
+        dispatch.execute(candidateService.getCandidateById(Long.valueOf(id)), new RestCallbackImpl<Candidate>() {
             @Override
             public void onFailure(Throwable throwable) {
                 revealPlace(NameTokens.VOTE);
@@ -110,7 +108,7 @@ public class ConfirmVotePresenter extends Presenter<ConfirmVotePresenter.MyView,
 
     @Override
     public void onConfirmClicked() {
-        VoteItem voteItem = new VoteItem(name);
+        VoteItem voteItem = new VoteItem(Long.valueOf(id));
         dispatch.execute(voteService.vote(voteItem), new RestCallbackImpl<Void>() {
             @Override
             public void onError(Response response) {
@@ -131,8 +129,6 @@ public class ConfirmVotePresenter extends Presenter<ConfirmVotePresenter.MyView,
     }
 
     private void revealPlace(String nameToken) {
-        VoteEvent.fire(this);
-
         PlaceRequest placeRequest = new PlaceRequest.Builder()
                 .nameToken(nameToken)
                 .build();

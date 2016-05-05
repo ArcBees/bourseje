@@ -50,7 +50,9 @@ public class WinnerPresenter extends Presenter<WinnerPresenter.MyView, WinnerPre
 
     private final RestDispatch dispatch;
     private final AdminService adminService;
-    private CandidateService candidateService;
+    private final CandidateService candidateService;
+
+    private CandidateResult candidateResult;
 
     @Inject
     WinnerPresenter(
@@ -71,15 +73,13 @@ public class WinnerPresenter extends Presenter<WinnerPresenter.MyView, WinnerPre
     protected void onReveal() {
         dispatch.execute(adminService.getWinner(), new AdminRestCallback<CandidateResult>() {
             @Override
-            public void onSuccess(final CandidateResult candidateResult) {
-                getCandidateByName(candidateResult);
+            public void onSuccess(final CandidateResult result) {
+                candidateResult = result;
             }
         });
-    }
 
-    private void getCandidateByName(final CandidateResult candidateResult) {
-        dispatch.execute(candidateService.getCandidateByName(candidateResult.getCandidateName()), new
-                AdminRestCallback<Candidate>() {
+        dispatch.execute(candidateService.getCandidateById(candidateResult.getCandidateId()),
+                new AdminRestCallback<Candidate>() {
                     @Override
                     public void onSuccess(Candidate candidate) {
                         setInView(candidate, candidateResult.getNumberOfVotes());

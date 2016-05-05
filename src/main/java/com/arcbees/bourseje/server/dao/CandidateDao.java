@@ -22,8 +22,4 @@ public class CandidateDao extends BaseDao<Candidate> {
     CandidateDao() {
         super(Candidate.class);
     }
-
-    public Candidate getByCandidateName(String name) {
-        return query().filter("name", name).first().now();
-    }
 }

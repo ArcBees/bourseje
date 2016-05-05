@@ -20,8 +20,12 @@ import java.util.List;
 
 import com.arcbees.bourseje.client.NameTokens;
 import com.arcbees.bourseje.client.RestCallbackImpl;
+import com.arcbees.bourseje.client.admin.event.VoteEvent;
+import com.arcbees.bourseje.client.admin.event.VoteEventHandler;
 import com.arcbees.bourseje.client.api.CandidateService;
 import com.arcbees.bourseje.client.application.ApplicationPresenter;
+import com.arcbees.bourseje.client.application.vote.candidate.CandidateVoteFactory;
+import com.arcbees.bourseje.client.application.vote.candidate.CandidateVotePresenter;
 import com.arcbees.bourseje.shared.Candidate;
 import com.arcbees.bourseje.shared.CookieNames;
 import com.google.gwt.user.client.Cookies;
@@ -33,13 +37,14 @@ import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
+import com.gwtplatform.mvp.client.presenter.slots.Slot;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 import com.gwtplatform.mvp.shared.proxy.PlaceRequest;
 
-public class VotePresenter extends Presenter<VotePresenter.MyView, VotePresenter.MyProxy> implements VoteUiHandlers {
+public class VotePresenter extends Presenter<VotePresenter.MyView, VotePresenter.MyProxy>
+        implements VoteUiHandlers, VoteEventHandler {
     interface MyView extends View, HasUiHandlers<VoteUiHandlers> {
-        void setCandidatesElement(List<Candidate> candidateList);
     }
 
     @ProxyStandard
@@ -47,10 +52,14 @@ public class VotePresenter extends Presenter<VotePresenter.MyView, VotePresenter
     interface MyProxy extends ProxyPlace<VotePresenter> {
     }
 
-    private final PlaceManager placeManager;
+    public static Slot<CandidateVotePresenter> SLOT_CANDIDATES = new Slot<>();
 
-    private CandidateService candidateService;
-    private RestDispatch dispatch;
+    private final PlaceManager placeManager;
+    private final CandidateService candidateService;
+    private final CandidateVoteFactory candidateVoteFactory;
+    private final RestDispatch dispatch;
+
+    private Candidate selectedCandidate;
 
     @Inject
     VotePresenter(
@@ -59,14 +68,21 @@ public class VotePresenter extends Presenter<VotePresenter.MyView, VotePresenter
             MyProxy proxy,
             PlaceManager placeManager,
             CandidateService candidateService,
+            CandidateVoteFactory candidateVoteFactory,
             RestDispatch dispatch) {
         super(eventBus, view, proxy, ApplicationPresenter.SLOT_MAIN);
 
         this.placeManager = placeManager;
         this.candidateService = candidateService;
+        this.candidateVoteFactory = candidateVoteFactory;
         this.dispatch = dispatch;
 
         getView().setUiHandlers(this);
+    }
+
+    @Override
+    protected void onBind() {
+        addRegisteredHandler(VoteEvent.TYPE, this);
     }
 
     @Override
@@ -74,9 +90,15 @@ public class VotePresenter extends Presenter<VotePresenter.MyView, VotePresenter
         dispatch.execute(candidateService.getCandidates(), new RestCallbackImpl<List<Candidate>>() {
             @Override
             public void onSuccess(List<Candidate> result) {
-                getView().setCandidatesElement(result);
+                createCandidates(result);
             }
         });
+    }
+
+    private void createCandidates(List<Candidate> result) {
+        for (Candidate candidate : result) {
+            addToSlot(SLOT_CANDIDATES, candidateVoteFactory.create(candidate));
+        }
     }
 
     @Override
@@ -91,12 +113,19 @@ public class VotePresenter extends Presenter<VotePresenter.MyView, VotePresenter
     }
 
     @Override
-    public void onVoteClicked(String name, String company) {
-        PlaceRequest place = new PlaceRequest.Builder()
-                .nameToken(NameTokens.CONFIRM_VOTE)
-                .with(NameTokens.PARAM_NAME, name)
-                .build();
+    public void onVote(VoteEvent voteEvent, Candidate candidate) {
+        selectedCandidate = candidate;
+    }
 
-        placeManager.revealPlace(place);
+    @Override
+    public void onSubmit() {
+        if (selectedCandidate != null) {
+            PlaceRequest placeRequest = new PlaceRequest.Builder()
+                    .nameToken(NameTokens.CONFIRM_VOTE)
+                    .with(NameTokens.PARAM_ID, String.valueOf(selectedCandidate.getId()))
+                    .build();
+
+            placeManager.revealPlace(placeRequest);
+        }
     }
 }

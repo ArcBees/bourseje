@@ -19,7 +19,7 @@
                     </div>
                     <div ui:field="voteGroup">
                         <form action="javascript:;" class="{page.style.vote_form}">
-                            <span ui:field="candidatesElement"/>
+                            <g:HTMLPanel ui:field="candidatesElement"/>
                             <g:Button ui:field="submit" styleName="{res.styles.btn} {res.styles.btn_wide}">VOTEZ
                             </g:Button>
                         </form>

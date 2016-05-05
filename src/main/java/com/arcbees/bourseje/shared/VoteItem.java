@@ -25,7 +25,7 @@ import com.googlecode.objectify.annotation.Index;
 public class VoteItem {
     @Id
     private Long id;
-    private String candidateName;
+    private Long candidateId;
 
     @Index
     private String code;
@@ -34,8 +34,8 @@ public class VoteItem {
     }
 
     public VoteItem(
-            String candidateName) {
-        this.candidateName = candidateName;
+            Long candidateId) {
+        this.candidateId = candidateId;
     }
 
     public Long getId() {
@@ -46,14 +46,6 @@ public class VoteItem {
         this.id = id;
     }
 
-    public String getCandidateName() {
-        return candidateName;
-    }
-
-    public void setCandidateName(String candidateName) {
-        this.candidateName = candidateName;
-    }
-
     @JsonIgnore
     public String getCode() {
         return code;
@@ -61,5 +53,13 @@ public class VoteItem {
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    public Long getCandidateId() {
+        return candidateId;
+    }
+
+    public void setCandidateId(Long candidateId) {
+        this.candidateId = candidateId;
     }
 }

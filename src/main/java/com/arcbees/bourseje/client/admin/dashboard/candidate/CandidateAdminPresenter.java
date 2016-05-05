@@ -83,7 +83,7 @@ public class CandidateAdminPresenter extends PresenterWidget<CandidateAdminPrese
 
     @Override
     public void onDelete() {
-        if (Window.confirm("Are you sure you want to delete " + candidate.getName())) {
+        if (Window.confirm("Are you sure you want to delete " + candidate.getName() + " ?")) {
             dispatch.execute(adminService.removeCandidate(candidate.getName()), new AdminRestCallback<Void>() {
                 @Override
                 public void onSuccess(Void result) {

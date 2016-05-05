@@ -14,25 +14,27 @@
  * the License.
  */
 
-package com.arcbees.bourseje.client.application.vote;
+package com.arcbees.bourseje.client.application.vote.candidate;
+
+import javax.inject.Inject;
 
 import com.arcbees.bourseje.shared.Candidate;
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.ImageElement;
 import com.google.gwt.dom.client.InputElement;
 import com.google.gwt.dom.client.ParagraphElement;
+import com.google.gwt.query.client.Function;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.HTMLPanel;
-import com.google.gwt.user.client.ui.IsWidget;
-import com.google.gwt.user.client.ui.Widget;
+import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
-public class CandidateVoteWidget implements IsWidget {
-    interface Binder extends UiBinder<HTMLPanel, CandidateVoteWidget> {
+import static com.google.gwt.query.client.GQuery.$;
+
+public class CandidateVoteView extends ViewWithUiHandlers<CandidateVoteUiHandlers>
+        implements CandidateVotePresenter.MyView {
+    interface Binder extends UiBinder<HTMLPanel, CandidateVoteView> {
     }
-
-    private final static Binder binder = GWT.create(Binder.class);
 
     @UiField
     ImageElement image;
@@ -45,23 +47,29 @@ public class CandidateVoteWidget implements IsWidget {
     @UiField(provided = true)
     final String candidateId = Document.get().createUniqueId();
 
-    private final Widget widget;
-
-    public CandidateVoteWidget(Candidate candidate) {
-        widget = binder.createAndBindUi(this);
+    @Inject
+    CandidateVoteView(
+            Binder uiBinder) {
+        initWidget(uiBinder.createAndBindUi(this));
 
         inputRadio.setId(candidateId);
 
-        company.setInnerText(candidate.getCompany());
-        name.setInnerText(candidate.getName());
+        bind();
+    }
 
-        if (candidate.getPicture() != null) {
-            image.setSrc(candidate.getPicture());
-        }
+    private void bind() {
+        $(inputRadio).change(new Function() {
+            @Override
+            public void f() {
+                getUiHandlers().onSelect();
+            }
+        });
     }
 
     @Override
-    public Widget asWidget() {
-        return widget;
+    public void setCandidate(Candidate candidate) {
+        image.setSrc(candidate.getPicture());
+        name.setInnerText(candidate.getName());
+        company.setInnerText(candidate.getCompany());
     }
 }

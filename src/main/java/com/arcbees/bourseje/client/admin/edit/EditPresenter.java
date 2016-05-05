@@ -75,9 +75,9 @@ public class EditPresenter extends Presenter<EditPresenter.MyView, EditPresenter
 
     @Override
     public void prepareFromRequest(PlaceRequest request) {
-        String name = request.getParameter("name", "");
+        Long candidateId = Long.valueOf(request.getParameter("id", ""));
 
-        dispatch.execute(candidateService.getCandidateByName(name), new RestCallbackImpl<Candidate>() {
+        dispatch.execute(candidateService.getCandidateById(candidateId), new RestCallbackImpl<Candidate>() {
             @Override
             public void onSuccess(Candidate candidate) {
                 candidateToUpdate = candidate;

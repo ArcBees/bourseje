@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 ArcBees Inc.
+ * Copyright 2016 ArcBees Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -14,17 +14,10 @@
  * the License.
  */
 
-package com.arcbees.bourseje.client.application.vote;
+package com.arcbees.bourseje.client.application.vote.candidate;
 
-import com.arcbees.bourseje.client.application.vote.candidate.CandidateVoteModule;
-import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
+import com.gwtplatform.mvp.client.UiHandlers;
 
-public class VoteModule extends AbstractPresenterModule {
-    @Override
-    protected void configure() {
-        install(new CandidateVoteModule());
-
-        bindPresenter(VotePresenter.class, VotePresenter.MyView.class,
-                VoteView.class, VotePresenter.MyProxy.class);
-    }
+public interface CandidateVoteUiHandlers extends UiHandlers {
+    void onSelect();
 }

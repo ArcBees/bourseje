@@ -16,7 +16,7 @@
 
 package com.arcbees.bourseje.shared;
 
-import static com.arcbees.bourseje.shared.Parameters.NAME;
+import static com.arcbees.bourseje.shared.Parameters.ID;
 
 public class ResourcesPath {
     // vote
@@ -24,7 +24,7 @@ public class ResourcesPath {
     public static final String CURRENT_VOTE_STATE = "/current-state";
     public static final String CODE = "/code";
     public static final String CANDIDATES = "/candidates";
-    public static final String CANDIDATE_NAME = "/{" + NAME + "}";
+    public static final String CANDIDATE_ID = "/{" + ID + "}";
 
     // admin
     public static final String ADMIN = "/admin";

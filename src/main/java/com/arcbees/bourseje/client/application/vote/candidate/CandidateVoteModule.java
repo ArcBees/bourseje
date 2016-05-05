@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 ArcBees Inc.
+ * Copyright 2016 ArcBees Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -14,17 +14,16 @@
  * the License.
  */
 
-package com.arcbees.bourseje.client.application.vote;
+package com.arcbees.bourseje.client.application.vote.candidate;
 
-import com.arcbees.bourseje.client.application.vote.candidate.CandidateVoteModule;
+import com.google.gwt.inject.client.assistedinject.GinFactoryModuleBuilder;
 import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 
-public class VoteModule extends AbstractPresenterModule {
+public class CandidateVoteModule extends AbstractPresenterModule {
     @Override
     protected void configure() {
-        install(new CandidateVoteModule());
+        install(new GinFactoryModuleBuilder().build(CandidateVoteFactory.class));
 
-        bindPresenter(VotePresenter.class, VotePresenter.MyView.class,
-                VoteView.class, VotePresenter.MyProxy.class);
+        bind(CandidateVotePresenter.MyView.class).to(CandidateVoteView.class);
     }
 }
