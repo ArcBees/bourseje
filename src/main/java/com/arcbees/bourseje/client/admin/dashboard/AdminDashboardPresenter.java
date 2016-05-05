@@ -17,13 +17,10 @@
 package com.arcbees.bourseje.client.admin.dashboard;
 
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import com.arcbees.bourseje.client.AdminRestCallback;
 import com.arcbees.bourseje.client.NameTokens;
-import com.arcbees.bourseje.client.RestCallbackImpl;
 import com.arcbees.bourseje.client.admin.AdminPresenter;
 import com.arcbees.bourseje.client.admin.dashboard.candidate.CandidateAdminPresenter;
 import com.arcbees.bourseje.client.admin.dashboard.candidate.CandidateAdminPresenterFactory;
@@ -94,13 +91,12 @@ public class AdminDashboardPresenter extends Presenter<AdminDashboardPresenter.M
     protected void onReveal() {
         clearSlot(SLOT_CANDIDATES);
 
-        dispatch.execute(adminService.getVotesPerCandidate(), new AdminRestCallback<Collection<CandidateResult>>() {
-            @Override
-            public void onSuccess(final Collection<CandidateResult> votesPerCandidate) {
-                setVotesPerCandidates(votesPerCandidate);
-            }
-        });
+        getCandidates();
 
+        setCurrentVoteState();
+    }
+
+    private void setCurrentVoteState() {
         dispatch.execute(voteService.getCurrentVoteState(), new AdminRestCallback<VoteState>() {
             @Override
             public void onSuccess(VoteState currentState) {
@@ -109,22 +105,56 @@ public class AdminDashboardPresenter extends Presenter<AdminDashboardPresenter.M
         });
     }
 
-    private void setVotesPerCandidates(final Collection<CandidateResult> votesPerCandidate) {
-        dispatch.execute(candidateService.getCandidates(), new RestCallbackImpl<List<Candidate>>() {
+    private void getCandidates() {
+        dispatch.execute(candidateService.getCandidates(), new AdminRestCallback<List<Candidate>>() {
             @Override
-            public void onSuccess(List<Candidate> candidates) {
-                createCandidates(candidates, convertToMap(candidates, votesPerCandidate));
+            public void onSuccess(final List<Candidate> result) {
+                getVotesPerCandidates(result);
             }
         });
     }
 
-    private void createCandidates(List<Candidate> candidates, Map<String, Integer> votesPerCandidates) {
-        for (Candidate candidate : candidates) {
-            Integer nbOfVotes = votesPerCandidates.get(candidate.getName());
-            CandidateAdminPresenter widget = presenterWidgetFactory.create(candidate, nbOfVotes);
-
-            addToSlot(SLOT_CANDIDATES, widget);
+    private void getVotesPerCandidates(final List<Candidate> candidates) {
+        if (!candidates.isEmpty()) {
+            dispatch.execute(adminService.getVotesPerCandidate(), new AdminRestCallback<Collection<CandidateResult>>() {
+                @Override
+                public void onSuccess(final Collection<CandidateResult> candidateResults) {
+                    createCandidatesWidgets(candidateResults, candidates);
+                }
+            });
         }
+    }
+
+    private void createCandidatesWidgets(
+            final Collection<CandidateResult> candidateResults,
+            final Collection<Candidate> candidates) {
+        for (final Candidate candidate : candidates) {
+            CandidateResult candidateResult = findVotesPerCandidate(candidateResults, candidate);
+
+            if (candidateResult == null) {
+                createCandidates(candidate, 0);
+            } else {
+                createCandidates(candidate, candidateResult.getNumberOfVotes());
+            }
+        }
+    }
+
+    private CandidateResult findVotesPerCandidate(
+            Collection<CandidateResult> candidateResults,
+            final Candidate candidate) {
+        for (CandidateResult candidateResult : candidateResults) {
+            if (candidate.getId().equals(candidateResult.getCandidateId())) {
+                return candidateResult;
+            }
+        }
+
+        return null;
+    }
+
+    private void createCandidates(Candidate candidate, int nbOfVotes) {
+        CandidateAdminPresenter widget = presenterWidgetFactory.create(candidate, nbOfVotes);
+
+        addToSlot(SLOT_CANDIDATES, widget);
     }
 
     @Override
@@ -163,25 +193,5 @@ public class AdminDashboardPresenter extends Presenter<AdminDashboardPresenter.M
                 getView().setCurrentState(voteState);
             }
         });
-    }
-
-    private Map<String, Integer> convertToMap(List<Candidate> candidatesList, Collection<CandidateResult>
-            candidateResults) {
-        Map<String, Integer> resultsMap = new HashMap<>();
-        Map<String, Integer> results = new HashMap<>();
-
-        for (CandidateResult result : candidateResults) {
-            resultsMap.put(result.getCandidateName(), result.getNumberOfVotes());
-        }
-
-        for (Candidate candidate : candidatesList) {
-            if (resultsMap.containsKey(candidate.getName())) {
-                results.put(candidate.getName(), resultsMap.get(candidate.getName()));
-            } else {
-                results.put(candidate.getName(), 0);
-            }
-        }
-
-        return results;
     }
 }

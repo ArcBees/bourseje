@@ -16,22 +16,17 @@
 
 package com.arcbees.bourseje.client.application.vote;
 
-import java.util.List;
-
 import javax.inject.Inject;
 
-import com.arcbees.bourseje.shared.Candidate;
 import com.google.gwt.dom.client.DivElement;
-import com.google.gwt.dom.client.SpanElement;
 import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.query.client.GQuery;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
-
-import static com.google.gwt.query.client.GQuery.$;
 
 public class VoteView extends ViewWithUiHandlers<VoteUiHandlers> implements VotePresenter.MyView {
     interface Binder extends UiBinder<Widget, VoteView> {
@@ -40,30 +35,20 @@ public class VoteView extends ViewWithUiHandlers<VoteUiHandlers> implements Vote
     @UiField
     DivElement voteGroup;
     @UiField
-    SpanElement candidatesElement;
+    HTMLPanel candidatesElement;
+    @UiField
+    Button submit;
 
     @Inject
     VoteView(
             Binder uiBinder) {
         initWidget(uiBinder.createAndBindUi(this));
+
+        bindSlot(VotePresenter.SLOT_CANDIDATES, candidatesElement);
     }
 
     @UiHandler("submit")
     void onSubmit(ClickEvent event) {
-        GQuery $vote = $("input[name=vote]:checked + label", voteGroup);
-        String name = $vote.find("p").first().text();
-        String company = $vote.find("p").last().text();
-
-        getUiHandlers().onVoteClicked(name, company);
-    }
-
-    public void setCandidatesElement(List<Candidate> candidateList) {
-        candidatesElement.removeAllChildren();
-
-        for (Candidate candidate : candidateList) {
-            CandidateVoteWidget candidateVoteWidget = new CandidateVoteWidget(candidate);
-
-            $(candidatesElement).append(candidateVoteWidget.asWidget().getElement());
-        }
+        getUiHandlers().onSubmit();
     }
 }

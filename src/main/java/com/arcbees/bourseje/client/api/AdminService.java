@@ -51,10 +51,10 @@ public interface AdminService {
     RestAction<Void> addCandidate(Candidate candidate);
 
     @PUT
-    @Path(ResourcesPath.CANDIDATE + ResourcesPath.CANDIDATE_NAME)
-    RestAction<Void> updateCandidate(@PathParam(Parameters.NAME) String name, Candidate candidate);
+    @Path(ResourcesPath.CANDIDATE + ResourcesPath.CANDIDATE_ID)
+    RestAction<Void> updateCandidate(@PathParam(Parameters.ID) Long id, Candidate candidate);
 
     @DELETE
-    @Path(ResourcesPath.CANDIDATE + ResourcesPath.CANDIDATE_NAME)
-    RestAction<Void> removeCandidate(@PathParam(Parameters.NAME) String name);
+    @Path(ResourcesPath.CANDIDATE + ResourcesPath.CANDIDATE_ID)
+    RestAction<Void> removeCandidate(@PathParam(Parameters.ID) Long id);
 }

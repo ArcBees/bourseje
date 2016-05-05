@@ -60,15 +60,18 @@ public class AdminService {
         candidateDao.put(candidate);
     }
 
-    public void updateCandidate(String name, Candidate candidate) {
-        Candidate oldCandidate = candidateDao.getByCandidateName(name);
+    public void updateCandidate(Long id, Candidate candidate) {
+        Candidate modifiedCandidate = candidateDao.get(id);
 
-        candidateDao.delete(oldCandidate);
-        candidateDao.put(candidate);
+        modifiedCandidate.setPicture(candidate.getPicture());
+        modifiedCandidate.setName(candidate.getName());
+        modifiedCandidate.setCompany(candidate.getCompany());
+
+        candidateDao.put(modifiedCandidate);
     }
 
-    public void removeCandidate(String name) {
-        Candidate candidateToDelete = candidateDao.getByCandidateName(name);
+    public void removeCandidate(Long id) {
+        Candidate candidateToDelete = candidateDao.get(id);
 
         candidateDao.delete(candidateToDelete);
     }

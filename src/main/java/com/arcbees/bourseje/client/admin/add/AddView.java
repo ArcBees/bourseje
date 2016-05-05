@@ -53,6 +53,8 @@ public class AddView extends ViewWithUiHandlers<AddUiHandlers>
     InputElement company;
     @UiField
     ReplacePanel uploaderPanel;
+    @UiField
+    ButtonElement cancel;
 
     private final ImagePlaceHolder imagePlaceHolder;
 
@@ -106,6 +108,13 @@ public class AddView extends ViewWithUiHandlers<AddUiHandlers>
 
                     getUiHandlers().onAddCandidateClicked(candidate);
                 }
+            }
+        });
+
+        $(cancel).on(CLICK, new Function() {
+            @Override
+            public void f() {
+                getUiHandlers().onCancel();
             }
         });
     }

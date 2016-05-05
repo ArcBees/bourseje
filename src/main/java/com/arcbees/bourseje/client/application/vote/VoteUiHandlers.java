@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2014 ArcBees Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -19,5 +19,5 @@ package com.arcbees.bourseje.client.application.vote;
 import com.gwtplatform.mvp.client.UiHandlers;
 
 public interface VoteUiHandlers extends UiHandlers {
-    void onVoteClicked(String value, String company);
+    void onSubmit();
 }

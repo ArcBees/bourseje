@@ -80,26 +80,26 @@ public class VoteService {
 
     public Collection<CandidateResult> getVotesPerCandidate() {
         List<VoteItem> allVotes = voteItemDao.getAll();
-        Map<String, Collection<VoteItem>> groupedVotes = groupByCandidateName(allVotes);
+        Map<Long, Collection<VoteItem>> groupedVotes = groupByCandidateId(allVotes);
 
         return createResultsFromGroupedVotes(groupedVotes);
     }
 
-    private Map<String, Collection<VoteItem>> groupByCandidateName(List<VoteItem> votes) {
-        return Multimaps.index(votes, new Function<VoteItem, String>() {
+    private Map<Long, Collection<VoteItem>> groupByCandidateId(List<VoteItem> votes) {
+        return Multimaps.index(votes, new Function<VoteItem, Long>() {
             @Override
-            public String apply(VoteItem voteItem) {
-                return voteItem.getCandidateName();
+            public Long apply(VoteItem voteItem) {
+                return voteItem.getCandidateId();
             }
         }).asMap();
     }
 
-    private Collection<CandidateResult> createResultsFromGroupedVotes(Map<String, Collection<VoteItem>> groupedVotes) {
+    private Collection<CandidateResult> createResultsFromGroupedVotes(Map<Long, Collection<VoteItem>> groupedVotes) {
         return Maps.transformEntries(groupedVotes,
-                new Maps.EntryTransformer<String, Collection<VoteItem>, CandidateResult>() {
+                new Maps.EntryTransformer<Long, Collection<VoteItem>, CandidateResult>() {
                     @Override
-                    public CandidateResult transformEntry(String candidateName, Collection<VoteItem> voteItems) {
-                        return new CandidateResult(candidateName, voteItems.size());
+                    public CandidateResult transformEntry(Long candidateId, Collection<VoteItem> voteItems) {
+                        return new CandidateResult(candidateId, voteItems.size());
                     }
                 }).values();
     }

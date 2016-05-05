@@ -75,9 +75,9 @@ public class EditPresenter extends Presenter<EditPresenter.MyView, EditPresenter
 
     @Override
     public void prepareFromRequest(PlaceRequest request) {
-        String name = request.getParameter("name", "");
+        Long candidateId = Long.valueOf(request.getParameter(NameTokens.PARAM_ID, "invalid parameter"));
 
-        dispatch.execute(candidateService.getCandidateByName(name), new RestCallbackImpl<Candidate>() {
+        dispatch.execute(candidateService.getCandidateById(candidateId), new RestCallbackImpl<Candidate>() {
             @Override
             public void onSuccess(Candidate candidate) {
                 candidateToUpdate = candidate;
@@ -88,15 +88,24 @@ public class EditPresenter extends Presenter<EditPresenter.MyView, EditPresenter
 
     @Override
     public void onAddCandidateClicked(Candidate candidate) {
-        dispatch.execute(adminService.updateCandidate(candidateToUpdate.getName(), candidate), new AdminRestCallback<Void>() {
+        dispatch.execute(adminService.updateCandidate(candidateToUpdate.getId(), candidate), new AdminRestCallback<Void>() {
             @Override
             public void onSuccess(Void result) {
-                PlaceRequest placeRequest = new PlaceRequest.Builder()
-                        .nameToken(NameTokens.ADMIN_DASHBOARD)
-                        .build();
-
-                placeManager.revealPlace(placeRequest);
+                goToDashboard();
             }
         });
+    }
+
+    @Override
+    public void onCancel() {
+        goToDashboard();
+    }
+
+    private void goToDashboard() {
+        PlaceRequest placeRequest = new PlaceRequest.Builder()
+                .nameToken(NameTokens.ADMIN_DASHBOARD)
+                .build();
+
+        placeManager.revealPlace(placeRequest);
     }
 }

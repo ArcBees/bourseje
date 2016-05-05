@@ -16,8 +16,9 @@
 
 package com.arcbees.bourseje.client.admin.event;
 
+import com.arcbees.bourseje.shared.Candidate;
 import com.google.gwt.event.shared.EventHandler;
 
 public interface VoteEventHandler extends EventHandler {
-    void onVote(VoteEvent voteEvent);
+    void onVote(VoteEvent voteEvent, Candidate candidate);
 }

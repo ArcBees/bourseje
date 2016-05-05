@@ -16,11 +16,14 @@
 
 package com.arcbees.bourseje.client.application.vote;
 
+import com.arcbees.bourseje.client.application.vote.candidate.CandidateVoteModule;
 import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 
 public class VoteModule extends AbstractPresenterModule {
     @Override
     protected void configure() {
+        install(new CandidateVoteModule());
+
         bindPresenter(VotePresenter.class, VotePresenter.MyView.class,
                 VoteView.class, VotePresenter.MyProxy.class);
     }
