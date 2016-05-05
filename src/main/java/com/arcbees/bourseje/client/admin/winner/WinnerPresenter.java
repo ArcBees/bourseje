@@ -52,8 +52,6 @@ public class WinnerPresenter extends Presenter<WinnerPresenter.MyView, WinnerPre
     private final AdminService adminService;
     private final CandidateService candidateService;
 
-    private CandidateResult candidateResult;
-
     @Inject
     WinnerPresenter(
             EventBus eventBus,
@@ -73,11 +71,13 @@ public class WinnerPresenter extends Presenter<WinnerPresenter.MyView, WinnerPre
     protected void onReveal() {
         dispatch.execute(adminService.getWinner(), new AdminRestCallback<CandidateResult>() {
             @Override
-            public void onSuccess(final CandidateResult result) {
-                candidateResult = result;
+            public void onSuccess(final CandidateResult candidateResult) {
+                setCandidateResultsInView(candidateResult);
             }
         });
+    }
 
+    private void setCandidateResultsInView(final CandidateResult candidateResult) {
         dispatch.execute(candidateService.getCandidateById(candidateResult.getCandidateId()),
                 new AdminRestCallback<Candidate>() {
                     @Override
