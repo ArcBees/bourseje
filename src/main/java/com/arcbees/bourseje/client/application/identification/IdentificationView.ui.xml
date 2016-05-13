@@ -23,7 +23,7 @@
 
                         <input ui:field="code" type="password" max="5"/>
                         <button class="{res.styles.btn} {res.styles.btn_wide}" type="submit">
-                            Unique moi? Toujours!
+                            Allons au vote!
                         </button>
                     </form>
                 </div>
