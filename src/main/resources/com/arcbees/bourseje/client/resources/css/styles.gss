@@ -88,7 +88,7 @@ input {
 }
 
 .main_content .wrapper {
-    width: 260px;
+    width: 290px;
 }
 
 .main_content > article,
