@@ -88,7 +88,7 @@ input {
 }
 
 .main_content .wrapper {
-    width: 260px;
+    width: 290px;
 }
 
 .main_content > article,
@@ -199,6 +199,7 @@ input {
     content: "\0020";
     display: block;
     height: 0;
+
     overflow: hidden;
 }
 
@@ -224,7 +225,7 @@ input {
 
     cursor: pointer;
     display: inline-block;
-    margin: 25px 0 50px;
+    margin: 15px 0 50px;
     height: 35px;
     padding: .5em 1.5rem;
     outline: 0;
@@ -271,6 +272,7 @@ input {
 
 .text_step {
     text-align: center;
+
     margin-bottom: 20px;
 }
 
@@ -300,7 +302,9 @@ a.jccq:hover {
 
 footer {
     background-color: #000;
-    padding: 15px 0;
+
+    height: 75px;
+    padding-top: 8px;
 }
 
 .logoArcbees {

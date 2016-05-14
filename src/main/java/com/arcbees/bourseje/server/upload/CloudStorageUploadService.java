@@ -35,7 +35,7 @@ import com.google.appengine.tools.cloudstorage.RetryParams;
 
 public class CloudStorageUploadService implements ImageUploadService {
     private static final String[] IMAGE_FILE_EXTENSIONS = new String[]{"jpg", "png", "gif", "jpeg"};
-    private static final String BUCKET_NAME = "imagesBucket";
+    private static final String BUCKET_NAME = "jccqbourseje.appspot.com";
     private static final int BUFFER_SIZE = 2 * 1024 * 1024;
 
     private final GcsService gcsService = GcsServiceFactory.createGcsService(new RetryParams.Builder()
@@ -47,9 +47,7 @@ public class CloudStorageUploadService implements ImageUploadService {
     @Override
     public String upload(String name, InputStream inputStream, long size) {
         GcsOutputChannel outputChannel;
-        GcsFileOptions options = new GcsFileOptions.Builder()
-                .acl("public-read")
-                .build();
+        GcsFileOptions options = GcsFileOptions.getDefaultInstance();
         GcsFilename fileName = getFileName(name);
 
         verifyFileExtension(name);

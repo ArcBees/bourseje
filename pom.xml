@@ -21,7 +21,7 @@
         <arcbees-ui.version>1.3-SNAPSHOT</arcbees-ui.version>
 
         <!-- server -->
-        <gae.version>1.9.19</gae.version>
+        <gae.version>1.9.36</gae.version>
         <guice.version>3.0</guice.version>
         <arcbees.version>1.1.1</arcbees.version>
         <resteasy.version>3.0.11.Final</resteasy.version>

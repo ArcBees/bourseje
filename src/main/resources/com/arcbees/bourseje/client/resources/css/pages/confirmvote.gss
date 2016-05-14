@@ -27,6 +27,7 @@
 .choice_finalist_name {
     font-family: F_SECONDARY;
     font-size: 22px;
+    display: block;
 }
 
 .choice_finalist_company {
