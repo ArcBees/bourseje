@@ -18,7 +18,7 @@
 
                     <div class="{page.style.text_intro} {res.styles.txtcenter}">
                         <h2>Les candidats</h2>
-                        <p>pour la Bourse Jeune Entreprise 2016</p>
+                        <p>pour la Bourse Jeune Entreprise 2017</p>
                     </div>
                     <g:HTMLPanel styleName="{res.grid.row} {res.styles.clearfix}">
                         <g:HTMLPanel ui:field="candidatesElement"/>
